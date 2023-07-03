@@ -1,0 +1,14 @@
+graph TD
+    PW([Public Website]) --> |optional| LP[Login Page]
+    PW --> |default| D[Dashboard]
+    PW --> S[Support]
+    PW --> A[About]
+    D --> F([Filters])
+    D --> Q([Queues])
+    D --> SE([Search])
+    Q --> |List of Agencies| BIR[BIR]
+    BIR --> |default| AD[Agency Dashboard]
+    BIR --> |login required| CS[Chat Support]
+    AD --> W1([Window 1])
+    AD --> W2([Window 2])
+    AD --> W3([Window 3])

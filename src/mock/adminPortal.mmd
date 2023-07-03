@@ -1,0 +1,12 @@
+graph TD
+    A[User Admin Portal] --> LP[Login Page]
+    LP -->|Valid login| AP[Admin Page]
+    AP --> |Default| D[Dashboard]
+    AP --> CS[Chat Support] 
+    AP --> L[Logs]
+    L --> LIVE[Live Logs]
+    L --> R[Reports]
+    AP --> AS[Account Settings]
+    D --> |List of Queues| Q[Window 1]
+    Q --> |Live Control| QP[Queue Panel]
+    Q --> QS[Queue Settings]
