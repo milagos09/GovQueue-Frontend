@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "agency": "Franecki - Fritsch",
+    "email": "Adella53@gmail.com",
+    "password": "fWfKaK74UwqavuT",
+    "address": "7169 Ebert Terrace",
+    "region": "Lake Marjory",
+    "regionCode": "CY",
+    "chatSupportEnabled": true,
+    "logo": "https://loremflickr.com/640/480/business?lock=8010306215215104"
+  },
+  {
+    "id": 2,
+    "agency": "Gutmann - Rodriguez",
+    "email": "Marlen_Blanda@yahoo.com",
+    "password": "DcDV9dNygj5pchz",
+    "address": "421 Reva Lodge",
+    "region": "North Jakobtown",
+    "regionCode": "LI",
+    "chatSupportEnabled": true,
+    "logo": "https://loremflickr.com/640/480/business?lock=5759873702690816"
+  },
+  {
+    "id": 3,
+    "agency": "McDermott, Okuneva and Ziemann",
+    "email": "Lera_Dare65@gmail.com",
+    "password": "ffg5qki7slaKJrk",
+    "address": "90123 Jaskolski Cape",
+    "region": "Roanoke",
+    "regionCode": "RS",
+    "chatSupportEnabled": false,
+    "logo": "https://loremflickr.com/640/480/business?lock=348310047031296"
+  },
+  {
+    "id": 4,
+    "agency": "Stehr LLC",
+    "email": "Janiya57@yahoo.com",
+    "password": "lITjGQgFdH3hGLY",
+    "address": "5114 Monahan Squares",
+    "region": "North Isabelle",
+    "regionCode": "TH",
+    "chatSupportEnabled": false,
+    "logo": "https://loremflickr.com/640/480/business?lock=2606791418445824"
+  },
+  {
+    "id": 5,
+    "agency": "Schroeder, Toy and Gottlieb",
+    "email": "Nat_Parker@hotmail.com",
+    "password": "cDF6g17Wdecq8p4",
+    "address": "685 Mraz Spur",
+    "region": "Fort Walker",
+    "regionCode": "VG",
+    "chatSupportEnabled": true,
+    "logo": "https://loremflickr.com/640/480/business?lock=2372086557310976"
+  },
+  {
+    "id": 6,
+    "agency": "Luettgen, Christiansen and Hammes",
+    "email": "Corene_Fadel89@yahoo.com",
+    "password": "NI7h2ROWBk6JJC5",
+    "address": "534 Marquardt Summit",
+    "region": "Marielaboro",
+    "regionCode": "EC",
+    "chatSupportEnabled": false,
+    "logo": "https://loremflickr.com/640/480/business?lock=75788307136512"
+  },
+  {
+    "id": 7,
+    "agency": "Willms - Swift",
+    "email": "Fernando_Gleichner44@hotmail.com",
+    "password": "HH4rOSkEpOU2spM",
+    "address": "59460 Jenkins Cape",
+    "region": "Fort Raymond",
+    "regionCode": "BM",
+    "chatSupportEnabled": false,
+    "logo": "https://loremflickr.com/640/480/business?lock=6651989031124992"
+  },
+  {
+    "id": 8,
+    "agency": "Breitenberg, Brekke and Beier",
+    "email": "Hillard96@yahoo.com",
+    "password": "7QknHjVHSK3UZRo",
+    "address": "74489 Steuber Trail",
+    "region": "Elmhurst",
+    "regionCode": "BV",
+    "chatSupportEnabled": true,
+    "logo": "https://loremflickr.com/640/480/business?lock=5650472184578048"
+  },
+  {
+    "id": 9,
+    "agency": "Sipes - Kutch",
+    "email": "Zoie46@hotmail.com",
+    "password": "2UM_3sq8npoBUqn",
+    "address": "505 Keenan Crossing",
+    "region": "Lake Davionborough",
+    "regionCode": "SY",
+    "chatSupportEnabled": false,
+    "logo": "https://loremflickr.com/640/480/business?lock=212811825283072"
+  },
+  {
+    "id": 10,
+    "agency": "Reynolds and Sons",
+    "email": "Waylon.Hansen@gmail.com",
+    "password": "ul9islIA9nq64Xz",
+    "address": "84356 Krystel Cliff",
+    "region": "Jaquelinstead",
+    "regionCode": "FM",
+    "chatSupportEnabled": true,
+    "logo": "https://loremflickr.com/640/480/business?lock=3344185918750720"
+  }
+]
