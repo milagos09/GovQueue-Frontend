@@ -1,9 +1,11 @@
 graph TD
-    A[User Admin Portal] --> LP[Login Page]
+    A[User Admin Portal] --> LP[Login Page] --> |Invalid login| AC[Account Recovery]
     LP -->|Valid login| AP[Admin Page]
     AP --> |Default| D[Dashboard]
     AP --> CS[Chat Support] 
     AP --> L[Logs]
+    AP --> S[Support]
+    S --> K[Documentation]
     L --> LIVE[Live Logs]
     L --> R[Reports]
     AP --> AS[Account Settings]

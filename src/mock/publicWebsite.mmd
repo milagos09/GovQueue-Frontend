@@ -1,11 +1,12 @@
 graph TD
-    PW([Public Website]) --> |optional| LP[Login Page]
+    PW([Public Website])
     PW --> |default| D[Dashboard]
-    PW --> S[Support]
-    PW --> A[About]
+    PW --> C[Support]
+    C --> K([FAQ])
+    PW --> A[About Us]
     D --> F([Filters])
     D --> Q([Queues])
-    D --> SE([Search])
+    D --> S([Search])
     Q --> |List of Agencies| BIR[BIR]
     BIR --> |default| AD[Agency Dashboard]
     BIR --> |login required| CS[Chat Support]
