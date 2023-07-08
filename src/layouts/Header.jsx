@@ -6,7 +6,7 @@ function Item(props) {
     return (
         <Paper>
             <h2>{props.item.name}</h2>
-            <div style={{ width: '100%', height: '300px', backgroundColor: 'lightgray', textAlign: 'center', fontSize: '50px' }}>100% x 300 {/* Placeholder for image size */}
+            <div style={{ width: '100%', height: '300px', backgroundColor: 'lightgray', textAlign: 'center', fontSize: '50px' }}>100% x 300 
             </div>
             <p>{props.item.description}</p>
         </Paper>
