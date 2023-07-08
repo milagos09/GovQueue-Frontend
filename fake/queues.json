@@ -3,140 +3,140 @@
     "id": 1,
     "adminId": 1,
     "name": "Window 1",
-    "current": 22,
-    "updatedOn": "2023-01-01T15:00:41.709Z"
+    "current": 21,
+    "updatedOn": "2023-01-01T11:06:07.644Z"
   },
   {
     "id": 2,
     "adminId": 2,
     "name": "Window 1",
-    "current": 96,
-    "updatedOn": "2023-01-01T15:13:55.356Z"
+    "current": 37,
+    "updatedOn": "2023-01-01T12:50:43.896Z"
   },
   {
     "id": 3,
     "adminId": 3,
     "name": "Window 1",
-    "current": 16,
-    "updatedOn": "2023-01-01T13:50:52.341Z"
+    "current": 82,
+    "updatedOn": "2023-01-01T12:04:17.842Z"
   },
   {
     "id": 4,
     "adminId": 4,
     "name": "Window 1",
-    "current": 48,
-    "updatedOn": "2023-01-01T17:55:48.817Z"
+    "current": 13,
+    "updatedOn": "2023-01-01T12:30:11.059Z"
   },
   {
     "id": 5,
     "adminId": 5,
     "name": "Window 1",
-    "current": 86,
-    "updatedOn": "2023-01-01T14:37:58.573Z"
+    "current": 23,
+    "updatedOn": "2023-01-01T11:49:31.598Z"
   },
   {
     "id": 6,
     "adminId": 6,
     "name": "Window 1",
-    "current": 47,
-    "updatedOn": "2023-01-01T11:41:47.348Z"
+    "current": 92,
+    "updatedOn": "2023-01-01T14:12:38.594Z"
   },
   {
     "id": 7,
     "adminId": 7,
     "name": "Window 1",
-    "current": 12,
-    "updatedOn": "2023-01-01T11:32:05.849Z"
+    "current": 20,
+    "updatedOn": "2023-01-01T12:08:43.041Z"
   },
   {
     "id": 8,
     "adminId": 8,
     "name": "Window 1",
-    "current": 84,
-    "updatedOn": "2023-01-01T15:18:00.487Z"
+    "current": 8,
+    "updatedOn": "2023-01-01T11:37:17.171Z"
   },
   {
     "id": 9,
     "adminId": 9,
     "name": "Window 1",
-    "current": 100,
-    "updatedOn": "2023-01-01T14:44:47.150Z"
+    "current": 5,
+    "updatedOn": "2023-01-01T08:53:14.486Z"
   },
   {
     "id": 10,
     "adminId": 10,
     "name": "Window 1",
-    "current": 86,
-    "updatedOn": "2023-01-01T14:01:22.529Z"
+    "current": 91,
+    "updatedOn": "2023-01-01T09:28:02.521Z"
   },
   {
     "id": 11,
     "adminId": 1,
     "name": "Window 2",
-    "current": 33,
-    "updatedOn": "2023-01-01T12:52:38.477Z"
+    "current": 40,
+    "updatedOn": "2023-01-01T14:41:05.317Z"
   },
   {
     "id": 12,
     "adminId": 2,
     "name": "Window 2",
-    "current": 93,
-    "updatedOn": "2023-01-01T08:23:50.739Z"
+    "current": 10,
+    "updatedOn": "2023-01-01T10:34:08.212Z"
   },
   {
     "id": 13,
     "adminId": 3,
     "name": "Window 2",
-    "current": 42,
-    "updatedOn": "2023-01-01T13:34:34.584Z"
+    "current": 60,
+    "updatedOn": "2023-01-01T16:33:37.941Z"
   },
   {
     "id": 14,
     "adminId": 4,
     "name": "Window 2",
-    "current": 10,
-    "updatedOn": "2023-01-01T10:35:25.840Z"
+    "current": 17,
+    "updatedOn": "2023-01-01T15:08:29.255Z"
   },
   {
     "id": 15,
     "adminId": 5,
     "name": "Window 2",
-    "current": 43,
-    "updatedOn": "2023-01-01T12:09:05.161Z"
+    "current": 13,
+    "updatedOn": "2023-01-01T08:15:09.226Z"
   },
   {
     "id": 16,
     "adminId": 6,
     "name": "Window 2",
-    "current": 99,
-    "updatedOn": "2023-01-01T16:28:09.623Z"
+    "current": 88,
+    "updatedOn": "2023-01-01T16:13:06.148Z"
   },
   {
     "id": 17,
     "adminId": 7,
     "name": "Window 2",
-    "current": 81,
-    "updatedOn": "2023-01-01T11:58:53.121Z"
+    "current": 80,
+    "updatedOn": "2023-01-01T13:57:04.623Z"
   },
   {
     "id": 18,
     "adminId": 8,
     "name": "Window 2",
-    "current": 44,
-    "updatedOn": "2023-01-01T14:07:45.042Z"
+    "current": 34,
+    "updatedOn": "2023-01-01T16:05:05.973Z"
   },
   {
     "id": 19,
     "adminId": 9,
     "name": "Window 2",
-    "current": 88,
-    "updatedOn": "2023-01-01T13:40:43.448Z"
+    "current": 22,
+    "updatedOn": "2023-01-01T14:09:05.271Z"
   },
   {
     "id": 20,
     "adminId": 10,
     "name": "Window 2",
-    "current": 35,
-    "updatedOn": "2023-01-01T17:17:35.254Z"
+    "current": 51,
+    "updatedOn": "2023-01-01T16:11:00.325Z"
   }
 ]

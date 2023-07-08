@@ -6,6 +6,8 @@ function Item(props) {
     return (
         <Paper>
             <h2>{props.item.name}</h2>
+            <div style={{ width: '100%', height: '300px', backgroundColor: 'lightgray', textAlign: 'center', fontSize: '50px' }}>100% x 300 {/* Placeholder for image size */}
+            </div>
             <p>{props.item.description}</p>
         </Paper>
     );
@@ -14,11 +16,11 @@ function Item(props) {
 export default function Example(props) {
     let items = [
         {
-            name: "Picture 1",
+            name: "",
             description: ""
         },
         {
-            name: "Picture 2",
+            name: "",
             description: ""
         }
     ];
