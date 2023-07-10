@@ -10,18 +10,26 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-
 const pages = ['Home', 'About Us', 'Support'];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [currentDateTime, setCurrentDateTime] = React.useState(new Date());
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -31,15 +39,17 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentDateTime(new Date());
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
+  const formattedDateTime = () => {
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
     };
-  }, []);
+    return currentDateTime.toLocaleString(undefined, options);
+  };
 
   return (
     <AppBar position="static">
@@ -99,6 +109,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
+
           <Typography
             variant="h5"
             noWrap
@@ -113,12 +124,11 @@ function ResponsiveAppBar() {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
-             
             }}
           >
             LOGO
           </Typography>
-          
+
           <Box sx={{ justifyContent: 'space-evenly', flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -132,11 +142,8 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
-            <Typography
-              variant="body1"
-              sx={{ color: 'white', marginRight: 2 }}
-            >
-              {currentDateTime.toLocaleString()}
+            <Typography variant="body1" sx={{ color: 'white', marginRight: 2 }}>
+              {formattedDateTime()}
             </Typography>
           </Box>
 
