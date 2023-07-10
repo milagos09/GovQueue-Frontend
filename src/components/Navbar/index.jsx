@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,12 +10,12 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Home', 'About Us', 'Support'];
 
-function ResponsiveAppBar() {
+export default function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
+  const pages = ['Home', 'About Us', 'Support'];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -173,4 +173,4 @@ function ResponsiveAppBar() {
   );
 }
 
-export default ResponsiveAppBar;
+
