@@ -3,12 +3,12 @@ import { Paper } from '@mui/material';
 
 function Item(props) {
     return (
-        <Paper>
-            <h2>{props.item.name}</h2>
+        <Paper sx={{ height: '500px', width: '500px', background: 'red'}}>
+            {/* <h2>{props.item.name}</h2>
             <div style={{ width: '100%', height: '300px', backgroundColor: 'lightgray', textAlign: 'center', fontSize: '50px' }}>
                 100% x 300
             </div>
-            <p>{props.item.description}</p>
+            <p>{props.item.description}</p> */}
         </Paper>
     );
 }
@@ -22,6 +22,10 @@ export default function Carousel(props) {
         {
             name: "Item 2",
             description: "Description 2"
+        },
+        {
+            name: "Item 3",
+            description: "Description 3"
         }
     ];
 
