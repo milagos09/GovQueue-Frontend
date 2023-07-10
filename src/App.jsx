@@ -1,13 +1,9 @@
 import "./App.css";
-import ResponsiveAppBar from "./components/Navbar";
-import Carousel from "./components/Carousel";
-// import admins from "../fake/admins.json";
- 
+import Navbar from "./components/Navbar"
 export default function App() {
   return (
     <>
-      <ResponsiveAppBar />
-      <Carousel />
+      <Navbar />
       {/* <Body/> */}
       {/* <Footer/> */}
     </>
