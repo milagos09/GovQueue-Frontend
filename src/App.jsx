@@ -1,11 +1,15 @@
 import "./App.css";
+import Carousel from "./components/Carousel";
+
+ 
 
 export default function App() {
-    return (
-        <>
-            {/* <Header/> */}
-            {/* <Body/> */}
-            {/* <Footer/> */}
-        </>
-    );
+  return (
+    <>
+      {/*<ResponsiveAppBar /> */}
+      <Carousel />
+      {/* <Body/> */}
+      {/* <Footer/> */}
+    </>
+  );
 }
