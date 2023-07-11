@@ -1,21 +1,41 @@
-import { Paper, Button } from '@mui/material';
+import { Paper } from "@mui/material";
 
 function Item({ item }) {
-    const handleClick = () => {
-        window.open(item.link);
-    };
+  const handleClick = () => {
+    window.open(item.link);
+  };
 
-    return (
-        <Paper>
-            <img src={item.image} alt={item.title} style={{ width: "100%", height: "45vh" }} />
-            <div className='description' style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                <h2>{item.title}</h2>
-                <Button variant="contained" onClick={handleClick}>
-                    Check it out!
-                </Button>
-            </div>
-        </Paper>
-    );
+  return (
+    <Paper>
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "45vh",
+          cursor: "pointer",
+        }}
+        onClick={handleClick}
+      >
+        <img
+          src={item.image}
+          alt={item.title}
+          style={{ width: "100%", height: "100%" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "0",
+            left: "0",
+            background: "rgba(0, 0, 0, 0.8)",
+            color: "white",
+            padding: "10px",
+          }}
+        >
+          <h2>{item.title}</h2>
+        </div>
+      </div>
+    </Paper>
+  );
 }
 
 export default Item;
