@@ -10,9 +10,8 @@ export default function Window({ name, number, updated }) {
                     fontWeight: "bold",
                     fontSize: "3rem",
                     border: "1px solid black",
-                    padding: "10px 20px",
+                    padding: "20px",
                     margin: "5px",
-                    display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                 }}
