@@ -1,6 +1,6 @@
 import MuiCarousel from 'react-material-ui-carousel';
-import Item from './Item'
-import slider from "./../../../fake/slider.json"
+import Item from './Item';
+import slider from "./../../../fake/slider.json";
 
 export default function Carousel()
 {
