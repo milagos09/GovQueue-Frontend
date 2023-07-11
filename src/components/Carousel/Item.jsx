@@ -26,9 +26,11 @@ function Item({ item }) {
             position: "absolute",
             bottom: "0",
             left: "0",
-            background: "rgba(0, 0, 0, 0.8)",
+            background: "rgba(0, 0, 0, 0.5)",
             color: "white",
             padding: "10px",
+            textAlign: "center",
+            width: "100%"
           }}
         >
           <h2>{item.title}</h2>
