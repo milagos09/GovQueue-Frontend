@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Window from "./Window";
-import { CheckScreenSize } from "../../hooks/checkScreenSize";
+import { CheckScreenSize } from "./../../hooks/CheckScreenSize";
 
 export default function WindowsLayout() {
     const { width } = CheckScreenSize();
