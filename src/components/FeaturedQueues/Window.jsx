@@ -12,7 +12,6 @@ export default function Window({ name, number, updated }) {
                     border: "1px solid black",
                     padding: "20px",
                     margin: "5px",
-                    display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                 }}
