@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Carousel from "./components/Carousel";
+import Carousel from "./components/Carousel/";
 import FeaturedQueues from "./components/FeaturedQueues";
 
 export default function App() {
