@@ -130,7 +130,7 @@ export default function NavBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            GovQueue
           </Typography>
 
           <Box sx={{ justifyContent: 'space-evenly', flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
