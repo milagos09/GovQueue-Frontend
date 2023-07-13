@@ -1,11 +1,13 @@
 import Carousel from "./../../components/Carousel";
 import FeaturedQueues from "./../../components/FeaturedQueues";
-import SearchColumn from "../../components/SearchColumn";
+import SearchColumn from "./../../components/SearchColumn";
 import Grid from "@mui/material/Grid";
+import NavBar from "./../../components/Navbar";
 
-export default function Home() {
+export default function Dashboard() {
     return (
         <>
+            <NavBar />
             <Carousel />
             <Grid container spacing={0} sx={{ paddingX: "1.5%" }}>
                 <Grid

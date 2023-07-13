@@ -9,12 +9,17 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
-    const pages = ["Home", "About Us", "Support"];
+    const pages = [
+        { nav: "Home", link: "/" },
+        { nav: "About us", link: "/about" },
+        { nav: "Support", link: "/support" },
+    ];
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -56,7 +61,7 @@ export default function NavBar() {
 
     return (
         <AppBar position="sticky">
-            <Container maxWidth="">
+            <Container>
                 <Toolbar disableGutters>
                     <Typography
                         variant="h6"
@@ -106,8 +111,12 @@ export default function NavBar() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem key={page.nav} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">
+                                        <Link to={page.link} style={{ textDecoration: "none", color: "inherit" }}>
+                                            {page.nav}
+                                        </Link>
+                                    </Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -117,7 +126,7 @@ export default function NavBar() {
                         variant="h5"
                         noWrap
                         component="a"
-                        href=""
+                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: "flex", md: "none" },
@@ -135,11 +144,13 @@ export default function NavBar() {
                     <Box sx={{ justifyContent: "space-evenly", flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                         {pages.map((page) => (
                             <Button
-                                key={page}
+                                key={page.nav}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: "white", display: "block" }}
                             >
-                                {page}
+                                <Link to={page.link} style={{ textDecoration: "none", color: "inherit" }}>
+                                    {page.nav}
+                                </Link>
                             </Button>
                         ))}
                     </Box>
