@@ -2,14 +2,23 @@ import Grid from "@mui/material/Grid";
 import SearchInput from "./SearchInput";
 import AgencyDetail from "../FeaturedQueues/AgencyDetail";
 import { useState, useEffect } from "react";
+import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 
 export default function SearchColumn() {
     const fqHeight = CheckFeaturedQueuesHeight();
+    const { width } = CheckScreenSize();
     return (
-        <Grid container sx={{ marginY: "20px", border: "1px solid black", position: "relative" }}>
+        <Grid
+            container
+            sx={{
+                marginY: "20px",
+                border: "1px solid black",
+                position: "relative",
+            }}
+        >
             <Grid
                 item
-                sm={12}
+                xs={12}
                 sx={{ height: "90px", paddingY: "30px", display: "flex" }}
                 justifyContent="center"
                 alignItems="center"
@@ -18,7 +27,7 @@ export default function SearchColumn() {
             </Grid>
             <Grid
                 item
-                sm={12}
+                xs={12}
                 sx={{
                     border: "0px solid black",
                     paddingY: "20px",
@@ -27,7 +36,7 @@ export default function SearchColumn() {
                     flexDirection: "column",
                     gap: "40px",
                     overflowY: "auto",
-                    height: fqHeight - 90 - 41 + "px",
+                    height: width < 900 ? "250px" : fqHeight - 90 - 41 + "px",
                 }}
                 // justifyContent="center"
                 alignItems="center"

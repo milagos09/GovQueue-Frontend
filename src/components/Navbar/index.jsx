@@ -40,18 +40,22 @@ export default function NavBar() {
 
     const formattedDateTime = () => {
         const options = {
-            weekday: "long",
+            weekday: "short",
             year: "numeric",
             month: "long",
             day: "numeric",
             hour: "numeric",
             minute: "numeric",
         };
-        return currentDateTime.toLocaleString(undefined, options);
+
+        const dateTimeString = currentDateTime.toLocaleString(undefined, options);
+        const formattedString = dateTimeString.replace("at", ""); // Remove 'at' from the formatted string
+
+        return formattedString;
     };
 
     return (
-        <AppBar position="static" className="theme-bg">
+        <AppBar position="sticky" sx={{ boxShadow: 3 }}>
             <Container maxWidth="">
                 <Toolbar disableGutters>
                     <Typography
@@ -62,14 +66,33 @@ export default function NavBar() {
                         sx={{
                             mr: 2,
                             display: { xs: "none", md: "flex" },
-                            fontFamily: "monospace",
                             fontWeight: 700,
                             letterSpacing: ".3rem",
                             color: "inherit",
                             textDecoration: "none",
+                            fontFamily: "Garamond",
                         }}
                     >
-                        LOGO
+                        GovQueue
+                    </Typography>
+
+                    <Typography
+                        variant="h5"
+                        noWrap
+                        component="a"
+                        href=""
+                        sx={{
+                            mr: 2,
+                            display: { xs: "flex", md: "none" },
+                            flexGrow: 1,
+                            fontFamily: "monospace",
+                            fontSize: "13px",
+                            fontWeight: 700,
+                            color: "inherit",
+                            textDecoration: "none",
+                        }}
+                    >
+                        GovQueue
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

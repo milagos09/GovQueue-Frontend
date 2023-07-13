@@ -11,7 +11,8 @@ export default function FeaturedQueues() {
             sx={{
                 marginY: "20px",
                 padding: "20px",
-                border: "1px solid black",
+                border: "none",
+                boxShadow: "0px 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 2px 4px rgba(0, 0, 0, 0.2)",
                 position: "relative",
             }}
         >
