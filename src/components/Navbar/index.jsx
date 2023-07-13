@@ -19,7 +19,7 @@ export default function NavBar() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentDateTime(new Date());
-        }, 60 * 1000);
+        }, 1000);
 
         return () => {
             clearInterval(interval);
@@ -55,7 +55,7 @@ export default function NavBar() {
     };
 
     return (
-        <AppBar position="sticky" sx={{ boxShadow: 3 }}>
+        <AppBar position="sticky">
             <Container maxWidth="">
                 <Toolbar disableGutters>
                     <Typography
@@ -71,25 +71,6 @@ export default function NavBar() {
                             color: "inherit",
                             textDecoration: "none",
                             fontFamily: "Garamond",
-                        }}
-                    >
-                        GovQueue
-                    </Typography>
-
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: "flex", md: "none" },
-                            flexGrow: 1,
-                            fontFamily: "monospace",
-                            fontSize: "13px",
-                            fontWeight: 700,
-                            color: "inherit",
-                            textDecoration: "none",
                         }}
                     >
                         GovQueue
@@ -142,13 +123,13 @@ export default function NavBar() {
                             display: { xs: "flex", md: "none" },
                             flexGrow: 1,
                             fontFamily: "monospace",
+                            fontSize: "13px",
                             fontWeight: 700,
-                            letterSpacing: ".3rem",
                             color: "inherit",
                             textDecoration: "none",
                         }}
                     >
-                        LOGO
+                        GovQueue
                     </Typography>
 
                     <Box sx={{ justifyContent: "space-evenly", flexGrow: 1, display: { xs: "none", md: "flex" } }}>
