@@ -1,16 +1,12 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Carousel from "./components/Carousel/";
-import FeaturedQueues from "./components/FeaturedQueues";
+import Home from "./pages/public/Home";
 
 export default function App() {
     return (
         <>
             <Navbar />
-            <Carousel />
-            <FeaturedQueues />
-            {/* <Body/> */}
-            {/* <Footer/> */}
+            <Home />
         </>
     );
 }

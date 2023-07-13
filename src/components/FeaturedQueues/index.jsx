@@ -25,14 +25,7 @@ export default function FeaturedQueues() {
             >
                 <AgencyDetail />
             </Grid>
-            <Grid
-                item
-                md={9}
-                xs={12}
-                sx={{ display: "flex", minHeight: "100%" }}
-                justifyContent="center"
-                alignItems="center"
-            >
+            <Grid item md={9} xs={12} sx={{ display: "flex" }} justifyContent="center" alignItems="center">
                 <WindowsLayout />
             </Grid>
             <Button variant="contained" sx={{ position: "absolute", top: "20px", right: "20px", fontSize: "2rem" }}>
