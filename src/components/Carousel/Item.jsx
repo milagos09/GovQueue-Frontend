@@ -19,7 +19,7 @@ function Item({ item }) {
         <img
           src={item.image}
           alt={item.title}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", objectFit:"cover",  display: "inline-block" }}
         />
         <div
           style={{
