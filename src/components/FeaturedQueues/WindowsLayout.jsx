@@ -11,8 +11,9 @@ export default function WindowsLayout() {
                 overflowX: "auto",
                 padding: "20px 10px",
                 marginY: "10px",
-                border: "solid black 1px",
                 width: "100%",
+                boxShadow: 3,
+                borderRadius: "10px",
             }}
         >
             <Stack
