@@ -1,7 +1,7 @@
 import { Box, Grid, Typography, Link, Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
-import GithubIcon from "@mui/icons-material/Github";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import YoutubeIcon from "@mui/icons-material/Youtube";
 import GovQueueLogo from "./../../assets/govQ-logo.png";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
@@ -44,7 +44,7 @@ export default function Footer() {
                             <FacebookIcon fontSize="large" color={"action"} />
                         </Link>
                         <Link href="https://github.com/" target="_blank">
-                            <GithubIcon fontSize="large" color={"action"} />
+                            <GitHubIcon fontSize="large" color={"action"} />
                         </Link>
                         <Link href="https://www.youtube.com/" target="_blank">
                             <YoutubeIcon fontSize="large" color={"action"} />
