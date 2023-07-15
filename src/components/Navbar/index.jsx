@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,29 +10,20 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import FormatDateTime from "./DateTime";
+
 
 export default function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const [currentDateTime, setCurrentDateTime] = useState(new Date());
     const pages = [
         { nav: "Home", link: "/" },
         { nav: "About us", link: "/about" },
         { nav: "Support", link: "/support" },
     ];
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentDateTime(new Date());
-        }, 1000);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, []);
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+    const handleOpenNavMenu = (e) => {
+        setAnchorElNav(e.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
@@ -41,23 +32,9 @@ export default function NavBar() {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
-    };
+    }
 
-    const formattedDateTime = () => {
-        const options = {
-            weekday: "short",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-        };
-
-        const dateTimeString = currentDateTime.toLocaleString(undefined, options);
-        const formattedString = dateTimeString.replace("at", ""); // Remove 'at' from the formatted string
-
-        return formattedString;
-    };
+    
 
     return (
         <AppBar position="sticky">
@@ -123,7 +100,7 @@ export default function NavBar() {
                     </Box>
 
                     <Typography
-                        variant="h5"
+                        variant="h6"
                         noWrap
                         component="a"
                         href="/"
@@ -131,8 +108,8 @@ export default function NavBar() {
                             mr: 2,
                             display: { xs: "flex", md: "none" },
                             flexGrow: 1,
-                            fontFamily: "monospace",
-                            fontSize: "13px",
+                            fontFamily: "Garamond",
+                            letterSpacing: ".25rem",
                             fontWeight: 700,
                             color: "inherit",
                             textDecoration: "none",
@@ -157,7 +134,7 @@ export default function NavBar() {
 
                     <Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
                         <Typography variant="body1" sx={{ color: "white", marginRight: 2 }}>
-                            {formattedDateTime()}
+                            {FormatDateTime()}
                         </Typography>
                     </Box>
 
@@ -178,7 +155,7 @@ export default function NavBar() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {/* User menu items */}
+                    
                         </Menu>
                     </Box>
                 </Toolbar>
