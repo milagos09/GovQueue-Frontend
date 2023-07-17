@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 export default function NavLink() {
     const [setAnchorElNav] = useState(null);
@@ -15,24 +14,24 @@ export default function NavLink() {
       setAnchorElNav(null);
     };
     return (
-        <>
-          <Box
-            sx={{
-              justifyContent: "space-evenly",
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-            }}
-          >
-            {pages.map((page) => (
-            <MenuItem key={page.nav} onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">
-                <Link to={page.link} style={{ textDecoration: "none", color: "inherit" }}>
-                  {page.nav}
-                </Link>
-              </Typography>
-            </MenuItem>
-          ))}
-          </Box>
-        </>
-      );
-    }
+      <Box
+  sx={{
+    justifyContent: "space-evenly",
+    flexGrow: 1,
+    display: { xs: "none", md: "flex" },
+    "&:hover": {
+      cursor: "pointer",
+      textDecoration: "none",
+    },
+  }}
+>
+  {pages.map((page) => (
+    <Link key={page.nav} to={page.link} style={{ textDecoration: "none", color: "inherit" }}>
+      <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block", width: "100%" }}>
+        {page.nav}
+      </Button>
+    </Link>
+  ))}
+</Box>
+    );
+  }
