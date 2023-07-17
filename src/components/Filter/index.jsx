@@ -64,7 +64,7 @@ export default function Filter() {
       <Grid
         container
         flexDirection={{ xs: "row", sm: "row" }}
-        justifyContent={{ xs: "flex-start", sm: "center" }}
+        justifyContent={{ xs: "center", sm: "center" }}
         alignItems="center"
         xs={12}
         sm={6}
