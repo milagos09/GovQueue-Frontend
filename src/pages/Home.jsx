@@ -4,6 +4,7 @@ import About from "./public/About";
 import Support from "./public/Support";
 import ErrorPage from "./ErrorPage";
 import Login from "./admin/Login";
+import Footer from "./../components/Footer";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,7 @@ export default function Home() {
             <RouterProvider router={router}>
                 <Outlet />
             </RouterProvider>
+            <Footer />
         </>
     );
 }
