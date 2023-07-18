@@ -73,7 +73,7 @@ export default function Support() {
           <Item>The quick brown fox jumps over the lazy dog</Item>
         </Grid>
         <Grid xs={2}>
-          <Item>The quick brown fox jumps over the lazy dog</Item>
+          <Item>The quick brown fox jumps over the lazy dog!</Item>
         </Grid>
       </Grid>
     </Box>
