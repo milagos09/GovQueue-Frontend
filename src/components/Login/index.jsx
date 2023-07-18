@@ -27,7 +27,7 @@ export default function AdminLogin() {
           <TextField
             label="Username"
             variant="outlined"
-            type="email"
+            type="username"
             fullWidth
             required
           />
