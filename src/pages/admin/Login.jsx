@@ -1,3 +1,10 @@
+import AdminLogin from "../../components/Login/index";
+
 export default function Login() {
-    return <h2>Login Page</h2>;
+  return (
+    <>
+      <AdminLogin />
+      <h2>Login Page</h2>;
+    </>
+  );
 }
