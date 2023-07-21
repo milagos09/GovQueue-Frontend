@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import AdminLogin from "../../components/Login/index";
 import NavBar from "../../components/Navbar";
 import Grid from "@mui/material/Unstable_Grid2";
+import BannerLogo from "../../assets/govQ-logo.png";
 
 export default function Login() {
   return (
@@ -40,8 +41,8 @@ export default function Login() {
               height={400}
             >
               <img
-                src="src\assets\govQ-logo.png"
-                alt=""
+                src={BannerLogo}
+                alt="BannerLogo"
                 style={{ width: "100%", height: "100%" }}
               />
             </Box>
