@@ -25,9 +25,9 @@ const handleReset = () => {
 export default function Filter() {
   return (
     <Grid
-      paddingTop={3}
+      paddingY={3}
       container
-      spacing={2}
+      rowSpacing={3}
       flexDirection={{ xs: "column", sm: "row" }}
       columns={12}
     >
