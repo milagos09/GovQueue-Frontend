@@ -18,7 +18,6 @@ export default function Login() {
                     flexDirection={{ xs: "column", sm: "row" }}
                     justifyContent={{ xs: "center", sm: "center" }}
                     padding="20px"
-                    columnSpacing={3}
                     sx={{ minHeight: width > 600 ? `${height - 172}px` : "0" }}
                 >
                     <Grid item sm={7} xs={12} order={{ xs: 2, sm: 1 }} justifyContent={{ xs: "center", sm: "center" }}>
