@@ -1,10 +1,8 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, InputAdornment, TextField } from "@mui/material";
-import { useState } from "react";
 
-export default function SearchInput() {
-    const [input, setInput] = useState("");
-
+export default function SearchInput({ search }) {
+    const { input, setInput } = search;
     const handleChange = (event) => {
         setInput(event.target.value);
     };

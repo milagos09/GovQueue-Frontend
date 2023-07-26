@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "agency": "MGO ZARRAGA, ILOILO",
+    "type": "Local Government Units (LGUs)",
+    "email": "Dortha.Blanda@gmail.com",
+    "password": "ztEaCR0nOYPzyRK",
+    "address": "27229 Buck Way",
+    "region": "Region VI",
+    "chatSupportEnabled": true,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 2,
+    "agency": "MGO PEÑABLANCA, CAGAYAN",
+    "type": "Government-Owned and Controlled Corporations (GOCCs)",
+    "email": "Judson.Hessel@gmail.com",
+    "password": "CqFhznGViVnkjtO",
+    "address": "40956 Wolff Mount",
+    "region": "BARMM",
+    "chatSupportEnabled": false,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 3,
+    "agency": "MGO PATEROS, NCR",
+    "type": "National Government Agencies (NGAs)",
+    "email": "Dayne69@yahoo.com",
+    "password": "1jHvoXu6rbFlTJr",
+    "address": "454 Oda Turnpike",
+    "region": "Region XII",
+    "chatSupportEnabled": false,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 4,
+    "agency": "EVERSLEY CHILDS SANITARIUM AND GENERAL HOSPITAL",
+    "type": "Constitutional Commissions",
+    "email": "Gabe.Bergnaum@yahoo.com",
+    "password": "DLnnAllTnOi5N3o",
+    "address": "6622 Kozey Streets",
+    "region": "Region I",
+    "chatSupportEnabled": false,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 5,
+    "agency": "MGO NAMPICUAN, NUEVA ECIJA",
+    "type": "Law Enforcement Agencies",
+    "email": "Eleanore1@hotmail.com",
+    "password": "tiww91GIngHCM4M",
+    "address": "7221 Kshlerin Dam",
+    "region": "NCR",
+    "chatSupportEnabled": false,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 6,
+    "agency": "MGO PIO V. CORPUZ (LIMBUHAN), MASBATE",
+    "type": "State Universities and Colleges (SUCs)",
+    "email": "Ova60@yahoo.com",
+    "password": "rDtTKO39LS6ALJU",
+    "address": "58081 Pearline Centers",
+    "region": "CARAGA",
+    "chatSupportEnabled": true,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 7,
+    "agency": "MGO ALCALA, CAGAYAN",
+    "type": "Government-Owned and Controlled Corporations (GOCCs)",
+    "email": "Melisa.Denesik2@hotmail.com",
+    "password": "ZE4zSdPujVuquUi",
+    "address": "269 Carter Islands",
+    "region": "Region IX",
+    "chatSupportEnabled": true,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 8,
+    "agency": "MGO PARACELIS, MOUNTAIN PROVINCE",
+    "type": "Constitutional Commissions",
+    "email": "Velva_Kertzmann@yahoo.com",
+    "password": "CbOjyOYA9FPdqw5",
+    "address": "883 Jacobi Mission",
+    "region": "Region XII",
+    "chatSupportEnabled": true,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 9,
+    "agency": "AGRICULTURAL TRAINING INSTITUTE",
+    "type": "State Universities and Colleges (SUCs)",
+    "email": "Theresa_Shields39@hotmail.com",
+    "password": "JYSZkPjmmU1m89t",
+    "address": "72102 Gregorio Lane",
+    "region": "Region VII",
+    "chatSupportEnabled": true,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  },
+  {
+    "id": 10,
+    "agency": "BUREAU OF JAIL MANAGEMENT AND PENOLOGY",
+    "type": "Regulatory Agencies",
+    "email": "Adrain_Mertz@hotmail.com",
+    "password": "MlET8ez5vbmzV3g",
+    "address": "876 Yundt Point",
+    "region": "Central Office (CO)",
+    "chatSupportEnabled": true,
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+  }
+]
