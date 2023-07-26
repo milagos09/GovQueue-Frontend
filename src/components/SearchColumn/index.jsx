@@ -1,12 +1,16 @@
 import Grid from "@mui/material/Grid";
 import SearchInput from "./SearchInput";
-import AgencyDetail from "../FeaturedQueues/AgencyDetail";
-import { useState, useEffect } from "react";
+import AgencyDetail from "./AgencyDetail";
+import { useState } from "react";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
+import { CheckFeaturedQueuesHeight } from "./../../hooks/CheckFeaturedQueuesHeight";
+import admins from "./../../../fake/admins.json";
 
 export default function SearchColumn() {
     const fqHeight = CheckFeaturedQueuesHeight();
     const { width } = CheckScreenSize();
+    const [input, setInput] = useState("");
+    const filteredAdmins = admins.filter((admin) => admin.agency.toLocaleLowerCase().includes(input));
     return (
         <Grid
             container
@@ -23,7 +27,7 @@ export default function SearchColumn() {
                 justifyContent="center"
                 alignItems="center"
             >
-                <SearchInput />
+                <SearchInput search={{ input, setInput }} />
             </Grid>
             <Grid
                 item
@@ -41,39 +45,10 @@ export default function SearchColumn() {
                 // justifyContent="center"
                 alignItems="center"
             >
-                <AgencyDetail />
-                <AgencyDetail />
-                <AgencyDetail />
-                <AgencyDetail />
-                <AgencyDetail />
+                {filteredAdmins.map((admin) => (
+                    <AgencyDetail agency={admin.agency} logo={admin.logo} key={admin.id} />
+                ))}
             </Grid>
         </Grid>
     );
-}
-
-function CheckFeaturedQueuesHeight() {
-    const [height, setHeight] = useState(0);
-
-    useEffect(() => {
-        const updateHeight = () => {
-            const element = document.querySelector(".featured-queues");
-            if (element) {
-                const elementHeight = element.offsetHeight;
-                setHeight(elementHeight);
-            }
-        };
-
-        // Initial height check
-        updateHeight();
-
-        // Update height on window resize
-        window.addEventListener("resize", updateHeight);
-
-        // Clean up the event listener
-        return () => {
-            window.removeEventListener("resize", updateHeight);
-        };
-    }, []);
-
-    return height;
 }

@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import WindowsLayout from "./WindowsLayout";
-import AgencyDetail from "./AgencyDetail";
+import AgencyDetail from "./../SearchColumn/AgencyDetail";
 import MoreIcon from "@mui/icons-material/More";
 
 export default function FeaturedQueues() {
@@ -24,7 +24,12 @@ export default function FeaturedQueues() {
                 justifyContent="center"
                 alignItems="center"
             >
-                <AgencyDetail />
+                <AgencyDetail
+                    agency={"National Commission for Culture and the Arts"}
+                    logo={
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+                    }
+                />
             </Grid>
             <Grid item md={9} xs={12} sx={{ display: "flex" }} justifyContent="center" alignItems="center">
                 <WindowsLayout />
