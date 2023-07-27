@@ -29,10 +29,17 @@ export default function Support() {
   return (
     <>
       <NavBar />
-      <Box xs="2" sx={{ width: "100%", overflowX: "hidden" }}>
+      <Box sx={{ overflowX: "hidden" }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 2, md: 2 }}>
           <Grid xs={12} sm={4}>
-            <Item1>
+            <Item1
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+              }}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -44,7 +51,7 @@ export default function Support() {
                     variant="outlined"
                     sx={{ minWidth: 275, height: "100%", border: "none" }}
                   >
-                    <CardContent xs="2" sx={{ px: 0 }}>
+                    <CardContent sx={{ p: 2 }}>
                       <Typography
                         sx={{ alignItems: "left", fontSize: 18, py: 0, px: 0 }}
                         gutterBottom
@@ -84,7 +91,14 @@ export default function Support() {
             </Item1>
           </Grid>
           <Grid xs={6.5}>
-            <Item2>
+            <Item2
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+              }}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -92,12 +106,12 @@ export default function Support() {
                   justifyContent: "flex-start",
                 }}
               >
-                <Grid item xs={12} sm={8} lg={12} sx={{ px: 1, py: 0 }}>
+                <Grid item xs={12} sm={8} lg={8} sx={{ px: 0, py: 0 }}>
                   <Card
                     variant="outlined"
                     sx={{ minWidth: 275, height: "100%", border: "none" }}
                   >
-                    <CardContent xs="10" sx={{ px: 0 }}>
+                    <CardContent sx={{ p: 2 }}>
                       <Typography
                         sx={{ fontSize: 30, py: 0, px: 0 }}
                         gutterBottom
