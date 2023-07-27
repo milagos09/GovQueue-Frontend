@@ -1,5 +1,5 @@
 import NavBar from "../../components/Navbar";
-import App from "../../components/FacebookMessengerChat";
+import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import Paper from "@mui/material/Paper";
@@ -219,7 +219,7 @@ export default function Support() {
           </Grid>
         </Grid>
       </Box>
-      <App />
+      <FacebookMessengerChat pageId="108965818922829" />
     </>
   );
 }

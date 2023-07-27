@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import FacebookMessengerChat from "./FacebookMessengerChat";
 
 function App() {
-  const [pageId, setpageId] = useState("104588581239094");
+  const [pageId, setpageId] = useState("108965818922829");
   useEffect(() => {
     const generateRandomNumber = () => {
       const number = Math.floor(Math.random() * 2);
@@ -14,7 +14,7 @@ function App() {
   }, []);
   return (
     <>
-      <FacebookMessengerChat />
+      <FacebookMessengerChat pageId={pageId} />
     </>
   );
 }
