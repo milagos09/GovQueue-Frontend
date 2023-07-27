@@ -105,13 +105,13 @@ export default function Support() {
                         GovQueue Frequently Asked Questions
                       </Typography>
                       <Typography
-                        sx={{ fontSize: 20, py: 0, px: 0 }}
+                        sx={{ fontSize: 24, py: 0, px: 0 }}
                         gutterBottom
                       >
                         What is GovQueue?
                       </Typography>
                       <Typography
-                        sx={{ fontSize: 14, py: 0, px: 0 }}
+                        sx={{ fontSize: 18, py: 0, px: 0 }}
                         gutterBottom
                       >
                         It is a web application that is a robust and
@@ -127,13 +127,13 @@ export default function Support() {
                         existing government systems for seamless data exchange.
                       </Typography>
                       <Typography
-                        sx={{ fontSize: 20, py: 0, px: 0 }}
+                        sx={{ fontSize: 24, py: 0, px: 0 }}
                         gutterBottom
                       >
                         How can a Filipino Citizen benefit from this App?
                       </Typography>
                       <Typography
-                        sx={{ fontSize: 14, py: 0, px: 0 }}
+                        sx={{ fontSize: 18, py: 0, px: 0 }}
                         gutterBottom
                       >
                         The queuing system application offers various benefits
@@ -150,13 +150,13 @@ export default function Support() {
                         users when completing tasks at government agencies.
                       </Typography>
                       <Typography
-                        sx={{ fontSize: 20, py: 0, px: 0 }}
+                        sx={{ fontSize: 24, py: 0, px: 0 }}
                         gutterBottom
                       >
                         How can a Government Agency benefit from this App?
                       </Typography>
                       <Typography
-                        sx={{ fontSize: 14, py: 0, px: 0 }}
+                        sx={{ fontSize: 18, py: 0, px: 0 }}
                         gutterBottom
                       >
                         The queuing system application offers several benefits
@@ -179,13 +179,13 @@ export default function Support() {
                         service standards.
                       </Typography>
                       <Typography
-                        sx={{ fontSize: 20, py: 0, px: 0 }}
+                        sx={{ fontSize: 24, py: 0, px: 0 }}
                         gutterBottom
                       >
                         Can I use this app for free?
                       </Typography>
                       <Typography
-                        sx={{ fontSize: 14, py: 0, px: 0 }}
+                        sx={{ fontSize: 18, py: 0, px: 0 }}
                         gutterBottom
                       >
                         YES! This application is available for free, but
