@@ -219,7 +219,7 @@ export default function Support() {
           </Grid>
         </Grid>
       </Box>
-      <FacebookMessengerChat />
+      <FacebookMessengerChat pageId="108965818922829" />
     </>
   );
 }
