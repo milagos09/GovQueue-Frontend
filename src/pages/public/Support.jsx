@@ -219,7 +219,7 @@ export default function Support() {
           </Grid>
         </Grid>
       </Box>
-      <App pageId="108965818922829" />
+      <App />
     </>
   );
 }
