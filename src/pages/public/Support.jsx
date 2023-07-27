@@ -7,6 +7,8 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
 export default function Support() {
   const Item1 = styled(Paper)(({ theme }) => ({
@@ -23,14 +25,20 @@ export default function Support() {
     textAlign: "left",
     color: theme.palette.text.secondary,
   }));
+
   return (
     <>
       <NavBar />
       <Box sx={{ width: "100%" }}>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid xs={2} sx={{ border: "none" }}>
+        <Grid
+          container
+          rowSpacing={2}
+          columnSpacing={{ xs: 24, sm: 24, md: 24 }}
+        >
+          <Grid xs={3} sx={{ border: "none" }}>
             <Item1>
               <Box
+                xs={3}
                 sx={{
                   display: "flex",
                   alignItems: "left",
@@ -49,6 +57,24 @@ export default function Support() {
                       >
                         Contents
                       </Typography>
+                      <Box
+                        sx={{
+                          width: "100%",
+                          maxWidth: 360,
+                          bgcolor: "background.paper",
+                        }}
+                      >
+                        <nav aria-label="main mailbox folders">
+                          <List>
+                            <ListItem disablePadding sx={{ px: 1 }}>
+                              What is GovQueue?
+                            </ListItem>
+                            <ListItem disablePadding sx={{ px: 1 }}>
+                              How to use the App?
+                            </ListItem>
+                          </List>
+                        </nav>
+                      </Box>
                     </CardContent>
                   </Card>
                 </Grid>
@@ -75,6 +101,12 @@ export default function Support() {
                         gutterBottom
                       >
                         GovQueue FAQ
+                      </Typography>
+                      <Typography
+                        sx={{ fontSize: 22, py: 0, px: 0 }}
+                        gutterBottom
+                      >
+                        What is GovQueue?
                       </Typography>
                     </CardContent>
                   </Card>
