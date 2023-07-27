@@ -1,9 +1,9 @@
 import Carousel from "./../../components/Carousel";
-import FeaturedQueues from "./../../components/FeaturedQueues";
+import QueueTabs from "./../../components/QueueTabs";
 import SearchColumn from "./../../components/SearchColumn";
 import Grid from "@mui/material/Grid";
 import NavBar from "./../../components/Navbar";
-import Filter from "./../../components/Filter"
+import Filter from "./../../components/Filter";
 
 export default function Dashboard() {
     return (
@@ -11,15 +11,8 @@ export default function Dashboard() {
             <NavBar />
             <Carousel />
             <Filter />
-            <Grid container spacing={0} sx={{ paddingX: "1.5%" }}>
-                <Grid
-                    item
-                    justifyContent="center"
-                    alignItems="center"
-                    md={3}
-                    xs={12}
-                    sx={{ height: "100%", overflowY: "auto" }}
-                >
+            <Grid container sx={{ paddingX: "1.5%" }}>
+                <Grid item justifyContent="center" alignItems="center" md={3} xs={12} sx={{ overflowY: "auto" }}>
                     <SearchColumn />
                 </Grid>
                 <Grid
@@ -28,12 +21,10 @@ export default function Dashboard() {
                     alignItems="center"
                     md={9}
                     xs={12}
-                    sx={{ height: "100%" }}
+                    sx={{ height: "100%", paddingTop: "20px" }}
                     className="featured-queues"
                 >
-                    <FeaturedQueues />
-                    <FeaturedQueues />
-                    <FeaturedQueues />
+                    <QueueTabs />
                 </Grid>
             </Grid>
         </>
