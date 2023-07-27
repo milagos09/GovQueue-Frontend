@@ -1,5 +1,5 @@
 import NavBar from "../../components/Navbar";
-import FacebookMessengerChat from "../../components/FacebookMessengerChat";
+import App from "../../components/FacebookMessengerChat";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import Paper from "@mui/material/Paper";
