@@ -14,7 +14,7 @@ function App() {
   }, []);
   return (
     <>
-      <FacebookMessengerChat pageId={pageId} />
+      <FacebookMessengerChat />
     </>
   );
 }
