@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function UsePagination(data, itemsPerPage) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -18,6 +18,11 @@ export function UsePagination(data, itemsPerPage) {
             tabListElement.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
+
+    // Reset currentPage to 1 whenever the component re-renders
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [data]);
 
     return {
         currentPage,
