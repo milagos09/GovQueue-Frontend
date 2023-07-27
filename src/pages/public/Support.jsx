@@ -29,20 +29,14 @@ export default function Support() {
   return (
     <>
       <NavBar />
-      <Box sx={{ width: "100%" }}>
-        <Grid
-          container
-          rowSpacing={2}
-          columnSpacing={{ xs: 24, sm: 24, md: 24 }}
-        >
-          <Grid xs={3} sx={{ border: "none" }}>
+      <Box xs="2" sx={{ width: "100%" }}>
+        <Grid container rowSpacing={2} columnSpacing={{ xs: 0, sm: 2, md: 2 }}>
+          <Grid xs={9} sm={3} sx={{ border: "none" }}>
             <Item1>
               <Box
-                xs={3}
                 sx={{
                   display: "flex",
                   alignItems: "left",
-                  //   justifyContent: "center",
                 }}
               >
                 <Grid item xs={12} md={12} lg={12} sx={{ px: 0, py: 0 }}>
@@ -50,17 +44,19 @@ export default function Support() {
                     variant="outlined"
                     sx={{ minWidth: 275, height: "100%", border: "none" }}
                   >
-                    <CardContent sx={{ px: 0 }}>
+                    <CardContent xs="2" sx={{ px: 0 }}>
                       <Typography
-                        sx={{ alignItems: "left", fontSize: 18, py: 0, px: 1 }}
+                        sx={{ alignItems: "left", fontSize: 18, py: 0, px: 0 }}
                         gutterBottom
                       >
                         Contents
                       </Typography>
                       <Box
+                        xs="10"
                         sx={{
+                          display: "flex",
                           width: "100%",
-                          maxWidth: 360,
+                          // maxWidth: "",
                           bgcolor: "background.paper",
                         }}
                       >
@@ -81,21 +77,21 @@ export default function Support() {
               </Box>
             </Item1>
           </Grid>
-          <Grid xs={7}>
+          <Grid xs={6.5}>
             <Item2>
               <Box
                 sx={{
                   display: "flex",
                   alignContent: "left",
-                  //   justifyContent: "center",
+                  justifyContent: "flex-start",
                 }}
               >
-                <Grid item xs={12} md={12} lg={12} sx={{ px: 1, py: 0 }}>
+                <Grid item xs={12} md={9} lg={12} sx={{ px: 1, py: 0 }}>
                   <Card
                     variant="outlined"
                     sx={{ minWidth: 275, height: "100%", border: "none" }}
                   >
-                    <CardContent sx={{ px: 0 }}>
+                    <CardContent xs="10" sx={{ px: 0 }}>
                       <Typography
                         sx={{ fontSize: 30, py: 0, px: 0 }}
                         gutterBottom
