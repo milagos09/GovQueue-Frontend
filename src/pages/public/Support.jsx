@@ -212,8 +212,8 @@ export default function Support() {
                     difference and is greatly appreciated as a valuable form of
                     support.
                   </Typography>
+                  <FacebookMessengerChat pageId="108965818922829" />
                 </Grid>
-                <FacebookMessengerChat pageId="108965818922829" />
               </Box>
             </Item2>
           </Grid>
