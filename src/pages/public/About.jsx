@@ -7,7 +7,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import GcashQrCode from "../../assets/gcash-qr-code.jpg";
-import FacebookMessengerChat from "../../components/FacebookMessengerChat";
+import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
 
 export default function About() {
   const Item = styled(Paper)(({ theme }) => ({
