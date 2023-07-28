@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import { Pagination } from "@mui/material";
 import { GetFeaturedQueues } from "../../hooks/GetFeaturedQueues";
 import { UsePagination } from "../../hooks/UsePagination";
+import { dark } from "./../../themes/MyTheme";
 
 export default function QueueTabs({ tab, setTab, filteredAdmins }) {
     const n = 3;
@@ -33,8 +34,8 @@ export default function QueueTabs({ tab, setTab, filteredAdmins }) {
                     sx={{
                         color: "grey",
                         "&.Mui-selected": {
-                            backgroundColor: "#1976D2",
-                            color: "white",
+                            ...dark,
+                            color: "#FB9300",
                         },
                     }}
                 >
@@ -44,8 +45,8 @@ export default function QueueTabs({ tab, setTab, filteredAdmins }) {
                     sx={{
                         color: "grey",
                         "&.Mui-selected": {
-                            backgroundColor: "#1976D2",
-                            color: "white",
+                            ...dark,
+                            color: "#FB9300",
                         },
                     }}
                 >
@@ -74,7 +75,6 @@ export default function QueueTabs({ tab, setTab, filteredAdmins }) {
                         count={Math.ceil(filteredAdmins.length / itemsPerPage)}
                         page={currentPage}
                         variant="outlined"
-                        color="primary"
                         onChange={handlePageChange}
                     />
                 </Box>
