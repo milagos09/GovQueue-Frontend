@@ -9,7 +9,8 @@ export default function AppName() {
                 component="a"
                 href="/"
                 sx={{
-                    ...gold,
+                    // ...gold,
+                    color: "azure",
                     mr: 2,
                     display: { xs: "none", md: "flex" },
                     fontWeight: 700,

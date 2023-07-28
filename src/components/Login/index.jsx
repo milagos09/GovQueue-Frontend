@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { TextField, Button, Container, InputAdornment, Checkbox } from "@mui/material";
+import { TextField, Container, InputAdornment, Checkbox } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { dark } from "./../../themes/MyTheme";
+import { Primary } from "./../Buttons";
 
 export default function AdminLogin() {
     const [showPassword, setShowPassword] = useState(false);
@@ -61,13 +61,7 @@ export default function AdminLogin() {
                 </div>
 
                 <div style={{ margin: "16px 0" }}>
-                    <Button
-                        variant="contained"
-                        sx={{ ...dark, "&:hover": { fontWeight: "bold", background: "black" }, borderRadius: "4px" }}
-                        type="submit"
-                    >
-                        Log in
-                    </Button>
+                    <Primary value={"Log in"} />
                 </div>
             </form>
         </Container>

@@ -35,7 +35,7 @@ export default function QueueTabs({ tab, setTab, filteredAdmins }) {
                         color: "grey",
                         "&.Mui-selected": {
                             ...dark,
-                            color: "#FB9300",
+                            color: "azure",
                         },
                     }}
                 >
@@ -46,7 +46,7 @@ export default function QueueTabs({ tab, setTab, filteredAdmins }) {
                         color: "grey",
                         "&.Mui-selected": {
                             ...dark,
-                            color: "#FB9300",
+                            color: "azure",
                         },
                     }}
                 >
