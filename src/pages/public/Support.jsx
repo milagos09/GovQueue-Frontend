@@ -25,6 +25,7 @@ export default function Support() {
     padding: theme.spacing(1),
     textAlign: "left",
     color: theme.palette.text.primary,
+    px: 0,
   }));
 
   return (
@@ -106,16 +107,18 @@ export default function Support() {
               </Item1>
             </Box>
           </Grid>
-          <Grid xs={8}>
+          <Grid xs={8} sx={{ px: 0 }}>
             <Item2
               sx={{
                 width: "100%",
                 display: "flex",
+                px: 0,
               }}
             >
               <Box
                 sx={{
                   alignContent: "left",
+                  px: 0,
                 }}
               >
                 <Grid item xs={12} sm={8} lg={8} sx={{ px: 0, py: 0 }}>
@@ -210,11 +213,11 @@ export default function Support() {
                     support.
                   </Typography>
                 </Grid>
+                <FacebookMessengerChat pageId="108965818922829" />
               </Box>
             </Item2>
           </Grid>
         </Grid>
-        <FacebookMessengerChat pageId="108965818922829" />
       </Box>
     </>
   );
