@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import FeaturedTab from "./FeaturedTab";
 import FilteredTab from "./FilteredTab";
 import Tabs from "@mui/joy/Tabs";
@@ -12,7 +11,7 @@ import { Pagination } from "@mui/material";
 import { GetFeaturedQueues } from "../../hooks/GetFeaturedQueues";
 import { UsePagination } from "../../hooks/UsePagination";
 
-export default function QueueTabs() {
+export default function QueueTabs({ tab, setTab, filteredAdmins }) {
     const n = 3;
     const topN = GetFeaturedQueues(logs, n);
     const featured = topN.map((id) => admins.find((admin) => admin.id === id));
@@ -20,13 +19,19 @@ export default function QueueTabs() {
     const itemsPerPage = n;
 
     // Use the usePagination hook for pagination functionality
-    const { currentPage, currentItems, handlePageChange } = UsePagination(admins, itemsPerPage);
+    const { currentPage, currentItems, handlePageChange } = UsePagination(filteredAdmins, itemsPerPage);
 
     return (
-        <Tabs aria-label="Queue Tabs" defaultValue={0} sx={{ borderRadius: "lg" }}>
-            <TabList id="tab-list">
+        <Tabs
+            aria-label="Queue Tabs"
+            value={tab}
+            onChange={(e, newValue) => setTab(newValue)}
+            sx={{ borderRadius: "lg" }}
+        >
+            <TabList id="tab-list" sx={{ color: "grey" }}>
                 <Tab
                     sx={{
+                        color: "grey",
                         "&.Mui-selected": {
                             backgroundColor: "#1976D2",
                             color: "white",
@@ -37,6 +42,7 @@ export default function QueueTabs() {
                 </Tab>
                 <Tab
                     sx={{
+                        color: "grey",
                         "&.Mui-selected": {
                             backgroundColor: "#1976D2",
                             color: "white",
@@ -65,7 +71,7 @@ export default function QueueTabs() {
                     }}
                 >
                     <Pagination
-                        count={Math.ceil(admins.length / itemsPerPage)}
+                        count={Math.ceil(filteredAdmins.length / itemsPerPage)}
                         page={currentPage}
                         variant="outlined"
                         color="primary"
