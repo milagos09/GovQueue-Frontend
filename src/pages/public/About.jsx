@@ -146,7 +146,6 @@ export default function About() {
           </Grid>
         </Grid>
       </Box>
-      <FacebookMessengerChat pageID="104588581239094" />
     </>
   );
 }
