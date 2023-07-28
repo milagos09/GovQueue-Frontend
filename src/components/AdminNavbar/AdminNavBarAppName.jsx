@@ -18,7 +18,7 @@ export default function AdminNavBarAppName() {
           fontFamily: "Garamond",
         }}
       >
-        Home
+        GovQueue
       </Typography>
 
       <Typography
@@ -37,7 +37,7 @@ export default function AdminNavBarAppName() {
           textDecoration: "none",
         }}
       >
-        Home
+        GovQueue
       </Typography>
     </>
   );
