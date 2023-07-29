@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import WindowsLayout from "./WindowsLayout";
 import AgencyDetail from "../SearchColumn/AgencyDetail";
 import MoreIcon from "@mui/icons-material/More";
@@ -29,13 +29,14 @@ export default function FeaturedTab({ agency, logo }) {
             <Grid item md={9} xs={12} sx={{ display: "flex" }} justifyContent="center" alignItems="center">
                 <WindowsLayout />
             </Grid>
-            <Button variant="contained" sx={{ position: "absolute", top: "20px", right: "20px", fontSize: "2rem" }}>
+            <Box sx={{ position: "absolute", top: "20px", right: "20px", fontSize: "2rem" }}>
                 <MoreIcon
+                    sx={{ color: "black" }}
                     onClick={() => {
                         alert();
                     }}
                 />
-            </Button>
+            </Box>
         </Grid>
     );
 }

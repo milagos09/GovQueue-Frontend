@@ -1,9 +1,9 @@
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import Grid from "@mui/material/Unstable_Grid2";
-import Button from "@mui/material/Button";
 import { useState } from "react";
 import admins from "./../../../fake/admins.json";
+import { Primary, Secondary } from "./../Buttons";
 
 function sortAndGetUniqueValues(array) {
     array.sort();
@@ -88,13 +88,8 @@ export default function Filter({ filteredAdmins, setFilter, setTab }) {
                 md={3}
                 sx={{ gap: 2 }}
             >
-                <Button variant="contained" color="primary" onClick={handleSubmit}>
-                    Submit
-                </Button>
-
-                <Button variant="contained" color="grey" onClick={handleReset}>
-                    Reset
-                </Button>
+                <Primary onClick={handleSubmit} value={"Submit"} />
+                <Secondary value={"Reset"} onClick={handleReset} />
             </Grid>
         </Grid>
     );

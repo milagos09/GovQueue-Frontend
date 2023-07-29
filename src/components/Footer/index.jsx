@@ -3,14 +3,15 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import GovQueueLogo from "./../../assets/govQ-logo.png";
+import GovQueueLogo from "./../../assets/orange-gq.png";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
+import { dark } from "./../../themes/MyTheme";
 
 export default function Footer() {
     const { width } = CheckScreenSize();
 
     return (
-        <Box sx={{ background: "#1976D2", paddingY: "10px", boxShadow: 3 }}>
+        <Box sx={{ ...dark, paddingY: "10px", boxShadow: 3 }}>
             <Grid container alignItems="center">
                 <Grid item xs={4} sm={2} md={3} align="center" order={0}>
                     <img
@@ -36,18 +37,55 @@ export default function Footer() {
                     </Typography>
                 </Grid>
                 <Grid item xs={7} sm={4} md={3} align="center" order={width < 600 ? 1 : 2}>
-                    <Stack flexDirection="row" justifyContent="space-evenly" flexWrap="wrap">
-                        <Link href="https://www.google.com/" target="_blank">
-                            <GoogleIcon fontSize="large" color={"action"} />
+                    <Stack flexDirection="row" justifyContent="space-evenly" flexWrap="wrap" sx={{ color: "azure" }}>
+                        <Link
+                            href="https://www.google.com/"
+                            target="_blank"
+                            sx={{
+                                "&:hover *": {
+                                    color: "#FB9300",
+                                },
+                            }}
+                        >
+                            <GoogleIcon fontSize="large" style={{ color: "azure" }} />
                         </Link>
-                        <Link href="https://www.facebook.com/" target="_blank">
-                            <FacebookIcon fontSize="large" color={"action"} />
+                        <Link
+                            href="https://www.facebook.com/"
+                            target="_blank"
+                            sx={{
+                                "&:hover *": {
+                                    color: "#FB9300",
+                                },
+                            }}
+                        >
+                            <FacebookIcon fontSize="large" style={{ color: "azure" }} />
                         </Link>
-                        <Link href="https://github.com/" target="_blank">
-                            <GitHubIcon fontSize="large" color={"action"} />
+                        <Link
+                            href="https://github.com/"
+                            target="_blank"
+                            sx={{
+                                "&:hover *": {
+                                    color: "#FB9300",
+                                },
+                            }}
+                        >
+                            <GitHubIcon fontSize="large" style={{ color: "azure" }} />
                         </Link>
-                        <Link href="https://www.youtube.com/" target="_blank">
-                            <YouTubeIcon fontSize="large" color={"action"} />
+                        <Link
+                            href="https://www.youtube.com/"
+                            target="_blank"
+                            sx={{
+                                "&:hover *": {
+                                    color: "#FB9300",
+                                },
+                            }}
+                        >
+                            <YouTubeIcon
+                                fontSize="large"
+                                style={{
+                                    color: "azure",
+                                }}
+                            />
                         </Link>
                     </Stack>
                 </Grid>
