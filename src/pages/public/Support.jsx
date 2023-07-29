@@ -1,3 +1,4 @@
+import React from "react";
 import NavBar from "../../components/Navbar";
 import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
 import { styled } from "@mui/material/styles";
@@ -10,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Divider } from "@mui/material";
+import faqData from "../../../faq.json";
 
 export default function Support() {
   const Item1 = styled(Paper)(({ theme }) => ({
@@ -82,26 +84,17 @@ export default function Support() {
                         >
                           <nav aria-label="main mailbox folders">
                             <List>
-                              <ListItem disablePadding sx={{ px: 1 }}>
-                                <a href="#question1">What is GovQueue?</a>
-                              </ListItem>
-                              <ListItem disablePadding sx={{ px: 1 }}>
-                                <a href="#question2">
-                                  How can a Filipino Citizen benefit from this
-                                  App?
-                                </a>
-                              </ListItem>
-                              <ListItem disablePadding sx={{ px: 1 }}>
-                                <a href="#question3">
-                                  How can a Government Agency benefit from this
-                                  App?
-                                </a>
-                              </ListItem>
-                              <ListItem disablePadding sx={{ px: 1 }}>
-                                <a href="#question4">
-                                  Can I use this App for free?
-                                </a>
-                              </ListItem>
+                              {faqData.map((faq) => (
+                                <ListItem
+                                  key={faq.id}
+                                  disablePadding
+                                  sx={{ px: 1 }}
+                                >
+                                  <a href={`#question${faq.id}`}>
+                                    {faq.faqQuestion}
+                                  </a>
+                                </ListItem>
+                              ))}
                             </List>
                           </nav>
                         </Box>
@@ -133,99 +126,31 @@ export default function Support() {
                     GovQueue Frequently Asked Questions
                   </Typography>
                   <Divider />
-                  <Typography
-                    id="question1"
-                    sx={{ fontSize: 24, py: 0, px: 0 }}
-                    gutterBottom
-                  >
-                    What is GovQueue?
-                  </Typography>
-                  <Typography sx={{ fontSize: 18, py: 0, px: 0 }} gutterBottom>
-                    It is a web application that is a robust and user-friendly
-                    queuing system designed to improve customer flow management
-                    and service delivery for government agencies. It includes a
-                    centralized dashboard for real-time visibility, separate
-                    admin portals for agencies to manage their queues, a
-                    public-facing interface for citizens to view queue statuses
-                    and wait times, and appointment scheduling. The system also
-                    offers reporting and analytics capabilities to enable
-                    evidence-based decision-making and integration with existing
-                    government systems for seamless data exchange.
-                  </Typography>
-                  <Divider />
-                  <Typography
-                    id="question2"
-                    sx={{ fontSize: 24, py: 0, px: 0 }}
-                    gutterBottom
-                  >
-                    How can a Filipino Citizen benefit from this App?
-                  </Typography>
-                  <Typography sx={{ fontSize: 18, py: 0, px: 0 }} gutterBottom>
-                    The queuing system application offers various benefits to
-                    end users interacting with government agencies. These
-                    advantages include reduced waiting times through real-time
-                    queue statuses and estimated wait times, improved visit
-                    planning with accurate queue information and appointment
-                    scheduling, mobile accessibility for on-the-go access, and
-                    SMS notifications for staying informed. The application
-                    promotes transparency and a user-friendly interface, leading
-                    to an enhanced customer experience and confidence in
-                    efficient service delivery. The overall result is
-                    significant time savings for end users when completing tasks
-                    at government agencies.
-                  </Typography>
-                  <Divider />
-                  <Typography
-                    id="question3"
-                    sx={{ fontSize: 24, py: 0, px: 0 }}
-                    gutterBottom
-                  >
-                    How can a Government Agency benefit from this App?
-                  </Typography>
-                  <Typography sx={{ fontSize: 18, py: 0, px: 0 }} gutterBottom>
-                    The queuing system application offers several benefits to
-                    government agencies. It enables efficient resource
-                    allocation by providing real-time visibility of queue
-                    statuses, leading to optimal utilization of staff and
-                    service counters. The application improves service delivery
-                    by reducing waiting times and streamlining the queuing
-                    process, enhancing citizen satisfaction and perception of
-                    agency efficiency. Through reporting and analytics
-                    capabilities, agencies can make data-driven decisions,
-                    adjusting operations and services as needed. Features like
-                    appointment scheduling and SMS notifications enhance citizen
-                    engagement, trust, and convenience. The application promotes
-                    transparency, streamlines administration, potentially
-                    leading to cost savings, and integrates with existing
-                    systems for increased efficiency. It is also scalable,
-                    adaptable, and facilitates compliance monitoring for
-                    improved service standards.
-                  </Typography>
-                  <Divider />
-                  <Typography
-                    id="question4"
-                    sx={{ fontSize: 24, py: 0, px: 0 }}
-                    gutterBottom
-                  >
-                    Can I use this app for free?
-                  </Typography>
-                  <Typography sx={{ fontSize: 18, py: 0, px: 0 }} gutterBottom>
-                    YES! This application is available for free, but donations
-                    are encouraged to support its growth and improvement.
-                    Donations would be used to enhance server capacity, improve
-                    app performance, hire more developers for new features, and
-                    increase marketing efforts to reach a broader audience. Any
-                    donation, regardless of the amount, would make a meaningful
-                    difference and is greatly appreciated as a valuable form of
-                    support.
-                  </Typography>
-                  <FacebookMessengerChat pageId="108965818922829" />
+                  {faqData.map((faq) => (
+                    <React.Fragment key={faq.id}>
+                      <Typography
+                        id={`question${faq.id}`} // Assuming you want to use the 'id' field in the question id
+                        sx={{ fontSize: 24, py: 0, px: 0 }}
+                        gutterBottom
+                      >
+                        {faq.faqQuestion}
+                      </Typography>
+                      <Typography
+                        sx={{ fontSize: 18, py: 0, px: 0 }}
+                        gutterBottom
+                      >
+                        {faq.faqAnswer}
+                      </Typography>
+                      <Divider />
+                    </React.Fragment>
+                  ))}
                 </Grid>
               </Box>
             </Item2>
           </Grid>
         </Grid>
       </Box>
+      <FacebookMessengerChat pageId="108965818922829" />
     </>
   );
 }
