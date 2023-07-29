@@ -32,7 +32,13 @@ export default function Support() {
     <>
       <NavBar />
       <Box>
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 2, md: 2 }}>
+        <Grid
+          p={0}
+          m={0}
+          container
+          rowSpacing={2}
+          columnSpacing={{ xs: 2, sm: 2, md: 2 }}
+        >
           <Grid xs={11} sm={4}>
             <Box sx={{ position: "sticky", top: 0 }}>
               <Item1
@@ -71,7 +77,6 @@ export default function Support() {
                           sx={{
                             display: "flex",
                             width: "100%",
-                            // maxWidth: "",
                             bgcolor: "background.paper",
                           }}
                         >
@@ -107,18 +112,20 @@ export default function Support() {
               </Item1>
             </Box>
           </Grid>
-          <Grid xs={8} sx={{ px: 0 }}>
+          <Grid xs={7} sx={{ px: 0 }}>
             <Item2
               sx={{
                 width: "100%",
                 display: "flex",
-                px: 0,
               }}
             >
               <Box
+                width={"100%"}
                 sx={{
+                  flexGrow: 1,
                   alignContent: "left",
-                  px: 0,
+                  p: 0,
+                  m: 0,
                 }}
               >
                 <Grid item xs={12} sm={8} lg={8} sx={{ px: 0, py: 0 }}>
