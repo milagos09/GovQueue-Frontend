@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "faqQuestion": "What is GovQueue?",
+      "faqAnswer": "It is a web application that is a robust and user-friendly queuing system designed to improve customer flow management and service delivery for government agencies. It includes a centralized dashboard for real-time visibility, separate admin portals for agencies to manage their queues, a public-facing interface for citizens to view queue statuses and wait times, and appointment scheduling. The system also offers reporting and analytics capabilities to enable evidence-based decision-making and integration with existing government systems for seamless data exchange."
+    },
+    {
+      "id": 2,
+      "faqQuestion": "How can a Filipino Citizen benefit from this App?",
+      "faqAnswer": "The queuing system application offers various benefits to end users interacting with government agencies. These advantages include reduced waiting times through real-time queue statuses and estimated wait times, improved visit planning with accurate queue information and appointment scheduling, mobile accessibility for on-the-go access, and SMS notifications for staying informed. The application promotes transparency and a user-friendly interface, leading to an enhanced customer experience and confidence in efficient service delivery. The overall result is significant time savings for end users when completing tasks at government agencies."
+    },
+    {
+        "id": 3,
+      "faqQuestion": "How can a Government Agency benefit from this App?",
+      "faqAnswer": "The queuing system application offers several benefits to government agencies. It enables efficient resource allocation by providing real-time visibility of queue statuses, leading to optimal utilization of staff and service counters. The application improves service delivery by reducing waiting times and streamlining the queuing process, enhancing citizen satisfaction and perception of agency efficiency. Through reporting and analytics capabilities, agencies can make data-driven decisions, adjusting operations and services as needed. Features like appointment scheduling and SMS notifications enhance citizen engagement, trust, and convenience. The application promotes transparency, streamlines administration, potentially leading to cost savings, and integrates with existing systems for increased efficiency. It is also scalable, adaptable, and facilitates compliance monitoring for improved service standards."
+    },
+    {
+        "id": 4,
+        "faqQuestion": "Can I use this app for free?",
+        "faqAnswer": "Yes absolutely! This application is available for free, but donations are encouraged to support its growth and improvement. Donations would be used to enhance server capacity, improve app performance, hire more developers for new features, and increase marketing efforts to reach a broader audience. Any donation, regardless of the amount, would make a meaningful difference and is greatly appreciated as a valuable form of support."
+    }
+  ]
+  
