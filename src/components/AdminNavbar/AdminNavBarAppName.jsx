@@ -1,4 +1,5 @@
 import Typography from "@mui/material/Typography";
+import { gold } from "./../../themes/MyTheme";
 
 export default function AdminNavBarAppName() {
   return (
@@ -10,14 +11,11 @@ export default function AdminNavBarAppName() {
         href="/"
         sx={{
           mr: 2,
+          color: "azure",
           display: { xs: "none", md: "flex" },
           fontWeight: 700,
-          letterSpacing: ".3rem",
-          color: "inherit",
           textDecoration: "none",
-          fontFamily: "Garamond",
-        }}
-      >
+        }}>
         GovQueue
       </Typography>
 
@@ -27,16 +25,13 @@ export default function AdminNavBarAppName() {
         component="a"
         href="/"
         sx={{
+          ...gold,
           mr: 2,
           display: { xs: "flex", md: "none" },
           flexGrow: 1,
-          fontFamily: "Garamond",
-          letterSpacing: ".25rem",
           fontWeight: 700,
-          color: "inherit",
           textDecoration: "none",
-        }}
-      >
+        }}>
         GovQueue
       </Typography>
     </>
