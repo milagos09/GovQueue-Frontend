@@ -5,6 +5,7 @@ import { useState } from "react";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import { CheckFeaturedQueuesHeight } from "./../../hooks/CheckFeaturedQueuesHeight";
 import admins from "./../../../fake/admins.json";
+import { light } from "./../../themes/MyTheme";
 
 export default function SearchColumn() {
     const fqHeight = CheckFeaturedQueuesHeight();
@@ -16,8 +17,10 @@ export default function SearchColumn() {
             container
             sx={{
                 marginY: "20px",
-                border: "1px solid black",
+                border: "1px groove grey",
                 position: "relative",
+                ...light,
+                borderRadius: "4px",
             }}
         >
             <Grid

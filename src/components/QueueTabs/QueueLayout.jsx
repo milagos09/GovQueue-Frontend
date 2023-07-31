@@ -1,10 +1,10 @@
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import WindowsLayout from "./WindowsLayout";
 import AgencyDetail from "../SearchColumn/AgencyDetail";
-import MoreIcon from "@mui/icons-material/More";
+import ShowLogs from "./ShowLogs";
 
-export default function FeaturedTab({ agency, logo }) {
+export default function QueueLayout({ agency, logo, id }) {
     return (
         <Grid
             container
@@ -29,13 +29,9 @@ export default function FeaturedTab({ agency, logo }) {
             <Grid item md={9} xs={12} sx={{ display: "flex" }} justifyContent="center" alignItems="center">
                 <WindowsLayout />
             </Grid>
-            <Button variant="contained" sx={{ position: "absolute", top: "20px", right: "20px", fontSize: "2rem" }}>
-                <MoreIcon
-                    onClick={() => {
-                        alert();
-                    }}
-                />
-            </Button>
+            <Box sx={{ position: "absolute", top: "20px", right: "20px", fontSize: "2rem" }}>
+                <ShowLogs id={id} agency={agency} />
+            </Box>
         </Grid>
     );
 }

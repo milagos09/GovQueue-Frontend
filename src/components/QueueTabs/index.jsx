@@ -1,45 +1,52 @@
-import React, { useState } from "react";
-import FeaturedTab from "./FeaturedTab";
-import FilteredTab from "./FilteredTab";
+import QueueLayout from "./QueueLayout";
 import Tabs from "@mui/joy/Tabs";
 import TabList from "@mui/joy/TabList";
 import Tab from "@mui/joy/Tab";
 import TabPanel from "@mui/joy/TabPanel";
 import logs from "../../../fake/logs.json";
 import admins from "../../../fake/admins.json";
-import Box from "@mui/material/Box";
-import { Pagination } from "@mui/material";
+import Pagination from "./Pagination";
 import { GetFeaturedQueues } from "../../hooks/GetFeaturedQueues";
 import { UsePagination } from "../../hooks/UsePagination";
+import { dark } from "./../../themes/MyTheme";
 
-export default function QueueTabs() {
-    const n = 3;
+export default function QueueLayoutTabs({ tab, setTab, filteredAdmins }) {
+    const n = 5;
     const topN = GetFeaturedQueues(logs, n);
     const featured = topN.map((id) => admins.find((admin) => admin.id === id));
 
     const itemsPerPage = n;
 
     // Use the usePagination hook for pagination functionality
-    const { currentPage, currentItems, handlePageChange } = UsePagination(admins, itemsPerPage);
+    // const { currentPage, currentItems, handlePageChange } = UsePagination(filteredAdmins, itemsPerPage);
+    const filteredPagination = UsePagination(filteredAdmins, itemsPerPage);
+    const featuredPagination = UsePagination(admins, itemsPerPage);
 
     return (
-        <Tabs aria-label="Queue Tabs" defaultValue={0} sx={{ borderRadius: "lg" }}>
-            <TabList id="tab-list">
+        <Tabs
+            aria-label="Queue Tabs"
+            value={tab}
+            onChange={(e, newValue) => setTab(newValue)}
+            sx={{ borderRadius: "lg" }}
+        >
+            <TabList id="tab-list" sx={{ color: "grey" }}>
                 <Tab
                     sx={{
+                        color: "grey",
                         "&.Mui-selected": {
-                            backgroundColor: "#1976D2",
-                            color: "white",
+                            ...dark,
+                            color: "azure",
                         },
                     }}
                 >
-                    Featured
+                    All
                 </Tab>
                 <Tab
                     sx={{
+                        color: "grey",
                         "&.Mui-selected": {
-                            backgroundColor: "#1976D2",
-                            color: "white",
+                            ...dark,
+                            color: "azure",
                         },
                     }}
                 >
@@ -48,30 +55,26 @@ export default function QueueTabs() {
             </TabList>
 
             <TabPanel value={0} sx={{ p: 2 }}>
-                {featured.map((admin) => (
-                    <FeaturedTab agency={admin.agency} logo={admin.logo} key={admin.id} />
+                {featuredPagination.currentItems.map((admin) => (
+                    <QueueLayout agency={admin.agency} logo={admin.logo} id={admin.id} key={admin.id} />
                 ))}
+                <Pagination
+                    array={admins}
+                    currentPage={featuredPagination.currentPage}
+                    itemsPerPage={itemsPerPage}
+                    handlePageChange={featuredPagination.handlePageChange}
+                />
             </TabPanel>
             <TabPanel value={1} sx={{ p: 2 }}>
-                {currentItems.map((admin) => (
-                    <FilteredTab agency={admin.agency} logo={admin.logo} key={admin.id} />
+                {filteredPagination.currentItems.map((admin) => (
+                    <QueueLayout agency={admin.agency} logo={admin.logo} id={admin.id} key={admin.id} />
                 ))}
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        mt: 2,
-                    }}
-                >
-                    <Pagination
-                        count={Math.ceil(admins.length / itemsPerPage)}
-                        page={currentPage}
-                        variant="outlined"
-                        color="primary"
-                        onChange={handlePageChange}
-                    />
-                </Box>
+                <Pagination
+                    array={filteredAdmins}
+                    currentPage={filteredPagination.currentPage}
+                    itemsPerPage={itemsPerPage}
+                    handlePageChange={filteredPagination.handlePageChange}
+                />
             </TabPanel>
         </Tabs>
     );

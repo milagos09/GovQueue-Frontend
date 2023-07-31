@@ -1,22 +1,52 @@
-import { useState, useEffect } from "react";
-import FacebookMessengerChat from "./FacebookMessengerChat";
+import { useEffect } from "react";
 
-function App() {
-  const [pageId, setpageId] = useState("108965818922829");
+const FacebookMessengerChat = ({ pageId }) => {
   useEffect(() => {
-    const generateRandomNumber = () => {
-      const number = Math.floor(Math.random() * 2);
-      setpageId(["108965818922829", "104588581239094"][number]);
-    };
+    const script = document.createElement("script");
+    script.innerHTML = `
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "${pageId}");
+      chatbox.setAttribute("attribution", "biz_inbox");
 
-    // Call the generateRandomNumber function when the component mounts
-    generateRandomNumber();
-  }, []);
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml: true,
+          version: 'v17.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    `;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [pageId]);
+
   return (
     <>
-      <FacebookMessengerChat pageId={pageId} />
+      <div id="fb-root"></div>
+      <div
+        id="fb-customer-chat"
+        className="fb-customerchat"
+        dangerouslySetInnerHTML={{
+          __html: `
+            <div id="fb-root"></div>
+            <div class="fb-customerchat"
+              attribution="biz_inbox"
+              page_id=${pageId}
+            ></div>
+          `,
+        }}
+      ></div>
     </>
   );
-}
+};
 
-export default App;
+export default FacebookMessengerChat;
