@@ -1,6 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { gold } from "./../../themes/MyTheme";
-export default function AppName() {
+
+export default function AdminNavBarAppName() {
   return (
     <>
       <Typography
@@ -9,8 +10,8 @@ export default function AppName() {
         component="a"
         href="/"
         sx={{
-          color: "azure",
           mr: 2,
+          color: "azure",
           display: { xs: "none", md: "flex" },
           fontWeight: 700,
           textDecoration: "none",
