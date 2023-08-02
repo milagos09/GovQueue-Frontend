@@ -6,7 +6,7 @@ export default function AdminSupport() {
         <>
         <AdminNavbar />
       <div>
-        Admin Support
+        Support
       </div>
       </>
     );

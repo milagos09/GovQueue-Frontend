@@ -5,13 +5,11 @@ import Support from "./public/Support";
 import ErrorPage from "./ErrorPage";
 import Login from "./admin/Login";
 import Footer from "./../components/Footer";
-import AdminNavBar from "../components/AdminNavbar";
 import AdminDashboard from "./admin/AdminDashboard";
 import Chat from "./admin/Chat";
 import Logs from "./admin/Logs";
-// import AdminSupport from "./admin/AdminSupport";
 import Settings from "./admin/Settings";
-import AdminNavbar from "../components/AdminNavbar";
+import AdminSupport from "./admin/AdminSupport";
 
 const router = createBrowserRouter([
     {
@@ -35,32 +33,31 @@ const router = createBrowserRouter([
         element: <Login />,
     },
 
-
+    
     {
         path: "/admin",
         element: <AdminDashboard />,
     },
     {
-        path: "admindashboard", 
-        element: <AdminNavbar />,
-    },
-    {
-        path: "logs", 
+        path: "/logs", 
         element: <Logs />,
     },
     {
-        path: "chat", 
+        path: "/chat", 
         element: <Chat />,
     },
+    
     {
         path: "/adminsupport", 
-        element: <AdminNavBar />,
+        element: <AdminSupport />,
     },
+
     {
-        path: "settings", 
+        path: "/settings", 
         element: <Settings />,
     },
-           
+       
+
 ]);
 
 export default function Home() {

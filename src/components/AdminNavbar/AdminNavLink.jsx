@@ -6,10 +6,10 @@ import Button from "@mui/material/Button";
 export default function AdminNavLink() {
   const [setAnchorElNav] = useState(null);
   const pages = [
-    { nav: "Home", link: "/" },
+    { nav: "Home", link: "/admin" },
     { nav: "Logs", link: "/logs" },
     { nav: "Chat", link: "/chat" },
-    { nav: "Support", link: "/support" },
+    { nav: "Support", link: "/adminsupport" },
     { nav: "Settings", link: "/settings" },
   ];
   const handleCloseNavMenu = () => {
