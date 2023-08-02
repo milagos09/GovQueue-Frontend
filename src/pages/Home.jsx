@@ -6,7 +6,6 @@ import ErrorPage from "./ErrorPage";
 import Login from "./admin/Login";
 import Footer from "./../components/Footer";
 import AdminDashboard from "./admin/AdminDashboard";
-import Chat from "./admin/Chat";
 import Logs from "./admin/Logs";
 import Settings from "./admin/Settings";
 import AdminSupport from "./admin/AdminSupport";
@@ -41,10 +40,6 @@ const router = createBrowserRouter([
     {
         path: "/logs", 
         element: <Logs />,
-    },
-    {
-        path: "/chat", 
-        element: <Chat />,
     },
     
     {

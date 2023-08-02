@@ -8,7 +8,6 @@ export default function AdminNavLink() {
   const pages = [
     { nav: "Home", link: "/admin" },
     { nav: "Logs", link: "/logs" },
-    { nav: "Chat", link: "/chat" },
     { nav: "Support", link: "/adminsupport" },
     { nav: "Settings", link: "/settings" },
   ];
