@@ -1,11 +1,12 @@
 import AdminNavbar from "../../components/AdminNavbar";
 
-export default function AdminDashboard() {
+
+export default function Chat() {
   return (
     <>
     <AdminNavbar />
     <div>
-    Home
+        Chat
     </div>
     </>
   );
