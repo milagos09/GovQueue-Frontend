@@ -8,7 +8,6 @@ export default function AdminNavBarAppName() {
         variant="h6"
         noWrap
         component="a"
-        href="/"
         sx={{
           mr: 2,
           color: "azure",
@@ -23,7 +22,6 @@ export default function AdminNavBarAppName() {
         variant="h6"
         noWrap
         component="a"
-        href="/"
         sx={{
           ...gold,
           mr: 2,

@@ -5,18 +5,22 @@ import Support from "./public/Support";
 import ErrorPage from "./ErrorPage";
 import Login from "./admin/Login";
 import Footer from "./../components/Footer";
+import AdminDashboard from "./admin/AdminDashboard";
+import Logs from "./admin/Logs";
+import Settings from "./admin/Settings";
+import AdminSupport from "./admin/AdminSupport";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Dashboard />,
+        element: <Dashboard />,    
     },
     {
-        path: "about",
+        path: "/about",
         element: <About />,
     },
     {
-        path: "support",
+        path: "/support",
         element: <Support />,
     },
     {
@@ -24,9 +28,31 @@ const router = createBrowserRouter([
         element: <ErrorPage />,
     },
     {
-        path: "login",
+        path: "/login",
         element: <Login />,
     },
+
+    
+    {
+        path: "/admin",
+        element: <AdminDashboard />,
+    },
+    {
+        path: "/logs", 
+        element: <Logs />,
+    },
+    
+    {
+        path: "/adminsupport", 
+        element: <AdminSupport />,
+    },
+
+    {
+        path: "/settings", 
+        element: <Settings />,
+    },
+       
+
 ]);
 
 export default function Home() {
