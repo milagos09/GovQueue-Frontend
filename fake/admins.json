@@ -1,112 +1,112 @@
 [
-  {
-    "id": 1,
-    "agency": "MGO MAGARAO, CAMARINES SUR",
-    "type": "National Government Agencies (NGAs)",
-    "email": "Marielle_Nolan@hotmail.com",
-    "password": "PJzhwfoXhWZquPo",
-    "address": "565 Rebekah Mall",
-    "region": "BARMM",
-    "chatSupportEnabled": true,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 2,
-    "agency": "QUIRINO MEMORIAL MEDICAL CENTER",
-    "type": "State Universities and Colleges (SUCs)",
-    "email": "Opal60@yahoo.com",
-    "password": "Ft9qL7nUf_7adxP",
-    "address": "81332 Bashirian Groves",
-    "region": "CAR",
-    "chatSupportEnabled": true,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 3,
-    "agency": "Metals Industry Research and Development Center",
-    "type": "State Universities and Colleges (SUCs)",
-    "email": "Montana.Hackett27@hotmail.com",
-    "password": "cAMELTsRlzR7BLv",
-    "address": "58752 Champlin Court",
-    "region": "NCR",
-    "chatSupportEnabled": false,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 4,
-    "agency": "PGO QUEZON",
-    "type": "Law Enforcement Agencies",
-    "email": "Antone_Hintz@hotmail.com",
-    "password": "GJDxzlcCseCPXER",
-    "address": "29617 Weimann Valleys",
-    "region": "Region IX",
-    "chatSupportEnabled": true,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 5,
-    "agency": "MGO SIRAWAI, ZAMBOANGA DEL NORTE",
-    "type": "Regulatory Agencies",
-    "email": "Hosea68@yahoo.com",
-    "password": "89Pwb2FZLNOuEub",
-    "address": "30615 Katelin Mountains",
-    "region": "BARMM",
-    "chatSupportEnabled": true,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 6,
-    "agency": "MGO BINMALEY, PANGASINAN",
-    "type": "Local Government Units (LGUs)",
-    "email": "Cleta_Deckow@yahoo.com",
-    "password": "PpAaG0xYfwm3XgJ",
-    "address": "10202 Kub Plains",
-    "region": "Region I",
-    "chatSupportEnabled": true,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 7,
-    "agency": "NATIONAL CENTER FOR MENTAL HEALTH",
-    "type": "Law Enforcement Agencies",
-    "email": "Lawson15@hotmail.com",
-    "password": "KO42elTO06CVoGK",
-    "address": "910 Jerome Isle",
-    "region": "Region V",
-    "chatSupportEnabled": true,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 8,
-    "agency": "MGO ANDA, PANGASINAN",
-    "type": "Special Purpose Agencies",
-    "email": "Jana.Crist@gmail.com",
-    "password": "dsE2X6ttlaTX6mB",
-    "address": "4106 Becker Freeway",
-    "region": "CAR",
-    "chatSupportEnabled": false,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 9,
-    "agency": "MGO GIPORLOS, EASTERN SAMAR",
-    "type": "Local Government Units (LGUs)",
-    "email": "Lesly66@hotmail.com",
-    "password": "IJ9BxA3GcnQXGHq",
-    "address": "771 Conroy Cliffs",
-    "region": "Region II",
-    "chatSupportEnabled": false,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  },
-  {
-    "id": 10,
-    "agency": "URDANETA CITY UNIVERSITY",
-    "type": "Special Purpose Agencies",
-    "email": "Paris.Carroll78@gmail.com",
-    "password": "NW5WTqYPdFuizHc",
-    "address": "14476 Kovacek Knoll",
-    "region": "CARAGA",
-    "chatSupportEnabled": false,
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-  }
+    {
+        "id": 1,
+        "agency": "MGO MAGARAO, CAMARINES SUR",
+        "type": "National Government Agencies (NGAs)",
+        "email": "Marielle_Nolan@hotmail.com",
+        "password": "PJzhwfoXhWZquPo",
+        "address": "565 Rebekah Mall",
+        "region": "BARMM",
+        "chatSupportEnabled": true,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 2,
+        "agency": "QUIRINO MEMORIAL MEDICAL CENTER",
+        "type": "State Universities and Colleges (SUCs)",
+        "email": "Opal60@yahoo.com",
+        "password": "Ft9qL7nUf_7adxP",
+        "address": "81332 Bashirian Groves",
+        "region": "CAR",
+        "chatSupportEnabled": true,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 3,
+        "agency": "Metals Industry Research and Development Center",
+        "type": "State Universities and Colleges (SUCs)",
+        "email": "Montana.Hackett27@hotmail.com",
+        "password": "cAMELTsRlzR7BLv",
+        "address": "58752 Champlin Court",
+        "region": "NCR",
+        "chatSupportEnabled": false,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 4,
+        "agency": "PGO QUEZON",
+        "type": "Law Enforcement Agencies",
+        "email": "Antone_Hintz@hotmail.com",
+        "password": "GJDxzlcCseCPXER",
+        "address": "29617 Weimann Valleys",
+        "region": "Region IX",
+        "chatSupportEnabled": true,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 5,
+        "agency": "MGO SIRAWAI, ZAMBOANGA DEL NORTE",
+        "type": "Regulatory Agencies",
+        "email": "Hosea68@yahoo.com",
+        "password": "89Pwb2FZLNOuEub",
+        "address": "30615 Katelin Mountains",
+        "region": "BARMM",
+        "chatSupportEnabled": true,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 6,
+        "agency": "MGO BINMALEY, PANGASINAN",
+        "type": "Local Government Units (LGUs)",
+        "email": "Cleta_Deckow@yahoo.com",
+        "password": "PpAaG0xYfwm3XgJ",
+        "address": "10202 Kub Plains",
+        "region": "Region I",
+        "chatSupportEnabled": true,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 7,
+        "agency": "NATIONAL CENTER FOR MENTAL HEALTH",
+        "type": "Law Enforcement Agencies",
+        "email": "Lawson15@hotmail.com",
+        "password": "KO42elTO06CVoGK",
+        "address": "910 Jerome Isle",
+        "region": "Region V",
+        "chatSupportEnabled": true,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 8,
+        "agency": "MGO ANDA, PANGASINAN",
+        "type": "Special Purpose Agencies",
+        "email": "Jana.Crist@gmail.com",
+        "password": "dsE2X6ttlaTX6mB",
+        "address": "4106 Becker Freeway",
+        "region": "CAR",
+        "chatSupportEnabled": false,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 9,
+        "agency": "MGO GIPORLOS, EASTERN SAMAR",
+        "type": "Local Government Units (LGUs)",
+        "email": "Lesly66@hotmail.com",
+        "password": "IJ9BxA3GcnQXGHq",
+        "address": "771 Conroy Cliffs",
+        "region": "Region II",
+        "chatSupportEnabled": false,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    },
+    {
+        "id": 10,
+        "agency": "URDANETA CITY UNIVERSITY",
+        "type": "Special Purpose Agencies",
+        "email": "Paris.Carroll78@gmail.com",
+        "password": "NW5WTqYPdFuizHc",
+        "address": "14476 Kovacek Knoll",
+        "region": "CARAGA",
+        "chatSupportEnabled": false,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+    }
 ]
