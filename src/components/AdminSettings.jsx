@@ -20,8 +20,8 @@ export default function AdminSettings() {
   return (
     <Box p={2} sx={{ width: "100%" }}>
       <Grid
-        container
-        rowSpacing={1}
+        container={true}
+        spacing={2}
         columnSpacing={{ xs: 1, sm: 1, md: 1 }}
         justifyContent="center"
         direction="row">
@@ -40,7 +40,7 @@ export default function AdminSettings() {
           </Typography>
           <Typography
             variant="subtitle1"
-            marginY={6}
+            marginY={4}
             sx={{ alignItems: "center" }}>
             Email Address{" "}
           </Typography>
@@ -51,7 +51,7 @@ export default function AdminSettings() {
             Change Password{" "}
             <Typography
               variant="subtitle1"
-              marginY={2}
+              marginY={3}
               sx={{ alignItems: "center" }}>
               Re-enter to Confirm{" "}
             </Typography>
@@ -63,7 +63,7 @@ export default function AdminSettings() {
             </Typography>
             <Typography
               variant="subtitle1"
-              marginY={5}
+              marginY={4}
               sx={{ alignItems: "center" }}>
               Region{" "}
             </Typography>
@@ -115,7 +115,7 @@ export default function AdminSettings() {
             </Select>
           </FormControl>
           <TextField
-            variant="filled"
+            variant="outlined"
             type="string"
             size="small"
             margin="none"
