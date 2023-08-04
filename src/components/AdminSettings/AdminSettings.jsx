@@ -13,6 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import RadioGroup from "@mui/material/RadioGroup";
 import Button from "@mui/material/Button";
 import CardMedia from "@mui/material/CardMedia";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 // import AgencyType from "../../fake/agencyType.json";
 
@@ -25,7 +26,7 @@ export default function AdminSettings() {
         columnSpacing={{ xs: 1, sm: 1, md: 1 }}
         justifyContent="center"
         direction="row">
-        <Grid item xs={5} sm={2} md={2}>
+        <Grid item xs={3} sm={2} md={2}>
           <Typography
             variant="subtitle1"
             marginY={1}
@@ -81,7 +82,7 @@ export default function AdminSettings() {
             </Typography>
           </Typography>
         </Grid>
-        <Grid column item p={2} xs={6} sm={6} md={8} lg={2}>
+        <Grid item p={0} xs={9} sm={5} md={5} lg={3}>
           <TextField
             variant="filled"
             type="string"
@@ -94,6 +95,7 @@ export default function AdminSettings() {
               border: "1px solid black",
               m: 1,
             }}></TextField>
+          <ModeEditIcon />
           <TextField
             variant="filled"
             type="string"
@@ -106,6 +108,7 @@ export default function AdminSettings() {
               border: "1px solid black",
               m: 1,
             }}></TextField>
+          <ModeEditIcon />
           <FormControl size="small" sx={{ m: 2, minWidth: 220 }}>
             <Select
               labelId="demo-simple-select-label"
