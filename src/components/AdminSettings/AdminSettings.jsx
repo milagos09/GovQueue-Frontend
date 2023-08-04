@@ -75,7 +75,7 @@ export default function AdminSettings() {
             </Typography>
             <Typography
               variant="subtitle1"
-              marginY={5}
+              marginY={10}
               sx={{ alignItems: "center" }}>
               Agency Logo{" "}
             </Typography>
@@ -184,6 +184,17 @@ export default function AdminSettings() {
                 label="Disabled"
               />
             </RadioGroup>
+            <TextField
+              variant="filled"
+              type="string"
+              size="small"
+              margin="none"
+              defaultValue="pageID"
+              sx={{
+                size: "small",
+                border: "1px solid black",
+                m: "2",
+              }}></TextField>
           </FormControl>
           <Card sx={{ maxWidth: 100 }}>
             <CardMedia
