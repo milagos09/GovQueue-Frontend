@@ -10,7 +10,6 @@ export default function Window({ name, number, updated }) {
                 sx={{
                     fontWeight: "bold",
                     fontSize: "3rem",
-                    // border: "1px solid black",
                     padding: "20px",
                     margin: "5px",
                     alignItems: "center",
@@ -20,6 +19,7 @@ export default function Window({ name, number, updated }) {
                     ...light,
                     borderRadius: "4px",
                     transition: ".3s",
+                    minWidth: "100px",
                     "&:hover": {
                         ...dark,
                         color: "azure",

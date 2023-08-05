@@ -8,15 +8,15 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import queues from "./../../../fake/queues.json";
+import WindowsLayout from "./../QueueTabs/WindowsLayout";
+import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 
-function Row({ admin }) {
+function Row({ admin, width }) {
     const [open, setOpen] = useState(false);
-
     return (
         <>
             <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -29,41 +29,21 @@ function Row({ admin }) {
                     <img src={admin.logo} loading="lazy" style={{ maxWidth: "80px" }} />
                 </TableCell>
                 <TableCell align="center">{admin.agency}</TableCell>
-                <TableCell align="center">{admin.region}</TableCell>
-                <TableCell align="center">{4}</TableCell>
+                {width > 500 && <TableCell align="center">{admin.region}</TableCell>}
+                {width > 600 && <TableCell align="center">{admin.queues.length}</TableCell>}
             </TableRow>
             <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
-                        <Box sx={{ margin: 1 }}>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Queues
-                            </Typography>
+                        <Box sx={{ marginBottom: "20px" }}>
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
                                         <TableCell sx={{ fontWeight: "bold" }} align="center">
-                                            Window
-                                        </TableCell>
-                                        <TableCell sx={{ fontWeight: "bold" }} align="center">
-                                            Number
-                                        </TableCell>
-                                        <TableCell sx={{ fontWeight: "bold" }} align="center">
-                                            Last update
+                                            <WindowsLayout queue={admin.queues} width={width} />
                                         </TableCell>
                                     </TableRow>
                                 </TableHead>
-                                <TableBody>
-                                    {admin.queues.map((q) => (
-                                        <TableRow key={q.id}>
-                                            <TableCell align="center">{q.name}</TableCell>
-                                            <TableCell align="center">{q.current}</TableCell>
-                                            <TableCell align="center">
-                                                {new Date(q.updatedOn).toLocaleTimeString()}
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
                             </Table>
                         </Box>
                     </Collapse>
@@ -74,10 +54,11 @@ function Row({ admin }) {
 }
 
 export default function CollapsibleTable({ admins }) {
+    const { width } = CheckScreenSize();
     const adminsWithQueue = admins.map((admin) => {
         return { ...admin, queues: queues.filter((q) => q.adminId === admin.id) };
     });
-    console.log(adminsWithQueue);
+
     return (
         <Paper sx={{ width: "100%", overflow: "hidden" }}>
             <TableContainer sx={{ maxHeight: 440 }}>
@@ -87,13 +68,13 @@ export default function CollapsibleTable({ admins }) {
                             <TableCell />
                             <TableCell align="center">Agency</TableCell>
                             <TableCell align="center">Name</TableCell>
-                            <TableCell align="center">Region</TableCell>
-                            <TableCell align="center">Number of Queues</TableCell>
+                            {width > 500 && <TableCell align="center">Region</TableCell>}
+                            {width > 600 && <TableCell align="center">Number of Queues</TableCell>}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {adminsWithQueue.map((admin) => (
-                            <Row key={admin.id} admin={admin} />
+                            <Row key={admin.id} admin={admin} width={width} />
                         ))}
                     </TableBody>
                 </Table>
