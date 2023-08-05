@@ -11,10 +11,9 @@ export default function AdminHamburgerMenu() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const pages = [
-    { nav: "Home", link: "/" },
+    { nav: "Home", link: "/admin" },
     { nav: "Logs", link: "/logs" },
-    { nav: "Chat", link: "/chat" },
-    { nav: "Support", link: "/support" },
+    { nav: "Support", link: "/adminsupport" },
     { nav: "Settings", link: "/settings" },
   ];
   const handleOpenNavMenu = (e) => {
@@ -37,8 +36,7 @@ export default function AdminHamburgerMenu() {
         aria-controls="menu-nav"
         aria-haspopup="true"
         onClick={handleOpenNavMenu}
-        color="inherit"
-      >
+        color="inherit">
         <MenuIcon />
       </IconButton>
       <Box
@@ -46,8 +44,7 @@ export default function AdminHamburgerMenu() {
           justifyContent: "space-evenly",
           flexGrow: 1,
           display: { xs: "none", md: "flex" },
-        }}
-      ></Box>
+        }}></Box>
       <Menu
         id="menu-nav"
         anchorEl={anchorElNav}
@@ -64,15 +61,13 @@ export default function AdminHamburgerMenu() {
         onClose={handleCloseNavMenu}
         sx={{
           display: { xs: "block", md: "none" },
-        }}
-      >
+        }}>
         {pages.map((page) => (
           <MenuItem key={page.nav} onClick={handleCloseNavMenu}>
             <Typography textAlign="center">
               <Link
                 to={page.link}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+                style={{ textDecoration: "none", color: "inherit" }}>
                 {page.nav}
               </Link>
             </Typography>
@@ -85,8 +80,7 @@ export default function AdminHamburgerMenu() {
           justifyContent: "space-evenly",
           flexGrow: 1,
           display: { xs: "none", md: "flex" },
-        }}
-      >
+        }}>
         <Box sx={{ flexGrow: 0 }}>
           <Menu
             sx={{ mt: "45px" }}
@@ -102,8 +96,7 @@ export default function AdminHamburgerMenu() {
               horizontal: "right",
             }}
             open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-          ></Menu>
+            onClose={handleCloseUserMenu}></Menu>
         </Box>
       </Box>
     </Box>
