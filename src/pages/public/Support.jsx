@@ -41,22 +41,19 @@ export default function Support() {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                }}
-              >
+                }}>
                 <Card
                   variant="outlined"
-                  sx={{ minWidth: 275, height: "100%", border: "none" }}
-                >
+                  sx={{ minWidth: 275, height: "100%", border: "none" }}>
                   <CardContent sx={{ p: 2 }}>
                     <Typography
+                      variant="h4"
                       sx={{
                         alignItems: "left",
-                        fontSize: 18,
                         py: 0,
                         px: 0,
                       }}
-                      gutterBottom
-                    >
+                      gutterBottom>
                       Contents
                     </Typography>
                     <Box
@@ -65,16 +62,14 @@ export default function Support() {
                         display: "flex",
                         width: "100%",
                         bgcolor: "background.paper",
-                      }}
-                    >
+                      }}>
                       <nav aria-label="main mailbox folders">
                         <List>
                           {faqData.map((faq) => (
                             <ListItem
                               key={faq.id}
                               disablePadding
-                              sx={{ px: 1 }}
-                            >
+                              sx={{ px: 1 }}>
                               <a href={`#question${faq.id}`}>
                                 {faq.faqQuestion}
                               </a>
@@ -93,25 +88,21 @@ export default function Support() {
               <Box
                 sx={{
                   px: 4,
-                }}
-              >
-                <Typography sx={{ fontSize: 30, py: 0, px: 0 }} gutterBottom>
+                }}>
+                <Typography variant="h4" sx={{ py: 0, px: 0 }} gutterBottom>
                   GovQueue Frequently Asked Questions
                 </Typography>
                 <Divider />
                 {faqData.map((faq) => (
                   <>
                     <Typography
+                      variant="h5"
                       id={`question${faq.id}`}
-                      sx={{ fontSize: 24, py: 0, px: 0 }}
-                      gutterBottom
-                    >
+                      sx={{ py: 0, px: 0 }}
+                      gutterBottom>
                       {faq.faqQuestion}
                     </Typography>
-                    <Typography
-                      sx={{ fontSize: 18, py: 0, px: 0 }}
-                      gutterBottom
-                    >
+                    <Typography variant="h6" sx={{ py: 0, px: 0 }} gutterBottom>
                       {faq.faqAnswer}
                     </Typography>
                     <Divider />
