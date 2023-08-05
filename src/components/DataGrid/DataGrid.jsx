@@ -1,4 +1,3 @@
-// import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -22,10 +21,10 @@ const rows = [
     "2023-06-22 11:00",
     <AddIcon />,
     <RemoveIcon />,
-    <Button variant="text" sx={{ p: 0, m: 0 }}>
+    <Button variant="text" sx={{ ...dark, p: 0, m: 0 }}>
       Reset
     </Button>,
-    <Button variant="text" sx={{ p: 0, m: 0 }}>
+    <Button variant="text" sx={{ ...dark, p: 0, m: 0 }}>
       Edit
     </Button>
   ),
