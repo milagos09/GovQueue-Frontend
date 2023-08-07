@@ -9,7 +9,7 @@ export default function Dashboard() {
         <>
             <NavBar />
             <Carousel />
-            <Searchbar />
+            {/* <Searchbar /> */}
             <Box sx={{ px: "40px" }}>
                 <QueueTable />
             </Box>

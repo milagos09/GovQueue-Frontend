@@ -11,3 +11,9 @@ export const light = {
     boxShadow: "4px 4px 7px rgba(0, 0, 0, 0.2)",
 };
 export const gold = { color: "#FB9300" };
+
+export const glassEffect = {
+    backgroundColor: "rgba(255, 255, 255, 0.3)", // Change the opacity value to adjust the glass effect
+    borderRadius: "8px",
+    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Add a subtle shadow to enhance the effect
+};
