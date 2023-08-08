@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -9,8 +8,6 @@ export default function NavLink() {
         { nav: "About us", link: "/about" },
         { nav: "Support", link: "/support" },
     ];
-
-    const [selectedTab, setSelectedTab] = useState("/");
 
     const location = useLocation();
 
@@ -28,10 +25,8 @@ export default function NavLink() {
                     to={page.link}
                     style={{
                         textDecoration: "none",
-
-                        boxShadow: location.pathname === page.link ? "0 0 0 -5px blue" : null,
+                        cursor: "default",
                     }}
-                    onClick={() => setSelectedTab(page.link)}
                 >
                     <Button
                         sx={{
