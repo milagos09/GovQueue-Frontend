@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { light, gold, dark } from "./../../themes/MyTheme";
+import { light, gold, dark } from "../../themes/MyTheme";
 
 export default function Window({ name, number, updated }) {
     return (

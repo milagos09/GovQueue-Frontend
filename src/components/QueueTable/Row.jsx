@@ -2,13 +2,11 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import Table from "@mui/material/Table";
 import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import WindowsLayout from "../QueueTabs/WindowsLayout";
+import Windows from "../Windows";
 
 export default function Row({ admin, width }) {
     const [open, setOpen] = useState(false);
@@ -40,7 +38,7 @@ export default function Row({ admin, width }) {
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ marginBottom: "20px" }}>
-                            <WindowsLayout queue={admin.queues} width={width} />
+                            <Windows queue={admin.queues} width={width} />
                         </Box>
                     </Collapse>
                 </TableCell>

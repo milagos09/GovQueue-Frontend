@@ -9,17 +9,36 @@ import queues from "./../../../fake/queues.json";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import Row from "./Row";
 import { glassEffect } from "../../themes/MyTheme";
-import Searchbar from "./../Searchbar";
+import TablePagination from "@mui/material/TablePagination";
+import { useState } from "react";
 
-export default function CollapsibleTable({ admins }) {
+export default function CollapsibleTable({ admins, search }) {
     const { width } = CheckScreenSize();
-    const adminsWithQueue = admins.map((admin) => {
-        return { ...admin, queues: queues.filter((q) => q.adminId === admin.id) };
-    });
+
+    const adminsWithQueue = admins
+        .filter((admin) => admin.agency.toLowerCase().includes(search.toLowerCase()))
+        .map((admin) => {
+            return { ...admin, queues: queues.filter((q) => q.adminId === admin.id) };
+        });
+
+    const [page, setPage] = useState(0);
+
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+
+    const handleChangePage = (event, newPage) => {
+        console.log(`handleChangePage: ${newPage}`);
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        console.log(`handleChangeRowsPerPage: ${+event.target.value}`);
+        setRowsPerPage(+event.target.value);
+        setPage(0);
+    };
 
     return (
         <Paper sx={{ width: "100%", overflow: "hidden", my: 4, ...glassEffect }}>
-            <TableContainer sx={{ maxHeight: "550px", paddingX: width > 800 ? "120px" : "10px" }}>
+            <TableContainer sx={{ maxHeight: "550px", paddingX: width > 800 ? "100px" : "10px" }}>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
@@ -31,12 +50,21 @@ export default function CollapsibleTable({ admins }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {adminsWithQueue.map((admin) => (
+                        {adminsWithQueue.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((admin) => (
                             <Row key={admin.id} admin={admin} width={width} />
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
+            <TablePagination
+                rowsPerPageOptions={[5, 10, 20]}
+                component="div"
+                count={adminsWithQueue.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+            />
         </Paper>
     );
 }

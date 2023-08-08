@@ -1,10 +1,10 @@
 import CollapsibleTable from "./CollapsibleTable";
 import admins from "./../../../fake/admins.json";
 
-export default function QueueTable() {
+export default function QueueTable({ search }) {
     return (
         <>
-            <CollapsibleTable admins={admins} />
+            <CollapsibleTable admins={admins} search={search} />
         </>
     );
 }

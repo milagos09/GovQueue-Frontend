@@ -1,23 +1,21 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import FormatDateTime from "./DateTime";
 import NavLink from "./NavLink";
 import AppName from "./AppName";
 import HamburgerMenu from "./HamburgerMenu";
 import { dark } from "./../../themes/MyTheme";
-import { useState } from "react";
 import Search from "./Search";
+import { useState } from "react";
+import DateTime from "./DateTime";
 
-export default function NavBar() {
-    const [input, setInput] = useState("");
+export default function NavBar({ search, setSearch }) {
     return (
         <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
             <Toolbar disableGutters>
                 <HamburgerMenu />
                 <AppName />
                 <NavLink />
-                <Search />
-                {/* <FormatDateTime /> */}
+                {search == undefined ? <DateTime /> : <Search search={search} setSearch={setSearch} />}
             </Toolbar>
         </AppBar>
     );

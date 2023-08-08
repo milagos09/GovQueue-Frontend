@@ -1,8 +1,9 @@
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { gold } from "../../themes/MyTheme";
 
-const SearchWrapper = styled("div")(({ theme }) => ({
+const SearchContainer = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -11,7 +12,7 @@ const SearchWrapper = styled("div")(({ theme }) => ({
     },
     marginLeft: 0,
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("xs")]: {
         marginLeft: theme.spacing(1),
         width: "auto",
     },
@@ -25,6 +26,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    ...gold,
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -35,7 +37,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create("width"),
         width: "100%",
-        [theme.breakpoints.up("sm")]: {
+        [theme.breakpoints.up("xs")]: {
             width: "12ch",
             "&:focus": {
                 width: "20ch",
@@ -44,15 +46,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function Search() {
+export default function Search({ search, setSearch }) {
     return (
         <>
-            <SearchWrapper>
+            <SearchContainer>
                 <SearchIconWrapper>
                     <SearchIcon />
                 </SearchIconWrapper>
-                <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
-            </SearchWrapper>
+                <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ "aria-label": "search" }}
+                    onChange={(e) => {
+                        setSearch(e.target.value);
+                    }}
+                    value={search}
+                />
+            </SearchContainer>
         </>
     );
 }
