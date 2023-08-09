@@ -6,6 +6,7 @@ import SpeedDialAction from "@mui/material/SpeedDialAction";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import { useState } from "react";
 import Favorites from "./Favorites";
+import ShowLogs from "./ShowLogs";
 
 export default function QueueActions({ admin }) {
     const [open, setOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function QueueActions({ admin }) {
             icon: <Favorites id={admin.id} />,
             name: "Favorite",
         },
-        { icon: <EventNoteIcon />, name: "Logs" },
+        { icon: <ShowLogs id={admin.id} agency={admin.agency} />, name: "Logs" },
     ];
 
     return (

@@ -16,3 +16,16 @@ export const glassEffect = {
     borderRadius: "8px",
     boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Add a subtle shadow to enhance the effect
 };
+
+export const shadow = {
+    boxShadow: " 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
+};
+
+export const roundIcon = {
+    color: "#000",
+    background: "white",
+    ...glassEffect,
+    borderRadius: "50%",
+    fontSize: "2rem",
+    ...shadow,
+};

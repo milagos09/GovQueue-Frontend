@@ -8,7 +8,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Windows from "../Windows";
 import QueueActions from "../QueueActions";
-import { glassEffect } from "../../themes/MyTheme";
+import { roundIcon } from "../../themes/MyTheme";
 
 export default function Row({ admin, customBreakPoint }) {
     const [open, setOpen] = useState(false);
@@ -32,28 +32,20 @@ export default function Row({ admin, customBreakPoint }) {
                         {open ? (
                             <KeyboardArrowUpIcon
                                 style={{
-                                    color: "#000",
-                                    background: "white",
-                                    ...glassEffect,
-                                    borderRadius: "50%",
-                                    fontSize: "2rem",
+                                    ...roundIcon,
                                 }}
                             />
                         ) : (
                             <KeyboardArrowDownIcon
                                 style={{
-                                    color: "#000",
-                                    background: "white",
-                                    ...glassEffect,
-                                    borderRadius: "50%",
-                                    fontSize: "2rem",
+                                    ...roundIcon,
                                 }}
                             />
                         )}
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
-                    <img src={admin.logo} loading="lazy" style={{ maxWidth: maxWidth }} />
+                    <img src={admin.logo} loading="lazy" style={{ maxWidth: maxWidth, borderRadius: "50%" }} />
                 </TableCell>
                 <TableCell align="center" sx={{ fontSize: fontSize }}>
                     {admin.agency}
