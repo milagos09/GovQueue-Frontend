@@ -1,8 +1,7 @@
 export const dark = {
     backgroundColor: "#111519f0",
     color: "azure",
-    borderRadius: "0 0 4px 4px",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+    boxShadow: "0 2px 10px rgba(244, 244, 244, 0.3)",
 };
 export const light = {
     backgroundColor: "snow",

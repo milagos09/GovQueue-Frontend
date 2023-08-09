@@ -1,0 +1,6 @@
+.MuiFab-info {
+    background-color: white !important;
+    color: black !important;
+    position: absolute;
+    top: -10px;
+}
