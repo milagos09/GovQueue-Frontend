@@ -1,0 +1,76 @@
+{
+  "endpoints": [
+    {
+      "name": "Create Queue",
+      "description": "Create a new queue to manage tasks.",
+      "route": "/queues",
+      "method": "POST",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the queue."
+        },
+        {
+          "name": "max_size",
+          "type": "integer",
+          "description": "Maximum size of the queue."
+        }
+      ],
+      "request": {
+        "body": {
+          "name": "string",
+          "max_size": "integer"
+        },
+        "example": {
+          "name": "priority-tasks",
+          "max_size": 100
+        }
+      },
+      "response": {
+        "example": {
+          "id": "queue123",
+          "name": "priority-tasks",
+          "max_size": 100,
+          "current_size": 0
+        }
+      }
+    }, 
+    {
+      "name": "Create Window",
+      "description": "Create a new service window for serving customers.",
+      "route": "/windows",
+      "method": "POST",
+      "parameters": [
+        {
+          "name": "window_number",
+          "type": "string",
+          "description": "Number or identifier of the window."
+        },
+        {
+          "name": "service_type",
+          "type": "string",
+          "description": "Type of service offered at the window."
+        }
+      ],
+      "request": {
+        "body": {
+          "window_number": "string",
+          "service_type": "string"
+        },
+        "example": {
+          "window_number": "W001",
+          "service_type": "Payment"
+        }
+      },
+      "response": {
+        "example": {
+          "id": "window789",
+          "window_number": "W001",
+          "service_type": "Payment",
+          "status": "Active"
+        }
+      }
+    }
+  ]
+}
