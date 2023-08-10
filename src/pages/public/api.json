@@ -1,5 +1,5 @@
 {
-  "endpoints": [
+  "guides": [
     {
       "name": "Create Queue",
       "description": "Create a new queue to manage tasks.",

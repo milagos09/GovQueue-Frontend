@@ -70,9 +70,9 @@ export default function AdminSupport() {
                     >
                       <nav aria-label="main mailbox folders">
                         <List>
-                          {apiData.endpoints.map((endpoint, index) => (
+                          {apiData.guides.map((guide, index) => (
                             <ListItem key={index} disablePadding sx={{ px: 1 }}>
-                              <a href={`#endpoint${index}`}>{endpoint.name}</a>
+                              <a href={`#guide${index}`}>{guide.name}</a>
                             </ListItem>
                           ))}
                         </List>
@@ -94,42 +94,38 @@ export default function AdminSupport() {
                   GovQueue API Documentation
                 </Typography>
                 <Divider />
-                {apiData.endpoints.map((endpoint, index) => (
+                {apiData.guides.map((guide, index) => (
                   <>
                     <Typography
-                      id={`endpoint${index}`}
+                      id={`guide${index}`}
                       variant="h5"
                       sx={{ py: 2 }}
                     >
-                      {endpoint.name}
+                      {guide.name}
                     </Typography>
                     <Typography variant="body1" sx={{ py: 1 }}>
-                      {endpoint.description}
+                      {guide.description}
                     </Typography>
                     <Typography variant="body2" sx={{ py: 1 }}>
-                      Route: `{endpoint.route}`
+                      Route: `{guide.route}`
                     </Typography>
                     <Typography variant="body2" sx={{ py: 1 }}>
-                      Method: {endpoint.method}
+                      Method: {guide.method}
                     </Typography>
                     <Typography variant="body2" sx={{ py: 1 }}>
                       Parameters:
                     </Typography>
                     <ul>
-                      {endpoint.parameters.map((parameter, paramIndex) => (
+                      {guide.parameters.map((parameter, paramIndex) => (
                         <li key={paramIndex}>
                           {parameter.name} - {parameter.description}
                         </li>
                       ))}
                     </ul>
                     <Typography variant="body2" sx={{ py: 1 }}></Typography>
-                    <pre>
-                      {JSON.stringify(endpoint.request.example, null, 2)}
-                    </pre>
+                    <pre>{JSON.stringify(guide.request.example, null, 2)}</pre>
                     <Typography variant="body2" sx={{ py: 1 }}></Typography>
-                    <pre>
-                      {JSON.stringify(endpoint.response.example, null, 2)}
-                    </pre>
+                    <pre>{JSON.stringify(guide.response.example, null, 2)}</pre>
                     <Divider />
                   </>
                 ))}
