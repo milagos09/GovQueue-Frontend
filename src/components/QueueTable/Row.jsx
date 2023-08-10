@@ -7,12 +7,17 @@ import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Windows from "../Windows";
+import QueueActions from "../QueueActions";
+import { roundIcon } from "../../themes/MyTheme";
 
-export default function Row({ admin, width }) {
+export default function Row({ admin, customBreakPoint }) {
     const [open, setOpen] = useState(false);
+    const fontSize = customBreakPoint ? ".9rem" : ".75rem";
+    const maxWidth = customBreakPoint ? "80px" : "60px";
+
     return (
         <>
-            <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+            <TableRow>
                 <TableCell>
                     <IconButton
                         aria-label="expand row"
@@ -24,21 +29,37 @@ export default function Row({ admin, width }) {
                             },
                         }}
                     >
-                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                        {open ? (
+                            <KeyboardArrowUpIcon
+                                style={{
+                                    ...roundIcon,
+                                }}
+                            />
+                        ) : (
+                            <KeyboardArrowDownIcon
+                                style={{
+                                    ...roundIcon,
+                                }}
+                            />
+                        )}
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
-                    <img src={admin.logo} loading="lazy" style={{ maxWidth: "80px" }} />
+                    <img src={admin.logo} loading="lazy" style={{ maxWidth: maxWidth, borderRadius: "50%" }} />
                 </TableCell>
-                <TableCell align="center">{admin.agency}</TableCell>
-                {width > 500 && <TableCell align="center">{admin.region}</TableCell>}
-                {width > 600 && <TableCell align="center">{admin.queues.length}</TableCell>}
+                <TableCell align="center" sx={{ fontSize: fontSize }}>
+                    {admin.agency}
+                </TableCell>
+                {customBreakPoint && <TableCell align="center">{admin.region}</TableCell>}
+                <TableCell>
+                    <QueueActions admin={admin} />
+                </TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ marginBottom: "20px" }}>
-                            <Windows queue={admin.queues} width={width} />
+                            <Windows queue={admin.queues} />
                         </Box>
                     </Collapse>
                 </TableCell>

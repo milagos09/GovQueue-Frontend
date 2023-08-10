@@ -14,6 +14,7 @@ import { useState } from "react";
 
 export default function CollapsibleTable({ admins, search }) {
     const { width } = CheckScreenSize();
+    const customBreakPoint = width > 530;
 
     const adminsWithQueue = admins
         .filter((admin) => admin.agency.toLowerCase().includes(search.toLowerCase()))
@@ -45,13 +46,13 @@ export default function CollapsibleTable({ admins, search }) {
                             <TableCell />
                             <TableCell align="center">Agency</TableCell>
                             <TableCell align="center">Name</TableCell>
-                            {width > 500 && <TableCell align="center">Region</TableCell>}
-                            {width > 600 && <TableCell align="center">Number of Queues</TableCell>}
+                            {customBreakPoint && <TableCell align="center">Region</TableCell>}
+                            <TableCell align="center">Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {adminsWithQueue.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((admin) => (
-                            <Row key={admin.id} admin={admin} width={width} />
+                            <Row key={admin.id} admin={admin} customBreakPoint={customBreakPoint} />
                         ))}
                     </TableBody>
                 </Table>
