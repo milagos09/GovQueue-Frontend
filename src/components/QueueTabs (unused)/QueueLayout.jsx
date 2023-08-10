@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import WindowsLayout from "./WindowsLayout";
 import AgencyDetail from "../SearchColumn/AgencyDetail";
 import ShowLogs from "./ShowLogs";
+import queues from "./../../../fake/queues.json";
 
 export default function QueueLayout({ agency, logo, id }) {
     return (
@@ -27,7 +28,7 @@ export default function QueueLayout({ agency, logo, id }) {
                 <AgencyDetail agency={agency} logo={logo} />
             </Grid>
             <Grid item md={9} xs={12} sx={{ display: "flex" }} justifyContent="center" alignItems="center">
-                <WindowsLayout />
+                <WindowsLayout queue={queues.filter((q) => q.adminId === id)} />
             </Grid>
             <Box sx={{ position: "absolute", top: "20px", right: "20px", fontSize: "2rem" }}>
                 <ShowLogs id={id} agency={agency} />
