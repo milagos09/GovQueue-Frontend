@@ -50,7 +50,7 @@ export default function QueueLayoutTabs({ tab, setTab, filteredAdmins }) {
                         },
                     }}
                 >
-                    Filtered
+                    Favorites
                 </Tab>
             </TabList>
 
