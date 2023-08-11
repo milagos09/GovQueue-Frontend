@@ -1,127 +1,78 @@
 import NavBar from "../../components/Navbar";
 import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
-import { styled } from "@mui/material/styles";
-import {
-  Divider,
-  ListItem,
-  List,
-  Typography,
-  CardContent,
-  Card,
-  Box,
-  Paper,
-  Grid,
-} from "@mui/material";
+
+import { Divider, ListItem, List, Typography, Grid } from "@mui/material";
 import faqData from "./faq.json";
+import { glassEffect } from "../../themes/MyTheme";
 
 export default function Support() {
-  const Item1 = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "left",
-    color: theme.palette.text.primary,
-  }));
-  const Item2 = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "left",
-    color: theme.palette.text.primary,
-  }));
-
   return (
     <>
       <NavBar />
-      <Box>
-        <Grid container columnSpacing={{ xs: 2 }}>
-          <Grid sm={12} md={4}>
-            <Box sx={{ position: "sticky", top: 0 }}>
-              <Item1
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <Card
-                  variant="outlined"
-                  sx={{ minWidth: 275, height: "100%", border: "none" }}
-                >
-                  <CardContent sx={{ p: 2 }}>
-                    <Typography
-                      sx={{
-                        alignItems: "left",
-                        fontSize: 18,
-                        py: 0,
-                        px: 0,
-                      }}
-                      gutterBottom
-                    >
-                      Contents
-                    </Typography>
-                    <Box
-                      xs="10"
-                      sx={{
-                        display: "flex",
-                        width: "100%",
-                        bgcolor: "background.paper",
-                      }}
-                    >
-                      <nav aria-label="main mailbox folders">
-                        <List>
-                          {faqData.map((faq) => (
-                            <ListItem
-                              key={faq.id}
-                              disablePadding
-                              sx={{ px: 1 }}
-                            >
-                              <a href={`#question${faq.id}`}>
-                                {faq.faqQuestion}
-                              </a>
-                            </ListItem>
-                          ))}
-                        </List>
-                      </nav>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Item1>
-            </Box>
-          </Grid>
-          <Grid sm={12} md={8} sx={{ px: 1 }}>
-            <Item2>
-              <Box
-                sx={{
-                  px: 4,
-                }}
-              >
-                <Typography sx={{ fontSize: 30, py: 0, px: 0 }} gutterBottom>
-                  GovQueue Frequently Asked Questions
+      <Grid container>
+        <Grid item xs={12} md={8} sm={8} lg={4}>
+          <fieldset
+            style={{
+              borderRadius: "10px",
+              border: "1px inset rgba(0, 0, 0, .2)",
+              padding: "25px 50px",
+              margin: "20px 10px",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "left",
+              ...glassEffect,
+            }}>
+            <legend>
+              <h2 style={{ alignItems: "center", padding: "8px" }}>Contents</h2>
+            </legend>
+            <List>
+              {faqData.map((faq) => (
+                <ListItem key={faq.id} disablePadding sx={{ px: 1 }}>
+                  <a href={`#question${faq.id}`}>{faq.faqQuestion}</a>
+                </ListItem>
+              ))}
+            </List>
+          </fieldset>
+        </Grid>
+
+        <Grid item xs={12} md={12} sm={12} lg={8}>
+          <fieldset
+            style={{
+              borderRadius: "10px",
+              border: "1px inset rgba(0, 0, 0, .2)",
+              padding: "25px 50px",
+              margin: "20px 10px",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "left",
+              ...glassEffect,
+            }}>
+            <legend>
+              <h2 style={{ alignItems: "center", padding: "8px" }}>
+                GovQueue Frequently Asked Questions
+              </h2>
+            </legend>
+            {faqData.map((faq) => (
+              <>
+                <Typography
+                  variant="h5"
+                  id={`question${faq.id}`}
+                  sx={{ py: 0, px: 0 }}
+                  gutterBottom>
+                  {faq.faqQuestion}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  sx={{ py: 0, px: 0 }}
+                  gutterBottom>
+                  {faq.faqAnswer}
                 </Typography>
                 <Divider />
-                {faqData.map((faq) => (
-                  <>
-                    <Typography
-                      id={`question${faq.id}`}
-                      sx={{ fontSize: 24, py: 0, px: 0 }}
-                      gutterBottom
-                    >
-                      {faq.faqQuestion}
-                    </Typography>
-                    <Typography
-                      sx={{ fontSize: 18, py: 0, px: 0 }}
-                      gutterBottom
-                    >
-                      {faq.faqAnswer}
-                    </Typography>
-                    <Divider />
-                  </>
-                ))}
-              </Box>
-            </Item2>
-          </Grid>
+              </>
+            ))}
+          </fieldset>
         </Grid>
-      </Box>
+      </Grid>
       <FacebookMessengerChat pageId="108965818922829" />
     </>
   );

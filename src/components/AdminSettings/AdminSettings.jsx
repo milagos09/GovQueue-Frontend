@@ -1,231 +1,306 @@
-import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import { Select, TextField, Card, MenuItem } from "@mui/material";
-import Radio from "@mui/material/Radio";
+import { Select, TextField, MenuItem, Grid } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import RadioGroup from "@mui/material/RadioGroup";
 import Button from "@mui/material/Button";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import { dark } from "../../themes/MyTheme";
+import { dark, glassEffect } from "../../themes/MyTheme";
 import Stack from "@mui/material/Stack";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import FormGroup from "@mui/material/FormGroup";
+import Switch from "@mui/material/Switch";
 
 export default function AdminSettings() {
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="lg">
-        <Box sx={{ bgcolor: "#ffffff", height: "100%" }}>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            justifyContent="space-between"
-            alignItems="center"
-            spacing={1}
-            sx={{ padding: 1 }}>
-            <h4>Agency Name</h4>
-            <TextField
-              variant="outlined"
-              type="string"
-              disabled="true"
-              size="small"
-              margin="none"
-              defaultValue="Agency Name"
-              sx={{
-                size: "small",
-                m: 1,
-                width: 200,
-                maxWidth: "100%",
-              }}></TextField>
-            <h4>Change Password</h4>
-            <TextField
-              id="outlined-password-input"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              size="small"
-              sx={{
-                m: 1,
-                width: 200,
-                maxWidth: "100%",
-              }}
-            />
-            <h4>Confirm Password</h4>
-            <TextField
-              id="outlined-password-input"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              size="small"
-              sx={{
-                m: 1,
-                width: 200,
-                maxWidth: "100%",
-              }}
-            />
-          </Stack>
-          <Stack
-            direction={{ xs: "12", sm: "row" }}
-            justifyContent="space-between"
-            alignItems="center"
-            spacing={3}
-            sx={{ padding: 1 }}>
-            <h4>Agency Description</h4>
-            <ModeEditIcon />
-            <TextField
-              variant="outlined"
-              type="string"
-              disabled="true"
-              margin="none"
-              defaultValue="Description"
-              sx={{
-                size: "string",
-                m: 1,
-                width: 200,
-                maxWidth: "100%",
-              }}></TextField>
-            <h4>Email Address</h4>
+    <>
+      <Box minHeight="80vh" display="flex">
+        <Grid
+          container
+          columns={{ xs: 2, sm: 4, md: 8, lg: 4 }}
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="flex-start">
+          <Grid
+            item
+            sx={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <fieldset
+              style={{
+                borderRadius: "5px",
+                border: "1px inset rgba(0, 0, 0, .2)",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                margin: "20px 20px",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "left",
+                ...glassEffect,
+              }}>
+              <legend>
+                <h2 style={{ padding: "8px" }}>Profile</h2>
+              </legend>
+              <h4 style={{ textAlign: "left" }}>Agency Logo</h4>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="flex-start">
+                <Button
+                  variant="contained"
+                  sx={{
+                    ...dark,
+                    "&:hover": { fontWeight: "bold", background: "black" },
+                    borderRadius: "4px",
+                    marginTop: 1,
+                  }}>
+                  Upload
+                </Button>
+                <img
+                  src={
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+                  }
+                />
+                <HelpOutlineIcon />
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 5 }}>
+                <h4>Agency Name</h4>
+                <TextField
+                  variant="outlined"
+                  type="string"
+                  disabled="true"
+                  size="small"
+                  margin="none"
+                  defaultValue="Agency Name"
+                  sx={{
+                    size: "small",
+                  }}></TextField>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 3 }}>
+                <h4 style={{ marginRight: 15 }}>Description</h4>
+                <TextField
+                  variant="outlined"
+                  type="string"
+                  disabled="true"
+                  size="small"
+                  margin="none"
+                  defaultValue="Agency Description"
+                  sx={{
+                    size: "small",
+                  }}></TextField>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 1 }}>
+                <h4 style={{ marginRight: 45 }}>Type</h4>
+                <FormControl size="small" sx={{ m: 2, minWidth: 220 }}>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value="Agency Type">
+                    <MenuItem>Local Government Unit</MenuItem>
+                  </Select>
+                </FormControl>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 1 }}>
+                <h4 style={{ marginRight: 40 }}>Address</h4>
+                <TextField
+                  variant="outlined"
+                  type="string"
+                  disabled="true"
+                  size="small"
+                  margin="none"
+                  defaultValue="Input Complete Address"
+                  sx={{
+                    size: "small",
+                  }}></TextField>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 1 }}>
+                <h4 style={{ marginRight: 30 }}>Region</h4>
+                <FormControl sx={{ m: 2, minWidth: 220 }}>
+                  <Select
+                    size="small"
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value="Region">
+                    <MenuItem>REGION VI</MenuItem>
+                  </Select>
+                </FormControl>
+              </Stack>
+            </fieldset>
+          </Grid>
 
-            <TextField
-              variant="outlined"
-              type="string"
-              disabled="true"
-              size="small"
-              margin="none"
-              defaultValue="Email Address"
-              sx={{
-                size: "small",
-                m: 2,
-                p: 1,
-              }}></TextField>
-            <h4>Complete Address</h4>
-            <TextField
-              variant="outlined"
-              type="string"
-              disabled="true"
-              size="small"
-              margin="none"
-              defaultValue="Address"
-              sx={{
-                size: "small",
-                m: 1,
-              }}></TextField>
-          </Stack>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            justifyContent="space-between"
-            alignItems="center"
-            spacing={2}
-            sx={{ padding: 1 }}>
-            <h4>Agency Type</h4>
-            <FormControl size="small" sx={{ m: 2, minWidth: 200 }}>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value="Agency Type">
-                <MenuItem>Local Government Unit</MenuItem>
-              </Select>
-            </FormControl>
-            <h4>Region</h4>
-            <FormControl sx={{ m: 2, minWidth: 200 }}>
-              <Select
-                size="small"
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value="Region">
-                <MenuItem>REGION VI</MenuItem>
-              </Select>
-            </FormControl>
-            <h4>Chat Support</h4>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-              color="default"
-              defaultValue="disabled">
-              <FormControlLabel
-                value="enabled"
-                disabled="true"
-                control={<Radio />}
-                label="Enabled"
-              />
-              <FormControlLabel
-                value="disabled"
-                checked="true"
-                control={<Radio />}
-                label="Disabled"
-              />
-            </RadioGroup>
-            <TextField
-              variant="outlined"
-              type="string"
-              size="small"
-              margin="none"
-              disabled="true"
-              defaultValue="pageID"
-              sx={{
-                size: "small",
-                m: "2",
-              }}></TextField>
-          </Stack>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            justifyContent="flex-start"
-            alignItems="center"
-            spacing={1}
-            sx={{ padding: 1 }}>
-            <h4>Agency Logo</h4>
-            <Button
-              variant="contained"
-              sx={{
-                ...dark,
-                "&:hover": { fontWeight: "bold", background: "black" },
-                borderRadius: "4px",
-                p: 1,
-                m: 1,
+          <Grid
+            item
+            direction="column"
+            columns={{ xs: 2, sm: 4, md: 4 }}
+            sx={{
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}>
+            <fieldset
+              style={{
+                borderRadius: "5px",
+                border: "1px inset rgba(0, 0, 0, .2)",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+                margin: "20px 20px",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "left",
+                ...glassEffect,
               }}>
-              Upload Image
-            </Button>
-            <Card sx={{ maxWidth: "200px" }}>
-              <img
-                src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
-                }
-              />
-            </Card>
-          </Stack>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            justifyContent="flex-start"
-            alignItems="center"
-            spacing={5}
-            sx={{ padding: 1 }}>
-            <Button
-              variant="contained"
-              sx={{
-                ...dark,
-                "&:hover": { fontWeight: "bold", background: "black" },
-                borderRadius: "4px",
-                p: 1,
-                m: 1,
-              }}>
-              Save Settings
-            </Button>
-            <Button
-              variant="contained"
-              sx={{
-                ...dark,
-                "&:hover": { fontWeight: "bold", background: "black" },
-                borderRadius: "4px",
-                p: 1,
-                m: 1,
-              }}>
-              Reset
-            </Button>
-          </Stack>
-        </Box>
-      </Container>
-    </React.Fragment>
+              <legend>
+                <h2 style={{ padding: "8px" }}>Settings</h2>
+              </legend>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 1 }}>
+                <h4 style={{ marginRight: 90 }}>Email</h4>
+                <TextField
+                  variant="outlined"
+                  type="string"
+                  disabled="true"
+                  size="small"
+                  margin="none"
+                  defaultValue="Input Email Address"
+                  sx={{
+                    size: "small",
+                  }}></TextField>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 2 }}>
+                <h4 style={{ marginRight: 10 }}>Messenger Plugin</h4>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Switch defaultChecked />}
+                    label="Enabled"
+                  />
+                </FormGroup>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-end"
+                alignItems="center">
+                <TextField
+                  variant="outlined"
+                  type="string"
+                  disabled="true"
+                  size="small"
+                  margin="none"
+                  defaultValue="Application ID"
+                  sx={{
+                    size: "small",
+                  }}></TextField>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 2 }}>
+                <h4 style={{ marginRight: 30 }}>Announcement</h4>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Switch defaultChecked />}
+                    label="Enabled"
+                  />
+                </FormGroup>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-end"
+                alignItems="center">
+                <TextField
+                  variant="outlined"
+                  type="string"
+                  disabled="true"
+                  size="small"
+                  margin="none"
+                  defaultValue="Announcement"
+                  sx={{
+                    size: "small",
+                  }}></TextField>
+              </Stack>
+              <Stack
+                spacing={{ xs: 1, sm: 2 }}
+                direction="row"
+                useFlexGap
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ marginTop: 2 }}>
+                <h4 style={{ marginRight: 60 }}>Password</h4>
+                <Button
+                  variant="contained"
+                  sx={{
+                    ...dark,
+                    "&:hover": { fontWeight: "bold", background: "black" },
+                    borderRadius: "4px",
+                    p: 1,
+                    m: 1,
+                  }}>
+                  Change
+                </Button>
+              </Stack>
+            </fieldset>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
   );
 }
