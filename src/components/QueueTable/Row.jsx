@@ -10,7 +10,7 @@ import Windows from "../Windows";
 import QueueActions from "../QueueActions";
 import { roundIcon } from "../../themes/MyTheme";
 
-export default function Row({ admin, customBreakPoint }) {
+export default function Row({ admin, customBreakPoint, isFavorite, toggleFavorite }) {
     const [open, setOpen] = useState(false);
     const fontSize = customBreakPoint ? ".9rem" : ".75rem";
     const maxWidth = customBreakPoint ? "80px" : "60px";
@@ -52,7 +52,7 @@ export default function Row({ admin, customBreakPoint }) {
                 </TableCell>
                 {customBreakPoint && <TableCell align="center">{admin.region}</TableCell>}
                 <TableCell>
-                    <QueueActions admin={admin} />
+                    <QueueActions admin={admin} isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
                 </TableCell>
             </TableRow>
             <TableRow>
