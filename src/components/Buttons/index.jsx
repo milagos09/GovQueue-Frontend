@@ -7,7 +7,12 @@ export function Primary({ value, onClick }) {
             <Button
                 variant="contained"
                 onClick={onClick}
-                sx={{ ...dark, "&:hover": { fontWeight: "bold", background: "black" }, borderRadius: "4px" }}
+                sx={{
+                    ...dark,
+                    "&:hover": { fontWeight: "bold", background: "black" },
+                    borderRadius: "4px",
+                    mx: "10px",
+                }}
             >
                 {value}
             </Button>
@@ -18,7 +23,17 @@ export function Primary({ value, onClick }) {
 export function Secondary({ value, onClick }) {
     return (
         <>
-            <Button variant="contained" color="grey" onClick={onClick}>
+            <Button
+                variant="contained"
+                onClick={onClick}
+                sx={{
+                    backgroundColor: "azure",
+                    color: "black",
+                    "&:hover": { fontWeight: "bold", backgroundColor: "azure" },
+                    borderRadius: "4px",
+                    mx: "10px",
+                }}
+            >
                 {value}
             </Button>
         </>

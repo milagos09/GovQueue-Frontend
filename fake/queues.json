@@ -1,142 +1,157 @@
 [
-  {
-    "id": 1,
-    "adminId": 1,
-    "name": "Window 1",
-    "current": 2,
-    "updatedOn": "2023-01-01T10:31:10.583Z"
-  },
-  {
-    "id": 2,
-    "adminId": 2,
-    "name": "Window 1",
-    "current": 8,
-    "updatedOn": "2023-01-01T09:23:36.289Z"
-  },
-  {
-    "id": 3,
-    "adminId": 3,
-    "name": "Window 1",
-    "current": 50,
-    "updatedOn": "2023-01-01T14:33:04.842Z"
-  },
-  {
-    "id": 4,
-    "adminId": 4,
-    "name": "Window 1",
-    "current": 41,
-    "updatedOn": "2023-01-01T15:07:51.847Z"
-  },
-  {
-    "id": 5,
-    "adminId": 5,
-    "name": "Window 1",
-    "current": 36,
-    "updatedOn": "2023-01-01T12:07:41.347Z"
-  },
-  {
-    "id": 6,
-    "adminId": 6,
-    "name": "Window 1",
-    "current": 95,
-    "updatedOn": "2023-01-01T12:04:37.385Z"
-  },
-  {
-    "id": 7,
-    "adminId": 7,
-    "name": "Window 1",
-    "current": 57,
-    "updatedOn": "2023-01-01T09:14:30.486Z"
-  },
-  {
-    "id": 8,
-    "adminId": 8,
-    "name": "Window 1",
-    "current": 92,
-    "updatedOn": "2023-01-01T17:33:30.762Z"
-  },
-  {
-    "id": 9,
-    "adminId": 9,
-    "name": "Window 1",
-    "current": 77,
-    "updatedOn": "2023-01-01T12:28:41.978Z"
-  },
-  {
-    "id": 10,
-    "adminId": 10,
-    "name": "Window 1",
-    "current": 29,
-    "updatedOn": "2023-01-01T17:12:21.038Z"
-  },
-  {
-    "id": 11,
-    "adminId": 1,
-    "name": "Window 2",
-    "current": 52,
-    "updatedOn": "2023-01-01T15:16:09.257Z"
-  },
-  {
-    "id": 12,
-    "adminId": 2,
-    "name": "Window 2",
-    "current": 90,
-    "updatedOn": "2023-01-01T10:15:05.124Z"
-  },
-  {
-    "id": 13,
-    "adminId": 3,
-    "name": "Window 2",
-    "current": 98,
-    "updatedOn": "2023-01-01T16:28:56.642Z"
-  },
-  {
-    "id": 14,
-    "adminId": 4,
-    "name": "Window 2",
-    "current": 58,
-    "updatedOn": "2023-01-01T12:04:03.806Z"
-  },
-  {
-    "id": 15,
-    "adminId": 5,
-    "name": "Window 2",
-    "current": 61,
-    "updatedOn": "2023-01-01T13:45:14.145Z"
-  },
-  {
-    "id": 16,
-    "adminId": 6,
-    "name": "Window 2",
-    "current": 40,
-    "updatedOn": "2023-01-01T09:37:35.333Z"
-  },
-  {
-    "id": 17,
-    "adminId": 7,
-    "name": "Window 2",
-    "current": 31,
-    "updatedOn": "2023-01-01T13:42:17.365Z"
-  },
-  {
-    "id": 18,
-    "adminId": 8,
-    "name": "Window 2",
-    "current": 44,
-    "updatedOn": "2023-01-01T15:29:19.381Z"
-  },
-  {
-    "id": 19,
-    "adminId": 9,
-    "name": "Window 2",
-    "current": 49,
-    "updatedOn": "2023-01-01T12:08:40.047Z"
-  },
-  {
-    "id": 20,
-    "adminId": 10,
-    "name": "Window 2",
-    "current": 35,
-    "updatedOn": "2023-01-01T12:07:20.571Z"
-  }
+    {
+        "id": 1,
+        "adminId": 1,
+        "name": "Window 1",
+        "current": 2,
+        "updatedOn": "2023-01-01T10:31:10.583Z"
+    },
+    {
+        "id": 2,
+        "adminId": 2,
+        "name": "Window 1",
+        "current": 8,
+        "updatedOn": "2023-01-01T09:23:36.289Z"
+    },
+    {
+        "id": 3,
+        "adminId": 3,
+        "name": "Window 1",
+        "current": 50,
+        "updatedOn": "2023-01-01T14:33:04.842Z"
+    },
+    {
+        "id": 4,
+        "adminId": 4,
+        "name": "Window 1",
+        "current": 41,
+        "updatedOn": "2023-01-01T15:07:51.847Z"
+    },
+    {
+        "id": 5,
+        "adminId": 5,
+        "name": "Window 1",
+        "current": 36,
+        "updatedOn": "2023-01-01T12:07:41.347Z"
+    },
+    {
+        "id": 6,
+        "adminId": 6,
+        "name": "Window 1",
+        "current": 95,
+        "updatedOn": "2023-01-01T12:04:37.385Z"
+    },
+    {
+        "id": 7,
+        "adminId": 7,
+        "name": "Window 1",
+        "current": 57,
+        "updatedOn": "2023-01-01T09:14:30.486Z"
+    },
+    {
+        "id": 8,
+        "adminId": 8,
+        "name": "Window 1",
+        "current": 92,
+        "updatedOn": "2023-01-01T17:33:30.762Z"
+    },
+    {
+        "id": 9,
+        "adminId": 9,
+        "name": "Window 1",
+        "current": 77,
+        "updatedOn": "2023-01-01T12:28:41.978Z"
+    },
+    {
+        "id": 10,
+        "adminId": 10,
+        "name": "Window 1",
+        "current": 29,
+        "updatedOn": "2023-01-01T17:12:21.038Z"
+    },
+    {
+        "id": 11,
+        "adminId": 1,
+        "name": "Window 2",
+        "current": 52,
+        "updatedOn": "2023-01-01T15:16:09.257Z"
+    },
+    {
+        "id": 12,
+        "adminId": 2,
+        "name": "Window 2",
+        "current": 90,
+        "updatedOn": "2023-01-01T10:15:05.124Z"
+    },
+    {
+        "id": 13,
+        "adminId": 3,
+        "name": "Window 2",
+        "current": 98,
+        "updatedOn": "2023-01-01T16:28:56.642Z"
+    },
+    {
+        "id": 14,
+        "adminId": 4,
+        "name": "Window 2",
+        "current": 58,
+        "updatedOn": "2023-01-01T12:04:03.806Z"
+    },
+    {
+        "id": 15,
+        "adminId": 5,
+        "name": "Window 2",
+        "current": 61,
+        "updatedOn": "2023-01-01T13:45:14.145Z"
+    },
+    {
+        "id": 16,
+        "adminId": 6,
+        "name": "Window 2",
+        "current": 40,
+        "updatedOn": "2023-01-01T09:37:35.333Z"
+    },
+    {
+        "id": 17,
+        "adminId": 7,
+        "name": "Window 2",
+        "current": 31,
+        "updatedOn": "2023-01-01T13:42:17.365Z"
+    },
+    {
+        "id": 18,
+        "adminId": 8,
+        "name": "Window 2",
+        "current": 44,
+        "updatedOn": "2023-01-01T15:29:19.381Z"
+    },
+    {
+        "id": 19,
+        "adminId": 9,
+        "name": "Window 2",
+        "current": 49,
+        "updatedOn": "2023-01-01T12:08:40.047Z"
+    },
+
+    {
+        "id": 21,
+        "adminId": 1,
+        "name": "Window 3",
+        "current": 33,
+        "updatedOn": "2023-01-01T15:16:09.257Z"
+    },
+    {
+        "id": 22,
+        "adminId": 1,
+        "name": "Window 4",
+        "current": 25,
+        "updatedOn": "2023-01-01T15:16:09.257Z"
+    },
+    {
+        "id": 23,
+        "adminId": 1,
+        "name": "Window 5",
+        "current": 120,
+        "updatedOn": "2023-01-01T15:16:09.257Z"
+    }
 ]

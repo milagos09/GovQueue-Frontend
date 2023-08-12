@@ -2,8 +2,8 @@ import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useState } from "react";
-import admins from "./../../../fake/admins.json";
-import { Primary, Secondary } from "./../Buttons";
+import admins from "../../../fake/admins.json";
+import { Primary, Secondary } from "../Buttons";
 
 function sortAndGetUniqueValues(array) {
     array.sort();
