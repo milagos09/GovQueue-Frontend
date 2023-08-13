@@ -1,3 +1,4 @@
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -5,124 +6,172 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardMedia,
+  Typography,
+  Stack,
+  Grid,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { dark } from "../../themes/MyTheme";
-
-function createData(queue, number, updated, add, remove, reset, edit) {
-  return { queue, number, updated, add, remove, reset, edit };
-}
-
-const rows = [
-  createData(
-    "Window 1",
-    33,
-    "2023-06-22 11:00",
-    <AddIcon />,
-    <RemoveIcon />,
-    <Button variant="text" sx={{ ...dark, p: 0, m: 0 }}>
-      Reset
-    </Button>,
-    <Button variant="text" sx={{ ...dark, p: 0, m: 0 }}>
-      Edit
-    </Button>
-  ),
-];
+import { dark, glassEffect } from "../../themes/MyTheme";
 
 export default function DataGrid() {
+  const handleClick = () => {
+    console.log("Icon clicked!");
+  };
+  function createData(queue, number, updated, add, remove, reset, edit) {
+    return { queue, number, updated, add, remove, reset, edit };
+  }
+
+  const rows = [
+    createData(
+      "Window 1",
+      33,
+      "2023-06-22 11:00",
+      <AddIcon onClick={handleClick} style={{ cursor: "pointer" }} />,
+      <RemoveIcon onClick={handleClick} style={{ cursor: "pointer" }} />,
+      <Button
+        variant="contained"
+        sx={{
+          ...dark,
+          "&:hover": { fontWeight: "bold", background: "black" },
+        }}>
+        Reset
+      </Button>,
+      <Button
+        variant="contained"
+        sx={{
+          ...dark,
+          "&:hover": { fontWeight: "bold", background: "black" },
+        }}>
+        Edit
+      </Button>
+    ),
+  ];
+
   return (
     <>
-      <Box p={1} sx={{ width: "100%" }}>
-        <TableContainer component={Paper}>
-          <Table sx={{ width: "100%" }} size="small" aria-label="a dense table">
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  <Card sx={{ border: 1, width: 100, height: 100 }}>
-                    <CardMedia></CardMedia>
-                  </Card>
-                </TableCell>
-                <TableCell align="left">
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      alignItems: "center",
-                      width: "600px",
-                      p: 0,
-                      m: 0,
-                    }}>
-                    Bureau of Internal Revenue Region VI{" "}
-                  </Typography>
-                </TableCell>
-                <TableCell align="left">
-                  <Button variant="outlined" sx={{ ...dark, p: 1, m: 0 }}>
-                    Add
-                  </Button>
-                </TableCell>{" "}
-                <TableCell align="left">
-                  <Button variant="outlined" sx={{ ...dark, p: 1, m: 0 }}>
-                    Remove
-                  </Button>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-          </Table>
-        </TableContainer>
-      </Box>
-
-      <Box p={2} sx={{ width: "100%" }}>
-        <TableContainer component={Paper}>
-          <Table sx={{ width: "100%" }} size="small" aria-label="a dense table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Queue</TableCell>
-                <TableCell align="right">Number</TableCell>
-                <TableCell align="center">Updated</TableCell>
+      <Grid
+        container={true}
+        spacing={2}
+        justifyContent="center"
+        alignItems="center"
+        direction="row"
+        sx={{ ...glassEffect }}>
+        <Grid item xs={12} sm={8} sx={{ ...glassEffect }}>
+          <TableContainer>
+            <Table>
+              <TableHead>
                 <TableRow>
-                  <TableCell align="right"></TableCell>
-                  <TableCell align="right"></TableCell>
-                  <TableCell align="right">Action</TableCell>
-                  <TableCell align="right"></TableCell>
-                </TableRow>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.queue}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                  <TableCell component="th" scope="row">
-                    {row.queue}
+                  <TableCell>
+                    <Card sx={{ width: 100, height: 100 }}>
+                      <CardMedia></CardMedia>
+                    </Card>
                   </TableCell>
-                  <TableCell align="right">{row.number}</TableCell>
-                  <TableCell align="center">{row.updated}</TableCell>
-                  <TableRow>
-                    <TableCell
-                      padding="none"
-                      align="right"
-                      sx={{ border: "1px" }}>
-                      {row.add}
-                    </TableCell>
-                    <TableCell padding="none" align="right">
-                      {row.remove}
-                    </TableCell>
-                    <TableCell padding="none" align="right">
-                      {row.reset}
-                    </TableCell>
-                    <TableCell
-                      padding="none"
-                      align="right"
-                      sx={{ border: "1px" }}>
-                      {row.edit}
-                    </TableCell>
-                  </TableRow>
+                  <TableCell align="left">
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        textAlign: "justify",
+                        alignItems: "center",
+                        width: "100%",
+                        p: 0,
+                        m: 0,
+                      }}>
+                      Bureau of Internal Revenue Region VI{" "}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="left">
+                    <Button
+                      variant="contained"
+                      sx={{
+                        ...dark,
+                        "&:hover": {
+                          fontWeight: "bold",
+                          background: "black",
+                        },
+                      }}>
+                      Add
+                    </Button>
+                  </TableCell>
+                  <TableCell align="left">
+                    <Button
+                      variant="contained"
+                      sx={{
+                        ...dark,
+                        "&:hover": {
+                          fontWeight: "bold",
+                          background: "black",
+                        },
+                      }}>
+                      Remove
+                    </Button>
+                  </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
+              </TableHead>
+            </Table>
+          </TableContainer>
+        </Grid>
+        <Grid item xs={12} sm={8} sx={{ ...glassEffect }}>
+          <TableContainer component={Paper}>
+            <Table sx={{ width: "100%" }}>
+              <TableRow>
+                <TableCell align="center">
+                  <Typography variant="h5">Queue</Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h5">Number</Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h5">Updated</Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h5">Action</Typography>
+                </TableCell>
+              </TableRow>
+
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow key={row.queue}>
+                    <TableCell align="center">
+                      <Typography variant="subtitle1">{row.queue}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography variant="subtitle1">{row.number}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography variant="subtitle1">{row.updated}</Typography>
+                    </TableCell>
+                    <Stack
+                      direction="row"
+                      useFlexGap
+                      flexWrap="nowrap"
+                      justifyContent="center"
+                      alignItems="center"
+                      sx={{ width: "auto" }}>
+                      <TableCell align="center">
+                        {React.cloneElement(row.add, {
+                          onClick: handleClick,
+                        })}
+                      </TableCell>
+                      <TableCell align="center">
+                        {React.cloneElement(row.remove, {
+                          onClick: handleClick,
+                        })}
+                      </TableCell>
+                      <TableCell align="center">{row.reset}</TableCell>
+                      <TableCell align="center">{row.edit}</TableCell>
+                    </Stack>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+      </Grid>
     </>
   );
 }
