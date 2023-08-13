@@ -1,7 +1,6 @@
 import AdminNavbar from "../../components/AdminNavbar";
-import * as React from "react";
 import dayjs from "dayjs";
-import { Box, Paper, TableBody, Button } from "@mui/material";
+import { Box, Paper, TableBody, Button, Typography } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -11,13 +10,15 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { dark } from "../../themes/MyTheme";
+import { dark, glassEffect } from "../../themes/MyTheme";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import ToggleOnOutlinedIcon from "@mui/icons-material/ToggleOnOutlined";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 
-export default function Logs() {
+export default function Logs(onClick) {
   function createData(timestamp, queuename, description, number) {
     return { timestamp, queuename, description, number };
   }
@@ -26,13 +27,26 @@ export default function Logs() {
   return (
     <>
       <AdminNavbar />
-      <Box p={1} sx={{ width: "100%", height: "100%" }}>
+      <Box
+        p={1}
+        sx={{
+          width: "100%",
+          height: "100%",
+          ...glassEffect,
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
         <TableContainer component={Paper}>
-          <Table sx={{ width: "100%" }} size="small" aria-label="a dense table">
+          <Table
+            sx={{
+              width: "100%",
+            }}
+            size="small"
+            aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell>
-                  <h2>Start:</h2>
+                <TableCell align="center">
+                  <Typography variant="h6">Start:</Typography>
                 </TableCell>
                 <TableCell align="left">
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -52,8 +66,8 @@ export default function Logs() {
                     </DemoContainer>
                   </LocalizationProvider>
                 </TableCell>
-                <TableCell>
-                  <h2>End:</h2>
+                <TableCell align="center">
+                  <Typography variant="h6">End:</Typography>
                 </TableCell>
                 <TableCell align="left">
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -73,8 +87,8 @@ export default function Logs() {
                     </DemoContainer>
                   </LocalizationProvider>
                 </TableCell>
-                <TableCell>
-                  <h2>Window:</h2>
+                <TableCell align="center">
+                  <Typography variant="h6">Window:</Typography>
                 </TableCell>
                 <TableCell>
                   <FormControl sx={{ m: 2, minWidth: 189 }}>
@@ -92,15 +106,23 @@ export default function Logs() {
           </Table>
         </TableContainer>
       </Box>
-      <Box p={2} sx={{ width: "100%" }}>
+      <Box p={1} sx={{ width: "100%" }}>
         <TableContainer component={Paper}>
           <Table sx={{ width: "100%" }} size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell align="center">Time Stamp</TableCell>
-                <TableCell align="center">Queue Name</TableCell>
-                <TableCell align="center">Description</TableCell>
-                <TableCell align="center">Number</TableCell>
+                <TableCell align="center">
+                  <Typography variant="h6">Time Stamp</Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h6">Queue Name</Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h6">Description</Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h6">Number</Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -109,32 +131,61 @@ export default function Logs() {
                   key={row.queue}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell align="center" component="th" scope="row">
-                    {row.timestamp}
+                    <Typography variant="subtitle1">{row.timestamp}</Typography>
                   </TableCell>
-                  <TableCell align="center">{row.queuename}</TableCell>
-                  <TableCell align="center">{row.description}</TableCell>
-                  <TableCell align="center">{row.number}</TableCell>
+                  <TableCell align="center">
+                    <Typography variant="subtitle1">{row.queuename}</Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography variant="subtitle1">
+                      {row.description}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography variant="subtitle1">{row.number}</Typography>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       </Box>
-      <Box p={2} sx={{ width: "100%", height: "100%" }}>
+      <Box p={1} sx={{ width: "100%" }}>
         <TableContainer component={Paper}>
           <Table sx={{ width: "100%" }} size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
                 <TableCell align="left">
-                  <ToggleOnOutlinedIcon /> Always Show Logs
+                  <FormGroup>
+                    <FormControlLabel
+                      control={<Switch defaultChecked />}
+                      label="Always Show Logs"
+                    />
+                  </FormGroup>
                 </TableCell>
-                <TableCell align="right" l>
-                  <Button variant="outlined" sx={{ ...dark, p: 1, m: 0 }}>
+                <TableCell align="right">
+                  <Button
+                    variant="contained"
+                    onClick={onClick}
+                    sx={{
+                      ...dark,
+                      "&:hover": { fontWeight: "bold", background: "black" },
+                      borderRadius: "4px",
+                      mx: "10px",
+                    }}>
                     Download CSV
                   </Button>
                 </TableCell>
-                <TableCell align="right">
-                  <Button variant="outlined" sx={{ ...dark, p: 1, m: 0 }}>
+                <TableCell align="left">
+                  <Button
+                    variant="contained"
+                    onClick={onClick}
+                    sx={{
+                      ...dark,
+                      "&:hover": { fontWeight: "bold", background: "black" },
+                      borderRadius: "4px",
+                      mx: "10px",
+                    }}>
                     Analyze Data
                   </Button>
                 </TableCell>
