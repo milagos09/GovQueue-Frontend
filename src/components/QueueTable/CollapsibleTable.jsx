@@ -1,65 +1,61 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import { useState, useEffect } from "react";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import queues from "./../../../fake/queues.json";
+import TablePagination from "@mui/material/TablePagination";
+import ToggleFavorites from "./ToggleFavorites";
+import { glassEffect } from "../../themes/MyTheme";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import Row from "./Row";
-import { glassEffect } from "../../themes/MyTheme";
-import TablePagination from "@mui/material/TablePagination";
-import { useState } from "react";
-import { useEffect } from "react";
-
-const localStorageFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+import queues from "./../../../fake/queues.json";
 
 export default function CollapsibleTable({ admins, search }) {
     const { width } = CheckScreenSize();
     const customBreakPoint = width > 530;
-
-    const adminsWithQueue = admins
-        .filter((admin) => admin.agency.toLowerCase().includes(search.toLowerCase()))
-        .map((admin) => {
-            return { ...admin, queues: queues.filter((q) => q.adminId === admin.id) };
-        });
+    const localStorageFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [favorites, setFavorites] = useState(localStorageFavorites);
+    const [showFavorites, setShowFavorites] = useState(false);
 
     useEffect(() => {
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }, [favorites]);
 
     const toggleFavorite = (id, isFavorite) => {
-        if (isFavorite) {
-            const removedId = favorites.filter((f) => f !== id);
-            setFavorites(removedId);
-        } else {
-            setFavorites((prev) => [...prev, id]);
-        }
+        const updatedFavorites = isFavorite ? favorites.filter((f) => f !== id) : [...favorites, id];
+        setFavorites(updatedFavorites);
     };
 
     const handleChangePage = (event, newPage) => {
-        console.log(`handleChangePage: ${newPage}`);
         setPage(newPage);
     };
 
     const handleChangeRowsPerPage = (event) => {
-        console.log(`handleChangeRowsPerPage: ${+event.target.value}`);
-        setRowsPerPage(+event.target.value);
+        const newRowsPerPage = Number(event.target.value);
+        setRowsPerPage(newRowsPerPage);
         setPage(0);
     };
 
+    let adminsWithQueue = admins
+        .filter((admin) => admin.agency.toLowerCase().includes(search.toLowerCase()))
+        .map((admin) => {
+            return { ...admin, queues: queues.filter((q) => q.adminId === admin.id) };
+        });
+
+    if (showFavorites) {
+        adminsWithQueue = adminsWithQueue.filter((admin) => favorites.includes(admin.id));
+    }
+
     return (
-        <Paper sx={{ width: "100%", overflow: "hidden", my: 4, ...glassEffect }}>
-            <TableContainer sx={{ maxHeight: "550px", paddingX: width > 800 ? "100px" : "10px" }}>
+        <Paper sx={{ width: "100%", overflow: "hidden", my: 4, ...glassEffect, borderRadius: "2%" }}>
+            <TableContainer sx={{ maxHeight: "550px", paddingX: width > 800 ? "100px" : "2px" }}>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
-                            <TableCell />
+                            <TableCell align="center">
+                                <ToggleFavorites showFavorites={showFavorites} setShowFavorites={setShowFavorites} />
+                            </TableCell>
                             <TableCell align="center">Agency</TableCell>
                             <TableCell align="center">Name</TableCell>
                             {customBreakPoint && <TableCell align="center">Region</TableCell>}

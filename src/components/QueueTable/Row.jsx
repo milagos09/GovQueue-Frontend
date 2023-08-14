@@ -18,7 +18,7 @@ export default function Row({ admin, customBreakPoint, isFavorite, toggleFavorit
     return (
         <>
             <TableRow>
-                <TableCell>
+                <TableCell align="center">
                     <IconButton
                         aria-label="expand row"
                         size="small"
