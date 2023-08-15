@@ -3,7 +3,6 @@ import Typography from "@mui/material/Typography";
 import GcashQrCode from "../../assets/gcash-qr-code.jpg";
 import Feildset from "../../components/Fieldset";
 import { Container, Grid } from "@mui/material";
-import { glassEffect } from "../../themes/MyTheme";
 
 export default function About() {
   return (
