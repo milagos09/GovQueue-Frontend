@@ -11,6 +11,9 @@ import Row from "./Row";
 import { glassEffect } from "../../themes/MyTheme";
 import TablePagination from "@mui/material/TablePagination";
 import { useState } from "react";
+import { useEffect } from "react";
+
+const localStorageFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 export default function CollapsibleTable({ admins, search }) {
     const { width } = CheckScreenSize();
@@ -23,8 +26,21 @@ export default function CollapsibleTable({ admins, search }) {
         });
 
     const [page, setPage] = useState(0);
-
     const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [favorites, setFavorites] = useState(localStorageFavorites);
+
+    useEffect(() => {
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }, [favorites]);
+
+    const toggleFavorite = (id, isFavorite) => {
+        if (isFavorite) {
+            const removedId = favorites.filter((f) => f !== id);
+            setFavorites(removedId);
+        } else {
+            setFavorites((prev) => [...prev, id]);
+        }
+    };
 
     const handleChangePage = (event, newPage) => {
         console.log(`handleChangePage: ${newPage}`);
@@ -52,7 +68,13 @@ export default function CollapsibleTable({ admins, search }) {
                     </TableHead>
                     <TableBody>
                         {adminsWithQueue.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((admin) => (
-                            <Row key={admin.id} admin={admin} customBreakPoint={customBreakPoint} />
+                            <Row
+                                key={admin.id}
+                                admin={admin}
+                                customBreakPoint={customBreakPoint}
+                                isFavorite={favorites.includes(admin.id)}
+                                toggleFavorite={toggleFavorite}
+                            />
                         ))}
                     </TableBody>
                 </Table>

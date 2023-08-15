@@ -3,19 +3,18 @@ import Backdrop from "@mui/material/Backdrop";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import EventNoteIcon from "@mui/icons-material/EventNote";
 import { useState } from "react";
 import Favorites from "./Favorites";
 import ShowLogs from "./ShowLogs";
 
-export default function QueueActions({ admin }) {
+export default function QueueActions({ admin, isFavorite, toggleFavorite }) {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(!open);
 
     const actions = [
         {
-            icon: <Favorites id={admin.id} />,
+            icon: <Favorites id={admin.id} isFavorite={isFavorite} toggleFavorite={toggleFavorite} />,
             name: "Favorite",
         },
         { icon: <ShowLogs id={admin.id} agency={admin.agency} />, name: "Logs" },
