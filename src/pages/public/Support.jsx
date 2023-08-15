@@ -1,30 +1,19 @@
 import NavBar from "../../components/Navbar";
 import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
-
+import Feildset from "../../components/Fieldset";
 import { Divider, ListItem, List, Typography, Grid } from "@mui/material";
 import faqData from "./faq.json";
-import { glassEffect } from "../../themes/MyTheme";
 
 export default function Support() {
   return (
     <>
       <NavBar />
       <Grid container>
-        <Grid item xs={12} md={8} sm={8} lg={4}>
-          <fieldset
-            style={{
-              borderRadius: "10px",
-              border: "1px inset rgba(0, 0, 0, .2)",
-              padding: "25px 50px",
-              margin: "20px 10px",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "left",
-              ...glassEffect,
-            }}>
-            <legend>
-              <h2 style={{ alignItems: "center", padding: "8px" }}>Contents</h2>
-            </legend>
+        <Grid item xs={12} md={8} lg={4}>
+          <Feildset
+            title={"Content"}
+            sx={{ textAlign: "left" }}
+            titleStyles={{ fontSize: "24px", fontWeight: "bold" }}>
             <List>
               {faqData.map((faq) => (
                 <ListItem key={faq.id} disablePadding sx={{ px: 1 }}>
@@ -32,26 +21,14 @@ export default function Support() {
                 </ListItem>
               ))}
             </List>
-          </fieldset>
+          </Feildset>
         </Grid>
 
-        <Grid item xs={12} md={12} sm={12} lg={8}>
-          <fieldset
-            style={{
-              borderRadius: "10px",
-              border: "1px inset rgba(0, 0, 0, .2)",
-              padding: "25px 50px",
-              margin: "20px 10px",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "left",
-              ...glassEffect,
-            }}>
-            <legend>
-              <h2 style={{ alignItems: "center", padding: "8px" }}>
-                GovQueue Frequently Asked Questions
-              </h2>
-            </legend>
+        <Grid item xs={12} md={12} lg={8}>
+          <Feildset
+            title={"GovQueue Frequently Asked Questions"}
+            sx={{ textAlign: "left" }}
+            titleStyles={{ fontSize: "24px", fontWeight: "bold" }}>
             {faqData.map((faq) => (
               <>
                 <Typography
@@ -70,7 +47,7 @@ export default function Support() {
                 <Divider />
               </>
             ))}
-          </fieldset>
+          </Feildset>
         </Grid>
       </Grid>
       <FacebookMessengerChat pageId="108965818922829" />

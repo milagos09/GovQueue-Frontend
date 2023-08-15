@@ -10,17 +10,10 @@ export default function About() {
     <>
       <NavBar />
       <Container>
-        <fieldset
-          style={{
-            borderRadius: "10px",
-            border: "1px inset rgba(0, 0, 0, .2)",
-            padding: "25px 50px",
-            margin: "20px 10px",
-            textAlign: "center",
-          }}>
-          <legend>
-            <h2 style={{ alignItems: "center", padding: "8px" }}>About Us</h2>
-          </legend>
+        <Feildset
+          title={"About Us"}
+          sx={{ textAlign: "center" }}
+          titleStyles={{ fontSize: "24px", fontWeight: "bold" }}>
           <Typography variant="subtitle1" sx={{ py: 2, px: 2 }} gutterBottom>
             We are a team of passionate developers who are committed to making
             life easier for the people in our country. We believe that everyone
@@ -70,43 +63,29 @@ export default function About() {
               height: "150px",
             }}
           />
-        </fieldset>
+        </Feildset>
       </Container>
 
-      <fieldset
-        style={{
-          borderRadius: "10px",
-          border: "1px inset rgba(0, 0, 0, .2)",
-          padding: "25px 50px",
-          margin: "20px 10px",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          ...glassEffect,
-        }}>
-        <legend>
-          <h2 style={{ alignItems: "center", padding: "8px" }}>
-            App by the Numbers
-          </h2>
-        </legend>
+      <Feildset
+        title={"App by the Numbers"}
+        sx={{ textAlign: "center" }}
+        titleStyles={{ fontSize: "24px", fontWeight: "bold" }}>
         <Grid
           sx={{ justifyContent: "space-evenly" }}
           container
           spacing={{ md: 3 }}
           columns={{ xs: 2, sm: 8, md: 9 }}>
-          <Grid item xs={3}>
-            <Feildset title={"Number of Site Visits"}>
+          <Grid item xs={2}>
+            <Feildset title={"Site Visits"}>
               <h1>[100K+]</h1>
             </Feildset>
           </Grid>
-          <Grid item xs={3}>
-            <Feildset
-              title={"Number of Agencies Participating"}
-              alignItems="center">
+          <Grid item xs={2}>
+            <Feildset title={"Agencies Participating"} alignItems="center">
               <h1>[100]</h1>
             </Feildset>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <Feildset
               title={"Another Site Statistic"}
               sx={{ alignItems: "center" }}>
@@ -114,7 +93,7 @@ export default function About() {
             </Feildset>
           </Grid>
         </Grid>
-      </fieldset>
+      </Feildset>
     </>
   );
 }
