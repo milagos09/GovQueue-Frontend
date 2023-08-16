@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         element: <Settings />,
     },
     {
-        path: "/dummy",
+        path: "/agency/:id",
         element: <Agency />,
     },
 ]);
