@@ -19,7 +19,7 @@ export default function Windows({ queue, minWidth }) {
                 sx={{
                     display: "flex",
                     justifyContent: "space-around",
-                    flexDirection: width < 360 ? "column" : "row",
+                    flexDirection: width < 400 ? "column" : "row",
                     gap: "20px",
                     minWidth: "fit-content",
                     alignItems: "center",

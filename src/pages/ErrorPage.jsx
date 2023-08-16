@@ -1,6 +1,7 @@
 import { Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { dark, gold } from "./../themes/MyTheme";
+import { gold } from "./../themes/MyTheme";
+import { Primary } from "../components/Buttons";
 
 const ErrorPage = () => {
     return (
@@ -58,12 +59,7 @@ const ErrorPage = () => {
                 unavailable.
             </Typography>
             <Link to="/" style={{ textDecoration: "none" }}>
-                <Button
-                    variant="contained"
-                    sx={{ ...dark, "&:hover": { fontWeight: "bold", background: "black" }, borderRadius: "4px" }}
-                >
-                    GO TO HOMEPAGE
-                </Button>
+                <Primary value={"Go to homepage"} />
             </Link>
         </Box>
     );
