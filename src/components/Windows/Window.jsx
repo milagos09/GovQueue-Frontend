@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import { light, gold, dark } from "../../themes/MyTheme";
+import { glassEffect, dark } from "../../themes/MyTheme";
 
-export default function Window({ name, number, updated }) {
+export default function Window({ minWidth = 100, name, number, updated }) {
     return (
         <Box sx={{ textAlign: "center" }}>
             <Box component="span">{name}</Box>
@@ -9,17 +9,17 @@ export default function Window({ name, number, updated }) {
                 component="div"
                 sx={{
                     fontWeight: "bold",
-                    fontSize: "3rem",
+                    fontSize: minWidth / 33.3 + "rem",
                     padding: "20px",
                     margin: "5px",
                     alignItems: "center",
                     justifyContent: "center",
                     border: "1px groove grey",
                     position: "relative",
-                    ...light,
+                    // ...glassEffect,
                     borderRadius: "4px",
                     transition: ".3s",
-                    minWidth: "100px",
+                    minWidth: minWidth + "px",
                     "&:hover": {
                         ...dark,
                         color: "azure",
