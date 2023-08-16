@@ -1,14 +1,11 @@
 import AdminNavBar from "../../components/AdminNavbar";
-
+import AdminSettings from "../../components/AdminSettings/AdminSettings";
 
 export default function Settings() {
-    return (
+  return (
     <>
-    <AdminNavBar />
-    <div>
-    Settings
-    </div>
+      <AdminNavBar />
+      <AdminSettings />
     </>
-    );
-  }
-  
+  );
+}
