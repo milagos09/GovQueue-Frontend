@@ -12,7 +12,10 @@
         "region": "BARMM",
         "chatSupportEnabled": true,
         "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU",
-        "announcement": "Esse consequat ullamco aute cupidatat sint. Nulla dolor id aute nostrud. Tempor quis dolor veniam incididunt."
+        "showAnnouncement": true,
+        "announcement": "Esse consequat ullamco aute cupidatat sint. Nulla dolor id aute nostrud. Tempor quis dolor veniam incididunt.",
+        "showMessenger": "true",
+        "messengerId": "108965818922829"
     },
     {
         "id": 2,

@@ -29,10 +29,11 @@ export default function Windows({ queue, minWidth }) {
                 {queue.map((q) => (
                     <Window
                         key={q.id}
+                        id={q.id}
                         minWidth={minWidth}
                         name={q.name}
                         number={q.current}
-                        updated={new Date(q.updatedOn).toLocaleTimeString()}
+                        updated={new Date(q.updatedOn)}
                     />
                 ))}
             </Stack>

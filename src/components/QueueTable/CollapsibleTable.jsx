@@ -6,7 +6,7 @@ import { glassEffect } from "../../themes/MyTheme";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import Row from "./Row";
 
-export default function CollapsibleTable({ admins, search, favorites, setFavorites }) {
+export default function CollapsibleTable({ admins, favorites, setFavorites }) {
     //responsiveness
     const { width } = CheckScreenSize();
     const customBreakPoint = width > 530;

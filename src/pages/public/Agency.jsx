@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Navbar from "./../../components/Navbar";
 import Announcement from "../../components/AgencyComponents/Announcement";
 import { useParams } from "react-router-dom";
+import FacebookMessengerChat from "./../../components/FacebookMessengerChat";
 
 export default function Agency() {
     const id = Number(useParams().id);
@@ -16,7 +17,7 @@ export default function Agency() {
         <>
             <Navbar />
             <Container>
-                <Announcement announcement={admin.announcement} />
+                <Announcement show={admin.showAnnouncement} announcement={admin.announcement} />
                 <Grid container>
                     <Grid item xs={12} sm={6} md={5}>
                         <Profile admin={admin} />
@@ -26,6 +27,7 @@ export default function Agency() {
                     </Grid>
                 </Grid>
             </Container>
+            {admin.showMessenger && <FacebookMessengerChat pageId={admin.messengerId} />}
         </>
     );
 }
