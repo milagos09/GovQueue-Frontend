@@ -1,5 +1,5 @@
 import AdminNavBar from "../../components/AdminNavbar";
-import AdminSettings from "../../components/AdminSettings/AdminSettings";
+import AdminSettings from "../../components/AdminSettings/index";
 
 export default function Settings() {
   return (

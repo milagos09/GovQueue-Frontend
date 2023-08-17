@@ -35,19 +35,17 @@ export default function AdminSupport() {
     <>
       <AdminNavbar />
       <Box>
-        <Grid container columnSpacing={{ xs: 2 }}>
+        <Grid container spacing={{ xs: 1, md: 3 }}>
           <Grid sm={12} md={4}>
             <Box sx={{ position: "sticky", top: 0 }}>
               <Item1
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                }}
-              >
+                }}>
                 <Card
                   variant="outlined"
-                  sx={{ minWidth: 275, height: "100%", border: "none" }}
-                >
+                  sx={{ minWidth: 275, height: "100%", border: "none" }}>
                   <CardContent sx={{ p: 2 }}>
                     <Typography
                       sx={{
@@ -56,8 +54,7 @@ export default function AdminSupport() {
                         py: 0,
                         px: 0,
                       }}
-                      gutterBottom
-                    >
+                      gutterBottom>
                       Guides
                     </Typography>
                     <Box
@@ -66,8 +63,7 @@ export default function AdminSupport() {
                         display: "flex",
                         width: "100%",
                         bgcolor: "background.paper",
-                      }}
-                    >
+                      }}>
                       <nav aria-label="main mailbox folders">
                         <List>
                           {apiData.guides.map((guide, index) => (
@@ -88,8 +84,7 @@ export default function AdminSupport() {
               <Box
                 sx={{
                   px: 4,
-                }}
-              >
+                }}>
                 <Typography sx={{ fontSize: 30, py: 0, px: 0 }} gutterBottom>
                   GovQueue API Documentation
                 </Typography>
@@ -99,8 +94,7 @@ export default function AdminSupport() {
                     <Typography
                       id={`guide${index}`}
                       variant="h5"
-                      sx={{ py: 2 }}
-                    >
+                      sx={{ py: 2 }}>
                       {guide.name}
                     </Typography>
                     <Typography variant="body1" sx={{ py: 1 }}>

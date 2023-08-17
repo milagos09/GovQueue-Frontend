@@ -1,7 +1,6 @@
 export const dark = {
     backgroundColor: "#111519f0",
     color: "azure",
-    boxShadow: "0 2px 10px rgba(244, 244, 244, 0.3)",
 };
 export const light = {
     backgroundColor: "snow",

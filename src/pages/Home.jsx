@@ -11,57 +11,54 @@ import Settings from "./admin/Settings";
 import AdminSupport from "./admin/AdminSupport";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Dashboard />,    
-    },
-    {
-        path: "/about",
-        element: <About />,
-    },
-    {
-        path: "/support",
-        element: <Support />,
-    },
-    {
-        path: "*",
-        element: <ErrorPage />,
-    },
-    {
-        path: "/login",
-        element: <Login />,
-    },
+  {
+    path: "/",
+    element: <Dashboard />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/support",
+    element: <Support />,
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
 
-    
-    {
-        path: "/admin",
-        element: <AdminDashboard />,
-    },
-    {
-        path: "/logs", 
-        element: <Logs />,
-    },
-    
-    {
-        path: "/adminsupport", 
-        element: <AdminSupport />,
-    },
+  {
+    path: "/admin",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "/logs",
+    element: <Logs />,
+  },
 
-    {
-        path: "/settings", 
-        element: <Settings />,
-    },
-       
+  {
+    path: "/adminsupport",
+    element: <AdminSupport />,
+  },
 
+  {
+    path: "/settings",
+    element: <Settings />,
+  },
 ]);
 
 export default function Home() {
-    return (
-        <>
-            <RouterProvider router={router}>
-                <Outlet />
-            </RouterProvider>
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <RouterProvider router={router}>
+        <Outlet />
+      </RouterProvider>
+      <Footer />
+    </>
+  );
 }
