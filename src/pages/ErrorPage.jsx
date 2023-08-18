@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { gold } from "./../themes/MyTheme";
 import { Primary } from "../components/Buttons";
 
-const ErrorPage = () => {
+export default function ErrorPage({ redirect }) {
     return (
         <Box
             sx={{
@@ -58,11 +58,9 @@ const ErrorPage = () => {
                 The page you are looking for might have been removed, had its name changed, or is temporarily
                 unavailable.
             </Typography>
-            <Link to="/" style={{ textDecoration: "none" }}>
-                <Primary value={"Go to homepage"} />
+            <Link to={redirect.to} style={{ textDecoration: "none" }}>
+                <Primary value={redirect.buttonValue} />
             </Link>
         </Box>
     );
-};
-
-export default ErrorPage;
+}

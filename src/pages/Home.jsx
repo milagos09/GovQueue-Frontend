@@ -26,30 +26,36 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <ErrorPage />,
+        element: <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} />,
     },
     {
         path: "/login",
         element: <Login />,
     },
-
     {
-        path: "/admin",
-        element: <AdminDashboard />,
-    },
-    {
-        path: "/logs",
-        element: <Logs />,
-    },
-
-    {
-        path: "/adminsupport",
-        element: <AdminSupport />,
-    },
-
-    {
-        path: "/settings",
-        element: <Settings />,
+        path: "/admin/:id",
+        children: [
+            {
+                index: true,
+                element: <AdminDashboard />,
+            },
+            {
+                path: "logs",
+                element: <Logs />,
+            },
+            {
+                path: "settings",
+                element: <Settings />,
+            },
+            {
+                path: "support",
+                element: <AdminSupport />,
+            },
+            {
+                path: "*",
+                element: <ErrorPage redirect={{ to: "/login", buttonValue: "Return to Admin Page" }} />,
+            },
+        ],
     },
     {
         path: "/agency/:id",
