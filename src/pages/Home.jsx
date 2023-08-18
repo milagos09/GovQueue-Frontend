@@ -33,22 +33,22 @@ const router = createBrowserRouter([
         element: <Login />,
     },
     {
-        path: "/admin/:id",
+        path: "/admin",
         children: [
             {
-                index: true,
+                path: ":id",
                 element: <AdminDashboard />,
             },
             {
-                path: "logs",
+                path: "logs/:id",
                 element: <Logs />,
             },
             {
-                path: "settings",
+                path: "settings/:id",
                 element: <Settings />,
             },
             {
-                path: "support",
+                path: "support/:id",
                 element: <AdminSupport />,
             },
             {
