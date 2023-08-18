@@ -9,11 +9,12 @@ import AdminDashboard from "./admin/AdminDashboard";
 import Logs from "./admin/Logs";
 import Settings from "./admin/Settings";
 import AdminSupport from "./admin/AdminSupport";
+import Agency from "./public/Agency";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Dashboard />,    
+        element: <Dashboard />,
     },
     {
         path: "/about",
@@ -32,27 +33,28 @@ const router = createBrowserRouter([
         element: <Login />,
     },
 
-    
     {
         path: "/admin",
         element: <AdminDashboard />,
     },
     {
-        path: "/logs", 
+        path: "/logs",
         element: <Logs />,
     },
-    
+
     {
-        path: "/adminsupport", 
+        path: "/adminsupport",
         element: <AdminSupport />,
     },
 
     {
-        path: "/settings", 
+        path: "/settings",
         element: <Settings />,
     },
-       
-
+    {
+        path: "/agency/:id",
+        element: <Agency />,
+    },
 ]);
 
 export default function Home() {
