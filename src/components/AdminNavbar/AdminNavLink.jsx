@@ -8,7 +8,7 @@ export default function AdminNavLink() {
     const id = useParams().id;
     const [setAnchorElNav] = useState(null);
     const pages = [
-        { nav: "Home", link: `/${id}` },
+        { nav: "Home", link: `/admin/${id}` },
         { nav: "Logs", link: id ? `/admin/logs/${id}` : `/login` },
         { nav: "Support", link: id ? `/admin/support/${id}` : `/login` },
         { nav: "Settings", link: id ? `/admin/settings/${id}` : `/login` },
