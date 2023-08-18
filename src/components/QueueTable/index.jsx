@@ -2,9 +2,11 @@ import CollapsibleTable from "./CollapsibleTable";
 import admins from "./../../../fake/admins.json";
 import queues from "./../../../fake/queues.json";
 import QueueTabs from "./QueueTabs";
+import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import { useEffect, useState } from "react";
 
 export default function QueueTable({ search }) {
+    const { width } = CheckScreenSize();
     const localStorageFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     const [favorites, setFavorites] = useState(localStorageFavorites);
 
@@ -28,6 +30,7 @@ export default function QueueTable({ search }) {
                     search={search}
                     favorites={favorites}
                     setFavorites={setFavorites}
+                    width={width}
                 />
             ),
         },
@@ -39,9 +42,10 @@ export default function QueueTable({ search }) {
                     search={search}
                     favorites={favorites}
                     setFavorites={setFavorites}
+                    width={width}
                 />
             ),
         },
     ];
-    return <QueueTabs contents={contents} />;
+    return <QueueTabs contents={contents} width={width} />;
 }

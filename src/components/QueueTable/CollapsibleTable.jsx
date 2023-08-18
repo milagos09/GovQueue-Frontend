@@ -3,12 +3,10 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
 import { glassEffect } from "../../themes/MyTheme";
-import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import Row from "./Row";
 
-export default function CollapsibleTable({ admins, favorites, setFavorites }) {
+export default function CollapsibleTable({ admins, favorites, setFavorites, width }) {
     //responsiveness
-    const { width } = CheckScreenSize();
     const customBreakPoint = width > 530;
 
     //pagination
