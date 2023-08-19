@@ -2,13 +2,20 @@
     {
         "id": 1,
         "agency": "MGO MAGARAO, CAMARINES SUR",
-        "type": "National Government Agencies (NGAs)",
+        "description": "Tempor quis dolor veniam incididunt. Duis culpa dolore consequat voluptate reprehenderit cillum voluptate proident sit dolor proident laboris ex ullamco. Do aute exercitation in occaecat culpa occaecat tempor.",
+        "type": "National Government Agencies",
         "email": "Marielle_Nolan@hotmail.com",
         "password": "PJzhwfoXhWZquPo",
         "address": "565 Rebekah Mall",
+        "contact": "123-1234",
+        "supportEmail": "Marielle_Nolan@hotmail.com",
         "region": "BARMM",
         "chatSupportEnabled": true,
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU",
+        "showAnnouncement": true,
+        "announcement": "Esse consequat ullamco aute cupidatat sint. Nulla dolor id aute nostrud. Tempor quis dolor veniam incididunt.",
+        "showMessenger": "true",
+        "messengerId": "108965818922829"
     },
     {
         "id": 2,

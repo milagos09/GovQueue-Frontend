@@ -9,8 +9,9 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Windows from "../Windows";
 import QueueActions from "../QueueActions";
 import { roundIcon } from "../../themes/MyTheme";
+import { Link } from "react-router-dom";
 
-export default function Row({ admin, customBreakPoint }) {
+export default function Row({ admin, customBreakPoint, isFavorite, toggleFavorite }) {
     const [open, setOpen] = useState(false);
     const fontSize = customBreakPoint ? ".9rem" : ".75rem";
     const maxWidth = customBreakPoint ? "80px" : "60px";
@@ -18,7 +19,7 @@ export default function Row({ admin, customBreakPoint }) {
     return (
         <>
             <TableRow>
-                <TableCell>
+                <TableCell align="center">
                     <IconButton
                         aria-label="expand row"
                         size="small"
@@ -45,21 +46,25 @@ export default function Row({ admin, customBreakPoint }) {
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
-                    <img src={admin.logo} loading="lazy" style={{ maxWidth: maxWidth, borderRadius: "50%" }} />
+                    <Link target="_blank" to={`agency/${admin.id}`}>
+                        <img src={admin.logo} loading="lazy" style={{ maxWidth: maxWidth, borderRadius: "50%" }} />
+                    </Link>
                 </TableCell>
                 <TableCell align="center" sx={{ fontSize: fontSize }}>
-                    {admin.agency}
+                    <Link target="_blank" to={`agency/${admin.id}`}>
+                        {admin.agency}
+                    </Link>
                 </TableCell>
                 {customBreakPoint && <TableCell align="center">{admin.region}</TableCell>}
                 <TableCell>
-                    <QueueActions admin={admin} />
+                    <QueueActions admin={admin} isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
                 </TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ marginBottom: "20px" }}>
-                            <Windows queue={admin.queues} />
+                            <Windows minWidth={80} queue={admin.queues} />
                         </Box>
                     </Collapse>
                 </TableCell>

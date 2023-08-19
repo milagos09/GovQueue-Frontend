@@ -9,9 +9,10 @@ export function Primary({ value, onClick }) {
                 onClick={onClick}
                 sx={{
                     ...dark,
-                    "&:hover": { fontWeight: "bold", background: "black" },
                     borderRadius: "4px",
                     mx: "10px",
+                    color: "rgb(255,255,255,.8)",
+                    "&:hover": { color: "azure", background: "black" },
                 }}
             >
                 {value}
