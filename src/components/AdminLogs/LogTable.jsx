@@ -38,7 +38,7 @@ export default function LogTable() {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
               <TableCell align="center" component="th" scope="row">
                 <Typography variant="subtitle2">
-                  {log.timestamp.slice(0, 17)}
+                  {log.timestamp.slice(0, 19)}
                 </Typography>
               </TableCell>
               <TableCell align="center">
