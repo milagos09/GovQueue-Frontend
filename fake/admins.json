@@ -27,6 +27,7 @@
         "region": "CAR",
         "chatSupportEnabled": true,
         "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU",
+        "showMessenger": "true",
         "messengerId": "104588581239094"
     },
     {
