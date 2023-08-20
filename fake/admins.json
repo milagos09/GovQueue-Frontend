@@ -26,7 +26,8 @@
         "address": "81332 Bashirian Groves",
         "region": "CAR",
         "chatSupportEnabled": true,
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU"
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU",
+        "messengerId": "104588581239094"
     },
     {
         "id": 3,
