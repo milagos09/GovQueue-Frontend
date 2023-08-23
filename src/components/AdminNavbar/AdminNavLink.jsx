@@ -2,16 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { useParams } from "react-router-dom";
 
 export default function AdminNavLink() {
-    const id = useParams().id;
     const [setAnchorElNav] = useState(null);
     const pages = [
-        { nav: "Home", link: `/admin/${id}` },
-        { nav: "Logs", link: id ? `/admin/logs/${id}` : `/login` },
-        { nav: "Support", link: id ? `/admin/support/${id}` : `/login` },
-        { nav: "Settings", link: id ? `/admin/settings/${id}` : `/login` },
+        { nav: "Home", link: `/admin` },
+        { nav: "Logs", link: `/admin/logs` },
+        { nav: "Support", link: `/admin/support` },
+        { nav: "Settings", link: `/admin/settings` },
     ];
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
@@ -32,7 +30,16 @@ export default function AdminNavLink() {
                 <Link key={page.nav} to={page.link} style={{ textDecoration: "none", color: "inherit" }}>
                     <Button
                         onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: "white", display: "block", width: "100%" }}
+                        sx={{
+                            my: 2,
+                            display: "block",
+                            width: "100%",
+                            color: location.pathname === page.link ? "#FB9300" : "white",
+                            "&:hover": {
+                                cursor: "pointer",
+                                fontWeight: "bold",
+                            },
+                        }}
                     >
                         {page.nav}
                     </Button>
