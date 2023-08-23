@@ -1,12 +1,12 @@
 import { dark, glassEffect } from "../../themes/MyTheme";
-import { Paper, Button, Stack } from "@mui/material";
+import { Paper, Button, Stack, Box } from "@mui/material";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 
 export default function LogOptions(onClick) {
   return (
-    <Paper sx={{ ...glassEffect, padding: 1, minWidth: "100%" }}>
+    <Box sx={{ padding: 1, my: 5 }}>
       <Stack
         direction={{ xs: "row", sm: "row" }}
         justifyContent="space-between"
@@ -43,6 +43,6 @@ export default function LogOptions(onClick) {
           Analyze Data
         </Button>
       </Stack>
-    </Paper>
+    </Box>
   );
 }

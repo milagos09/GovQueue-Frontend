@@ -1,7 +1,7 @@
-import { Paper, Grid, Stack, Typography } from "@mui/material";
+import { Grid, Stack, Typography, Box } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { dark, glassEffect } from "../../themes/MyTheme";
+import { useState } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -10,8 +10,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function LogPicker() {
+  const [defaultDate, setDefaultDate] = useState(dayjs());
   return (
-    <Paper sx={{ ...glassEffect, padding: 2, margin: 2 }}>
+    <Box sx={{ padding: 2, margin: 2 }}>
       <Grid
         container
         direction="row"
@@ -35,7 +36,8 @@ export default function LogPicker() {
               <DemoItem label="">
                 <DatePicker
                   sx={{ align: "left", width: "150px" }}
-                  defaultValue={dayjs("2022-04-17")}
+                  value={defaultDate}
+                  onChange={(newValue) => setDefaultDate(newValue)}
                 />
               </DemoItem>
             </DemoContainer>
@@ -60,7 +62,8 @@ export default function LogPicker() {
               <DemoItem label="">
                 <DatePicker
                   sx={{ align: "left", width: "150px" }}
-                  defaultValue={dayjs("2022-04-17")}
+                  value={defaultDate}
+                  onChange={(newValue) => setDefaultDate(newValue)}
                 />
               </DemoItem>
             </DemoContainer>
@@ -85,6 +88,6 @@ export default function LogPicker() {
           </FormControl>
         </Stack>
       </Grid>
-    </Paper>
+    </Box>
   );
 }
