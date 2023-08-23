@@ -11,6 +11,10 @@ import Select from "@mui/material/Select";
 
 export default function LogPicker() {
   const [defaultDate, setDefaultDate] = useState(dayjs());
+  const currentDate = dayjs();
+  const defaultStartDate = currentDate.subtract(1, "day");
+  const [startDate, setStartDate] = useState(defaultStartDate);
+
   return (
     <Box sx={{ padding: 2, margin: 2 }}>
       <Grid
@@ -23,7 +27,8 @@ export default function LogPicker() {
           direction={{ xs: "row", sm: "row" }}
           justifyContent="center"
           alignItems="center"
-          spacing={2}>
+          spacing={2}
+          padding={2}>
           <Typography variant="h6">Start:</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
@@ -36,8 +41,8 @@ export default function LogPicker() {
               <DemoItem label="">
                 <DatePicker
                   sx={{ align: "left", width: "150px" }}
-                  value={defaultDate}
-                  onChange={(newValue) => setDefaultDate(newValue)}
+                  value={startDate}
+                  onChange={(newValue) => setStartDate(newValue)}
                 />
               </DemoItem>
             </DemoContainer>
@@ -48,7 +53,8 @@ export default function LogPicker() {
           direction={{ xs: "row", sm: "row" }}
           justifyContent="center"
           alignItems="center"
-          spacing={2}>
+          spacing={2}
+          padding={2}>
           <Typography variant="h6">End:</Typography>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -74,7 +80,7 @@ export default function LogPicker() {
           justifyContent="center"
           alignItems="center"
           spacing={2}
-          padding={1}>
+          padding={2}>
           <Typography variant="h6">Window:</Typography>
 
           <FormControl sx={{ m: 2, minWidth: 189 }}>
