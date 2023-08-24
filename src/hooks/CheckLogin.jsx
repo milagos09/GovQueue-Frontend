@@ -7,7 +7,7 @@ export function CheckLogin() {
     useEffect(() => {
         const adminUser = sessionStorage.getItem("admin");
         if (!adminUser) {
-            navigate("/login");
+            navigate("/admin/login");
             setIsLoggedIn(false);
         } else {
             setIsLoggedIn(true);
