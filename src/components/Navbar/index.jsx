@@ -5,7 +5,6 @@ import AppName from "./AppName";
 import HamburgerMenu from "./HamburgerMenu";
 import { dark } from "./../../themes/MyTheme";
 import Search from "./Search";
-import { useState } from "react";
 import DateTime from "./DateTime";
 
 export default function NavBar({ search, setSearch }) {
