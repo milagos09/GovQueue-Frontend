@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 
 function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
+    const { children, value, index, width, ...other } = props;
 
     return (
         <div
@@ -16,7 +16,7 @@ function CustomTabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{ py: 3, px: width < 600 ? 0 : 3 }}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -31,7 +31,7 @@ function a11yProps(index, name) {
     };
 }
 
-export default function QueueTabs({ contents }) {
+export default function QueueTabs({ contents, width }) {
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
@@ -60,9 +60,9 @@ export default function QueueTabs({ contents }) {
             <div className="tab-content-container">
                 {contents.map((content, i) => (
                     <div className={`tab-content ${value === i ? "active" : ""}`} key={i}>
-                        <CustomTabPanel value={value} index={i}>
+                        <CustomTabPanel value={value} index={i} width={width}>
                             {content.component}
-                        </CustomTabPanel>{" "}
+                        </CustomTabPanel>
                     </div>
                 ))}
             </div>
