@@ -1,11 +1,22 @@
 import AdminHeader from "./AdminHeader";
-// import DataTable from "./DataTable";
+import AdminQueueTable from "./AdminQueueTable";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
 
 export default function AdminHome() {
   return (
     <>
-      <AdminHeader />
-      {/* <DataTable /> */}
+      <Container maxWidth="lg">
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          direction="row"
+          sx={{ padding: 1 }}>
+          <AdminHeader />
+          <AdminQueueTable />
+        </Grid>
+      </Container>
     </>
   );
 }
