@@ -3,7 +3,6 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { styled } from "@mui/material/styles";
-import logs from "../../../fake/logs.json";
 import { TableBody, Typography, Box } from "@mui/material";
 import { glassEffect } from "../../themes/MyTheme";
 import TablePagination from "@mui/material/TablePagination";
@@ -29,7 +28,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export default function LogTable() {
+export default function LogTable({ logs }) {
     //pagination
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(15);

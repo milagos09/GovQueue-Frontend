@@ -9,12 +9,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function LogPicker() {
+export default function LogPicker({ queues }) {
     const [defaultDate, setDefaultDate] = useState(dayjs());
     const currentDate = dayjs();
     const defaultStartDate = currentDate.subtract(1, "day");
     const [startDate, setStartDate] = useState(defaultStartDate);
-
+    console.log(queues);
     return (
         <Box sx={{ padding: 2, margin: 2 }}>
             <Grid container direction="row" justifyContent="space-evenly" alignItems="center" spacing={2}>
@@ -90,12 +90,17 @@ export default function LogPicker() {
                             size="small"
                             labelId="queue-simple-select-label"
                             id="queue-simple-select"
-                            defaultValue={0}
+                            defaultValue={"all"}
                             sx={{ fontSize: ".84rem" }}
                         >
-                            <MenuItem sx={{ fontSize: ".84rem" }} value={0}>
+                            <MenuItem sx={{ fontSize: ".84rem" }} value={"all"}>
                                 All
                             </MenuItem>
+                            {queues.map((queue, i) => (
+                                <MenuItem key={i} sx={{ fontSize: ".84rem" }} value={queue.name}>
+                                    {queue.name}
+                                </MenuItem>
+                            ))}
                         </Select>
                     </FormControl>
                 </Stack>
