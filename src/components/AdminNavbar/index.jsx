@@ -4,16 +4,33 @@ import AdminNavLink from "./AdminNavLink";
 import AdminNavBarAppName from "./AdminNavBarAppName";
 import AdminHamburgerMenu from "./AdminHamburgerMenu";
 import { dark } from "./../../themes/MyTheme";
-import { CheckLogin } from "../../hooks/CheckLogin";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminNavbar() {
-    const isLoggedIn = CheckLogin();
+    const navigate = useNavigate();
+    const pages = [
+        { nav: "Home", link: `/admin` },
+        { nav: "Logs", link: `/admin/logs` },
+        { nav: "Support", link: `/admin/support` },
+        { nav: "Settings", link: `/admin/settings` },
+        {
+            nav: "Logout",
+            link: "/admin/login",
+            onClick: () => {
+                sessionStorage.clear();
+                navigate(0);
+            },
+        },
+    ];
+
+    const isLoggedIn = !!sessionStorage.getItem("admin");
+
     return (
         <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
             <Toolbar disableGutters>
-                <AdminHamburgerMenu />
+                {isLoggedIn && <AdminHamburgerMenu pages={pages} />}
                 <AdminNavBarAppName />
-                {isLoggedIn && <AdminNavLink />}
+                {isLoggedIn && <AdminNavLink pages={pages} />}
             </Toolbar>
         </AppBar>
     );

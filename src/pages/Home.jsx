@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider, Navigate } from "react-router-dom";
 import Dashboard from "./public/Dashboard";
 import About from "./public/About";
 import Support from "./public/Support";
@@ -10,6 +10,8 @@ import Logs from "./admin/Logs";
 import Settings from "./admin/Settings";
 import AdminSupport from "./admin/AdminSupport";
 import Agency from "./public/Agency";
+
+const isLoggedIn = !!sessionStorage.getItem("admin");
 
 const router = createBrowserRouter([
     {
@@ -35,22 +37,22 @@ const router = createBrowserRouter([
     {
         path: "/admin",
         children: [
-            { path: "", element: <AdminDashboard /> },
+            { path: "", element: isLoggedIn ? <AdminDashboard /> : <Navigate to={"/admin/login"} /> },
             {
                 path: "login",
-                element: <Login />,
+                element: isLoggedIn ? <Navigate to={"/admin"} /> : <Login />,
             },
             {
                 path: "logs",
-                element: <Logs />,
+                element: isLoggedIn ? <Logs /> : <Navigate to={"/admin/login"} />,
             },
             {
                 path: "settings",
-                element: <Settings />,
+                element: isLoggedIn ? <Settings /> : <Navigate to={"/admin/login"} />,
             },
             {
                 path: "support",
-                element: <AdminSupport />,
+                element: isLoggedIn ? <AdminSupport /> : <Navigate to={"/admin/login"} />,
             },
             {
                 path: "*",

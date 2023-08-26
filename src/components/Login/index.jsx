@@ -10,6 +10,7 @@ export default function AdminLogin() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
+    const [login, setLogin] = useState(false);
 
     const handleShowPasswordClick = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -21,16 +22,20 @@ export default function AdminLogin() {
 
     const navigate = useNavigate();
     const handleLogin = () => {
-        const adminUser = admins.find((admin) => admin.email == email && admin.password == password);
+        const trimmedEmail = email.trim();
+        const adminUser = admins.find((admin) => admin.email === trimmedEmail && admin.password === password);
+
         if (adminUser) {
             sessionStorage.setItem("admin", JSON.stringify(adminUser));
-            navigate("/admin");
+            setLogin(true);
         }
     };
 
     useEffect(() => {
-        if (sessionStorage.getItem("admin")) navigate("/admin");
-    });
+        if (login) {
+            navigate(0);
+        }
+    }, [login]);
 
     return (
         <Container maxWidth="sm">
@@ -76,6 +81,7 @@ export default function AdminLogin() {
                         alignItems: "center",
                         justifyContent: "space-between",
                         margin: "16px 0",
+                        flexWrap: "wrap",
                     }}
                 >
                     <div>
@@ -88,7 +94,7 @@ export default function AdminLogin() {
                 </div>
 
                 <div style={{ margin: "16px 0" }}>
-                    <Primary value={"Log in"} onClick={handleLogin} />
+                    <Primary value={"Log in"} onClick={handleLogin} type={"submit"} />
                 </div>
             </form>
         </Container>
