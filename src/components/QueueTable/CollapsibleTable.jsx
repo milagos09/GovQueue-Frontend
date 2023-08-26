@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
@@ -9,14 +9,14 @@ export default function CollapsibleTable({ admins, favorites, setFavorites, widt
     //responsiveness
     const customBreakPoint = width > 530;
 
-    //pagination
-    const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
-
     const toggleFavorite = (id, isFavorite) => {
         const updatedFavorites = isFavorite ? favorites.filter((f) => f !== id) : [...favorites, id];
         setFavorites(updatedFavorites);
     };
+
+    //pagination
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);

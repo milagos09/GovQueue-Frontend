@@ -4,13 +4,13 @@ import LogTable from "./LogTable";
 import LogOptions from "./LogOptions";
 
 export default function AdminLogs() {
-  return (
-    <>
-      <Container maxWidth="lg">
-        <LogPicker />
-        <LogTable />
-        <LogOptions />
-      </Container>
-    </>
-  );
+    return (
+        <>
+            <Container maxWidth="lg">
+                <LogPicker />
+                <LogTable />
+                <LogOptions />
+            </Container>
+        </>
+    );
 }
