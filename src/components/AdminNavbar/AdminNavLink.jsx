@@ -1,18 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-export default function AdminNavLink() {
+export default function AdminNavLink({ pages }) {
     const [setAnchorElNav] = useState(null);
-    const pages = [
-        { nav: "Home", link: `/admin` },
-        { nav: "Logs", link: `/admin/logs` },
-        { nav: "Support", link: `/admin/support` },
-        { nav: "Settings", link: `/admin/settings` },
-    ];
+    const navigate = useNavigate();
     const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
+        // setAnchorElNav(null);
     };
     return (
         <Box
@@ -27,7 +22,12 @@ export default function AdminNavLink() {
             }}
         >
             {pages.map((page) => (
-                <Link key={page.nav} to={page.link} style={{ textDecoration: "none", color: "inherit" }}>
+                <Link
+                    key={page.nav}
+                    to={page.link}
+                    onClick={page.onClick}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                >
                     <Button
                         onClick={handleCloseNavMenu}
                         sx={{
