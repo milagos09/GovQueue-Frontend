@@ -1,11 +1,11 @@
 import AdminNavbar from "../../components/AdminNavbar";
-import DataGrid from "../../components/DataGrid/DataGrid";
+import AdminHome from "../../components/AdminHome/index";
 
 export default function AdminDashboard() {
-    return (
-        <>
-            <AdminNavbar />
-            <DataGrid />
-        </>
-    );
+  return (
+    <>
+      <AdminNavbar />
+      <AdminHome />
+    </>
+  );
 }
