@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import { dark } from "../../themes/MyTheme";
 
-export function Primary({ value, onClick, type = "button" }) {
+export function Primary({ value, onClick, type = "button", sx }) {
     return (
         <>
             <Button
@@ -12,6 +12,7 @@ export function Primary({ value, onClick, type = "button" }) {
                     "&:hover": { fontWeight: "bold", background: "black" },
                     borderRadius: "4px",
                     mx: "10px",
+                    ...sx,
                 }}
                 type={type}
             >
@@ -21,7 +22,7 @@ export function Primary({ value, onClick, type = "button" }) {
     );
 }
 
-export function Secondary({ value, onClick, type = "button" }) {
+export function Secondary({ value, onClick, type = "button", sx }) {
     return (
         <>
             <Button
@@ -33,6 +34,7 @@ export function Secondary({ value, onClick, type = "button" }) {
                     "&:hover": { fontWeight: "bold", backgroundColor: "azure" },
                     borderRadius: "4px",
                     mx: "10px",
+                    ...sx,
                 }}
                 type={type}
             >
