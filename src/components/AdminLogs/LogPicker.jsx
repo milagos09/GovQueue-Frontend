@@ -14,7 +14,7 @@ export default function LogPicker({ queues }) {
     const currentDate = dayjs();
     const defaultStartDate = currentDate.subtract(1, "day");
     const [startDate, setStartDate] = useState(defaultStartDate);
-    console.log(queues);
+
     return (
         <Box sx={{ padding: 2, margin: 2 }}>
             <Grid container direction="row" justifyContent="space-evenly" alignItems="center" spacing={2}>

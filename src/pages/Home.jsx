@@ -1,9 +1,4 @@
-import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
-  Navigate,
-} from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider, Navigate } from "react-router-dom";
 import Dashboard from "./public/Dashboard";
 import About from "./public/About";
 import Support from "./public/Support";
@@ -19,67 +14,61 @@ import Agency from "./public/Agency";
 const isLoggedIn = !!sessionStorage.getItem("admin");
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Dashboard />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/support",
-    element: <Support />,
-  },
-  {
-    path: "/agency/:id",
-    element: <Agency />,
-  },
-  {
-    path: "*",
-    element: (
-      <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} />
-    ),
-  },
-  {
-    path: "/admin",
-    children: [
-      { path: "", element: <AdminDashboard /> },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "logs",
-        element: <Logs />,
-      },
-      {
-        path: "settings",
-        element: <Settings />,
-      },
-      {
-        path: "support",
-        element: <AdminSupport />,
-      },
-      {
+    {
+        path: "/",
+        element: <Dashboard />,
+    },
+    {
+        path: "/about",
+        element: <About />,
+    },
+    {
+        path: "/support",
+        element: <Support />,
+    },
+    {
+        path: "/agency/:id",
+        element: <Agency />,
+    },
+    {
         path: "*",
-        element: (
-          <ErrorPage
-            redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }}
-          />
-        ),
-      },
-    ],
-  },
+        element: <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} />,
+    },
+    {
+        path: "/admin",
+        children: [
+            { path: "", element: isLoggedIn ? <AdminDashboard /> : <Navigate to={"/admin/login"} /> },
+            {
+                path: "login",
+                element: isLoggedIn ? <Navigate to={"/admin"} /> : <Login />,
+            },
+            {
+                path: "logs",
+                element: isLoggedIn ? <Logs /> : <Navigate to={"/admin/login"} />,
+            },
+            {
+                path: "settings",
+                element: isLoggedIn ? <Settings /> : <Navigate to={"/admin/login"} />,
+            },
+            {
+                path: "support",
+                element: isLoggedIn ? <AdminSupport /> : <Navigate to={"/admin/login"} />,
+            },
+            {
+                path: "*",
+                element: <ErrorPage redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }} />,
+            },
+        ],
+    },
 ]);
 
 export default function Home() {
-  return (
-    <>
-      <RouterProvider router={router}>
-        <Outlet />
-      </RouterProvider>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <RouterProvider router={router}>
+                <Outlet />
+            </RouterProvider>
+            <Footer />
+        </>
+    );
 }
