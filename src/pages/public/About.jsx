@@ -2,7 +2,7 @@ import NavBar from "../../components/Navbar";
 import Typography from "@mui/material/Typography";
 import GcashQrCode from "../../assets/gcash-qr-code.jpg";
 import Feildset from "../../components/Fieldset";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Stack } from "@mui/material";
 
 export default function About() {
   return (
@@ -63,36 +63,43 @@ export default function About() {
             }}
           />
         </Feildset>
-      </Container>
 
-      <Feildset
-        title={"App by the Numbers"}
-        sx={{ textAlign: "center" }}
-        titleStyles={{ fontSize: "24px", fontWeight: "bold" }}>
-        <Grid
-          sx={{ justifyContent: "space-evenly" }}
-          container
-          spacing={{ md: 3 }}
-          columns={{ xs: 2, sm: 8, md: 9 }}>
-          <Grid item xs={2}>
-            <Feildset title={"Site Visits"}>
-              <h1>[100K+]</h1>
-            </Feildset>
-          </Grid>
-          <Grid item xs={2}>
-            <Feildset title={"Agencies Participating"} alignItems="center">
-              <h1>[100]</h1>
-            </Feildset>
-          </Grid>
-          <Grid item xs={2}>
-            <Feildset
-              title={"Another Site Statistic"}
-              sx={{ alignItems: "center" }}>
-              <h1>[1M+]</h1>
-            </Feildset>
-          </Grid>
-        </Grid>
-      </Feildset>
+        <Feildset
+          title={"App by the Numbers"}
+          sx={{
+            textAlign: "center",
+
+            alignItems: "center",
+          }}
+          titleStyles={{ fontSize: "24px", fontWeight: "bold" }}>
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={{ md: 2 }}
+            sx={{ justifyContent: "center" }}>
+            <Grid item xs={2}>
+              <Feildset
+                title={"Site Visits"}
+                sx={{ alignItems: "justify", fontSize: "14px" }}>
+                <h1>[100K+]</h1>
+              </Feildset>
+            </Grid>
+            <Grid item xs={2}>
+              <Feildset
+                title={"Agencies Participating"}
+                sx={{ alignItems: "justify", fontSize: "14px" }}>
+                <h1>[100]</h1>
+              </Feildset>
+            </Grid>
+            <Grid item xs={2}>
+              <Feildset
+                title={"Another Site Statistic"}
+                sx={{ alignItems: "justify", fontSize: "14px" }}>
+                <h1>[1M+]</h1>
+              </Feildset>
+            </Grid>
+          </Stack>
+        </Feildset>
+      </Container>
     </>
   );
 }
