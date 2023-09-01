@@ -62,7 +62,7 @@ export default function AdminAccountSettings() {
             direction="row"
             useFlexGap
             flexWrap="wrap"
-            justifyContent="flex-end"
+            justifyContent={{ xs: "flex-start", sm: "flex-end" }}
             alignItems="center">
             <TextField
               variant="outlined"
@@ -96,7 +96,7 @@ export default function AdminAccountSettings() {
             direction="row"
             useFlexGap
             flexWrap="wrap"
-            justifyContent="flex-end"
+            justifyContent={{ xs: "flex-start", sm: "flex-end" }}
             alignItems="center">
             <TextField
               variant="outlined"

@@ -21,7 +21,6 @@ export default function AdminProfileSettings() {
           titleStyles={{ fontSize: "24px", fontWeight: "bold" }}>
           <h4 style={{ textAlign: "left" }}>Agency Logo</h4>
           <Stack
-            spacing={{ xs: 1, sm: 2 }}
             direction="row"
             useFlexGap
             flexWrap="wrap"
@@ -46,15 +45,15 @@ export default function AdminProfileSettings() {
             <Tooltip
               title="Recommended Image Size and File Type"
               placement="right-start">
-              <HelpOutlineIcon />
+              <HelpOutlineIcon id="info" popover="manual" anchor="btn" />
             </Tooltip>
           </Stack>
           <Stack
-            spacing={{ xs: 1, sm: 2 }}
-            direction="row"
+            spacing={{ xs: 2, sm: 2 }}
+            direction={{ xs: "column", sm: "row" }}
             useFlexGap
             flexWrap="wrap"
-            justifyContent="flex-start"
+            justifyContent="center"
             alignItems="center"
             sx={{ marginTop: 5 }}>
             <h4>Agency Name</h4>
@@ -71,12 +70,12 @@ export default function AdminProfileSettings() {
           </Stack>
           <Stack
             spacing={{ xs: 1, sm: 2 }}
-            direction="row"
+            direction={{ xs: "column", sm: "row" }}
             useFlexGap
             flexWrap="wrap"
-            justifyContent="flex-start"
+            justifyContent="center"
             alignItems="center"
-            sx={{ marginTop: 3 }}>
+            sx={{ marginTop: 2 }}>
             <h4 style={{ marginRight: 15 }}>Description</h4>
             <TextField
               variant="outlined"
@@ -91,14 +90,14 @@ export default function AdminProfileSettings() {
           </Stack>
           <Stack
             spacing={{ xs: 1, sm: 2 }}
-            direction="row"
+            direction={{ xs: "column", sm: "row" }}
             useFlexGap
             flexWrap="wrap"
-            justifyContent="flex-start"
+            justifyContent="center"
             alignItems="center"
-            sx={{ marginTop: 1 }}>
+            sx={{ marginTop: 2 }}>
             <h4 style={{ marginRight: 45 }}>Type</h4>
-            <FormControl size="small" sx={{ m: 2, minWidth: 220 }}>
+            <FormControl size="small" sx={{ m: 1, minWidth: 220 }}>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -109,10 +108,10 @@ export default function AdminProfileSettings() {
           </Stack>
           <Stack
             spacing={{ xs: 1, sm: 2 }}
-            direction="row"
+            direction={{ xs: "column", sm: "row" }}
             useFlexGap
             flexWrap="wrap"
-            justifyContent="flex-start"
+            justifyContent="center"
             alignItems="center"
             sx={{ marginTop: 1 }}>
             <h4 style={{ marginRight: 40 }}>Address</h4>
@@ -129,14 +128,14 @@ export default function AdminProfileSettings() {
           </Stack>
           <Stack
             spacing={{ xs: 1, sm: 2 }}
-            direction="row"
+            direction={{ xs: "column", sm: "row" }}
             useFlexGap
             flexWrap="wrap"
-            justifyContent="flex-start"
+            justifyContent="center"
             alignItems="center"
-            sx={{ marginTop: 1 }}>
+            sx={{ marginTop: 2 }}>
             <h4 style={{ marginRight: 30 }}>Region</h4>
-            <FormControl sx={{ m: 2, minWidth: 220 }}>
+            <FormControl sx={{ m: 1, minWidth: 220 }}>
               <Select
                 size="small"
                 labelId="demo-simple-select-label"
