@@ -5,8 +5,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import EventNoteIcon from "@mui/icons-material/EventNote";
-import { useState } from "react";
 import logs from "./../../../fake/logs.json";
 import LogTable from "./LogTable";
 
@@ -48,28 +46,24 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-export default function ShowLogs({ id, agency }) {
-    const [open, setOpen] = useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+export default function ShowLogs({ queueId, adminId, title, openLogs, setOpenLogs }) {
     const handleClose = () => {
-        setOpen(false);
+        setOpenLogs(false);
     };
 
-    const filterLogs = logs.filter((log) => log.adminId === id);
+    const filterLogs = queueId
+        ? logs.filter((log) => log.queueId === queueId)
+        : logs.filter((log) => log.adminId === adminId);
 
     return (
         <>
-            <EventNoteIcon onClick={handleClickOpen} />
-            <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+            <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={openLogs}>
                 <BootstrapDialogTitle
                     id="customized-dialog-title"
                     onClose={handleClose}
                     sx={{ paddingX: "50px", maxWidth: "350px", textAlign: "center" }}
                 >
-                    {agency}
+                    {title ? title : "Logs"}
                 </BootstrapDialogTitle>
                 <DialogContent sx={{ paddingY: "50px" }}>
                     <LogTable logs={filterLogs.slice(-10)} />

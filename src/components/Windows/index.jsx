@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import Window from "./Window";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 
-export default function Windows({ queue }) {
+export default function Windows({ queue, minWidth }) {
     const { width } = CheckScreenSize();
     return (
         <Box
@@ -12,7 +12,6 @@ export default function Windows({ queue }) {
                 padding: "20px 15px",
                 marginY: "10px",
                 width: "100%",
-                boxShadow: 3,
                 borderRadius: "10px",
             }}
         >
@@ -20,19 +19,21 @@ export default function Windows({ queue }) {
                 sx={{
                     display: "flex",
                     justifyContent: "space-around",
-                    flexDirection: width < 360 ? "column" : "row",
+                    flexDirection: width < 400 ? "column" : "row",
                     gap: "20px",
                     minWidth: "fit-content",
                     alignItems: "center",
-                    flexWrap: width < 600 ? "wrap" : "no-wrap",
+                    flexWrap: "wrap",
                 }}
             >
                 {queue.map((q) => (
                     <Window
                         key={q.id}
+                        id={q.id}
+                        minWidth={minWidth}
                         name={q.name}
                         number={q.current}
-                        updated={new Date(q.updatedOn).toLocaleTimeString()}
+                        updated={new Date(q.updatedOn)}
                     />
                 ))}
             </Stack>
