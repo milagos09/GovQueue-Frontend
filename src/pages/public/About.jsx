@@ -76,12 +76,6 @@ export default function About() {
             direction={{ xs: "column", md: "row" }}
             spacing={{ md: 2 }}
             sx={{ justifyContent: "center" }}>
-            {/* <Grid
-          sx={{ justifyContent: "space-evenly" }}
-          container
-          spacing={{ sm: 2, md: 3 }}
-          // columns={{ xs: 2, sm: 8, md: 9 }}>
-        > */}
             <Grid item xs={2}>
               <Feildset
                 title={"Site Visits"}
@@ -104,7 +98,6 @@ export default function About() {
               </Feildset>
             </Grid>
           </Stack>
-          {/* </Grid> */}
         </Feildset>
       </Container>
     </>
