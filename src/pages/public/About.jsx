@@ -2,7 +2,7 @@ import NavBar from "../../components/Navbar";
 import Typography from "@mui/material/Typography";
 import GcashQrCode from "../../assets/gcash-qr-code.jpg";
 import Feildset from "../../components/Fieldset";
-import { Container, Grid, Stack, Box } from "@mui/material";
+import { Container, Grid, Stack } from "@mui/material";
 
 export default function About() {
   return (

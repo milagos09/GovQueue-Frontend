@@ -1,5 +1,4 @@
 import AdminNavbar from "../../components/AdminNavbar";
-import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
 import { Divider, ListItem, List, Typography, Grid } from "@mui/material";
 import apiData from "../public/api.json";
 import SyntaxHighlight from "../../components/SyntaxHighlighter";
@@ -78,7 +77,6 @@ export default function AdminSupport() {
           </Feildset>
         </Grid>
       </Grid>
-      <FacebookMessengerChat pageId="108965818922829" />
     </>
   );
 }
