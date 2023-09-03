@@ -22,7 +22,8 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-material-ui-carousel": "^3.4.2",
-        "react-router-dom": "^6.14.1"
+        "react-router-dom": "^6.14.1",
+        "socket.io-client": "^4.7.2"
     },
     "devDependencies": {
         "@faker-js/faker": "^8.0.2",
