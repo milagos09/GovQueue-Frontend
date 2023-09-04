@@ -3,7 +3,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import { useState } from "react";
 
-export default function EditableTextField({ label, value }) {
+export default function EditableTextField({ label, value, enabled = true }) {
     const [editable, setEditable] = useState(false);
     const editableStyle = { background: "azure", color: "#1976D2" };
     const inputStyles = {
@@ -13,7 +13,8 @@ export default function EditableTextField({ label, value }) {
             ...(editable ? editableStyle : {}),
         },
         readOnly: !editable,
-        endAdornment: (
+        disabled: !enabled,
+        endAdornment: enabled && (
             <InputAdornment position="end">
                 <IconButton
                     onClick={() => {
