@@ -1,24 +1,22 @@
 import AdminAccountSettings from "./AdminAccountSettings";
 import AdminProfileSettings from "./AdminProfileSettings";
 import { Box, Grid } from "@mui/material";
+import admins from "./../../../fake/admins.json";
 
 export default function AdminSettings() {
-  return (
-    <>
-      <Box
-        minHeight="80vh"
-        display="flex"
-        sx={{ justifyContent: "center", alignItems: "center" }}>
-        <Grid
-          container
-          columns={{ xs: 2, sm: 4, md: 8, lg: 4 }}
-          direction="row"
-          justifyContent="space-evenly"
-          alignItems="flex-start">
-          <AdminProfileSettings />
-          <AdminAccountSettings />
-        </Grid>
-      </Box>
-    </>
-  );
+    const admin = admins[0];
+    return (
+        <>
+            <Box minHeight="80vh" display="flex" sx={{ justifyContent: "center", alignItems: "center" }}>
+                <Grid container justifyContent="space-evenly" sx={{ px: 5 }} columnSpacing={3}>
+                    <Grid item sm={12} md={6}>
+                        <AdminProfileSettings admin={admin} />
+                    </Grid>
+                    <Grid item sm={12} md={6}>
+                        <AdminAccountSettings admin={admin} />
+                    </Grid>
+                </Grid>
+            </Box>
+        </>
+    );
 }
