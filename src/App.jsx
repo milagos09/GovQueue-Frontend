@@ -12,7 +12,7 @@ import ErrorBoundary from "./pages/ErrorBoundaryPage";
 import { useState } from "react";
 
 export default function App() {
-  const [error, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const handleOnError = () => {
     setHasError(true);
