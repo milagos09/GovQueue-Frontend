@@ -11,7 +11,9 @@ import Settings from "./admin/Settings";
 import AdminSupport from "./admin/AdminSupport";
 import Agency from "./public/Agency";
 
-const isLoggedIn = !!sessionStorage.getItem("admin");
+const session = sessionStorage.getItem("admin");
+const isLoggedIn = !!session;
+const user = JSON.parse(session);
 
 const router = createBrowserRouter([
     {
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "logs",
-                element: isLoggedIn ? <Logs /> : <Navigate to={"/admin/login"} />,
+                element: isLoggedIn ? <Logs user={user} /> : <Navigate to={"/admin/login"} />,
             },
             {
                 path: "settings",
