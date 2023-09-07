@@ -8,6 +8,7 @@ export default function About() {
   return (
     <>
       <NavBar />
+
       <Container>
         <Feildset
           title={"About Us"}

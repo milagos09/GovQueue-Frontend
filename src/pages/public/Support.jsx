@@ -5,9 +5,11 @@ import { Divider, ListItem, List, Typography, Grid } from "@mui/material";
 import faqData from "./faq.json";
 
 export default function Support() {
+  // throw new Error("");
   return (
     <>
       <NavBar />
+
       <Grid container>
         <Grid item xs={12} md={8} lg={4}>
           <Feildset
