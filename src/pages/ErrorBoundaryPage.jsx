@@ -1,4 +1,5 @@
 import React from "react";
+import { Box } from "@mui/material";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -19,7 +20,17 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return this.props.fallback;
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "100vh",
+          }}>
+          <h1>Something went wrong</h1>
+        </Box>
+      );
     }
 
     return this.props.children;

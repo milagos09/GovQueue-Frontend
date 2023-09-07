@@ -7,17 +7,16 @@ import Home from "./pages/Home";
 // import Support from "./pages/public/Support";
 // import Login from "./pages/admin/Login";
 // import Dashboard from "./pages/public/Dashboard";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { Box } from "@mui/material";
+import ErrorBoundary from "./pages/ErrorBoundaryPage";
 
-const centerStyle = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  minHeight: "100vh",
-};
+import { useState } from "react";
 
 export default function App() {
+  const [error, setHasError] = useState(false);
+
+  const handleOnError = () => {
+    setHasError(true);
+  };
   // const router = createBrowserRouter([
   //     {
   //         path: "/",
@@ -42,16 +41,9 @@ export default function App() {
   // ]);
   return (
     <>
-      <Box style={centerStyle}>
-        <ErrorBoundary
-          fallback={
-            <Box>
-              <h1>Something went wrong</h1>
-            </Box>
-          }>
-          <Home />
-        </ErrorBoundary>
-      </Box>
+      <ErrorBoundary onError={handleOnError}>
+        <Home />
+      </ErrorBoundary>
     </>
   );
 }
