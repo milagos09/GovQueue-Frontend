@@ -10,6 +10,16 @@ import TablePagination from "@mui/material/TablePagination";
 import { styled } from "@mui/material/styles";
 import QueueData from "./QueueData";
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+
 export default function AdminQueueTable({ id }) {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -23,16 +33,6 @@ export default function AdminQueueTable({ id }) {
         setRowsPerPage(newRowsPerPage);
         setPage(0);
     };
-
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [`&.${tableCellClasses.head}`]: {
-            backgroundColor: theme.palette.common.black,
-            color: theme.palette.common.white,
-        },
-        [`&.${tableCellClasses.body}`]: {
-            fontSize: 14,
-        },
-    }));
 
     const fakeQueues = queues.filter((queue) => queue.adminId == id);
 

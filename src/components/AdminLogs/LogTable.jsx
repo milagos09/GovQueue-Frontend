@@ -7,6 +7,7 @@ import { TableBody, Typography, Box } from "@mui/material";
 import { glassEffect } from "../../themes/MyTheme";
 import TablePagination from "@mui/material/TablePagination";
 import { useState } from "react";
+import dayjs from "dayjs";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -51,23 +52,31 @@ export default function LogTable({ logs }) {
                     <TableRow>
                         <StyledTableCell align="center">Time Stamp</StyledTableCell>
                         <StyledTableCell align="center">Queue Name</StyledTableCell>
-                        <StyledTableCell align="center">Description</StyledTableCell>
+                        <StyledTableCell align="center">Action</StyledTableCell>
                         <StyledTableCell align="center">Number</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {logs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((log, i) => (
-                        <StyledTableRow key={i} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                            <StyledTableCell align="center" component="th" scope="row">
-                                {log.timestamp.slice(0, 19)}
-                            </StyledTableCell>
-                            <StyledTableCell align="center">{log.queueId}</StyledTableCell>
-                            <StyledTableCell align="center">{log.id}</StyledTableCell>
-                            <StyledTableCell align="center">
-                                <Typography variant="subtitle2">{log.queue}</Typography>
+                    {logs.length === 0 ? (
+                        <StyledTableRow>
+                            <StyledTableCell colSpan={4} align="center" sx={{ py: "20px", color: "grey" }}>
+                                No results found
                             </StyledTableCell>
                         </StyledTableRow>
-                    ))}
+                    ) : (
+                        logs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((log, i) => (
+                            <StyledTableRow key={i} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                                <StyledTableCell align="center" component="th" scope="row">
+                                    {dayjs(log.created_at).format("YYYY-MM-DD HH:mm:ss")}
+                                </StyledTableCell>
+                                <StyledTableCell align="center">{log.name}</StyledTableCell>
+                                <StyledTableCell align="center">{log.action_type}</StyledTableCell>
+                                <StyledTableCell align="center">
+                                    <Typography variant="subtitle2">{log.current_number}</Typography>
+                                </StyledTableCell>
+                            </StyledTableRow>
+                        ))
+                    )}
                 </TableBody>
             </Table>
             <TablePagination

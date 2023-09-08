@@ -18,7 +18,9 @@ import Agency from "./public/Agency";
 import { ErrorBoundary } from "react-error-boundary";
 import { Box } from "@mui/material";
 
-const isLoggedIn = !!sessionStorage.getItem("admin");
+const session = sessionStorage.getItem("admin");
+const isLoggedIn = !!session;
+const user = JSON.parse(session);
 
 const router = createBrowserRouter([
   {
@@ -76,14 +78,34 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: (
-          <ErrorPage
-            redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }}
-          />
-        ),
-      },
-    ],
-  },
+        element: <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} />,
+    },
+    {
+        path: "/admin",
+        children: [
+            { path: "", element: isLoggedIn ? <AdminDashboard /> : <Navigate to={"/admin/login"} /> },
+            {
+                path: "login",
+                element: isLoggedIn ? <Navigate to={"/admin"} /> : <Login />,
+            },
+            {
+                path: "logs",
+                element: isLoggedIn ? <Logs user={user} /> : <Navigate to={"/admin/login"} />,
+            },
+            {
+                path: "settings",
+                element: isLoggedIn ? <Settings /> : <Navigate to={"/admin/login"} />,
+            },
+            {
+                path: "support",
+                element: isLoggedIn ? <AdminSupport /> : <Navigate to={"/admin/login"} />,
+            },
+            {
+                path: "*",
+                element: <ErrorPage redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }} />,
+            },
+        ],
+    },
 ]);
 
 export default function Home() {
