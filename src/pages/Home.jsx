@@ -104,7 +104,7 @@ export default function Home() {
     // Refresh the page
     window.location.reload();
   }
-  throw new Error("z");
+  // throw new Error("z");
   return (
     <>
       <ErrorBoundary

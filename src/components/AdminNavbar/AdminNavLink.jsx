@@ -6,9 +6,7 @@ import Button from "@mui/material/Button";
 export default function AdminNavLink({ pages }) {
   const [setAnchorElNav] = useState(null);
   const navigate = useNavigate();
-  const handleCloseNavMenu = () => {
-    // setAnchorElNav(null);
-  };
+  const handleCloseNavMenu = () => {};
 
   return (
     <Box

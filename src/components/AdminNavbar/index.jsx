@@ -5,8 +5,6 @@ import AdminNavBarAppName from "./AdminNavBarAppName";
 import AdminHamburgerMenu from "./AdminHamburgerMenu";
 import { dark } from "./../../themes/MyTheme";
 import { useNavigate } from "react-router-dom";
-import { ErrorBoundary } from "react-error-boundary";
-import { Box } from "@mui/material";
 
 export default function AdminNavbar() {
   const navigate = useNavigate();
