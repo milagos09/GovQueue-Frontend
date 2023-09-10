@@ -1,11 +1,9 @@
-import { Grid, Stack, Typography, Box } from "@mui/material";
+import { Grid, Stack, FormControl, Box, TextField } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 
 export default function LogPicker({ queues, startDate, endDate, handleChangeDate, selectedQueue, handleChangeSelect }) {
     return (
@@ -18,13 +16,13 @@ export default function LogPicker({ queues, startDate, endDate, handleChangeDate
                     spacing={2}
                     padding={2}
                 >
-                    <Typography>Start:</Typography>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DemoContainer
                             components={["DatePicker", "MobileDatePicker", "DesktopDatePicker", "StaticDatePicker"]}
                         >
                             <DemoItem label="">
                                 <DatePicker
+                                    label="Start Date"
                                     sx={{
                                         align: "left",
                                         width: "150px",
@@ -47,14 +45,13 @@ export default function LogPicker({ queues, startDate, endDate, handleChangeDate
                     spacing={2}
                     padding={2}
                 >
-                    <Typography>End:</Typography>
-
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DemoContainer
                             components={["DatePicker", "MobileDatePicker", "DesktopDatePicker", "StaticDatePicker"]}
                         >
                             <DemoItem label="">
                                 <DatePicker
+                                    label="End Date"
                                     sx={{
                                         align: "left",
                                         width: "150px",
@@ -76,26 +73,25 @@ export default function LogPicker({ queues, startDate, endDate, handleChangeDate
                     spacing={2}
                     padding={2}
                 >
-                    <Typography>Queue:</Typography>
-
-                    <FormControl sx={{ m: 2, minWidth: "150px" }}>
-                        <Select
-                            size="small"
+                    <FormControl sx={{ minWidth: "150px", height: "45px" }}>
+                        <TextField
+                            select
+                            label="Queue"
                             labelId="queue-simple-select-label"
                             id="queue-simple-select"
                             value={selectedQueue}
-                            sx={{ fontSize: ".84rem" }}
                             onChange={handleChangeSelect}
+                            sx={{ "& .MuiSelect-select": { fontSize: ".8rem", height: "18px" } }}
                         >
                             <MenuItem sx={{ fontSize: ".84rem" }} value={"All"}>
-                                All
+                                All Queues
                             </MenuItem>
                             {queues.map((queue) => (
                                 <MenuItem key={queue} sx={{ fontSize: ".84rem" }} value={queue}>
                                     {queue}
                                 </MenuItem>
                             ))}
-                        </Select>
+                        </TextField>
                     </FormControl>
                 </Stack>
             </Grid>

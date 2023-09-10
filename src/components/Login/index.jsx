@@ -3,14 +3,15 @@ import { TextField, Container, InputAdornment, Checkbox } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Primary } from "./../Buttons";
 import { useNavigate } from "react-router-dom";
-import admins from "./../../../fake/admins.json";
+import FetchData from "./../../hooks/FetchData";
+import LoadingScreen from "./../LoadingScreen";
 
 export default function AdminLogin() {
+    const { data, isFetching, error, fetchData } = FetchData();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
-    const [login, setLogin] = useState(false);
 
     const handleShowPasswordClick = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -21,82 +22,88 @@ export default function AdminLogin() {
     };
 
     const navigate = useNavigate();
-    const handleLogin = () => {
+    const handleLogin = async (e) => {
+        e.preventDefault();
         const trimmedEmail = email.trim();
-        const adminUser = admins.find((admin) => admin.email === trimmedEmail && admin.password === password);
 
-        if (adminUser) {
-            sessionStorage.setItem("admin", JSON.stringify(adminUser));
-            setLogin(true);
-        }
+        const options = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: trimmedEmail, password: password }),
+        };
+        await fetchData("https://govqueue-api.onrender.com/users/login", options);
     };
 
     useEffect(() => {
-        if (login) {
+        if (data) {
+            sessionStorage.setItem("user", JSON.stringify(data));
             navigate(0);
         }
-    }, [login]);
+    }, [data]);
 
     return (
-        <Container maxWidth="sm">
-            <form>
-                <div style={{ margin: "16px 0" }}>
-                    <TextField
-                        label="Email"
-                        variant="outlined"
-                        type="email"
-                        fullWidth
-                        required
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}
-                    />
-                </div>
+        <>
+            <Container maxWidth="sm">
+                <LoadingScreen isFetching={isFetching} />
+                <form onSubmit={handleLogin}>
+                    <div style={{ margin: "16px 0" }}>
+                        <TextField
+                            label="Email"
+                            variant="outlined"
+                            type="email"
+                            fullWidth
+                            required
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                        />
+                    </div>
 
-                <div style={{ margin: "16px 0" }}>
-                    <TextField
-                        label="Password"
-                        variant="outlined"
-                        type={showPassword ? "text" : "password"}
-                        fullWidth
-                        required
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end" sx={{ "&:hover": { cursor: "pointer" } }}>
-                                    {showPassword ? (
-                                        <VisibilityOff onClick={handleShowPasswordClick} />
-                                    ) : (
-                                        <Visibility onClick={handleShowPasswordClick} />
-                                    )}
-                                </InputAdornment>
-                            ),
+                    <div style={{ margin: "16px 0" }}>
+                        <TextField
+                            label="Password"
+                            variant="outlined"
+                            type={showPassword ? "text" : "password"}
+                            fullWidth
+                            required
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end" sx={{ "&:hover": { cursor: "pointer" } }}>
+                                        {showPassword ? (
+                                            <VisibilityOff onClick={handleShowPasswordClick} />
+                                        ) : (
+                                            <Visibility onClick={handleShowPasswordClick} />
+                                        )}
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </div>
+
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            margin: "16px 0",
+                            flexWrap: "wrap",
                         }}
-                    />
-                </div>
-
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        margin: "16px 0",
-                        flexWrap: "wrap",
-                    }}
-                >
-                    <div>
-                        <Checkbox checked={rememberMe} onChange={handleRememberMeChange} color="primary" />
-                        <span>Remember me</span>
+                    >
+                        <div>
+                            <Checkbox checked={rememberMe} onChange={handleRememberMeChange} />
+                            <span>Remember me</span>
+                        </div>
+                        <div>
+                            <a href="/forgot-password">Forgot Password?</a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="/forgot-password">Forgot Password?</a>
-                    </div>
-                </div>
 
-                <div style={{ margin: "16px 0" }}>
-                    <Primary value={"Log in"} onClick={handleLogin} type={"submit"} />
-                </div>
-            </form>
-        </Container>
+                    <div style={{ margin: "16px 0" }}>
+                        <Primary value={"Log in"} type={"submit"} />
+                    </div>
+                </form>
+            </Container>
+        </>
     );
 }

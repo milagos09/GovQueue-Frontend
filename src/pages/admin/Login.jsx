@@ -19,10 +19,10 @@ export default function Login() {
                 padding="20px"
                 sx={{ minHeight: `${height - 167}px` }}
             >
-                <Grid item sm={7} xs={12} order={{ xs: 2, sm: 1 }} justifyContent={{ xs: "center", sm: "center" }}>
+                <Grid sm={7} xs={12} order={{ xs: 2, sm: 1 }} justifyContent={{ xs: "center", sm: "center" }}>
                     <AdminLogin />
                 </Grid>
-                <Grid item sm={5} xs={12} order={{ xs: 1, sm: 2 }} textAlign="center" paddingBottom={3}>
+                <Grid sm={5} xs={12} order={{ xs: 1, sm: 2 }} textAlign="center" paddingBottom={3}>
                     <img
                         src={BannerLogo}
                         alt="BannerLogo"
