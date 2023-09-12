@@ -11,7 +11,7 @@ import Settings from "./admin/Settings";
 import AdminSupport from "./admin/AdminSupport";
 import Agency from "./public/Agency";
 
-const session = sessionStorage.getItem("admin");
+const session = sessionStorage.getItem("user");
 const isLoggedIn = !!session;
 const user = JSON.parse(session);
 
@@ -47,6 +47,15 @@ const router = createBrowserRouter([
             {
                 path: "logs",
                 element: isLoggedIn ? <Logs user={user} /> : <Navigate to={"/admin/login"} />,
+                errorElement: (
+                    <ErrorPage
+                        redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }}
+                        message={{
+                            title: "500 - internal server error",
+                            description: "something went wrong, kindly contact support",
+                        }}
+                    />
+                ),
             },
             {
                 path: "settings",

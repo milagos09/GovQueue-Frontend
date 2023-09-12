@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import { gold } from "./../themes/MyTheme";
 import { Primary } from "../components/Buttons";
 
-export default function ErrorPage({ redirect }) {
+export default function ErrorPage({
+    redirect,
+    message = {
+        title: "404 - page not found",
+        description:
+            "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+    },
+}) {
     return (
         <Box
             sx={{
@@ -41,7 +48,7 @@ export default function ErrorPage({ redirect }) {
                     },
                 }}
             >
-                404 - PAGE NOT FOUND
+                {message.title}
             </Typography>
             <Typography
                 variant="body1"
@@ -55,8 +62,7 @@ export default function ErrorPage({ redirect }) {
                     },
                 }}
             >
-                The page you are looking for might have been removed, had its name changed, or is temporarily
-                unavailable.
+                {message.description}
             </Typography>
             <Link to={redirect.to} style={{ textDecoration: "none" }}>
                 <Primary value={redirect.buttonValue} />

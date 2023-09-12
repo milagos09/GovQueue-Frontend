@@ -1,77 +1,69 @@
+import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import LogPicker from "./LogPicker";
 import LogTable from "./LogTable";
 import LogOptions from "./LogOptions";
 import dayjs from "dayjs";
-import { useState, useEffect } from "react";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
-import LoadingScreen from "../LoadingScreen.jsx";
+import LoadingScreen from "../LoadingScreen";
+
+const initialStartDate = dayjs().subtract(1, "day");
+const initialEndDate = dayjs();
 
 export default function AdminLogs({ user }) {
-    const currentDate = dayjs();
     const { height } = CheckScreenSize();
 
     const [state, setState] = useState({
         logs: [],
         filteredLogs: [],
-        startDate: currentDate,
-        endDate: currentDate.subtract(1, "day"),
+        startDate: initialStartDate,
+        endDate: initialEndDate,
         selectedQueue: "All",
         isFetching: false,
     });
 
+    // Fetch logs from the API and update component state.
     const fetchLogs = async (agencyId, startDate, endDate) => {
-        const result = await fetch(
-            `https://govqueue-api.onrender.com/logs/dateRange/?agencyId=${agencyId}&startDate=${startDate}&endDate=${endDate}`
-        );
-        return await result.json();
-    };
-
-    const handleChangeDate = async (setter, newDate) => {
-        setState((prevState) => ({ ...prevState, isFetching: true }));
-        const { startDate, endDate } = state;
-
-        const startDateToUpdate = setter === "startDate" ? newDate : startDate;
-        const endDateToUpdate = setter === "endDate" ? newDate : endDate;
-
-        const allLogs = await fetchLogs(
-            user.id,
-            startDateToUpdate.format("YYYY-MM-DD"),
-            endDateToUpdate.format("YYYY-MM-DD")
-        );
-
-        setState((prevState) => ({
-            ...prevState,
-            startDate: startDateToUpdate,
-            endDate: endDateToUpdate,
-            logs: allLogs,
-            isFetching: false,
-        }));
-    };
-
-    const handleChangeSelect = (e) => {
-        const name = e.target.value;
-        setState((prevState) => ({ ...prevState, selectedQueue: name }));
-
-        if (name === "All") {
-            setState((prevState) => ({ ...prevState, filteredLogs: prevState.logs }));
-        } else {
-            const updateLogs = state.logs.filter((log) => log.name === name);
-            setState((prevState) => ({ ...prevState, filteredLogs: updateLogs }));
+        try {
+            setState((prevState) => ({ ...prevState, isFetching: true }));
+            const result = await fetch(
+                `https://govqueue-api.onrender.com/logs/dateRange/?agencyId=${agencyId}&startDate=${startDate.format(
+                    "YYYY-MM-DD"
+                )}&endDate=${endDate.format("YYYY-MM-DD")}`
+            );
+            const logs = await result.json();
+            setState((prevState) => ({
+                ...prevState,
+                logs,
+                filteredLogs: logs,
+                isFetching: false,
+            }));
+        } catch (error) {
+            console.error("Error fetching logs:", error);
+            setState((prevState) => ({ ...prevState, isFetching: false }));
         }
     };
 
-    useEffect(() => {
-        (async () => {
-            const { startDate, endDate } = state;
-            const allLogs = await fetchLogs(user.id, startDate.format("YYYY-MM-DD"), endDate.format("YYYY-MM-DD"));
-            setState((prevState) => ({ ...prevState, logs: allLogs }));
-        })();
-    }, [state.startDate, state.endDate]);
+    // Handle changes to the selected date and trigger log fetching.
+    const handleChangeDate = async (setter, newDate) => {
+        const { startDate, endDate } = state;
+        const startDateToUpdate = setter === "startDate" ? newDate : startDate;
+        const endDateToUpdate = setter === "endDate" ? newDate : endDate;
+        await fetchLogs(user.agency_id, startDateToUpdate, endDateToUpdate);
+    };
 
+    // Handle changes to the selected queue and update filtered logs.
+    const handleChangeSelect = (e) => {
+        const name = e.target.value;
+        setState((prevState) => ({ ...prevState, selectedQueue: name }));
+        const filteredLogs = name === "All" ? state.logs : state.logs.filter((log) => log.name === name);
+        setState((prevState) => ({ ...prevState, filteredLogs }));
+    };
+
+    // Fetch logs from the API when the component is initially mounted.
     useEffect(() => {
-        setState((prevState) => ({ ...prevState, filteredLogs: prevState.logs }));
-    }, [state.logs]);
+        fetchLogs(user.agency_id, state.startDate, state.endDate);
+    }, []);
 
     return (
         <>
