@@ -6,7 +6,7 @@ import { Primary } from "../components/Buttons";
 export default function ErrorPage({
     redirect,
     message = {
-        title: "404 - page not found",
+        title: "404 - PAGE NOT FOUND",
         description:
             "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
     },

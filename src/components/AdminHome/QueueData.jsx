@@ -7,31 +7,31 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { useState } from "react";
 import calculateTimeDifference from "../../helpers/calculateTimeDifference";
-import { dark } from "../../themes/MyTheme";
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: open ? 16 : 14,
+    },
+}));
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    "&:nth-of-type(odd)": {
+        backgroundColor: theme.palette.action.hover,
+    },
+
+    "&:last-child td, &:last-child th": {
+        border: 0,
+    },
+}));
 
 export default function QueueData({ queue }) {
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [`&.${tableCellClasses.head}`]: {
-            backgroundColor: theme.palette.common.black,
-            color: theme.palette.common.white,
-        },
-        [`&.${tableCellClasses.body}`]: {
-            fontSize: open ? 16 : 14,
-        },
-    }));
-    const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        "&:nth-of-type(odd)": {
-            backgroundColor: theme.palette.action.hover,
-        },
-
-        "&:last-child td, &:last-child th": {
-            border: 0,
-        },
-    }));
-
     const [open, setOpen] = useState(false);
+    const [number, setNumber] = useState(queue.current_number);
     const handleOpen = () => setOpen(!open);
-    const setNumber = () => {
+    const editNumber = () => {
         const updatedNumber = prompt();
 
         if (!isNaN(Number(updatedNumber))) {
@@ -42,7 +42,7 @@ export default function QueueData({ queue }) {
         {
             icon: <ModeEditIcon />,
             name: "Set",
-            onClick: setNumber,
+            onClick: editNumber,
         },
         { icon: <RemoveIcon />, name: "Decrement" },
         { icon: <AddIcon />, name: "Increment" },
@@ -59,15 +59,14 @@ export default function QueueData({ queue }) {
                                   fontSize: "2rem",
                                   padding: "1rem",
                                   borderRadius: "5px",
-                                  ...dark,
                               }
                             : {}
                     }
                 >
-                    {queue.current}
+                    {number}
                 </Box>
             </StyledTableCell>
-            <StyledTableCell align="center">{calculateTimeDifference(queue.updatedOn)}</StyledTableCell>
+            <StyledTableCell align="center">{calculateTimeDifference(queue.updated_at)}</StyledTableCell>
             <StyledTableCell align="center">
                 <Box sx={{ transform: "translateZ(0px)" }}>
                     <Backdrop open={open} sx={{ background: "none" }} />
