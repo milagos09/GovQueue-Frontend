@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import LogPicker from "./LogPicker";
 import LogTable from "./LogTable";
@@ -6,11 +6,13 @@ import LogOptions from "./LogOptions";
 import dayjs from "dayjs";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import LoadingScreen from "../LoadingScreen";
+import userStore from "../../stores/userStore";
 
 const initialStartDate = dayjs().subtract(1, "day");
 const initialEndDate = dayjs();
 
-export default function AdminLogs({ user }) {
+export default function AdminLogs() {
+    const { user } = userStore();
     const { height } = CheckScreenSize();
 
     const [state, setState] = useState({
