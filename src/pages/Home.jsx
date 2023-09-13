@@ -36,23 +36,15 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} />,
+        element: <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} status={404} />,
     },
     {
         path: "/admin",
+        errorElement: <ErrorPage redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }} status={500} />,
         children: [
             {
                 path: "",
                 element: isLoggedIn ? <AdminDashboard /> : <Navigate to={"/admin/login"} />,
-                errorElement: (
-                    <ErrorPage
-                        redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }}
-                        message={{
-                            title: "500 - INTERNAL SERVER ERROR",
-                            description: "something went wrong, kindly contact support",
-                        }}
-                    />
-                ),
             },
             {
                 path: "login",
@@ -61,28 +53,10 @@ const router = createBrowserRouter([
             {
                 path: "logs",
                 element: isLoggedIn ? <Logs /> : <Navigate to={"/admin/login"} />,
-                errorElement: (
-                    <ErrorPage
-                        redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }}
-                        message={{
-                            title: "500 - INTERNAL SERVER ERROR",
-                            description: "something went wrong, kindly contact support",
-                        }}
-                    />
-                ),
             },
             {
                 path: "settings",
                 element: isLoggedIn ? <Settings /> : <Navigate to={"/admin/login"} />,
-                errorElement: (
-                    <ErrorPage
-                        redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }}
-                        message={{
-                            title: "500 - INTERNAL SERVER ERROR",
-                            description: "something went wrong, kindly contact support",
-                        }}
-                    />
-                ),
             },
             {
                 path: "support",

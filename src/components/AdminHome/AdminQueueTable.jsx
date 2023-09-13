@@ -40,7 +40,9 @@ export default function AdminQueueTable({ agencyId }) {
     }, []);
 
     useEffect(() => {
-        data && setQueues(data);
+        if (data) {
+            setQueues(data);
+        }
     }, [data]);
 
     return (
@@ -67,7 +69,7 @@ export default function AdminQueueTable({ agencyId }) {
 
                     <TableBody sx={{ columnGap: 100 }}>
                         {queues.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((queue, i) => (
-                            <QueueData queue={queue} key={i} />
+                            <QueueData queue={queue} key={queue.name + i} setQueues={setQueues} />
                         ))}
                     </TableBody>
                 </Table>
