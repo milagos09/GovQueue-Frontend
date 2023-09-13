@@ -46,9 +46,17 @@ export default function AdminLogs({ user }) {
 
     // Handle changes to the selected date and trigger log fetching.
     const handleChangeDate = async (setter, newDate) => {
-        const { startDate, endDate } = state;
-        const startDateToUpdate = setter === "startDate" ? newDate : startDate;
-        const endDateToUpdate = setter === "endDate" ? newDate : endDate;
+        let startDateToUpdate, endDateToUpdate;
+
+        if (setter === "startDate") {
+            startDateToUpdate = newDate;
+            endDateToUpdate = state.endDate;
+        } else {
+            startDateToUpdate = state.startDate;
+            endDateToUpdate = newDate;
+        }
+
+        setState((prevState) => ({ ...prevState, startDate: startDateToUpdate, endDate: endDateToUpdate }));
         await fetchLogs(user.agency_id, startDateToUpdate, endDateToUpdate);
     };
 
