@@ -1,7 +1,7 @@
 import AdminNavbar from "../../components/AdminNavbar";
 import { Divider, ListItem, List, Grid } from "@mui/material";
 import Feildset from "../../components/Fieldset";
-import AgecyDocumentation from "../../components/AdminSupport/AdminSupportDocumentation/AgencyDocumentation";
+import AgecyDocumentation from "../../components/AdminSupport/AgencyDocumentation";
 
 export default function AdminSupport() {
   return (
