@@ -3,22 +3,30 @@ import AdminProfileSettings from "./AdminProfileSettings";
 import { Box, Grid } from "@mui/material";
 
 export default function AdminSettings() {
-  return (
-    <>
-      <Box
-        minHeight="80vh"
-        display="flex"
-        sx={{ justifyContent: "center", alignItems: "center" }}>
-        <Grid
-          container
-          columns={{ xs: 2, sm: 4, md: 8, lg: 4 }}
-          direction="row"
-          justifyContent="space-evenly"
-          alignItems="flex-start">
-          <AdminProfileSettings />
-          <AdminAccountSettings />
-        </Grid>
-      </Box>
-    </>
-  );
+    return (
+        <>
+            <Box
+                display="flex"
+                sx={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Grid
+                    container
+                    justifyContent="space-evenly"
+                    direction={{ xs: "column", md: "row" }}
+                    sx={{ px: { xs: 2 } }}
+                    columnSpacing={2}
+                >
+                    <Grid item xs={12} sm={6} lg={5} xl={4}>
+                        <AdminProfileSettings />
+                    </Grid>
+                    <Grid item xs={12} sm={6} lg={5} xl={4}>
+                        <AdminAccountSettings />
+                    </Grid>
+                </Grid>
+            </Box>
+        </>
+    );
 }

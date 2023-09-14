@@ -2,17 +2,19 @@ import AdminHeader from "./AdminHeader";
 import AdminQueueTable from "./AdminQueueTable";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import admins from "./../../../fake/admins.json";
+import { getSessionStorage } from "./../../helpers/sessionStorage";
+import { CheckScreenSize } from "./../../hooks/CheckScreenSize";
 
 export default function AdminHome() {
-    const admin = admins.find((admin) => admin.id == 1);
-
+    const { height } = CheckScreenSize();
+    const user = getSessionStorage("user");
+    const agencyDetails = user.agencyDetails;
     return (
         <>
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" sx={{ minHeight: `${height - 167}px` }}>
                 <Grid container justifyContent="center" alignItems="center" direction="row" sx={{ padding: 1 }}>
-                    <AdminHeader agency={admin.agency} logo={admin.logo} />
-                    <AdminQueueTable id={admin.id} />
+                    <AdminHeader agency={agencyDetails.name} logo={agencyDetails.logo} />
+                    <AdminQueueTable agencyId={agencyDetails.agency_id} />
                 </Grid>
             </Container>
         </>

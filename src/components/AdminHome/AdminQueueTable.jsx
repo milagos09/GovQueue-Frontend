@@ -1,16 +1,25 @@
-import { useState } from "react";
-import Table from "@mui/material/Table";
-import queues from "../../../fake/queues.json";
-import Box from "@mui/material/Box";
-import TableBody from "@mui/material/TableBody";
-import { TableHead, Paper } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Box, Paper, Table, TableBody, TableHead, TableRow, TablePagination } from "@mui/material";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import { glassEffect } from "../../themes/MyTheme";
-import TablePagination from "@mui/material/TablePagination";
 import { styled } from "@mui/material/styles";
+import { glassEffect } from "../../themes/MyTheme";
 import QueueData from "./QueueData";
+import LoadingScreen from "./../LoadingScreen";
+import FetchData from "./../../hooks/FetchData";
 
-export default function AdminQueueTable({ id }) {
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+
+export default function AdminQueueTable({ agencyId }) {
+    const { fetchData, data, isFetching } = FetchData();
+    const [queues, setQueues] = useState([]);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -24,20 +33,21 @@ export default function AdminQueueTable({ id }) {
         setPage(0);
     };
 
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [`&.${tableCellClasses.head}`]: {
-            backgroundColor: theme.palette.common.black,
-            color: theme.palette.common.white,
-        },
-        [`&.${tableCellClasses.body}`]: {
-            fontSize: 14,
-        },
-    }));
+    useEffect(() => {
+        (async () => {
+            await fetchData(`https://govqueue-api.onrender.com/queues/agency/${agencyId}`);
+        })();
+    }, []);
 
-    const fakeQueues = queues.filter((queue) => queue.adminId == id);
+    useEffect(() => {
+        if (data) {
+            setQueues(data);
+        }
+    }, [data]);
 
     return (
         <>
+            <LoadingScreen isFetching={isFetching} />
             <Paper
                 sx={{
                     width: "100%",
@@ -49,15 +59,17 @@ export default function AdminQueueTable({ id }) {
             >
                 <Table sx={{ width: "100%" }} size="small" aria-label="customized table">
                     <TableHead>
-                        <StyledTableCell align="center">Queue</StyledTableCell>
-                        <StyledTableCell align="center">Number</StyledTableCell>
-                        <StyledTableCell align="center">Updated</StyledTableCell>
-                        <StyledTableCell align="center">Action</StyledTableCell>
+                        <TableRow>
+                            <StyledTableCell align="center">Queue</StyledTableCell>
+                            <StyledTableCell align="center">Number</StyledTableCell>
+                            <StyledTableCell align="center">Updated</StyledTableCell>
+                            <StyledTableCell align="center">Action</StyledTableCell>{" "}
+                        </TableRow>
                     </TableHead>
 
                     <TableBody sx={{ columnGap: 100 }}>
-                        {fakeQueues.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((queue, i) => (
-                            <QueueData queue={queue} key={i} />
+                        {queues.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((queue, i) => (
+                            <QueueData queue={queue} key={queue.name + i} setQueues={setQueues} />
                         ))}
                     </TableBody>
                 </Table>
@@ -73,7 +85,7 @@ export default function AdminQueueTable({ id }) {
                     <TablePagination
                         rowsPerPageOptions={[5, 10, 20]}
                         component="div"
-                        count={fakeQueues.length}
+                        count={queues.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         onPageChange={handleChangePage}

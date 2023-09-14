@@ -10,8 +10,12 @@ import Logs from "./admin/Logs";
 import Settings from "./admin/Settings";
 import AdminSupport from "./admin/AdminSupport";
 import Agency from "./public/Agency";
+import userStore from "../stores/userStore";
+import { useEffect } from "react";
 
-const isLoggedIn = !!sessionStorage.getItem("admin");
+const session = sessionStorage.getItem("user");
+const isLoggedIn = !!session;
+const user = JSON.parse(session);
 
 const router = createBrowserRouter([
     {
@@ -32,12 +36,16 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} />,
+        element: <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} status={404} />,
     },
     {
         path: "/admin",
+        errorElement: <ErrorPage redirect={{ to: "/admin", buttonValue: "Return to Admin Page" }} status={500} />,
         children: [
-            { path: "", element: isLoggedIn ? <AdminDashboard /> : <Navigate to={"/admin/login"} /> },
+            {
+                path: "",
+                element: isLoggedIn ? <AdminDashboard /> : <Navigate to={"/admin/login"} />,
+            },
             {
                 path: "login",
                 element: isLoggedIn ? <Navigate to={"/admin"} /> : <Login />,
@@ -63,6 +71,10 @@ const router = createBrowserRouter([
 ]);
 
 export default function Home() {
+    const { setUser } = userStore();
+    useEffect(() => {
+        if (isLoggedIn) setUser(user);
+    }, []);
     return (
         <>
             <RouterProvider router={router}>
