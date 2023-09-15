@@ -47,10 +47,10 @@ export default function CollapsibleTable({ admins, favorites, setFavorites, widt
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((admin) => (
                                     <Row
-                                        key={admin.id}
+                                        key={admin.name}
                                         admin={admin}
                                         customBreakPoint={customBreakPoint}
-                                        isFavorite={favorites.includes(admin.id)}
+                                        isFavorite={favorites.includes(admin.agency_id)}
                                         toggleFavorite={toggleFavorite}
                                     />
                                 ))

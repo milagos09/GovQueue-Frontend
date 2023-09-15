@@ -1,6 +1,5 @@
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 
@@ -15,11 +14,7 @@ function CustomTabPanel(props) {
             aria-labelledby={`simple-tab-${index}`}
             {...other}
         >
-            {value === index && (
-                <Box sx={{ py: 3, px: width < 600 ? 0 : 3 }}>
-                    <Typography>{children}</Typography>
-                </Box>
-            )}
+            {value === index && <Box sx={{ py: 3, px: width < 600 ? 0 : 3 }}>{children}</Box>}
         </div>
     );
 }
@@ -44,8 +39,8 @@ export default function QueueTabs({ contents, width }) {
                 <Tabs
                     value={value}
                     onChange={handleChange}
-                    aria-label="queue tabs"
-                    textColor=""
+                    aria-label="queue-tabs"
+                    textColor="inherit"
                     TabIndicatorProps={{ style: { background: "#FC9300", height: "4px" } }}
                     centered
                     selectionFollowsFocus
