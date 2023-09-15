@@ -4,12 +4,8 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Primary } from "./../Buttons";
 import FetchData from "./../../hooks/FetchData";
 import LoadingScreen from "./../LoadingScreen";
-import useStore from "../../stores/userStore.js";
 
 export default function AdminLogin() {
-    const bears = useStore((state) => state.bears);
-    const increasePopulation = useStore((state) => state.increasePopulation);
-
     const { data, isFetching, error, fetchData } = FetchData();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -42,9 +38,6 @@ export default function AdminLogin() {
             location.reload();
         }
     }, [data]);
-    useEffect(() => {
-        console.log(bears);
-    }, [bears]);
 
     return (
         <>
@@ -108,7 +101,6 @@ export default function AdminLogin() {
                         <Primary value={"Log in"} type={"submit"} />
                     </div>
                 </form>
-                <button onClick={increasePopulation}>{bears}</button>
             </Container>
         </>
     );

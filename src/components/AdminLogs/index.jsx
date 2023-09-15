@@ -6,13 +6,13 @@ import LogOptions from "./LogOptions";
 import dayjs from "dayjs";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import LoadingScreen from "../LoadingScreen";
-import userStore from "../../stores/userStore";
+import { getSessionStorage } from "../../helpers/sessionStorage";
 
 const initialStartDate = dayjs().subtract(1, "day");
 const initialEndDate = dayjs();
 
 export default function AdminLogs() {
-    const { user } = userStore();
+    const user = getSessionStorage("user");
     const { height } = CheckScreenSize();
 
     const [state, setState] = useState({

@@ -28,12 +28,12 @@ export default function Windows({ queue, minWidth }) {
             >
                 {queue.map((q) => (
                     <Window
-                        key={q.id}
-                        id={q.id}
+                        key={q.name + q.queue_id}
+                        id={q.queue_id}
                         minWidth={minWidth}
                         name={q.name}
-                        number={q.current}
-                        updated={new Date(q.updatedOn)}
+                        number={q.current_number}
+                        updated={new Date(q.updated_at)}
                     />
                 ))}
             </Stack>

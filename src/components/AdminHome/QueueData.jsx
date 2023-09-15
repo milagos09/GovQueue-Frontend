@@ -1,9 +1,10 @@
 import TableRow from "@mui/material/TableRow";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import { Box, Backdrop, SpeedDial, SpeedDialIcon, SpeedDialAction } from "@mui/material";
+import { Box, Backdrop, SpeedDial, SpeedDialAction } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useState, useEffect } from "react";
 import calculateTimeDifference from "../../helpers/calculateTimeDifference";
 import { getSessionStorage } from "./../../helpers/sessionStorage";
@@ -118,7 +119,7 @@ export default function QueueData({ queue, setQueues }) {
                         <SpeedDial
                             direction="up"
                             ariaLabel="SpeedDial tooltip"
-                            icon={<SpeedDialIcon onClick={handleOpen} sx={{}} />}
+                            icon={<MoreHorizIcon onClick={handleOpen} sx={{}} />}
                             open={open}
                             FabProps={{
                                 size: "small",

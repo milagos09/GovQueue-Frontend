@@ -10,7 +10,8 @@ import Logs from "./admin/Logs";
 import Settings from "./admin/Settings";
 import AdminSupport from "./admin/AdminSupport";
 import Agency from "./public/Agency";
-import userStore from "../stores/userStore";
+import queuesStore from "../stores/queuesStore";
+import agencyStore from "../stores/agencyStore";
 import { useEffect } from "react";
 
 const session = sessionStorage.getItem("user");
@@ -71,9 +72,29 @@ const router = createBrowserRouter([
 ]);
 
 export default function Home() {
-    const { setUser } = userStore();
+    const { setAgencies } = agencyStore();
+    const { setQueues } = queuesStore();
     useEffect(() => {
-        if (isLoggedIn) setUser(user);
+        (async () => {
+            try {
+                const [queuesResponse, agenciesResponse] = await Promise.all([
+                    fetch("https://govqueue-api.onrender.com/queues"),
+                    fetch("https://govqueue-api.onrender.com/agencies"),
+                ]);
+
+                if (!queuesResponse.ok || !agenciesResponse.ok) {
+                    throw new Error("One or more API requests failed");
+                }
+
+                const [queuesData, agenciesData] = await Promise.all([queuesResponse.json(), agenciesResponse.json()]);
+
+                setAgencies(agenciesData);
+                setQueues(queuesData);
+            } catch (error) {
+                // Handle errors here
+                console.error("Error fetching data:", error);
+            }
+        })();
     }, []);
     return (
         <>
