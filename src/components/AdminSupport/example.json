@@ -1,0 +1,65 @@
+[
+  {
+    "title": "Agencies",
+    "description": "CRUD operations for agencies",
+    "res": "{agency_id: 1, name: 'Agency 1', ...}",
+    "content": [
+      {
+        "language": "curl",
+        "req": "curl -X GET https://example.com/agencies"
+      },
+      {
+        "language": "javascript",
+        "req": "fetch('https://example.com/agencies')"
+      }
+    ]
+  },
+
+  {
+    "title": "Logs",
+    "description": "CRUD operations for logs",
+    "res": "{log_id: 1, queue_id: 1, action_type: 'increment', ...}",
+    "content": [
+      {
+        "language": "curl",
+        "req": "curl -X POST https://example.com/logs/add"
+      },
+      {
+        "language": "javascript",
+        "req": "fetch('https://example.com/logs', {method: 'POST'})"
+      }
+    ]
+  },
+
+  {
+    "title": "Queues",
+    "description": "CRUD operations for queues",
+    "res": "{queue_id: 1, name: 'Queue 1', current_number: 0, ...}",
+    "content": [
+      {
+        "language": "curl",
+        "req": "curl -X GET https://example.com/queues"
+      },
+      {
+        "language": "javascript",
+        "req": "fetch('https://example.com/queues')"
+      }
+    ]
+  },
+
+  {
+    "title": "Users",
+    "description": "CRUD operations for users",
+    "res": "{user_id: 1, first_name: 'John', last_name: 'Doe', ...}",
+    "content": [
+      {
+        "language": "curl",
+        "req": "curl -X POST https://example.com/users/login"
+      },
+      {
+        "language": "javascript",
+        "req": "fetch('https://example.com/users/login', {method: 'POST'})"
+      }
+    ]
+  }
+]
