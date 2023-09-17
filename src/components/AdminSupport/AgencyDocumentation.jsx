@@ -1,7 +1,7 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Divider, Typography, Select, MenuItem } from "@mui/material";
-import agencyData from "./example.json";
+import agencyData from "./Admin.json";
 import { useState } from "react";
 
 export default function AgencyDocumentation() {
