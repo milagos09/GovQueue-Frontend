@@ -25,11 +25,13 @@ export default function AgencyDocumentation() {
 
           <Typography variant="h5" gutterBottom>
             <span style={{ color: "green" }}>{agency.method}</span>{" "}
-            {agency.name}
+            {agency.titleDetails.name}
           </Typography>
-          <Typography gutterBottom>{agency.description}</Typography>
+          <Typography gutterBottom>
+            {agency.titleDetails.description}
+          </Typography>
           <SyntaxHighlighter style={a11yDark} wrapLongLines={true}>
-            {agency.raw}
+            {agency.titleDetails.raw}
           </SyntaxHighlighter>
           <Typography variant="h5" gutterBottom>
             Example:
@@ -42,13 +44,13 @@ export default function AgencyDocumentation() {
             value={selectedLanguages[index]}
             onChange={(e) => handleLanguageChange(index, e.target.value)}
           >
-            {agency.content.map((content, contentIndex) => (
+            {agency.titleDetails.content.map((content, contentIndex) => (
               <MenuItem key={contentIndex} value={content.language}>
                 {content.language}
               </MenuItem>
             ))}
           </Select>
-          {agency.content.map((content, contentIndex) => {
+          {agency.titleDetails.content.map((content, contentIndex) => {
             if (content.language === selectedLanguages[index]) {
               return (
                 <div key={contentIndex}>
@@ -69,7 +71,7 @@ export default function AgencyDocumentation() {
                     wrapLongLines={true}
                     language="json"
                   >
-                    {agency.res}
+                    {agency.titleDetails.res}
                   </SyntaxHighlighter>
                   <Divider />
                 </div>
