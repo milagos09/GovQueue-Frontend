@@ -6,27 +6,29 @@ import calculateTimeDifference from "../../helpers/calculateTimeDifference";
 import { socket } from "./../../helpers/socket";
 import beep from "./../../assets/sounds/beep.wav";
 
-export default function Window({ id, minWidth = 100, name, number, updated }) {
+export default function Window({ queueId, minWidth = 100, name, number, updated }) {
     const [openLogs, setOpenLogs] = useState(false);
     const [currentNumber, setNumber] = useState(number);
     const [currentUpdated, setUpdated] = useState(updated);
 
     useEffect(() => {
-        const updateLogsHandler = ({ log }) => {
-            const sound = new Audio(beep);
-            setNumber(log.current_number);
-            setUpdated(log.updated_at);
+        const updateLogsHandler = (log) => {
+            if (log.queue_id === queueId) {
+                const sound = new Audio(beep);
+                setNumber(log.current_number);
+                setUpdated(log.updated_at);
 
-            sound.play();
+                sound.play();
+            }
         };
 
-        socket.on("updateLogs" + id, updateLogsHandler);
+        socket.on("addLog", updateLogsHandler);
 
         // Cleanup the socket listener when the component unmounts
         return () => {
-            socket.off("updateLogs" + id, updateLogsHandler);
+            socket.off("newLog");
         };
-    }, [id]);
+    }, []);
 
     return (
         <Box sx={{ textAlign: "center" }}>
@@ -60,7 +62,7 @@ export default function Window({ id, minWidth = 100, name, number, updated }) {
             <Box component="span" sx={{ fontSize: ".7rem" }}>
                 {calculateTimeDifference(currentUpdated)}
             </Box>
-            <ShowLogs queueId={id} openLogs={openLogs} setOpenLogs={setOpenLogs} />
+            <ShowLogs queueId={queueId} openLogs={openLogs} setOpenLogs={setOpenLogs} />
         </Box>
     );
 }

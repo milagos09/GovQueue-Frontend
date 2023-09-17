@@ -6,8 +6,6 @@ import Navbar from "./../../components/Navbar";
 import Announcement from "../../components/AgencyComponents/Announcement";
 import { useParams } from "react-router-dom";
 import FacebookMessengerChat from "./../../components/FacebookMessengerChat";
-
-import { useState, useEffect } from "react";
 import queuesStore from "../../stores/queuesStore";
 import agencyStore from "../../stores/agencyStore";
 import LoadingScreen from "../../components/LoadingScreen";
@@ -32,7 +30,7 @@ export default function Agency() {
                                 <Profile agency={agency} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={7}>
-                                <Queues queue={queues.filter((item) => agency.agency_id === item.agency_id)} />
+                                <Queues queues={queues.filter((item) => agency.agency_id === item.agency_id)} />
                             </Grid>
                         </Grid>
                     </>
