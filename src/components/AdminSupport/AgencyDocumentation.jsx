@@ -5,7 +5,6 @@ import agencyData from "./Admin.json";
 import { useState } from "react";
 
 export default function AgencyDocumentation() {
-  // Set "curl" as the default language for all dropdowns
   const initialSelectedLanguages = agencyData.map((agency) =>
     agency.titleDetails.map(() => "curl")
   );
@@ -24,7 +23,6 @@ export default function AgencyDocumentation() {
     newSelectedLanguages[agencyIndex][detailIndex] = language;
     setSelectedLanguages(newSelectedLanguages);
 
-    // Update the response content based on the selected language
     const newResponseContent = [...responseContent];
     newResponseContent[agencyIndex] =
       agencyData[agencyIndex].titleDetails[detailIndex].content.find(
