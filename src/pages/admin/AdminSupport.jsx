@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AdminNavbar from "../../components/AdminNavbar";
 import { Divider, List, Grid } from "@mui/material";
 import Feildset from "../../components/Fieldset";
@@ -5,9 +6,17 @@ import AgecyDocumentation from "../../components/AdminSupport/AgencyDocumentatio
 import agencyData from "../../components/AdminSupport/Admin.json";
 
 export default function AdminSupport() {
-  function scrollToSection(id) {
-    const element = document.getElementById(id);
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
@@ -15,6 +24,14 @@ export default function AdminSupport() {
       });
     }
   }
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      setShowScrollButton(true);
+    } else {
+      setShowScrollButton(false);
+    }
+  });
 
   const tableOfContents = agencyData.map((agency, agencyIndex) => (
     <div key={agencyIndex}>
@@ -63,6 +80,25 @@ export default function AdminSupport() {
           </Feildset>
         </Grid>
       </Grid>
+
+      {showScrollButton && (
+        <button
+          onClick={scrollToTop}
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            backgroundColor: "#1b2023",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            padding: "10px 20px",
+            cursor: "pointer",
+          }}
+        >
+          Scroll Back to Top
+        </button>
+      )}
     </>
   );
 }
