@@ -44,7 +44,13 @@ export default function AgencyDocumentation() {
           {agency.titleDetails.map((detail, detailIndex) => (
             <div key={detailIndex}>
               <Typography variant="h5" gutterBottom>
-                <span style={{ color: "green" }}>{detail.method}</span>{" "}
+                <span
+                  style={{
+                    color: detail.method === "GET" ? "green" : "orange",
+                  }}
+                >
+                  {detail.method}
+                </span>{" "}
                 {detail.name}
               </Typography>
               <Typography gutterBottom>{detail.description}</Typography>
@@ -96,7 +102,9 @@ export default function AgencyDocumentation() {
                       >
                         {detail.res}
                       </SyntaxHighlighter>
-                      <Divider />
+                      <Divider
+                        style={{ marginBottom: "30px", marginTop: "30px" }}
+                      />
                     </div>
                   );
                 }

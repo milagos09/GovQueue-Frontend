@@ -22,27 +22,6 @@
             "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
           }
         ]
-      },
-      {
-        "name": "getAgencyById",
-        "description": "Get agency by agency ID",
-        "method": "GET",
-        "raw": "http://govqueue-api.onrender.com/agencies/{agencyID}",
-        "res": "{\n    \"agency_id\": 13,\n    \"admin_id\": 13,\n    \"name\": \"Makati City Government\",\n    \"address\": \"Makati City Hall, J.P. Rizal Street, Makati City\",\n    \"region\": \"NCR\",\n    \"website\": \"makati.gov.ph\",\n    \"contact\": \"+632 8882 0855\",\n    \"support_email\": \"support@makaticity.gov.ph\",\n    \"logo\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU\",\n    \"description\": \"To serve as the governing body of Makati City\",\n    \"type\": \"Local Government Units\",\n    \"announcement\": \"\",\n    \"updated_at\": \"2023-09-04T18:47:45.526Z\",\n    \"created_at\": \"2023-09-04T18:47:45.526Z\",\n    \"messenger_id\": null\n}",
-        "content": [
-          {
-            "language": "curl",
-            "req": "curl --location 'http://govqueue-api.onrender.com/agencies/13'"
-          },
-          {
-            "language": "javascript",
-            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/agencies/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
-          },
-          {
-            "language": "NodeJs",
-            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
-          }
-        ]
       }
     ]
   },
@@ -50,11 +29,11 @@
     "title": "Logs",
     "titleDetails": [
       {
+        "name": "getLogsByQueueId",
         "description": "Get logs by queue ID",
-        "name": "getLogsById",
         "method": "GET",
-        "res": "[\n  {\n    \"log_id\": 19,\n    \"agency_id\": 3,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 19,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  },\n  {\n    \"log_id\": 28,\n    \"agency_id\": 12,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 28,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  }\n]",
-        "raw": "http://govqueue-api.onrender.com/logs/queue/{queueID}",
+        "res": "[\n    {\n        \"log_id\": 19,\n        \"agency_id\": 3,\n        \"queue_id\": 15,\n        \"action_type\": \"increment\",\n        \"current_number\": 19,\n        \"created_at\": \"2023-09-04T09:44:00.175Z\",\n        \"name\": \"Queue 5-3\"\n    },\n    {\n        \"log_id\": 28,\n        \"agency_id\": 12,\n        \"queue_id\": 15,\n        \"action_type\": \"increment\",\n        \"current_number\": 28,\n        \"created_at\": \"2023-09-04T09:44:00.175Z\",\n        \"name\": \"Queue 5-3\"\n    },\n    {\n        \"log_id\": 115,\n        \"agency_id\": 5,\n        \"queue_id\": 15,\n        \"action_type\": \"increment\",\n        \"current_number\": 115,\n        \"created_at\": \"2023-09-04T09:44:00.175Z\",\n        \"name\": \"Queue 5-3\"\n    },\n    {\n        \"log_id\": 127,\n        \"agency_id\": 5,\n        \"queue_id\": 15,\n        \"action_type\": \"increment\",\n        \"current_number\": 127,\n        \"created_at\": \"2023-09-04T09:44:00.175Z\",\n        \"name\": \"Queue 5-3\"\n    },\n    {\n        \"log_id\": 131,\n        \"agency_id\": 1,\n        \"queue_id\": 15,\n        \"action_type\": \"increment\",\n        \"current_number\": 131,\n        \"created_at\": \"2023-09-04T09:44:00.175Z\",\n        \"name\": \"Queue 5-3\"\n    }\n]",
+        "raw": "http://govqueue-api.onrender.com/logs/{queueID}",
         "content": [
           {
             "language": "curl",
@@ -62,24 +41,53 @@
           },
           {
             "language": "javascript",
-            "req": "fetch('https://example.com/logs', {method: 'POST'})"
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/logs/queue/15', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "nodeJS",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/logs/queue/15',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
           }
         ]
       },
       {
-        "description": "Get logs by queue ID",
-        "name": "getLogsById",
+        "name": "getLogsByAgencyId",
+        "description": "Get logs by agency ID",
         "method": "GET",
-        "res": "[\n  {\n    \"log_id\": 19,\n    \"agency_id\": 3,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 19,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  },\n  {\n    \"log_id\": 28,\n    \"agency_id\": 12,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 28,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  }\n]",
-        "raw": "http://govqueue-api.onrender.com/logs/queue/{queueID}",
+        "raw": "",
+        "res": "[{\n    \"log_id\": 25,\n    \"queue_id\": 3,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 25,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n},\n{\n    \"log_id\": 29,\n    \"queue_id\": 9,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 29,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n},\n{\n    \"log_id\": 48,\n    \"queue_id\": 4,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 48,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n},\n{\n    \"log_id\": 51,\n    \"queue_id\": 12,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 51,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n},\n{\n    \"log_id\": 59,\n    \"queue_id\": 6,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 59,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n},\n{\n    \"log_id\": 72,\n    \"queue_id\": 6,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 72,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n},\n{\n    \"log_id\": 92,\n    \"queue_id\": 7,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 92,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n},\n{\n    \"log_id\": 105,\n    \"queue_id\": 9,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 105,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n},\n{\n    \"log_id\": 122,\n    \"queue_id\": 13,\n    \"agency_id\": 13,\n    \"action_type\": \"increment\",\n    \"current_number\": 122,\n    \"updated_at\": \"2023-09-04T09:44:00.175Z\",\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"updated_by\": 13\n}]",
         "content": [
           {
             "language": "curl",
-            "req": "curl --location 'http://govqueue-api.onrender.com/logs/queue/15'"
+            "req": "curl --location 'http://govqueue-api.onrender.com/logs/agency/13'"
           },
           {
             "language": "javascript",
-            "req": "fetch('https://example.com/logs', {method: 'POST'})"
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/logs/agency/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "nodeJS",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/logs/agency/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
+          }
+        ]
+      },
+      {
+        "name": "getLogsByDateRange",
+        "description": "Get logs by agency ID and date range",
+        "method": "GET",
+        "raw": "http://govqueue-api.onrender.com/logs/daterange/?agencyId={agencyID}&startDate={Date}&endDate={Date}",
+        "res": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/logs/queue/15',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl --location 'http://govqueue-api.onrender.com/logs/daterange/?agencyId=10&startDate=09%2F04%2F2023&endDate=09%2F05%2F2023'"
+          },
+          {
+            "language": "javascript",
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/logs/daterange/?agencyId=10&startDate=09/04/2023&endDate=09/05/2023', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "nodeJS",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/logs/daterange/?agencyId=10&startDate=09/04/2023&endDate=09/05/2023',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
           }
         ]
       }
@@ -89,37 +97,66 @@
     "title": "Queues",
     "titleDetails": [
       {
-        "description": "CRUD operations for queues",
-        "res": "{queue_id: 1, name: 'Queue 1', current_number: 0, ...}",
+        "name": "getQueueById",
+        "description": "Get queue by queue ID",
+        "method": "GET",
+        "raw": "http://govqueue-api.onrender.com/queues/{queueID}",
+        "res": "{\n    \"queue_id\": 19,\n    \"agency_id\": 7,\n    \"name\": \"Queue 7-1\",\n    \"current_number\": 43,\n    \"updated_at\": \"2023-09-07T11:38:46.583Z\",\n    \"created_at\": \"2023-09-07T11:38:46.583Z\"\n}",
         "content": [
           {
             "language": "curl",
-            "req": "curl -X GET https://example.com/queues"
+            "req": "curl --location 'http://govqueue-api.onrender.com/queues/19'"
           },
           {
             "language": "javascript",
-            "req": "fetch('https://example.com/queues')"
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/queues/19', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "nodeJS",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/queues/19',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
           }
         ]
       },
       {
-        "name": "getAgencyById",
+        "name": "getQueueByAgencyId",
         "description": "Get agency by agency ID",
         "method": "GET",
-        "raw": "http://govqueue-api.onrender.com/agencies/{agencyID}",
-        "res": "{\n    \"agency_id\": 13,\n    \"admin_id\": 13,\n    \"name\": \"Makati City Government\",\n    \"address\": \"Makati City Hall, J.P. Rizal Street, Makati City\",\n    \"region\": \"NCR\",\n    \"website\": \"makati.gov.ph\",\n    \"contact\": \"+632 8882 0855\",\n    \"support_email\": \"support@makaticity.gov.ph\",\n    \"logo\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU\",\n    \"description\": \"To serve as the governing body of Makati City\",\n    \"type\": \"Local Government Units\",\n    \"announcement\": \"\",\n    \"updated_at\": \"2023-09-04T18:47:45.526Z\",\n    \"created_at\": \"2023-09-04T18:47:45.526Z\",\n    \"messenger_id\": null\n}",
+        "raw": "http://govqueue-api.onrender.com/queues/agency/{agencyID}",
+        "res": "[\n    {\n        \"queue_id\": 13,\n        \"agency_id\": 5,\n        \"name\": \"Queue 5-1\",\n        \"current_number\": 2,\n        \"updated_at\": \"2023-09-07T11:38:46.583Z\",\n        \"created_at\": \"2023-09-07T11:38:46.583Z\"\n    },\n    {\n        \"queue_id\": 14,\n        \"agency_id\": 5,\n        \"name\": \"Queue 5-2\",\n        \"current_number\": 48,\n        \"updated_at\": \"2023-09-07T11:38:46.583Z\",\n        \"created_at\": \"2023-09-07T11:38:46.583Z\"\n    },\n    {\n        \"queue_id\": 15,\n        \"agency_id\": 5,\n        \"name\": \"Queue 5-3\",\n        \"current_number\": 7,\n        \"updated_at\": \"2023-09-07T11:38:46.583Z\",\n        \"created_at\": \"2023-09-07T11:38:46.583Z\"\n    }\n]",
         "content": [
           {
             "language": "curl",
-            "req": "curl --location 'http://govqueue-api.onrender.com/agencies/13'"
+            "req": "curl --location 'http://govqueue-api.onrender.com/queues/agency/5'"
           },
           {
             "language": "javascript",
-            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/agencies/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"http://govqueue-api.onrender.com/queues/agency/5\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
           },
           {
             "language": "NodeJs",
-            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/queues/agency/5',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
+          }
+        ]
+      },
+      {
+        "name": "getQueueByAgencyId",
+        "description": "Get agency by agency ID",
+        "method": "POST",
+        "raw": "http://govqueue-api.onrender.com/queues/add",
+        "res": "{\n    \"agencyId\": \"1\",\n    \"name\": \"Window 3\"\n}",
+
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl --location 'http://govqueue-api.onrender.com/queues/add' --header 'Content-Type: application/json' --data '{ \"agencyId\": \"1\", \"name\": \"Window 3\" }'"
+          },
+          {
+            "language": "javascript",
+            "req": "var myHeaders = new Headers();\nmyHeaders.append(\"Content-Type\", \"application/json\");\n\nvar raw = JSON.stringify({\n  \"agencyId\": \"1\",\n  \"name\": \"Window 3\"\n});\n\nvar requestOptions = {\n  method: 'POST',\n  headers: myHeaders,\n  body: raw,\n  redirect: 'follow'\n};\n\nfetch(\"http://govqueue-api.onrender.com/queues/add\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "NodeJs",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'POST',\n  'url': 'http://govqueue-api.onrender.com/queues/add',\n  'headers': {\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    \"agencyId\": \"1\",\n    \"name\": \"Window 3\"\n  })\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
           }
         ]
       }
@@ -129,37 +166,23 @@
     "title": "Users",
     "titleDetails": [
       {
-        "description": "CRUD operations for users",
-        "res": "{user_id: 1, first_name: 'John', last_name: 'Doe', ...}",
-        "content": [
-          {
-            "language": "curl",
-            "req": "curl -X POST https://example.com/users/login"
-          },
-          {
-            "language": "javascript",
-            "req": "fetch('https://example.com/users/login', {method: 'POST'})"
-          }
-        ]
-      },
-      {
-        "name": "getAgencyById",
-        "description": "Get agency by agency ID",
+        "name": "getUserByID",
+        "description": "Get user by user ID",
         "method": "GET",
-        "raw": "http://govqueue-api.onrender.com/agencies/{agencyID}",
-        "res": "{\n    \"agency_id\": 13,\n    \"admin_id\": 13,\n    \"name\": \"Makati City Government\",\n    \"address\": \"Makati City Hall, J.P. Rizal Street, Makati City\",\n    \"region\": \"NCR\",\n    \"website\": \"makati.gov.ph\",\n    \"contact\": \"+632 8882 0855\",\n    \"support_email\": \"support@makaticity.gov.ph\",\n    \"logo\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU\",\n    \"description\": \"To serve as the governing body of Makati City\",\n    \"type\": \"Local Government Units\",\n    \"announcement\": \"\",\n    \"updated_at\": \"2023-09-04T18:47:45.526Z\",\n    \"created_at\": \"2023-09-04T18:47:45.526Z\",\n    \"messenger_id\": null\n}",
+        "raw": "http://govqueue-api.onrender.com/users/{userID}",
+        "res": "{\n    \"user_id\": 1,\n    \"agency_id\": 1,\n    \"email\": \"admin@gmail.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Dela Cruz\",\n    \"created_at\": \"2023-09-06T02:32:13.825Z\",\n    \"updated_at\": \"2023-09-06T02:32:13.825Z\"\n}",
         "content": [
           {
             "language": "curl",
-            "req": "curl --location 'http://govqueue-api.onrender.com/agencies/13'"
+            "req": "curl --location 'http://govqueue-api.onrender.com/users/1'"
           },
           {
             "language": "javascript",
-            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/agencies/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/users/1', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
           },
           {
             "language": "NodeJs",
-            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/users/1',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
           }
         ]
       }
