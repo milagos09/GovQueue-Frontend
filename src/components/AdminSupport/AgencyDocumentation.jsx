@@ -5,80 +5,105 @@ import agencyData from "./example.json";
 import { useState } from "react";
 
 export default function AgencyDocumentation() {
-  const [selectedLanguages, setSelectedLanguages] = useState(
-    agencyData.map(() => "curl")
+  // Set "curl" as the default language for all dropdowns
+  const initialSelectedLanguages = agencyData.map((agency) =>
+    agency.titleDetails.map(() => "curl")
   );
 
-  const handleLanguageChange = (index, language) => {
+  const [selectedLanguages, setSelectedLanguages] = useState(
+    initialSelectedLanguages
+  );
+
+  const [responseContent, setResponseContent] = useState(
+    agencyData.map(() => agencyData[0].titleDetails[0].res)
+  );
+
+  const handleLanguageChange = (agencyIndex, detailIndex, language) => {
     const newSelectedLanguages = [...selectedLanguages];
-    newSelectedLanguages[index] = language;
+    newSelectedLanguages[agencyIndex] = [...newSelectedLanguages[agencyIndex]];
+    newSelectedLanguages[agencyIndex][detailIndex] = language;
     setSelectedLanguages(newSelectedLanguages);
+
+    // Update the response content based on the selected language
+    const newResponseContent = [...responseContent];
+    newResponseContent[agencyIndex] =
+      agencyData[agencyIndex].titleDetails[detailIndex].content.find(
+        (content) => content.language === language
+      )?.res || "";
+    setResponseContent(newResponseContent);
   };
 
   return (
     <>
-      {agencyData.map((agency, index) => (
-        <div key={index}>
+      {agencyData.map((agency, agencyIndex) => (
+        <div key={agencyIndex}>
           <Typography variant="h4" gutterBottom>
             {agency.title}
           </Typography>
 
-          <Typography variant="h5" gutterBottom>
-            <span style={{ color: "green" }}>{agency.method}</span>{" "}
-            {agency.titleDetails.name}
-          </Typography>
-          <Typography gutterBottom>
-            {agency.titleDetails.description}
-          </Typography>
-          <SyntaxHighlighter style={a11yDark} wrapLongLines={true}>
-            {agency.titleDetails.raw}
-          </SyntaxHighlighter>
-          <Typography variant="h5" gutterBottom>
-            Example:
-          </Typography>
+          {agency.titleDetails.map((detail, detailIndex) => (
+            <div key={detailIndex}>
+              <Typography variant="h5" gutterBottom>
+                <span style={{ color: "green" }}>{detail.method}</span>{" "}
+                {detail.name}
+              </Typography>
+              <Typography gutterBottom>{detail.description}</Typography>
+              <SyntaxHighlighter style={a11yDark} wrapLongLines={true}>
+                {detail.raw}
+              </SyntaxHighlighter>
+              <Typography variant="h5" gutterBottom>
+                Example:
+              </Typography>
 
-          <Typography variant="h6" gutterBottom>
-            Request:
-          </Typography>
-          <Select
-            value={selectedLanguages[index]}
-            onChange={(e) => handleLanguageChange(index, e.target.value)}
-          >
-            {agency.titleDetails.content.map((content, contentIndex) => (
-              <MenuItem key={contentIndex} value={content.language}>
-                {content.language}
-              </MenuItem>
-            ))}
-          </Select>
-          {agency.titleDetails.content.map((content, contentIndex) => {
-            if (content.language === selectedLanguages[index]) {
-              return (
-                <div key={contentIndex}>
-                  <SyntaxHighlighter
-                    style={a11yDark}
-                    wrapLongLines={true}
-                    language={selectedLanguages[index]}
-                  >
-                    {content.req}
-                  </SyntaxHighlighter>
+              <Typography variant="h6" gutterBottom>
+                Request:
+              </Typography>
+              <Select
+                value={selectedLanguages[agencyIndex][detailIndex]}
+                onChange={(e) =>
+                  handleLanguageChange(agencyIndex, detailIndex, e.target.value)
+                }
+              >
+                {detail.content.map((content, contentIndex) => (
+                  <MenuItem key={contentIndex} value={content.language}>
+                    {content.language}
+                  </MenuItem>
+                ))}
+              </Select>
+              {detail.content.map((content, contentIndex) => {
+                if (
+                  content.language ===
+                  selectedLanguages[agencyIndex][detailIndex]
+                ) {
+                  return (
+                    <div key={contentIndex}>
+                      <SyntaxHighlighter
+                        style={a11yDark}
+                        wrapLongLines={true}
+                        language={content.language}
+                      >
+                        {content.req}
+                      </SyntaxHighlighter>
 
-                  <Typography variant="h6" gutterBottom>
-                    Response:
-                  </Typography>
+                      <Typography variant="h6" gutterBottom>
+                        Response:
+                      </Typography>
 
-                  <SyntaxHighlighter
-                    style={a11yDark}
-                    wrapLongLines={true}
-                    language="json"
-                  >
-                    {agency.titleDetails.res}
-                  </SyntaxHighlighter>
-                  <Divider />
-                </div>
-              );
-            }
-            return null;
-          })}
+                      <SyntaxHighlighter
+                        style={a11yDark}
+                        wrapLongLines={true}
+                        language="json"
+                      >
+                        {detail.res}
+                      </SyntaxHighlighter>
+                      <Divider />
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </div>
+          ))}
         </div>
       ))}
     </>

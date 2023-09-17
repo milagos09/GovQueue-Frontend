@@ -1,80 +1,168 @@
 [
   {
     "title": "Agencies",
-    "titleDetails": {
-      "description": "Get agency by agency ID",
-      "raw": "http://govqueue-api.onrender.com/agencies/{agencyID}",
-      "method": "GET",
-      "name": "getAgencyById",
-      "res": "{\n    \"agency_id\": 13,\n    \"admin_id\": 13,\n    \"name\": \"Makati City Government\",\n    \"address\": \"Makati City Hall, J.P. Rizal Street, Makati City\",\n    \"region\": \"NCR\",\n    \"website\": \"makati.gov.ph\",\n    \"contact\": \"+632 8882 0855\",\n    \"support_email\": \"support@makaticity.gov.ph\",\n    \"logo\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU\",\n    \"description\": \"To serve as the governing body of Makati City\",\n    \"type\": \"Local Government Units\",\n    \"announcement\": \"\",\n    \"updated_at\": \"2023-09-04T18:47:45.526Z\",\n    \"created_at\": \"2023-09-04T18:47:45.526Z\",\n    \"messenger_id\": null\n}",
-      "content": [
-        {
-          "language": "curl",
-          "req": "curl --location 'http://govqueue-api.onrender.com/agencies/13'"
-        },
-        {
-          "language": "javascript",
-          "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/agencies/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
-        },
-        {
-          "language": "NodeJs",
-          "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
-        }
-      ]
-    }
+    "titleDetails": [
+      {
+        "name": "getAgencyById",
+        "description": "Get agency by agency ID",
+        "method": "GET",
+        "raw": "http://govqueue-api.onrender.com/agencies/{agencyID}",
+        "res": "{\n    \"agency_id\": 13,\n    \"admin_id\": 13,\n    \"name\": \"Makati City Government\",\n    \"address\": \"Makati City Hall, J.P. Rizal Street, Makati City\",\n    \"region\": \"NCR\",\n    \"website\": \"makati.gov.ph\",\n    \"contact\": \"+632 8882 0855\",\n    \"support_email\": \"support@makaticity.gov.ph\",\n    \"logo\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU\",\n    \"description\": \"To serve as the governing body of Makati City\",\n    \"type\": \"Local Government Units\",\n    \"announcement\": \"\",\n    \"updated_at\": \"2023-09-04T18:47:45.526Z\",\n    \"created_at\": \"2023-09-04T18:47:45.526Z\",\n    \"messenger_id\": null\n}",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl --location 'http://govqueue-api.onrender.com/agencies/13'"
+          },
+          {
+            "language": "javascript",
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/agencies/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "NodeJs",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
+          }
+        ]
+      },
+      {
+        "name": "getAgencyById",
+        "description": "Get agency by agency ID",
+        "method": "GET",
+        "raw": "http://govqueue-api.onrender.com/agencies/{agencyID}",
+        "res": "{\n    \"agency_id\": 13,\n    \"admin_id\": 13,\n    \"name\": \"Makati City Government\",\n    \"address\": \"Makati City Hall, J.P. Rizal Street, Makati City\",\n    \"region\": \"NCR\",\n    \"website\": \"makati.gov.ph\",\n    \"contact\": \"+632 8882 0855\",\n    \"support_email\": \"support@makaticity.gov.ph\",\n    \"logo\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU\",\n    \"description\": \"To serve as the governing body of Makati City\",\n    \"type\": \"Local Government Units\",\n    \"announcement\": \"\",\n    \"updated_at\": \"2023-09-04T18:47:45.526Z\",\n    \"created_at\": \"2023-09-04T18:47:45.526Z\",\n    \"messenger_id\": null\n}",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl --location 'http://govqueue-api.onrender.com/agencies/13'"
+          },
+          {
+            "language": "javascript",
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/agencies/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "NodeJs",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Logs",
-    "titleDetails": {
-      "description": "Get logs by queue ID",
-      "name": "getLogsById",
-      "method": "GET",
-      "res": "[\n  {\n    \"log_id\": 19,\n    \"agency_id\": 3,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 19,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  },\n  {\n    \"log_id\": 28,\n    \"agency_id\": 12,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 28,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  }\n]",
-      "raw": "http://govqueue-api.onrender.com/logs/queue/{queueID}",
-      "content": [
-        {
-          "language": "cURL",
-          "req": "curl --location 'http://govqueue-api.onrender.com/logs/queue/15'"
-        },
-        {
-          "language": "javascript",
-          "req": "fetch('https://example.com/logs', {method: 'POST'})"
-        }
-      ]
-    }
+    "titleDetails": [
+      {
+        "description": "Get logs by queue ID",
+        "name": "getLogsById",
+        "method": "GET",
+        "res": "[\n  {\n    \"log_id\": 19,\n    \"agency_id\": 3,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 19,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  },\n  {\n    \"log_id\": 28,\n    \"agency_id\": 12,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 28,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  }\n]",
+        "raw": "http://govqueue-api.onrender.com/logs/queue/{queueID}",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl --location 'http://govqueue-api.onrender.com/logs/queue/15'"
+          },
+          {
+            "language": "javascript",
+            "req": "fetch('https://example.com/logs', {method: 'POST'})"
+          }
+        ]
+      },
+      {
+        "description": "Get logs by queue ID",
+        "name": "getLogsById",
+        "method": "GET",
+        "res": "[\n  {\n    \"log_id\": 19,\n    \"agency_id\": 3,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 19,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  },\n  {\n    \"log_id\": 28,\n    \"agency_id\": 12,\n    \"queue_id\": 15,\n    \"action_type\": \"increment\",\n    \"current_number\": 28,\n    \"created_at\": \"2023-09-04T09:44:00.175Z\",\n    \"name\": \"Queue 5-3\"\n  }\n]",
+        "raw": "http://govqueue-api.onrender.com/logs/queue/{queueID}",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl --location 'http://govqueue-api.onrender.com/logs/queue/15'"
+          },
+          {
+            "language": "javascript",
+            "req": "fetch('https://example.com/logs', {method: 'POST'})"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Queues",
-    "titleDetails": {
-      "description": "CRUD operations for queues",
-      "res": "{queue_id: 1, name: 'Queue 1', current_number: 0, ...}",
-      "content": [
-        {
-          "language": "curl",
-          "req": "curl -X GET https://example.com/queues"
-        },
-        {
-          "language": "javascript",
-          "req": "fetch('https://example.com/queues')"
-        }
-      ]
-    }
+    "titleDetails": [
+      {
+        "description": "CRUD operations for queues",
+        "res": "{queue_id: 1, name: 'Queue 1', current_number: 0, ...}",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl -X GET https://example.com/queues"
+          },
+          {
+            "language": "javascript",
+            "req": "fetch('https://example.com/queues')"
+          }
+        ]
+      },
+      {
+        "name": "getAgencyById",
+        "description": "Get agency by agency ID",
+        "method": "GET",
+        "raw": "http://govqueue-api.onrender.com/agencies/{agencyID}",
+        "res": "{\n    \"agency_id\": 13,\n    \"admin_id\": 13,\n    \"name\": \"Makati City Government\",\n    \"address\": \"Makati City Hall, J.P. Rizal Street, Makati City\",\n    \"region\": \"NCR\",\n    \"website\": \"makati.gov.ph\",\n    \"contact\": \"+632 8882 0855\",\n    \"support_email\": \"support@makaticity.gov.ph\",\n    \"logo\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU\",\n    \"description\": \"To serve as the governing body of Makati City\",\n    \"type\": \"Local Government Units\",\n    \"announcement\": \"\",\n    \"updated_at\": \"2023-09-04T18:47:45.526Z\",\n    \"created_at\": \"2023-09-04T18:47:45.526Z\",\n    \"messenger_id\": null\n}",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl --location 'http://govqueue-api.onrender.com/agencies/13'"
+          },
+          {
+            "language": "javascript",
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/agencies/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "NodeJs",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Users",
-    "titleDetails": {
-      "description": "CRUD operations for users",
-      "res": "{user_id: 1, first_name: 'John', last_name: 'Doe', ...}",
-      "content": [
-        {
-          "language": "curl",
-          "req": "curl -X POST https://example.com/users/login"
-        },
-        {
-          "language": "javascript",
-          "req": "fetch('https://example.com/users/login', {method: 'POST'})"
-        }
-      ]
-    }
+    "titleDetails": [
+      {
+        "description": "CRUD operations for users",
+        "res": "{user_id: 1, first_name: 'John', last_name: 'Doe', ...}",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl -X POST https://example.com/users/login"
+          },
+          {
+            "language": "javascript",
+            "req": "fetch('https://example.com/users/login', {method: 'POST'})"
+          }
+        ]
+      },
+      {
+        "name": "getAgencyById",
+        "description": "Get agency by agency ID",
+        "method": "GET",
+        "raw": "http://govqueue-api.onrender.com/agencies/{agencyID}",
+        "res": "{\n    \"agency_id\": 13,\n    \"admin_id\": 13,\n    \"name\": \"Makati City Government\",\n    \"address\": \"Makati City Hall, J.P. Rizal Street, Makati City\",\n    \"region\": \"NCR\",\n    \"website\": \"makati.gov.ph\",\n    \"contact\": \"+632 8882 0855\",\n    \"support_email\": \"support@makaticity.gov.ph\",\n    \"logo\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtoYs8uhF2_uICc1SeAs0d2MgqCe301F9-g&usqp=CAU\",\n    \"description\": \"To serve as the governing body of Makati City\",\n    \"type\": \"Local Government Units\",\n    \"announcement\": \"\",\n    \"updated_at\": \"2023-09-04T18:47:45.526Z\",\n    \"created_at\": \"2023-09-04T18:47:45.526Z\",\n    \"messenger_id\": null\n}",
+        "content": [
+          {
+            "language": "curl",
+            "req": "curl --location 'http://govqueue-api.onrender.com/agencies/13'"
+          },
+          {
+            "language": "javascript",
+            "req": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch('http://govqueue-api.onrender.com/agencies/13', requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          },
+          {
+            "language": "NodeJs",
+            "req": "var request = require('request');\nvar options = {\n  'method': 'GET',\n  'url': 'http://govqueue-api.onrender.com/agencies/13',\n  'headers': {\n  }\n};\nrequest(options, function (error, response) {\n  if (error) throw new Error(error);\n  console.log(response.body);\n});"
+          }
+        ]
+      }
+    ]
   }
 ]
