@@ -2,8 +2,42 @@ import AdminNavbar from "../../components/AdminNavbar";
 import { Divider, List, Grid } from "@mui/material";
 import Feildset from "../../components/Fieldset";
 import AgecyDocumentation from "../../components/AdminSupport/AgencyDocumentation";
+import agencyData from "../../components/AdminSupport/Admin.json";
 
 export default function AdminSupport() {
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }
+
+  const tableOfContents = agencyData.map((agency, agencyIndex) => (
+    <div key={agencyIndex}>
+      <a
+        href={`#agency-${agencyIndex}`}
+        onClick={() => scrollToSection(`agency-${agencyIndex}`)}
+      >
+        <h2>{agency.title}</h2>
+      </a>
+
+      {agency.titleDetails.map((detail, detailIndex) => (
+        <div key={detailIndex}>
+          <a
+            href={`#agency-${agencyIndex}`}
+            onClick={() => scrollToSection(`agency-${agencyIndex}`)}
+          >
+            <p>{detail.name}</p>
+          </a>
+        </div>
+      ))}
+    </div>
+  ));
+
   return (
     <>
       <AdminNavbar />
@@ -14,7 +48,7 @@ export default function AdminSupport() {
             sx={{ textAlign: "left" }}
             titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
           >
-            <List></List>
+            <List>{tableOfContents}</List>
           </Feildset>
         </Grid>
 
@@ -25,7 +59,7 @@ export default function AdminSupport() {
             titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
           >
             <Divider />
-            <AgecyDocumentation></AgecyDocumentation>
+            <AgecyDocumentation />
           </Feildset>
         </Grid>
       </Grid>
