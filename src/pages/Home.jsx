@@ -13,10 +13,10 @@ import Agency from "./public/Agency";
 import queuesStore from "../stores/queuesStore";
 import agencyStore from "../stores/agencyStore";
 import { useEffect } from "react";
+import { socket } from "../helpers/socket";
 
 const session = sessionStorage.getItem("user");
 const isLoggedIn = !!session;
-const user = JSON.parse(session);
 
 const router = createBrowserRouter([
     {
@@ -72,30 +72,31 @@ const router = createBrowserRouter([
 ]);
 
 export default function Home() {
-    const { setAgencies } = agencyStore();
-    const { setQueues } = queuesStore();
+    const { setAgencies, updateAgency } = agencyStore();
+    const { setQueues, updateQueue } = queuesStore();
     useEffect(() => {
         (async () => {
             try {
-                const [queuesResponse, agenciesResponse] = await Promise.all([
-                    fetch("https://govqueue-api.onrender.com/queues"),
-                    fetch("https://govqueue-api.onrender.com/agencies"),
-                ]);
+                socket.emit("getInitialData");
+                socket.on("updateData", (data) => {
+                    const { agencies, queues } = data;
+                    setAgencies(agencies);
+                    setQueues(queues);
+                });
 
-                if (!queuesResponse.ok || !agenciesResponse.ok) {
-                    throw new Error("One or more API requests failed");
-                }
+                socket.on("updateAgency", (agency) => {
+                    updateAgency(agency);
+                });
 
-                const [queuesData, agenciesData] = await Promise.all([queuesResponse.json(), agenciesResponse.json()]);
-
-                setAgencies(agenciesData);
-                setQueues(queuesData);
+                socket.on("updateQueue", (queue) => {
+                    updateQueue(queue);
+                });
             } catch (error) {
-                // Handle errors here
                 console.error("Error fetching data:", error);
             }
         })();
     }, []);
+
     return (
         <>
             <RouterProvider router={router}>

@@ -18,7 +18,7 @@ export default function Profile({ agency }) {
                         sx={{ fontSize: "2rem" }}
                         size="small"
                         label="Agency"
-                        defaultValue={agency.name}
+                        value={agency.name}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -27,7 +27,7 @@ export default function Profile({ agency }) {
                     <TextField
                         size="small"
                         label="Description"
-                        defaultValue={agency.description}
+                        value={agency.description}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -36,7 +36,7 @@ export default function Profile({ agency }) {
                     <TextField
                         size="small"
                         label="Address"
-                        defaultValue={agency.address}
+                        value={agency.address}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -45,7 +45,7 @@ export default function Profile({ agency }) {
                     <TextField
                         size="small"
                         label="Region"
-                        defaultValue={agency.region}
+                        value={agency.region}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -54,7 +54,7 @@ export default function Profile({ agency }) {
                     <TextField
                         size="small"
                         label="Type"
-                        defaultValue={agency.type}
+                        value={agency.type}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -63,7 +63,7 @@ export default function Profile({ agency }) {
                     <TextField
                         size="small"
                         label="Contact"
-                        defaultValue={agency.contact}
+                        value={agency.contact}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -72,7 +72,7 @@ export default function Profile({ agency }) {
                     <TextField
                         size="small"
                         label="Email"
-                        defaultValue={agency.support_email}
+                        value={agency.support_email}
                         multiline
                         InputProps={{
                             ...inputStyles,

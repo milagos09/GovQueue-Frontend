@@ -64,7 +64,7 @@ export default function Row({ admin, customBreakPoint, isFavorite, toggleFavorit
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ marginBottom: "20px" }}>
-                            <Windows minWidth={80} queue={admin.queues} />
+                            <Windows minWidth={80} queues={admin.queues} />
                         </Box>
                     </Collapse>
                 </TableCell>
