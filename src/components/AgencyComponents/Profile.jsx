@@ -1,7 +1,7 @@
 import Fieldset from "./../Fieldset";
 import { Box, TextField, Stack } from "@mui/material";
 
-export default function Profile({ admin }) {
+export default function Profile({ agency }) {
     const inputStyles = {
         readOnly: true,
         fullWidth: true,
@@ -11,14 +11,14 @@ export default function Profile({ admin }) {
         <>
             <Fieldset title={"Profile"} titleStyles={{ fontSize: "1.5rem" }} sx={{ padding: "20px" }}>
                 <Box sx={{ textAlign: "center" }}>
-                    <img src={admin.logo} style={{ borderRadius: "50%", width: "150px" }} />
+                    <img src={agency.logo} style={{ borderRadius: "50%", width: "150px" }} />
                 </Box>
                 <Stack rowGap={3} sx={{ my: "20px" }}>
                     <TextField
                         sx={{ fontSize: "2rem" }}
                         size="small"
                         label="Agency"
-                        defaultValue={admin.agency}
+                        value={agency.name}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -27,7 +27,7 @@ export default function Profile({ admin }) {
                     <TextField
                         size="small"
                         label="Description"
-                        defaultValue={admin.description}
+                        value={agency.description}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -36,7 +36,7 @@ export default function Profile({ admin }) {
                     <TextField
                         size="small"
                         label="Address"
-                        defaultValue={admin.address}
+                        value={agency.address}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -45,7 +45,7 @@ export default function Profile({ admin }) {
                     <TextField
                         size="small"
                         label="Region"
-                        defaultValue={admin.region}
+                        value={agency.region}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -54,7 +54,7 @@ export default function Profile({ admin }) {
                     <TextField
                         size="small"
                         label="Type"
-                        defaultValue={admin.type}
+                        value={agency.type}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -63,7 +63,7 @@ export default function Profile({ admin }) {
                     <TextField
                         size="small"
                         label="Contact"
-                        defaultValue={admin.contact}
+                        value={agency.contact}
                         multiline
                         InputProps={{
                             ...inputStyles,
@@ -72,7 +72,7 @@ export default function Profile({ admin }) {
                     <TextField
                         size="small"
                         label="Email"
-                        defaultValue={admin.supportEmail}
+                        value={agency.support_email}
                         multiline
                         InputProps={{
                             ...inputStyles,

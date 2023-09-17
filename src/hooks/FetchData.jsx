@@ -5,21 +5,23 @@ export default function FetchData() {
     const [isFetching, setIsFetching] = useState(false);
     const [error, setError] = useState(null);
 
-    const fetchData = async (url, options = {}) => {
+    const fetchData = async (endpoint, options = {}) => {
         setIsFetching(true);
         setError(null);
 
         try {
-            const response = await fetch(url, options);
+            const response = await fetch(endpoint, options);
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
             const jsonData = await response.json();
             setData(jsonData);
+            setIsFetching(false); // Move setIsFetching(false) here to ensure it's called after data is set.
+            return jsonData; // Return the data when the fetch is successful.
         } catch (err) {
             setError(err);
-        } finally {
-            setIsFetching(false);
+            setIsFetching(false); // Make sure setIsFetching(false) is called in the catch block as well.
+            throw err; // Re-throw the error for further handling, if necessary.
         }
     };
 

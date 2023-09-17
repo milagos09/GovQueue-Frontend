@@ -1,16 +1,30 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { gold } from "./../themes/MyTheme";
 import { Primary } from "../components/Buttons";
 
-export default function ErrorPage({
-    redirect,
-    message = {
-        title: "404 - page not found",
+const errorMessages = {
+    400: {
+        title: "400 - BAD REQUEST",
+        description: "The request you made is invalid.",
+    },
+    404: {
+        title: "404 - PAGE NOT FOUND",
         description:
             "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
     },
-}) {
+    500: {
+        title: "500 - INTERNAL SERVER ERROR",
+        description: "An internal server error occurred. Please try again later.",
+    },
+};
+
+export default function ErrorPage({ status, redirect }) {
+    const message = errorMessages[status] || {
+        title: "Unknown Error",
+        description: "An unknown error occurred.",
+    };
+
     return (
         <Box
             sx={{
@@ -64,9 +78,11 @@ export default function ErrorPage({
             >
                 {message.description}
             </Typography>
-            <Link to={redirect.to} style={{ textDecoration: "none" }}>
-                <Primary value={redirect.buttonValue} />
-            </Link>
+            {redirect && (
+                <Link to={redirect.to} style={{ textDecoration: "none" }}>
+                    <Primary value={redirect.buttonValue} />
+                </Link>
+            )}
         </Box>
     );
 }

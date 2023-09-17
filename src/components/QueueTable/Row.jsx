@@ -46,13 +46,13 @@ export default function Row({ admin, customBreakPoint, isFavorite, toggleFavorit
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
-                    <Link target="_blank" to={`agency/${admin.id}`}>
+                    <Link target="_blank" to={`agency/${admin.agency_id}`}>
                         <img src={admin.logo} loading="lazy" style={{ maxWidth: maxWidth, borderRadius: "50%" }} />
                     </Link>
                 </TableCell>
                 <TableCell align="center" sx={{ fontSize: fontSize }}>
-                    <Link target="_blank" to={`agency/${admin.id}`}>
-                        {admin.agency}
+                    <Link target="_blank" to={`agency/${admin.agency_id}`}>
+                        {admin.name}
                     </Link>
                 </TableCell>
                 {customBreakPoint && <TableCell align="center">{admin.region}</TableCell>}
@@ -64,7 +64,7 @@ export default function Row({ admin, customBreakPoint, isFavorite, toggleFavorit
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ marginBottom: "20px" }}>
-                            <Windows minWidth={80} queue={admin.queues} />
+                            <Windows minWidth={80} queues={admin.queues} />
                         </Box>
                     </Collapse>
                 </TableCell>

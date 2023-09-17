@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { TextField, Container, InputAdornment, Checkbox } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Primary } from "./../Buttons";
-import { useNavigate } from "react-router-dom";
 import FetchData from "./../../hooks/FetchData";
 import LoadingScreen from "./../LoadingScreen";
 
@@ -21,7 +20,6 @@ export default function AdminLogin() {
         setRememberMe(event.target.checked);
     };
 
-    const navigate = useNavigate();
     const handleLogin = async (e) => {
         e.preventDefault();
         const trimmedEmail = email.trim();
@@ -37,7 +35,7 @@ export default function AdminLogin() {
     useEffect(() => {
         if (data) {
             sessionStorage.setItem("user", JSON.stringify(data));
-            navigate(0);
+            location.reload();
         }
     }, [data]);
 

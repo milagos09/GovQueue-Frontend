@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import LogPicker from "./LogPicker";
 import LogTable from "./LogTable";
@@ -6,11 +6,13 @@ import LogOptions from "./LogOptions";
 import dayjs from "dayjs";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import LoadingScreen from "../LoadingScreen";
+import { getSessionStorage } from "../../helpers/sessionStorage";
 
 const initialStartDate = dayjs().subtract(1, "day");
 const initialEndDate = dayjs();
 
-export default function AdminLogs({ user }) {
+export default function AdminLogs() {
+    const user = getSessionStorage("user");
     const { height } = CheckScreenSize();
 
     const [state, setState] = useState({
@@ -46,9 +48,17 @@ export default function AdminLogs({ user }) {
 
     // Handle changes to the selected date and trigger log fetching.
     const handleChangeDate = async (setter, newDate) => {
-        const { startDate, endDate } = state;
-        const startDateToUpdate = setter === "startDate" ? newDate : startDate;
-        const endDateToUpdate = setter === "endDate" ? newDate : endDate;
+        let startDateToUpdate, endDateToUpdate;
+
+        if (setter === "startDate") {
+            startDateToUpdate = newDate;
+            endDateToUpdate = state.endDate;
+        } else {
+            startDateToUpdate = state.startDate;
+            endDateToUpdate = newDate;
+        }
+
+        setState((prevState) => ({ ...prevState, startDate: startDateToUpdate, endDate: endDateToUpdate }));
         await fetchLogs(user.agency_id, startDateToUpdate, endDateToUpdate);
     };
 
