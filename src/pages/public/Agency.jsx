@@ -17,7 +17,7 @@ export default function Agency() {
     const { agencies } = agencyStore();
     const id = Number(useParams().id);
     const agency = agencies.find((agency) => agency.agency_id === id) || {};
-    console.log(agency);
+
     return (
         <>
             <Navbar />
