@@ -5,12 +5,9 @@ import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import calculateTimeDifference from "../../helpers/calculateTimeDifference";
 import { getSessionStorage } from "./../../helpers/sessionStorage";
-import LoadingScreen from "../LoadingScreen";
-import FetchData from "../../hooks/FetchData";
-import queuesStore from "./../../stores/queuesStore";
 import { socket } from "../../helpers/socket";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -33,12 +30,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function QueueData({ queue }) {
-    // const { fetchData, data, isFetching } = FetchData();
-    // const { setQueues } = queuesStore();
     const user = getSessionStorage("user");
     const [open, setOpen] = useState(false);
-
-    const [updated, setUpdated] = useState(calculateTimeDifference(queue.updated_at));
 
     const handleOpen = () => setOpen(!open);
 
@@ -51,7 +44,6 @@ export default function QueueData({ queue }) {
             updatedBy: user.user_id,
         };
         socket.emit("updateQueue", body);
-        setUpdated("0 mins ago");
     };
     const editNumber = () => {
         const updatedNumber = prompt("Set number:");
@@ -65,7 +57,6 @@ export default function QueueData({ queue }) {
                 updatedBy: user.user_id,
             };
             socket.emit("updateQueue", body);
-            setUpdated("0 mins ago");
         }
     };
 
@@ -86,38 +77,8 @@ export default function QueueData({ queue }) {
         },
     ];
 
-    // useEffect(() => {
-    //     if (number !== queue.current_number) {
-    //         const options = {
-    //             method: "post",
-    //             headers: { "Content-Type": "application/json" },
-    //             body: JSON.stringify({
-    //                 queueId: queue.queue_id,
-    //                 agencyId: user.agency_id,
-    //                 actionType: action,
-    //                 currentNumber: number,
-    //                 updatedBy: user.user_id,
-    //             }),
-    //         };
-    //         fetchData("https://govqueue-api.onrender.com/logs/add", options);
-    //     }
-    // }, [number]);
-
-    // useEffect(() => {
-    //     if (data) {
-    //         setUpdated("0 mins ago");
-    //         setQueues((queues) =>
-    //             queues.map((q) =>
-    //                 q.queue_id === queue.queue_id
-    //                     ? { ...q, current_number: data.current_number, updated_at: data.created_at }
-    //                     : q
-    //             )
-    //         );
-    //     }
-    // }, [data]);
     return (
         <>
-            {/* <LoadingScreen isFetching={isFetching} /> */}
             <StyledTableRow>
                 <StyledTableCell align="center">{queue.queue_id}</StyledTableCell>
                 <StyledTableCell align="center">
@@ -141,7 +102,7 @@ export default function QueueData({ queue }) {
                         {queue.current_number}
                     </Box>
                 </StyledTableCell>
-                <StyledTableCell align="center">{updated}</StyledTableCell>
+                <StyledTableCell align="center">{calculateTimeDifference(queue.updated_at)}</StyledTableCell>
                 <StyledTableCell align="center">
                     <Box sx={{ transform: "translateZ(0px)" }}>
                         <Backdrop open={open} sx={{ background: "none" }} />

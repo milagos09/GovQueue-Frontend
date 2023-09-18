@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box, Paper, Table, TableBody, TableHead, TableRow, TablePagination } from "@mui/material";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { styled } from "@mui/material/styles";
 import { glassEffect } from "../../themes/MyTheme";
 import QueueData from "./QueueData";
-import LoadingScreen from "./../LoadingScreen";
-import FetchData from "./../../hooks/FetchData";
 import queuesStore from "./../../stores/queuesStore";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -19,8 +17,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 export default function AdminQueueTable({ agencyId }) {
-    // const { fetchData, data, isFetching } = FetchData();
-    // const [queues, setQueues] = useState([]);
     const { queues: allQueues } = queuesStore();
     const queues = allQueues.filter((q) => q.agency_id === agencyId);
     const [page, setPage] = useState(0);
@@ -36,21 +32,8 @@ export default function AdminQueueTable({ agencyId }) {
         setPage(0);
     };
 
-    // useEffect(() => {
-    //     (async () => {
-    //         await fetchData(`https://govqueue-api.onrender.com/queues/agency/${agencyId}`);
-    //     })();
-    // }, []);
-
-    // useEffect(() => {
-    //     if (data) {
-    //         setQueues(data);
-    //     }
-    // }, [data]);
-
     return (
         <>
-            {/* <LoadingScreen isFetching={isFetching} /> */}
             <Paper
                 sx={{
                     width: "100%",
