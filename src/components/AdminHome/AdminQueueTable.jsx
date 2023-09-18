@@ -1,20 +1,9 @@
 import { useState } from "react";
 import { Box, Paper, Table, TableBody, TableHead, TableRow, TablePagination } from "@mui/material";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import { styled } from "@mui/material/styles";
 import { glassEffect } from "../../themes/MyTheme";
 import QueueData from "./QueueData";
 import queuesStore from "./../../stores/queuesStore";
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-    },
-}));
+import { StyledTableCell } from "./StyledTableElements";
 
 export default function AdminQueueTable({ agencyId }) {
     const { queues } = queuesStore();

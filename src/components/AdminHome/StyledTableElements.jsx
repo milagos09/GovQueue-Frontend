@@ -21,8 +21,12 @@ const CustomTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-function StyledTableCell({ open, children }) {
-    return <CustomTableCell open={open}>{children}</CustomTableCell>;
+function StyledTableCell({ open, children, align }) {
+    return (
+        <CustomTableCell align={align} open={open}>
+            {children}
+        </CustomTableCell>
+    );
 }
 
 function StyledTableRow({ children }) {
