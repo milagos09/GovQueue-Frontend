@@ -13,7 +13,7 @@ export default function AdminHome() {
         <>
             <Container maxWidth="lg" sx={{ minHeight: `${height - 167}px` }}>
                 <Grid container justifyContent="center" alignItems="center" direction="row" sx={{ padding: 1 }}>
-                    <AdminHeader agency={agencyDetails.name} logo={agencyDetails.logo} />
+                    <AdminHeader agency={agencyDetails} />
                     <AdminQueueTable agencyId={agencyDetails.agency_id} />
                 </Grid>
             </Container>
