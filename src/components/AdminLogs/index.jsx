@@ -8,8 +8,8 @@ import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import LoadingScreen from "../LoadingScreen";
 import { getSessionStorage } from "../../helpers/sessionStorage";
 
-const initialStartDate = dayjs().subtract(1, "day");
-const initialEndDate = dayjs();
+const initialStartDate = dayjs();
+const initialEndDate = dayjs().add(1, "day");
 
 export default function AdminLogs() {
     const user = getSessionStorage("user");
