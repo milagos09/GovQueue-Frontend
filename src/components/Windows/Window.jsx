@@ -17,7 +17,6 @@ export default function Window({ queueId, minWidth = 100, name, number, updated 
                 const sound = new Audio(beep);
                 setNumber(log.current_number);
                 setUpdated(log.updated_at);
-
                 sound.play();
             }
         };
@@ -26,7 +25,7 @@ export default function Window({ queueId, minWidth = 100, name, number, updated 
 
         // Cleanup the socket listener when the component unmounts
         return () => {
-            socket.off("newLog");
+            socket.off("addLog");
         };
     }, []);
 
@@ -62,7 +61,7 @@ export default function Window({ queueId, minWidth = 100, name, number, updated 
             <Box component="span" sx={{ fontSize: ".7rem" }}>
                 {calculateTimeDifference(currentUpdated)}
             </Box>
-            <ShowLogs queueId={queueId} openLogs={openLogs} setOpenLogs={setOpenLogs} />
+            {openLogs && <ShowLogs queueId={queueId} setOpenLogs={setOpenLogs} />}
         </Box>
     );
 }

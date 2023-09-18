@@ -4,7 +4,7 @@ import Favorites from "./Favorites";
 import ShowLogs from "./ShowLogs";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 
-export default function QueueActions({ admin, isFavorite, toggleFavorite }) {
+export default function QueueActions({ agency, isFavorite, toggleFavorite }) {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(!open);
@@ -13,7 +13,7 @@ export default function QueueActions({ admin, isFavorite, toggleFavorite }) {
 
     const actions = [
         {
-            icon: <Favorites id={admin.agency_id} isFavorite={isFavorite} toggleFavorite={toggleFavorite} />,
+            icon: <Favorites id={agency.agency_id} isFavorite={isFavorite} toggleFavorite={toggleFavorite} />,
             name: "Favorite",
         },
         { icon: <EventNoteIcon onClick={() => setOpenLogs(true)} />, name: "Logs" },
@@ -51,7 +51,7 @@ export default function QueueActions({ admin, isFavorite, toggleFavorite }) {
                     ))}
                 </SpeedDial>
             </Box>
-            <ShowLogs adminId={admin.agency_id} title={admin.agency} openLogs={openLogs} setOpenLogs={setOpenLogs} />
+            {openLogs && <ShowLogs agencyId={agency.agency_id} title={agency.name} setOpenLogs={setOpenLogs} />}
         </>
     );
 }

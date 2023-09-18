@@ -28,7 +28,7 @@ export default function QueueTable({ search }) {
             name: "All Queues",
             component: (
                 <CollapsibleTable
-                    admins={agenciesWithQueues}
+                    agencies={agenciesWithQueues}
                     search={search}
                     favorites={favorites}
                     setFavorites={setFavorites}
@@ -40,7 +40,7 @@ export default function QueueTable({ search }) {
             name: "Favorites",
             component: (
                 <CollapsibleTable
-                    admins={agenciesWithQueuesFavorites}
+                    agencies={agenciesWithQueuesFavorites}
                     search={search}
                     favorites={favorites}
                     setFavorites={setFavorites}
