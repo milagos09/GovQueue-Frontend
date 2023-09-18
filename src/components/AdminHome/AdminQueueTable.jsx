@@ -17,8 +17,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 export default function AdminQueueTable({ agencyId }) {
-    const { queues: allQueues } = queuesStore();
-    const queues = allQueues.filter((q) => q.agency_id === agencyId);
+    const { queues } = queuesStore();
+    const queuesFiltered = queues.filter((q) => q.agency_id === agencyId);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -55,7 +55,7 @@ export default function AdminQueueTable({ agencyId }) {
                     </TableHead>
 
                     <TableBody sx={{ columnGap: 100 }}>
-                        {queues.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((queue, i) => (
+                        {queuesFiltered.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((queue, i) => (
                             <QueueData queue={queue} key={queue.name + i} />
                         ))}
                     </TableBody>

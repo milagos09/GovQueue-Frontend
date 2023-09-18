@@ -1,7 +1,4 @@
-import TableRow from "@mui/material/TableRow";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box, Backdrop, SpeedDial, SpeedDialAction, Button } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -9,25 +6,7 @@ import { useState } from "react";
 import calculateTimeDifference from "../../helpers/calculateTimeDifference";
 import { getSessionStorage } from "./../../helpers/sessionStorage";
 import { socket } from "../../helpers/socket";
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: open ? 16 : 14,
-    },
-}));
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    "&:nth-of-type(odd)": {
-        backgroundColor: theme.palette.action.hover,
-    },
-
-    "&:last-child td, &:last-child th": {
-        border: 0,
-    },
-}));
+import { StyledTableCell, StyledTableRow } from "./StyledTableElements";
 
 export default function QueueData({ queue }) {
     const user = getSessionStorage("user");
