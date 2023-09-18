@@ -1,6 +1,6 @@
 import TableRow from "@mui/material/TableRow";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import { Box, Backdrop, SpeedDial, SpeedDialAction } from "@mui/material";
+import { Box, Backdrop, SpeedDial, SpeedDialAction, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
@@ -10,6 +10,8 @@ import calculateTimeDifference from "../../helpers/calculateTimeDifference";
 import { getSessionStorage } from "./../../helpers/sessionStorage";
 import LoadingScreen from "../LoadingScreen";
 import FetchData from "../../hooks/FetchData";
+import queuesStore from "./../../stores/queuesStore";
+import { socket } from "../../helpers/socket";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -30,26 +32,48 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export default function QueueData({ queue, setQueues }) {
-    const { fetchData, data, isFetching } = FetchData();
+export default function QueueData({ queue }) {
+    // const { fetchData, data, isFetching } = FetchData();
+    // const { setQueues } = queuesStore();
     const user = getSessionStorage("user");
     const [open, setOpen] = useState(false);
-    const [number, setNumber] = useState(queue.current_number);
-    const [action, setAction] = useState("");
+
     const [updated, setUpdated] = useState(calculateTimeDifference(queue.updated_at));
+
     const handleOpen = () => setOpen(!open);
+
     const increaseNumber = () => {
-        setNumber(number + 1);
-        setAction("increment");
+        const body = {
+            queueId: queue.queue_id,
+            agencyId: queue.agency_id,
+            actionType: "increment",
+            currentNumber: queue.current_number + 1,
+            updatedBy: user.user_id,
+        };
+        socket.emit("updateQueue", body);
+        setUpdated("0 mins ago");
     };
     const editNumber = () => {
-        const updatedNumber = prompt();
+        const updatedNumber = prompt("Set number:");
 
         if (!isNaN(Number(updatedNumber))) {
-            setNumber(Number(updatedNumber));
-            setAction("set");
+            const body = {
+                queueId: queue.queue_id,
+                agencyId: queue.agency_id,
+                actionType: "set",
+                currentNumber: updatedNumber,
+                updatedBy: user.user_id,
+            };
+            socket.emit("updateQueue", body);
+            setUpdated("0 mins ago");
         }
     };
+
+    const editName = () => {
+        const newName = prompt("Edit queue name:", queue.name);
+        socket.emit("editQueue", { queueId: queue.queue_id, name: newName.trim() });
+    };
+
     const actions = [
         {
             icon: <ModeEditIcon />,
@@ -62,40 +86,45 @@ export default function QueueData({ queue, setQueues }) {
         },
     ];
 
-    useEffect(() => {
-        if (number !== queue.current_number) {
-            const options = {
-                method: "post",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    queueId: queue.queue_id,
-                    agencyId: user.agency_id,
-                    actionType: action,
-                    currentNumber: number,
-                    updatedBy: user.user_id,
-                }),
-            };
-            fetchData("https://govqueue-api.onrender.com/logs/add", options);
-        }
-    }, [number]);
+    // useEffect(() => {
+    //     if (number !== queue.current_number) {
+    //         const options = {
+    //             method: "post",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({
+    //                 queueId: queue.queue_id,
+    //                 agencyId: user.agency_id,
+    //                 actionType: action,
+    //                 currentNumber: number,
+    //                 updatedBy: user.user_id,
+    //             }),
+    //         };
+    //         fetchData("https://govqueue-api.onrender.com/logs/add", options);
+    //     }
+    // }, [number]);
 
-    useEffect(() => {
-        if (data) {
-            setUpdated("0 mins ago");
-            setQueues((queues) =>
-                queues.map((q) =>
-                    q.queue_id === queue.queue_id
-                        ? { ...q, current_number: data.current_number, updated_at: data.created_at }
-                        : q
-                )
-            );
-        }
-    }, [data]);
+    // useEffect(() => {
+    //     if (data) {
+    //         setUpdated("0 mins ago");
+    //         setQueues((queues) =>
+    //             queues.map((q) =>
+    //                 q.queue_id === queue.queue_id
+    //                     ? { ...q, current_number: data.current_number, updated_at: data.created_at }
+    //                     : q
+    //             )
+    //         );
+    //     }
+    // }, [data]);
     return (
         <>
-            <LoadingScreen isFetching={isFetching} />
+            {/* <LoadingScreen isFetching={isFetching} /> */}
             <StyledTableRow>
-                <StyledTableCell align="center">{queue.name}</StyledTableCell>
+                <StyledTableCell align="center">{queue.queue_id}</StyledTableCell>
+                <StyledTableCell align="center">
+                    <Button variant="text" color="inherit" onClick={editName}>
+                        {queue.name}
+                    </Button>
+                </StyledTableCell>
                 <StyledTableCell align="center">
                     <Box
                         component={"span"}
@@ -109,7 +138,7 @@ export default function QueueData({ queue, setQueues }) {
                                 : {}
                         }
                     >
-                        {number}
+                        {queue.current_number}
                     </Box>
                 </StyledTableCell>
                 <StyledTableCell align="center">{updated}</StyledTableCell>
