@@ -1,9 +1,9 @@
 {
   "guides": [
     {
-      "name": "Create Queue",
+      "name": "Get Logs ",
       "description": "Create a new queue to manage tasks.",
-      "route": "/queues",
+      "route": "http://govqueue-api.onrender.com/logs/",
       "method": "POST",
       "parameters": [
         {
@@ -35,7 +35,7 @@
           "current_size": 0
         }
       }
-    }, 
+    },
     {
       "name": "Create Window",
       "description": "Create a new service window for serving customers.",
