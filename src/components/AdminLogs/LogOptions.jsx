@@ -1,10 +1,8 @@
 import { Primary } from "./../Buttons/";
-import { Stack, Box } from "@mui/material";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
+import { Stack, Box, Switch, FormControlLabel, FormGroup } from "@mui/material";
+import DownloadCSVButton from "./DownloadCSVButton";
 
-export default function LogOptions() {
+export default function LogOptions({ logs, agency }) {
     return (
         <Box sx={{ my: 4 }}>
             <Stack
@@ -18,7 +16,7 @@ export default function LogOptions() {
                     <FormControlLabel control={<Switch defaultChecked />} label="Always Show Logs" />
                 </FormGroup>
                 <Box>
-                    <Primary value={"Download"} />
+                    <DownloadCSVButton logs={logs} agency={agency} />
                     <Primary value={"Analyze"} />
                 </Box>
             </Stack>

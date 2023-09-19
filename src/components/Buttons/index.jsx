@@ -1,10 +1,11 @@
 import Button from "@mui/material/Button";
 import { dark } from "../../themes/MyTheme";
 
-export function Primary({ value, onClick, type = "button", sx }) {
+export function Primary({ value, onClick, type = "button", sx, disable = false }) {
     return (
         <>
             <Button
+                disabled={disable}
                 variant="contained"
                 onClick={onClick}
                 sx={{

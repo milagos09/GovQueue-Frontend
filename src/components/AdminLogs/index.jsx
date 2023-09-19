@@ -87,7 +87,7 @@ export default function AdminLogs() {
                     handleChangeSelect={handleChangeSelect}
                 />
                 <LogTable logs={state.filteredLogs} />
-                <LogOptions />
+                <LogOptions logs={state.filteredLogs} agency={user.agencyDetails} />
             </Container>
             <LoadingScreen isFetching={state.isFetching} />
         </>
