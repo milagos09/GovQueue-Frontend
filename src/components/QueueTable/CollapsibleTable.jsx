@@ -5,7 +5,7 @@ import TablePagination from "@mui/material/TablePagination";
 import { glassEffect } from "../../themes/MyTheme";
 import Row from "./Row";
 
-export default function CollapsibleTable({ admins, favorites, setFavorites, width }) {
+export default function CollapsibleTable({ agencies, favorites, setFavorites, width }) {
     //responsiveness
     const customBreakPoint = width > 530;
 
@@ -29,50 +29,52 @@ export default function CollapsibleTable({ admins, favorites, setFavorites, widt
     };
 
     return (
-        <Paper sx={{ width: "100%", overflow: "hidden", mb: 4, ...glassEffect }}>
-            <TableContainer sx={{ maxHeight: "550px", paddingX: width > 900 ? "100px" : "2px" }}>
-                <Table stickyHeader sx={{ mb: "15px" }}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center">Show</TableCell>
-                            <TableCell align="center">Agency</TableCell>
-                            <TableCell align="center">Name</TableCell>
-                            {customBreakPoint && <TableCell align="center">Region</TableCell>}
-                            <TableCell align="center">More</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {admins.length > 0 ? (
-                            admins
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((admin) => (
-                                    <Row
-                                        key={admin.name}
-                                        admin={admin}
-                                        customBreakPoint={customBreakPoint}
-                                        isFavorite={favorites.includes(admin.agency_id)}
-                                        toggleFavorite={toggleFavorite}
-                                    />
-                                ))
-                        ) : (
+        <>
+            <Paper sx={{ width: "100%", overflow: "hidden", mb: 4, ...glassEffect }}>
+                <TableContainer sx={{ maxHeight: "550px", paddingX: width > 900 ? "100px" : "2px" }}>
+                    <Table stickyHeader sx={{ mb: "15px" }}>
+                        <TableHead>
                             <TableRow>
-                                <TableCell align="center" colSpan={5}>
-                                    No results found
-                                </TableCell>
+                                <TableCell align="center">Show</TableCell>
+                                <TableCell align="center">Agency</TableCell>
+                                <TableCell align="center">Name</TableCell>
+                                {customBreakPoint && <TableCell align="center">Region</TableCell>}
+                                <TableCell align="center">More</TableCell>
                             </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[5, 10, 20]}
-                component="div"
-                count={admins.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </Paper>
+                        </TableHead>
+                        <TableBody>
+                            {agencies.length > 0 ? (
+                                agencies
+                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((agency) => (
+                                        <Row
+                                            key={agency.name}
+                                            agency={agency}
+                                            customBreakPoint={customBreakPoint}
+                                            isFavorite={favorites.includes(agency.agency_id)}
+                                            toggleFavorite={toggleFavorite}
+                                        />
+                                    ))
+                            ) : (
+                                <TableRow>
+                                    <TableCell align="center" colSpan={5}>
+                                        No results found
+                                    </TableCell>
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[5, 10, 20]}
+                    component="div"
+                    count={agencies.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+            </Paper>
+        </>
     );
 }

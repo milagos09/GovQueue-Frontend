@@ -24,7 +24,7 @@ export default function Agency() {
             <Container sx={{ minHeight: `${height - 167}px` }}>
                 {agency.agency_id !== undefined ? (
                     <>
-                        <Announcement show={agency.showAnnouncement} announcement={agency.announcement} />
+                        <Announcement show={!!agency.announcement} announcement={agency.announcement} />
                         <Grid container columnSpacing={4}>
                             <Grid item xs={12} sm={6} md={5}>
                                 <Profile agency={agency} />
@@ -37,7 +37,7 @@ export default function Agency() {
                 ) : (
                     <LoadingScreen isFetching={true} />
                 )}
-                {agency.showMessenger && <FacebookMessengerChat pageId={agency.messenger_id} />}
+                {!!agency.messenger_id && <FacebookMessengerChat pageId={agency.messenger_id} />}
             </Container>
         </>
     );

@@ -5,8 +5,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import logs from "./../../../fake/logs.json";
 import LogTable from "./LogTable";
+import { socket } from "../../helpers/socket";
+import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     "& .MuiDialogContent-root": {
@@ -46,29 +48,41 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-export default function ShowLogs({ queueId, adminId, title, openLogs, setOpenLogs }) {
+export default function ShowLogs({ queueId, agencyId, title, setOpenLogs }) {
+    const [logs, setLogs] = useState(null);
+    const dateStart = dayjs(new Date()).format("YYYY-MM-DD");
+    const dateEnd = dayjs(new Date()).add(1, "day").format("YYYY-MM-DD");
+
     const handleClose = () => {
         setOpenLogs(false);
     };
 
-    const filterLogs = queueId
-        ? logs.filter((log) => log.queueId === queueId)
-        : logs.filter((log) => log.adminId === adminId);
+    useEffect(() => {
+        socket.emit("getLogs", { dateStart, dateEnd, queueId, agencyId });
+
+        socket.on("getLogs", (logs) => {
+            setLogs(logs);
+        });
+
+        return () => socket.off("getLogs");
+    }, []);
 
     return (
         <>
-            <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={openLogs}>
-                <BootstrapDialogTitle
-                    id="customized-dialog-title"
-                    onClose={handleClose}
-                    sx={{ paddingX: "50px", maxWidth: "350px", textAlign: "center" }}
-                >
-                    {title ? title : "Logs"}
-                </BootstrapDialogTitle>
-                <DialogContent sx={{ paddingY: "50px" }}>
-                    <LogTable logs={filterLogs.slice(-10)} />
-                </DialogContent>
-            </BootstrapDialog>
+            {logs != null && (
+                <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={true}>
+                    <BootstrapDialogTitle
+                        id="customized-dialog-title"
+                        onClose={handleClose}
+                        sx={{ paddingX: "10px", textAlign: "center" }}
+                    >
+                        {title ? title : "Logs"}
+                    </BootstrapDialogTitle>
+                    <DialogContent sx={{ paddingY: "50px" }}>
+                        <LogTable logs={logs} />
+                    </DialogContent>
+                </BootstrapDialog>
+            )}
         </>
     );
 }

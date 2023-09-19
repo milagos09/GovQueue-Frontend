@@ -14,6 +14,7 @@ import queuesStore from "../stores/queuesStore";
 import agencyStore from "../stores/agencyStore";
 import { useEffect } from "react";
 import { socket } from "../helpers/socket";
+import LoadingScreen from "./../components/LoadingScreen";
 
 const session = sessionStorage.getItem("user");
 const isLoggedIn = !!session;
@@ -72,8 +73,8 @@ const router = createBrowserRouter([
 ]);
 
 export default function Home() {
-    const { setAgencies, updateAgency } = agencyStore();
-    const { setQueues, updateQueue } = queuesStore();
+    const { agencies, setAgencies, updateAgency } = agencyStore();
+    const { setQueues, updateQueue, removeQueue } = queuesStore();
     useEffect(() => {
         (async () => {
             try {
@@ -91,6 +92,10 @@ export default function Home() {
                 socket.on("updateQueue", (queue) => {
                     updateQueue(queue);
                 });
+
+                socket.on("removeQueue", (queue) => {
+                    removeQueue(queue);
+                });
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -99,6 +104,7 @@ export default function Home() {
 
     return (
         <>
+            <LoadingScreen isFetching={agencies.length === 0} />
             <RouterProvider router={router}>
                 <Outlet />
             </RouterProvider>
