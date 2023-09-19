@@ -39,7 +39,7 @@ export default function AdminQueueTable({ agencyId }) {
                             <StyledTableCell align="center">Queue</StyledTableCell>
                             <StyledTableCell align="center">Number</StyledTableCell>
                             <StyledTableCell align="center">Updated</StyledTableCell>
-                            <StyledTableCell align="center">Action</StyledTableCell>{" "}
+                            <StyledTableCell align="center">Action</StyledTableCell>
                         </TableRow>
                     </TableHead>
 
