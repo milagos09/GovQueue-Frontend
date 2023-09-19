@@ -35,13 +35,16 @@ export default function AgencyDocumentation() {
     <>
       {agencyData.map((agency, agencyIndex) => (
         <div key={agencyIndex} id={`agency-${agencyIndex}`}>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h5" gutterBottom>
             {agency.title}
           </Typography>
 
           {agency.titleDetails.map((detail, detailIndex) => (
-            <div key={detailIndex}>
-              <Typography variant="h5" gutterBottom>
+            <div
+              key={detailIndex}
+              id={`agency-${agencyIndex}-detail-${detailIndex}`}
+            >
+              <Typography variant="h6" gutterBottom>
                 <span
                   style={{
                     color: detail.method === "GET" ? "green" : "orange",

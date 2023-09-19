@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AdminNavbar from "../../components/AdminNavbar";
-import { Divider, List, Grid } from "@mui/material";
+import { Divider, List, Grid, ListItem } from "@mui/material";
 import Feildset from "../../components/Fieldset";
 import AgecyDocumentation from "../../components/AdminSupport/AgencyDocumentation";
 import agencyData from "../../components/AdminSupport/Admin.json";
@@ -25,16 +25,22 @@ export default function AdminSupport() {
     }
   }
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-      setShowScrollButton(true);
-    } else {
-      setShowScrollButton(false);
-    }
-  });
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 0) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+  }, []);
 
   const tableOfContents = agencyData.map((agency, agencyIndex) => (
-    <div key={agencyIndex}>
+    <div key={agencyIndex} style={{ marginTop: "15px" }}>
       <a
         href={`#agency-${agencyIndex}`}
         onClick={() => scrollToSection(`agency-${agencyIndex}`)}
@@ -43,12 +49,16 @@ export default function AdminSupport() {
       </a>
 
       {agency.titleDetails.map((detail, detailIndex) => (
-        <div key={detailIndex}>
+        <div key={detailIndex} style={{ marginTop: "6px" }}>
           <a
-            href={`#agency-${agencyIndex}`}
-            onClick={() => scrollToSection(`agency-${agencyIndex}`)}
+            href={`#agency-${agencyIndex}-detail-${detailIndex}`}
+            onClick={() =>
+              scrollToSection(`agency-${agencyIndex}-detail-${detailIndex}`)
+            }
           >
-            <p>{detail.name}</p>
+            <ListItem>{detail.name}</ListItem>
+
+            <p></p>
           </a>
         </div>
       ))}
@@ -69,36 +79,41 @@ export default function AdminSupport() {
           </Feildset>
         </Grid>
 
-        <Grid item xs={12} md={12} lg={8}>
+        <Grid
+          item
+          xs={12}
+          md={12}
+          lg={8}
+          style={{ maxHeight: "80vh", overflow: "auto" }}
+        >
           <Feildset
             title={"GovQueue API Documentation"}
             sx={{ textAlign: "left" }}
             titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
           >
+            {showScrollButton && (
+              <button
+                onClick={scrollToTop}
+                style={{
+                  position: "fixed",
+                  bottom: "20px",
+                  right: "20px",
+                  backgroundColor: "#1b2023",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  padding: "10px 20px",
+                  cursor: "pointer",
+                }}
+              >
+                Scroll Back to Top
+              </button>
+            )}
             <Divider />
             <AgecyDocumentation />
           </Feildset>
         </Grid>
       </Grid>
-
-      {showScrollButton && (
-        <button
-          onClick={scrollToTop}
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            backgroundColor: "#1b2023",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            padding: "10px 20px",
-            cursor: "pointer",
-          }}
-        >
-          Scroll Back to Top
-        </button>
-      )}
     </>
   );
 }
