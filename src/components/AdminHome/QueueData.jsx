@@ -8,7 +8,7 @@ import { getSessionStorage } from "./../../helpers/sessionStorage";
 import { socket } from "../../helpers/socket";
 import { StyledTableCell, StyledTableRow } from "./StyledTableElements";
 
-export default function QueueData({ queue }) {
+export default function QueueData({ queue, hidden }) {
     const user = getSessionStorage("user");
     const [open, setOpen] = useState(false);
 
@@ -61,7 +61,12 @@ export default function QueueData({ queue }) {
             <StyledTableRow>
                 <StyledTableCell align="center">{queue.queue_id}</StyledTableCell>
                 <StyledTableCell align="center">
-                    <Button variant="text" color="inherit" onClick={editName}>
+                    <Button
+                        variant="text"
+                        color="inherit"
+                        onClick={editName}
+                        sx={{ m: 0, p: 0, textTransform: "none" }}
+                    >
                         {queue.name}
                     </Button>
                 </StyledTableCell>
@@ -81,7 +86,9 @@ export default function QueueData({ queue }) {
                         {queue.current_number}
                     </Box>
                 </StyledTableCell>
-                <StyledTableCell align="center">{calculateTimeDifference(queue.updated_at)}</StyledTableCell>
+                {!hidden && (
+                    <StyledTableCell align="center">{calculateTimeDifference(queue.updated_at)}</StyledTableCell>
+                )}
                 <StyledTableCell align="center">
                     <Box sx={{ transform: "translateZ(0px)" }}>
                         <Backdrop open={open} sx={{ background: "none" }} />
