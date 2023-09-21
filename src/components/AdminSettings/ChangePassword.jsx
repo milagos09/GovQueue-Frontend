@@ -41,6 +41,8 @@ export default function ChangePassword({ user }) {
             if (data.statusCode === 200) {
                 sessionStorage.clear();
                 location.reload();
+            } else {
+                alert("invalid credentials");
             }
         });
         return () => socket.off("changePassword");
