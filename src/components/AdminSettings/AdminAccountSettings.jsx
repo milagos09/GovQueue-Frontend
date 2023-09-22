@@ -5,9 +5,13 @@ import SwitchTextField from "./SwitchTextField";
 import { getSessionStorage, setSessionStorage } from "../../helpers/sessionStorage";
 import LoadingScreen from "./../LoadingScreen";
 import FetchData from "./../../hooks/FetchData";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Primary } from "./../Buttons";
+import { socket } from "./../../helpers/socket";
+import ChangePassword from "./ChangePassword";
 
 export default function AdminAccountSettings() {
+    const [enableChangePassword, setEnableChangePassword] = useState(false);
     const { fetchData, data, isFetching } = FetchData();
     const user = getSessionStorage("user");
     const agency = user.agencyDetails;
@@ -77,6 +81,7 @@ export default function AdminAccountSettings() {
                         handleSave={handleSaveProfile}
                         enabled={!!agency.announcement}
                     />
+                    <ChangePassword user={user} />
                 </Stack>
             </Fieldset>
         </>

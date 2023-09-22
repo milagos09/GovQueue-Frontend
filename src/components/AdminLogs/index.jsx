@@ -12,6 +12,7 @@ const initialStartDate = dayjs();
 const initialEndDate = dayjs().add(1, "day");
 
 export default function AdminLogs() {
+    const URL = import.meta.env.VITE_SERVER_URL;
     const user = getSessionStorage("user");
     const { height } = CheckScreenSize();
 
@@ -29,7 +30,7 @@ export default function AdminLogs() {
         try {
             setState((prevState) => ({ ...prevState, isFetching: true }));
             const result = await fetch(
-                `https://govqueue-api.onrender.com/logs/dateRange/?agencyId=${agencyId}&startDate=${startDate.format(
+                `${URL}/logs/dateRange/?agencyId=${agencyId}&startDate=${startDate.format(
                     "YYYY-MM-DD"
                 )}&endDate=${endDate.format("YYYY-MM-DD")}`
             );

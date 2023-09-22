@@ -8,15 +8,17 @@ import { CheckScreenSize } from "./../../hooks/CheckScreenSize";
 export default function AdminHome() {
     const { height } = CheckScreenSize();
     const user = getSessionStorage("user");
-    const agencyDetails = user.agencyDetails;
+    const agencyDetails = user?.agencyDetails;
     return (
         <>
-            <Container maxWidth="lg" sx={{ minHeight: `${height - 167}px` }}>
-                <Grid container justifyContent="center" alignItems="center" direction="row" sx={{ padding: 1 }}>
-                    <AdminHeader agency={agencyDetails} />
-                    <AdminQueueTable agencyId={agencyDetails.agency_id} />
-                </Grid>
-            </Container>
+            {user && (
+                <Container maxWidth="lg" sx={{ minHeight: `${height - 167}px` }}>
+                    <Grid container justifyContent="center" alignItems="center" direction="row" sx={{ padding: 1 }}>
+                        <AdminHeader agency={agencyDetails} />
+                        <AdminQueueTable agencyId={agencyDetails.agency_id} />
+                    </Grid>
+                </Container>
+            )}
         </>
     );
 }
