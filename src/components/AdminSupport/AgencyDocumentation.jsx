@@ -35,7 +35,7 @@ export default function AgencyDocumentation() {
     <>
       {agencyData.map((agency, agencyIndex) => (
         <div key={agencyIndex} id={`agency-${agencyIndex}`}>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h6" gutterBottom style={{ fontWeight: "bold" }}>
             {agency.title}
           </Typography>
 
@@ -44,7 +44,7 @@ export default function AgencyDocumentation() {
               key={detailIndex}
               id={`agency-${agencyIndex}-detail-${detailIndex}`}
             >
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="subtitle1" gutterBottom>
                 <span
                   style={{
                     color: detail.method === "GET" ? "green" : "orange",
@@ -54,29 +54,35 @@ export default function AgencyDocumentation() {
                 </span>{" "}
                 {detail.name}
               </Typography>
-              <Typography gutterBottom>{detail.description}</Typography>
+              <Typography variant="body2" gutterBottom>
+                {detail.description}
+              </Typography>
               <SyntaxHighlighter style={a11yDark} wrapLongLines={true}>
                 {detail.raw}
               </SyntaxHighlighter>
-              <Typography variant="h5" gutterBottom>
+              <Typography variant="subtitle1" gutterBottom>
                 Example:
               </Typography>
 
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="subtitle1" gutterBottom>
                 Request:
+                <Select
+                  value={selectedLanguages[agencyIndex][detailIndex]}
+                  onChange={(e) =>
+                    handleLanguageChange(
+                      agencyIndex,
+                      detailIndex,
+                      e.target.value
+                    )
+                  }
+                >
+                  {detail.content.map((content, contentIndex) => (
+                    <MenuItem key={contentIndex} value={content.language}>
+                      {content.language}
+                    </MenuItem>
+                  ))}
+                </Select>
               </Typography>
-              <Select
-                value={selectedLanguages[agencyIndex][detailIndex]}
-                onChange={(e) =>
-                  handleLanguageChange(agencyIndex, detailIndex, e.target.value)
-                }
-              >
-                {detail.content.map((content, contentIndex) => (
-                  <MenuItem key={contentIndex} value={content.language}>
-                    {content.language}
-                  </MenuItem>
-                ))}
-              </Select>
               {detail.content.map((content, contentIndex) => {
                 if (
                   content.language ===
@@ -92,9 +98,7 @@ export default function AgencyDocumentation() {
                         {content.req}
                       </SyntaxHighlighter>
 
-                      <Typography variant="h6" gutterBottom>
-                        Response:
-                      </Typography>
+                      <Typography gutterBottom>Response:</Typography>
 
                       <SyntaxHighlighter
                         style={a11yDark}
