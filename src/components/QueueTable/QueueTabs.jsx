@@ -45,8 +45,6 @@ export default function QueueTabs({ contents, width }) {
                     centered
                     selectionFollowsFocus
                 >
-                    {/* <Tab label="Show All" {...a11yProps(0)} />
-                    <Tab label="Show Favorites" {...a11yProps(1)} /> */}
                     {contents.map((content, i) => (
                         <Tab key={i} sx={{ mx: "20px" }} label={content.name} {...a11yProps(i, content.name)} />
                     ))}
