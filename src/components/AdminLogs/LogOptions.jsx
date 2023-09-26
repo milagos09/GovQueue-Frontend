@@ -26,7 +26,7 @@ export default function LogOptions({ logs, agency }) {
                             setShowCharts(true);
                         }}
                     />
-                    {showCharts && <ChartModal setOpenCharts={setShowCharts} />}
+                    {showCharts && <ChartModal setOpenCharts={setShowCharts} logs={logs} />}
                 </Box>
             </Stack>
         </Box>

@@ -36,7 +36,6 @@ export default function LogTable({ logs }) {
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
-        console.log(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
     };
 
     const handleChangeRowsPerPage = (event) => {
