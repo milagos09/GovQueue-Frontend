@@ -31,6 +31,9 @@ function formatData(logs) {
 }
 
 export default function BarChartTab({ logs }) {
+    if (!logs.length) {
+        return <p style={{ textAlign: "center", padding: "20px" }}>No results</p>;
+    }
     const formatDate = logs.map((log) => ({
         ...log,
         created_at: dayjs(log.created_at).format("MM-DD"),
