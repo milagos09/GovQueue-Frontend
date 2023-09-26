@@ -6,7 +6,8 @@ import FetchData from "./../../hooks/FetchData";
 import LoadingScreen from "./../LoadingScreen";
 
 export default function AdminLogin() {
-    const { data, isFetching, error, fetchData } = FetchData();
+    const URL = import.meta.env.VITE_SERVER_URL;
+    const { data, isFetching, fetchData } = FetchData();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +30,7 @@ export default function AdminLogin() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: trimmedEmail, password: password }),
         };
-        await fetchData("https://govqueue-api.onrender.com/users/login", options);
+        await fetchData(`${URL}/users/login`, options);
     };
 
     useEffect(() => {
