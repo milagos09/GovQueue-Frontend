@@ -1,25 +1,25 @@
 export default function colorGenerator() {
     const distinctColors = [
-        "blue", // Red
-        "green", // Orange
-        "red", // Green
-        "fuchsia", // Blue
-        "#335FBD", // Cyan
-        "#5733FF", // Purple
-        "#BD33FF", // Magenta
-        "#FF33BD", // Pink
-        "#A9FF33", // Lime
-        "#FF3333", // Dark Red
-        "#33FFA9", // Teal
-        "#FF336F", // Dark Pink
-        "#33A9FF", // Light Blue
-        "#3333FF", // Dark Blue
-        "#A933FF", // Lavender
-        "#FFA933", // Gold
-        "#7DFF33", // Lime Green
-        "#FF33AA", // Coral
-        "#33FF33", // Bright Green
-        "#FF5733", // Red-Orange
+        "blue",
+        "green",
+        "red",
+        "fuchsia",
+        "orange",
+        "#11aaaa",
+        "#BD33FF",
+        "#FF33BD",
+        "#A9FF33",
+        "#FF3333",
+        "#33FFA9",
+        "#FF336F",
+        "#33A9FF",
+        "#3333FF",
+        "#A933FF",
+        "#FFA933",
+        "#7DFF33",
+        "#FF33AA",
+        "#33FF33",
+        "#FF5733",
     ];
 
     return distinctColors;
