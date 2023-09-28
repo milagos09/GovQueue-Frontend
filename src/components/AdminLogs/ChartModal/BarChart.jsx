@@ -1,6 +1,7 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, Tooltip } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, Label, Tooltip } from "recharts";
 import dayjs from "dayjs";
 import colorGenerator from "../../../helpers/colorGenerator";
+import sort from "./sort";
 
 function formatData(logs) {
     const grouped = logs.reduce((acc, cur) => {
@@ -27,7 +28,7 @@ function formatData(logs) {
         };
     });
 
-    return result;
+    return sort(result, "created_at");
 }
 
 export default function BarChartTab({ logs }) {
@@ -55,7 +56,9 @@ export default function BarChartTab({ logs }) {
         >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="created_at" />
-            <YAxis />
+            <YAxis>
+                <Label value="Total Served" angle={-90} position="insideLeft" />
+            </YAxis>
             <Tooltip />
             <Legend />
 

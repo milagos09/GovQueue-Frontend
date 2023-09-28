@@ -1,10 +1,10 @@
 export default function colorGenerator() {
     const distinctColors = [
-        "#FF5733", // Red
-        "#FFBD33", // Orange
-        "#33FF57", // Green
-        "#337DFF", // Blue
-        "#33FFBD", // Cyan
+        "blue", // Red
+        "green", // Orange
+        "red", // Green
+        "fuchsia", // Blue
+        "#335FBD", // Cyan
         "#5733FF", // Purple
         "#BD33FF", // Magenta
         "#FF33BD", // Pink
