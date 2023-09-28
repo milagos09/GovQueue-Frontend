@@ -6,29 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function LogOptions({ logs, agency }) {
-  const [svg, setSVG] = useState(null);
-
-  const analyze = () => {
-    console.log(logs);
-    const names = [...new Set(logs.map((log) => log.name))];
-    console.log(names);
-    let counts = [];
-    names.forEach((name) => {
-      counts.push({
-        name: name,
-        count: logs.filter((log) => log.name == name).length,
-      });
-    });
-    console.log(counts);
-    socket.emit("analyzeLogs", { logs, counts });
-  };
-  useEffect(() => {
-    socket.on("analyzeLogs", (svgMarkup) => {
-      setSVG(svgMarkup);
-      // console.log(svgMarkup);
-    });
-  }, []);
-
+  const [showCharts, setShowCharts] = useState(false);
   return (
     <Box sx={{ my: 4 }}>
       <Stack
@@ -46,10 +24,17 @@ export default function LogOptions({ logs, agency }) {
         </FormGroup>
         <Box>
           <DownloadCSVButton logs={logs} agency={agency} />
-          <Primary value={"Analyze"} onClick={analyze} />
+          <Primary
+            value={"Analyze"}
+            onClick={() => {
+              setShowCharts(true);
+            }}
+          />
+          {showCharts && (
+            <ChartModal setOpenCharts={setShowCharts} logs={logs} />
+          )}
         </Box>
       </Stack>
-      <div dangerouslySetInnerHTML={{ __html: svg }} />
     </Box>
   );
 }

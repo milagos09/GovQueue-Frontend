@@ -1,27 +1,29 @@
 import { Modal, Box } from "@mui/material";
-import QueueTabs from "../QueueTable/QueueTabs";
-import { CheckScreenSize } from "../../hooks/CheckScreenSize";
+import QueueTabs from "../../QueueTable/QueueTabs";
+import { CheckScreenSize } from "../../../hooks/CheckScreenSize";
+import LineChart from "./LineChart";
+import BarChart from "./BarChart";
 
-const contents = [
-    {
-        name: "Line Chart",
-        component: <div style={{ minWidth: "600px", minHeight: "400px", textAlign: "center" }}>Line Chart</div>,
-    },
-    {
-        name: "Bar Chart",
-        component: <div style={{ minWidth: "600px", minHeight: "400px", textAlign: "center" }}>Bar Chart</div>,
-    },
-    {
-        name: "Summary",
-        component: <div style={{ minWidth: "400", minHeight: "400px", textAlign: "center" }}>Summary</div>,
-    },
-];
-
-export default function ChartModal({ setOpenCharts }) {
+export default function ChartModal({ setOpenCharts, logs }) {
     const { width } = CheckScreenSize();
     const handleClose = () => {
         setOpenCharts(false);
     };
+
+    const contents = [
+        {
+            name: "Line Chart",
+            component: <LineChart logs={logs} />,
+        },
+        {
+            name: "Bar Chart",
+            component: <BarChart logs={logs} />,
+        },
+        {
+            name: "Summary",
+            component: <div style={{ minWidth: "400", minHeight: "400px", textAlign: "center" }}>Summary</div>,
+        },
+    ];
 
     return (
         <>
