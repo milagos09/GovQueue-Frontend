@@ -59,7 +59,13 @@ export default function AdminLogs() {
             endDateToUpdate = newDate;
         }
 
-        setState((prevState) => ({ ...prevState, startDate: startDateToUpdate, endDate: endDateToUpdate }));
+        setState((prevState) => ({
+            ...prevState,
+            startDate: startDateToUpdate,
+            endDate: endDateToUpdate,
+            selectedQueue: "All",
+        }));
+
         await fetchLogs(user.agency_id, startDateToUpdate, endDateToUpdate);
     };
 

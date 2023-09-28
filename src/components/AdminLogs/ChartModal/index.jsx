@@ -3,6 +3,7 @@ import QueueTabs from "../../QueueTable/QueueTabs";
 import { CheckScreenSize } from "../../../hooks/CheckScreenSize";
 import LineChart from "./LineChart";
 import BarChart from "./BarChart";
+import Summary from "./Summary";
 
 export default function ChartModal({ setOpenCharts, logs }) {
     const { width } = CheckScreenSize();
@@ -10,18 +11,32 @@ export default function ChartModal({ setOpenCharts, logs }) {
         setOpenCharts(false);
     };
 
+    const style = { width: 550, overflow: "auto", overflowY: "hidden" };
+
     const contents = [
         {
             name: "Line Chart",
-            component: <LineChart logs={logs} />,
+            component: (
+                <div style={style}>
+                    <LineChart logs={logs} />
+                </div>
+            ),
         },
         {
             name: "Bar Chart",
-            component: <BarChart logs={logs} />,
+            component: (
+                <div style={style}>
+                    <BarChart logs={logs} />
+                </div>
+            ),
         },
         {
             name: "Summary",
-            component: <div style={{ minWidth: "400", minHeight: "400px", textAlign: "center" }}>Summary</div>,
+            component: (
+                <div style={{ width: 550, overflow: "auto", overflowY: "auto" }}>
+                    <Summary logs={logs} />
+                </div>
+            ),
         },
     ];
 
@@ -39,7 +54,6 @@ export default function ChartModal({ setOpenCharts, logs }) {
                         top: "50%",
                         left: "50%",
                         transform: "translate(-50%, -50%)",
-                        minWidth: "400px",
                         borderRadius: "10px",
                         bgcolor: "background.paper",
                         boxShadow: 24,
