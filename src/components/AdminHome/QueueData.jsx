@@ -7,10 +7,12 @@ import calculateTimeDifference from "../../helpers/calculateTimeDifference";
 import { getSessionStorage } from "./../../helpers/sessionStorage";
 import { socket } from "../../helpers/socket";
 import { StyledTableCell, StyledTableRow } from "./StyledTableElements";
+import DoDisturbIcon from "@mui/icons-material/DoDisturb";
 
 export default function QueueData({ queue, hidden }) {
     const user = getSessionStorage("user");
     const [open, setOpen] = useState(false);
+    const [disableUpdate, setDisableUpdate] = useState(false);
 
     const handleOpen = () => setOpen(!open);
 
@@ -23,11 +25,15 @@ export default function QueueData({ queue, hidden }) {
             updatedBy: user.user_id,
         };
         socket.emit("updateQueue", body);
+        setDisableUpdate(true);
+        setTimeout(() => {
+            setDisableUpdate(false);
+        }, 1500);
     };
     const editNumber = () => {
         const updatedNumber = prompt("Set number:");
 
-        if (!isNaN(Number(updatedNumber))) {
+        if (updatedNumber && !isNaN(Number(updatedNumber))) {
             const body = {
                 queueId: queue.queue_id,
                 agencyId: queue.agency_id,
@@ -36,6 +42,10 @@ export default function QueueData({ queue, hidden }) {
                 updatedBy: user.user_id,
             };
             socket.emit("updateQueue", body);
+            setDisableUpdate(true);
+            setTimeout(() => {
+                setDisableUpdate(false);
+            }, 1500);
         }
     };
 
@@ -48,11 +58,16 @@ export default function QueueData({ queue, hidden }) {
         {
             icon: <ModeEditIcon />,
             name: "Set",
-            onClick: editNumber,
+            onClick: () => {
+                editNumber();
+            },
         },
         {
-            icon: <AddIcon onClick={increaseNumber} />,
+            icon: <AddIcon />,
             name: "Increment",
+            onClick: () => {
+                increaseNumber();
+            },
         },
     ];
 
@@ -105,10 +120,10 @@ export default function QueueData({ queue, hidden }) {
                         >
                             {actions.map((action) => (
                                 <SpeedDialAction
-                                    onClick={action.onClick}
+                                    onClick={!disableUpdate && action.onClick}
                                     key={action.name}
-                                    icon={action.icon}
-                                    tooltipTitle={action.name}
+                                    icon={disableUpdate ? <DoDisturbIcon /> : action.icon}
+                                    tooltipTitle={disableUpdate ? "please wait" : action.name}
                                     sx={{
                                         position: !open ? "absolute" : "",
                                         transition: open ? ".5s" : "none",
