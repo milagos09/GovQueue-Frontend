@@ -6,7 +6,6 @@ import FetchData from "./../../hooks/FetchData";
 import LoadingScreen from "./../LoadingScreen";
 
 export default function AdminLogin() {
-    const URL = import.meta.env.VITE_SERVER_URL;
     const { data, isFetching, fetchData } = FetchData();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -28,9 +27,10 @@ export default function AdminLogin() {
         const options = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ email: trimmedEmail, password: password }),
         };
-        await fetchData(`${URL}/users/login`, options);
+        await fetchData(`${import.meta.env.VITE_SERVER_URL}/users/login`, options);
     };
 
     useEffect(() => {

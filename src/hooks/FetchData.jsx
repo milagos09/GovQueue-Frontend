@@ -11,10 +11,12 @@ export default function FetchData() {
 
         try {
             const response = await fetch(endpoint, options);
+
             if (!response.ok) {
-                throw new Error("Network response was not ok");
+                throw new Error(`HTTP Error: ${response.status} - ${response.statusText} )}`);
             }
             const jsonData = await response.json();
+
             setData(jsonData);
             setIsFetching(false); // Move setIsFetching(false) here to ensure it's called after data is set.
             return jsonData; // Return the data when the fetch is successful.
