@@ -5,13 +5,10 @@ import SwitchTextField from "./SwitchTextField";
 import { getSessionStorage, setSessionStorage } from "../../helpers/sessionStorage";
 import LoadingScreen from "./../LoadingScreen";
 import FetchData from "./../../hooks/FetchData";
-import { useEffect, useState } from "react";
-import { Primary } from "./../Buttons";
-import { socket } from "./../../helpers/socket";
+import { useEffect } from "react";
 import ChangePassword from "./ChangePassword";
 
 export default function AdminAccountSettings() {
-    const [enableChangePassword, setEnableChangePassword] = useState(false);
     const { fetchData, data, isFetching } = FetchData();
     const user = getSessionStorage("user");
     const agency = user.agencyDetails;
@@ -21,8 +18,9 @@ export default function AdminAccountSettings() {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ [property]: value }),
+            credentials: "include",
         };
-        await fetchData(`https://govqueue-api.onrender.com/agencies/edit/${user.agency_id}`, options);
+        await fetchData(`${import.meta.env.VITE_SERVER_URL}/agencies/edit/${user.agency_id}`, options);
     };
 
     const handleSaveUser = async (property, value) => {
@@ -30,14 +28,15 @@ export default function AdminAccountSettings() {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ [property]: value }),
+            credentials: "include",
         };
-        await fetchData(`https://govqueue-api.onrender.com/users/edit/${user.user_id}`, options);
+        await fetchData(`${import.meta.env.VITE_SERVER_URL}/users/edit/${user.user_id}`, options);
     };
 
     useEffect(() => {
         if (data) {
             if (data.user_id) {
-                setSessionStorage("user", data);
+                setSessionStorage("user", { ...user, ...data });
             } else {
                 const newUser = { ...user, agencyDetails: data };
                 setSessionStorage("user", newUser);

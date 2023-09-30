@@ -16,7 +16,12 @@ export default function AdminNavbar() {
         {
             nav: "Logout",
             link: "/admin/login",
-            onClick: () => {
+            onClick: async () => {
+                const options = {
+                    method: "POST",
+                    credentials: "include",
+                };
+                await fetch(`${import.meta.env.VITE_SERVER_URL}/users/logout`, options);
                 sessionStorage.clear();
                 navigate(0);
             },

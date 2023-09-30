@@ -26,8 +26,9 @@ export default function AdminProfileSettings() {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ [property]: value }),
+            credentials: "include",
         };
-        await fetchData(`https://govqueue-api.onrender.com/agencies/edit/${user.agency_id}`, options);
+        await fetchData(`${import.meta.env.VITE_SERVER_URL}/agencies/edit/${user.agency_id}`, options);
     };
 
     // Open the select file input
