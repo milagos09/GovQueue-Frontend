@@ -11,64 +11,79 @@ import QueueActions from "../QueueActions";
 import { roundIcon } from "../../themes/MyTheme";
 import { Link } from "react-router-dom";
 
-export default function Row({ agency, customBreakPoint, isFavorite, toggleFavorite }) {
-    const [open, setOpen] = useState(false);
-    const fontSize = customBreakPoint ? ".9rem" : ".75rem";
-    const maxWidth = customBreakPoint ? "80px" : "60px";
+export default function Row({
+  agency,
+  customBreakPoint,
+  isFavorite,
+  toggleFavorite,
+}) {
+  const [open, setOpen] = useState(false);
+  const fontSize = customBreakPoint ? ".9rem" : ".75rem";
+  const maxWidth = customBreakPoint ? "80px" : "60px";
 
-    return (
-        <>
-            <TableRow>
-                <TableCell align="center">
-                    <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => setOpen(!open)}
-                        sx={{
-                            "&:hover *": {
-                                color: "black",
-                            },
-                        }}
-                    >
-                        {open ? (
-                            <KeyboardArrowUpIcon
-                                style={{
-                                    ...roundIcon,
-                                }}
-                            />
-                        ) : (
-                            <KeyboardArrowDownIcon
-                                style={{
-                                    ...roundIcon,
-                                }}
-                            />
-                        )}
-                    </IconButton>
-                </TableCell>
-                <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
-                    <Link target="_blank" to={`agency/${agency.agency_id}`}>
-                        <img src={agency.logo} loading="lazy" style={{ maxWidth: maxWidth, borderRadius: "50%" }} />
-                    </Link>
-                </TableCell>
-                <TableCell align="center" sx={{ fontSize: fontSize }}>
-                    <Link target="_blank" to={`agency/${agency.agency_id}`}>
-                        {agency.name}
-                    </Link>
-                </TableCell>
-                {customBreakPoint && <TableCell align="center">{agency.region}</TableCell>}
-                <TableCell>
-                    <QueueActions agency={agency} isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
-                </TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                        <Box sx={{ marginBottom: "20px" }}>
-                            <Windows minWidth={80} queues={agency.queues} />
-                        </Box>
-                    </Collapse>
-                </TableCell>
-            </TableRow>
-        </>
-    );
+  return (
+    <>
+      <TableRow>
+        {/* <TableCell align="center">
+          <IconButton
+            aria-label="expand row"
+            size="small"
+            onClick={() => setOpen(!open)}
+            sx={{
+              "&:hover *": {
+                color: "black",
+              },
+            }}
+          >
+            {open ? (
+              <KeyboardArrowUpIcon
+                style={{
+                  ...roundIcon,
+                }}
+              />
+            ) : (
+              <KeyboardArrowDownIcon
+                style={{
+                  ...roundIcon,
+                }}
+              />
+            )}
+          </IconButton>
+        </TableCell> */}
+        <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
+          <Link target="_blank" to={`agency/${agency.agency_id}`}>
+            <img
+              src={agency.logo}
+              loading="lazy"
+              style={{ maxWidth: maxWidth, borderRadius: "50%" }}
+            />
+          </Link>
+        </TableCell>
+        <TableCell align="center" sx={{ fontSize: fontSize }}>
+          <Link target="_blank" to={`agency/${agency.agency_id}`}>
+            {agency.name}
+          </Link>
+        </TableCell>
+        {customBreakPoint && (
+          <TableCell align="center">{agency.region}</TableCell>
+        )}
+        <TableCell>
+          <QueueActions
+            agency={agency}
+            isFavorite={isFavorite}
+            toggleFavorite={toggleFavorite}
+          />
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Box sx={{ marginBottom: "20px" }}>
+              <Windows minWidth={80} queues={agency.queues} />
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+    </>
+  );
 }
