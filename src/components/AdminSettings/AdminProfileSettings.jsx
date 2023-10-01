@@ -1,25 +1,21 @@
-import { IconButton } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import React, { useEffect } from "react";
+import { Stack } from "@mui/material";
 import Fieldset from "../Fieldset/index";
-import Tooltip from "@mui/material/Tooltip";
-import { Primary } from "./../Buttons";
 import SelectTextField from "./SelectTextField";
 import EditableTextField from "./EditableTextField";
-import regionsArray from "./../../../fake/location.json";
-import typesArray from "./../../../fake/agencyType.json";
-import { useRef } from "react";
+import regionsArray from "../../../fake/location.json";
+import typesArray from "../../../fake/agencyType.json";
 import LoadingScreen from "../LoadingScreen";
 import FetchData from "../../hooks/FetchData";
-import { useEffect } from "react";
-import { getSessionStorage, setSessionStorage } from "./../../helpers/sessionStorage";
+import { getSessionStorage, setSessionStorage } from "../../helpers/sessionStorage";
+import UploadLogo from "./UploadLogo";
 
 export default function AdminProfileSettings() {
     const { fetchData, data, isFetching } = FetchData();
     const user = getSessionStorage("user");
     const agency = user.agencyDetails;
-    const fileInputRef = useRef(null);
-    const regionIndex = regionsArray.findIndex((r) => r == agency.region);
-    const typeIndex = typesArray.findIndex((t) => t == agency.type);
+    const regionIndex = regionsArray.findIndex((r) => r === agency.region);
+    const typeIndex = typesArray.findIndex((t) => t === agency.type);
 
     const handleSaveProfile = async (property, value) => {
         const options = {
@@ -31,25 +27,12 @@ export default function AdminProfileSettings() {
         await fetchData(`${import.meta.env.VITE_SERVER_URL}/agencies/edit/${user.agency_id}`, options);
     };
 
-    // Open the select file input
-    const handleFileSelect = () => {
-        fileInputRef.current.click();
-    };
-
     useEffect(() => {
         if (data) {
             const newUser = { ...user, agencyDetails: data };
             setSessionStorage("user", newUser);
         }
     }, [data]);
-
-    // Handle the selected file here, e.g., upload it or process it
-    const handleFileChange = (event) => {
-        const selectedFile = event.target.files[0];
-        if (selectedFile) {
-            console.log("Selected File:", selectedFile.name);
-        }
-    };
 
     return (
         <>
@@ -59,15 +42,7 @@ export default function AdminProfileSettings() {
                 titleStyles={{ fontSize: "1.5rem" }}
                 sx={{ padding: "20px", minWidth: "350px" }}
             >
-                <Stack alignItems="center">
-                    <Tooltip title="Recommended image size is 120x120 pixels" placement="top">
-                        <IconButton aria-label="image tip">
-                            <img src={agency.logo} style={{ borderRadius: "50%", width: "150px" }} />
-                        </IconButton>
-                    </Tooltip>
-                    <input type="file" ref={fileInputRef} style={{ display: "none" }} onChange={handleFileChange} />
-                    <Primary onClick={handleFileSelect} value={"Upload Logo"} sx={{ m: "20px", width: "160px" }} />
-                </Stack>
+                <UploadLogo logo={agency.logo} agencyId={user.agency_id} handleSaveProfile={handleSaveProfile} />
                 <Stack rowGap={3} sx={{ my: "20px" }}>
                     <EditableTextField
                         label={"Agency"}
