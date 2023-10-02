@@ -3,6 +3,8 @@ import { useState } from "react";
 import Favorites from "./Favorites";
 import ShowLogs from "./ShowLogs";
 import EventNoteIcon from "@mui/icons-material/EventNote";
+import MoreHorizTwoToneIcon from "@mui/icons-material/MoreHorizTwoTone";
+import { roundIcon } from "../../themes/MyTheme";
 
 export default function QueueActions({ agency, isFavorite, toggleFavorite }) {
   const [open, setOpen] = useState(false);
@@ -34,15 +36,16 @@ export default function QueueActions({ agency, isFavorite, toggleFavorite }) {
     <>
       <Box sx={{ transform: "translateZ(0px)" }}>
         <Backdrop open={open} sx={{ background: "none" }} />
-        <Button
-          id="basic-button"
+        <MoreHorizTwoToneIcon
+          id="MoreHorizTwoToneIcon-button"
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleOpen}
-        >
-          ...
-        </Button>
+          style={{
+            ...roundIcon,
+          }}
+        ></MoreHorizTwoToneIcon>
         <Menu
           id="basic-menu"
           open={open}
@@ -56,7 +59,6 @@ export default function QueueActions({ agency, isFavorite, toggleFavorite }) {
           </MenuItem>
 
           <MenuItem onClick={() => setOpenLogs(true)}>Logs</MenuItem>
-          <MenuItem onClick={handleClose}>Show more</MenuItem>
         </Menu>
         {/* <SpeedDial
                     ariaLabel="SpeedDial tooltip"

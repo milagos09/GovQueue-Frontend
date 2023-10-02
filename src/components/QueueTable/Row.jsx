@@ -78,7 +78,7 @@ export default function Row({
         {customBreakPoint && (
           <TableCell align="center">{agency.region}</TableCell>
         )}
-        <TableCell>
+        <TableCell align="center">
           <QueueActions
             agency={agency}
             isFavorite={isFavorite}
