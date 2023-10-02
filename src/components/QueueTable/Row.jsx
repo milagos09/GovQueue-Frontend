@@ -23,33 +23,44 @@ export default function Row({
 
   return (
     <>
-      <TableRow>
-        {/* <TableCell align="center">
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-            sx={{
-              "&:hover *": {
-                color: "black",
-              },
-            }}
-          >
-            {open ? (
-              <KeyboardArrowUpIcon
-                style={{
-                  ...roundIcon,
-                }}
-              />
-            ) : (
-              <KeyboardArrowDownIcon
-                style={{
-                  ...roundIcon,
-                }}
-              />
-            )}
-          </IconButton>
-        </TableCell> */}
+      <TableRow
+        aria-label="expand row"
+        size="small"
+        onClick={() => setOpen(!open)}
+        sx={{
+          "&:hover *": {
+            color: "black",
+          },
+        }}
+      >
+        {
+          // <TableCell align="center">
+          //   <IconButton
+          //   aria-label="expand row"
+          //   size="small"
+          //   onClick={() => setOpen(!open)}
+          //   sx={{
+          //     "&:hover *": {
+          //       color: "black",
+          //     },
+          //   }}
+          // >
+          //   {open ? (
+          //     <KeyboardArrowUpIcon
+          //       style={{
+          //         ...roundIcon,
+          //       }}
+          //     />
+          //   ) : (
+          //     <KeyboardArrowDownIcon
+          //       style={{
+          //         ...roundIcon,
+          //       }}
+          //     />
+          //   )}
+          //   </IconButton>
+          // </TableCell>
+        }
         <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
           <Link target="_blank" to={`agency/${agency.agency_id}`}>
             <img
@@ -71,7 +82,9 @@ export default function Row({
           <QueueActions
             agency={agency}
             isFavorite={isFavorite}
+            boolean
             toggleFavorite={toggleFavorite}
+            function
           />
         </TableCell>
       </TableRow>
