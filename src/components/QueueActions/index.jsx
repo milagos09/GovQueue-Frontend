@@ -1,4 +1,4 @@
-import { Box, Backdrop, Button, Menu, MenuItem } from "@mui/material";
+import { Box, Backdrop, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import Favorites from "./Favorites";
 import ShowLogs from "./ShowLogs";
@@ -7,11 +7,11 @@ import MoreHorizTwoToneIcon from "@mui/icons-material/MoreHorizTwoTone";
 import { roundIcon } from "../../themes/MyTheme";
 
 export default function QueueActions({ agency, isFavorite, toggleFavorite }) {
-  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const [openLogs, setOpenLogs] = useState(false);
 
-  const handleOpen = () => setOpen(!open);
-  const handleClose = () => setOpen(false);
+  const handleOpen = (event) => setAnchorEl(event.currentTarget);
+  const handleClose = () => setAnchorEl(null);
 
   const handleToggleFavorite = () => {
     toggleFavorite(agency.agency_id, isFavorite);
@@ -35,7 +35,7 @@ export default function QueueActions({ agency, isFavorite, toggleFavorite }) {
   return (
     <>
       <Box sx={{ transform: "translateZ(0px)" }}>
-        <Backdrop open={open} sx={{ background: "none" }} />
+        <Backdrop open={Boolean(anchorEl)} sx={{ background: "none" }} />
         <MoreHorizTwoToneIcon
           id="MoreHorizTwoToneIcon-button"
           aria-controls={open ? "basic-menu" : undefined}
@@ -48,46 +48,18 @@ export default function QueueActions({ agency, isFavorite, toggleFavorite }) {
         ></MoreHorizTwoToneIcon>
         <Menu
           id="basic-menu"
-          open={open}
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
           onClose={handleClose}
           MenuListProps={{
-            "aria-labelledby": "basic-button",
+            "aria-labelledby": "MoreHorizTwoToneIcon-button",
           }}
         >
           <MenuItem onClick={handleToggleFavorite}>
             {isFavorite ? "Unfavorite" : "Favorite"}
           </MenuItem>
-
           <MenuItem onClick={() => setOpenLogs(true)}>Logs</MenuItem>
         </Menu>
-        {/* <SpeedDial
-                    ariaLabel="SpeedDial tooltip"
-                    icon={<SpeedDialIcon onClick={handleOpen} sx={{}} />}
-                    open={open}
-                    FabProps={{
-                        size: "small",
-                        color: "info",
-                    }}
-                    sx={{ position: "relative" }}
-                >
-                    {actions.map((action) => (
-                        <SpeedDialAction
-                            key={action.name}
-                            icon={action.icon}
-                            onClick
-                            tooltipTitle={action.name}
-                            sx={{
-                                position: !open ? "absolute" : "",
-                                transition: open ? ".5s" : "none",
-                                borderRadius: "50%",
-                                "&:hover": {
-                                    color: "black",
-                                    background: "azure",
-                                },
-                            }}
-                        />
-                    ))}
-                </SpeedDial> */}
       </Box>
       {openLogs && (
         <ShowLogs
