@@ -1,53 +1,29 @@
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import Windows from "../Windows";
-import QueueActions from "../QueueActions";
-import { roundIcon } from "../../themes/MyTheme";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import QueueActions from "../QueueActions";
+import Windows from "../Windows";
 
 export default function Row({ agency, customBreakPoint, isFavorite, toggleFavorite }) {
-    const [open, setOpen] = useState(false);
-    const fontSize = customBreakPoint ? ".9rem" : ".75rem";
-    const maxWidth = customBreakPoint ? "80px" : "60px";
+    const [showQueues, setShowQueues] = useState(false);
+
+    const toggleQueues = () => {
+        setShowQueues((prev) => !prev);
+    };
+
+    const fontSize = ".9rem";
+
+    const logoWidth = "80px";
 
     return (
         <>
-            <TableRow>
-                <TableCell align="center">
-                    <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => setOpen(!open)}
-                        sx={{
-                            "&:hover *": {
-                                color: "black",
-                            },
-                        }}
-                    >
-                        {open ? (
-                            <KeyboardArrowUpIcon
-                                style={{
-                                    ...roundIcon,
-                                }}
-                            />
-                        ) : (
-                            <KeyboardArrowDownIcon
-                                style={{
-                                    ...roundIcon,
-                                }}
-                            />
-                        )}
-                    </IconButton>
-                </TableCell>
+            <TableRow aria-label="expand row" size="small">
                 <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
                     <Link target="_blank" to={`agency/${agency.agency_id}`}>
-                        <img src={agency.logo} loading="lazy" style={{ maxWidth: maxWidth, borderRadius: "50%" }} />
+                        <img src={agency.logo} loading="lazy" style={{ maxWidth: logoWidth, borderRadius: "50%" }} />
                     </Link>
                 </TableCell>
                 <TableCell align="center" sx={{ fontSize: fontSize }}>
@@ -56,13 +32,19 @@ export default function Row({ agency, customBreakPoint, isFavorite, toggleFavori
                     </Link>
                 </TableCell>
                 {customBreakPoint && <TableCell align="center">{agency.region}</TableCell>}
-                <TableCell>
-                    <QueueActions agency={agency} isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
+                <TableCell align="center">
+                    <QueueActions
+                        customBreakPoint={customBreakPoint}
+                        agency={agency}
+                        isFavorite={isFavorite}
+                        toggleFavorite={toggleFavorite}
+                        toggleQueues={toggleQueues}
+                    />
                 </TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
+                    <Collapse in={showQueues} timeout="auto" unmountOnExit>
                         <Box sx={{ marginBottom: "20px" }}>
                             <Windows minWidth={80} queues={agency.queues} />
                         </Box>

@@ -7,7 +7,7 @@ import Row from "./Row";
 
 export default function CollapsibleTable({ agencies, favorites, setFavorites, width }) {
     //responsiveness
-    const customBreakPoint = width > 530;
+    const customBreakPoint = width > 900;
 
     const toggleFavorite = (id, isFavorite) => {
         const updatedFavorites = isFavorite ? favorites.filter((f) => f !== id) : [...favorites, id];
@@ -31,15 +31,14 @@ export default function CollapsibleTable({ agencies, favorites, setFavorites, wi
     return (
         <>
             <Paper sx={{ width: "100%", overflow: "hidden", mb: 4, ...glassEffect }}>
-                <TableContainer sx={{ maxHeight: "550px", paddingX: width > 900 ? "100px" : "2px" }}>
+                <TableContainer sx={{ maxHeight: "550px", paddingX: width > 1048 ? "90px" : "2" }}>
                     <Table stickyHeader sx={{ mb: "15px" }}>
                         <TableHead>
                             <TableRow>
-                                <TableCell align="center">Show</TableCell>
                                 <TableCell align="center">Agency</TableCell>
                                 <TableCell align="center">Name</TableCell>
                                 {customBreakPoint && <TableCell align="center">Region</TableCell>}
-                                <TableCell align="center">More</TableCell>
+                                <TableCell align="center">Action</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -66,7 +65,7 @@ export default function CollapsibleTable({ agencies, favorites, setFavorites, wi
                     </Table>
                 </TableContainer>
                 <TablePagination
-                    rowsPerPageOptions={[5, 10, 20]}
+                    rowsPerPageOptions={[4, 10, 20]}
                     component="div"
                     count={agencies.length}
                     rowsPerPage={rowsPerPage}
