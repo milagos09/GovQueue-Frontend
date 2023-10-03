@@ -20,3 +20,9 @@
 .MuiTablePagination-toolbar {
     justify-content: center;
 }
+.MuiFab-info {
+    background-color: white !important;
+    color: black !important;
+    position: absolute;
+    top: -10px;
+}
