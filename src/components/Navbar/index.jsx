@@ -8,14 +8,22 @@ import Search from "./Search";
 import DateTime from "./DateTime";
 
 export default function NavBar({ search, setSearch }) {
-    return (
-        <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
-            <Toolbar disableGutters>
-                <HamburgerMenu />
-                <AppName />
-                <NavLink />
-                {search == undefined ? <DateTime /> : <Search search={search} setSearch={setSearch} />}
-            </Toolbar>
-        </AppBar>
-    );
+  return (
+    <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
+      <Toolbar
+        disableGutters
+        sx={{
+          flexDirection: { xs: "row-reverse", md: "row" },
+        }}>
+        <HamburgerMenu />
+        <AppName />
+        <NavLink />
+        {search == undefined ? (
+          <DateTime />
+        ) : (
+          <Search search={search} setSearch={setSearch} />
+        )}
+      </Toolbar>
+    </AppBar>
+  );
 }

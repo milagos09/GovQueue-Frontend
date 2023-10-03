@@ -12,6 +12,7 @@ export default function AppName() {
           color: "azure",
           mr: 2,
           display: { xs: "none", md: "flex" },
+
           fontWeight: 700,
           textDecoration: "none",
         }}>
@@ -27,7 +28,8 @@ export default function AppName() {
           ...gold,
           mr: 2,
           display: { xs: "flex", md: "none" },
-          flexGrow: 1,
+          visibility: { xs: "hidden" },
+          flexGrow: { xs: "50" },
           fontWeight: 700,
           textDecoration: "none",
         }}>
