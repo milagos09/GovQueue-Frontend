@@ -1,7 +1,7 @@
 import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
 import Feildset from "../../components/Fieldset";
 import { Divider, ListItem, List, Typography, Grid } from "@mui/material";
-import faqData from "./faq.json";
+import faqData from "./data/faq.json";
 
 export default function Support() {
     return (
