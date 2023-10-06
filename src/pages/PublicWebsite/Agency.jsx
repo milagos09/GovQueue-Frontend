@@ -2,7 +2,6 @@ import Profile from "./../../components/AgencyComponents/Profile";
 import Queues from "../../components/AgencyComponents/Queues";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Navbar from "./../../components/Navbar";
 import Announcement from "../../components/AgencyComponents/Announcement";
 import { useParams } from "react-router-dom";
 import FacebookMessengerChat from "./../../components/FacebookMessengerChat";
@@ -20,7 +19,6 @@ export default function Agency() {
 
     return (
         <>
-            <Navbar />
             <Container sx={{ minHeight: `${height - 167}px` }}>
                 {agency.agency_id !== undefined ? (
                     <>

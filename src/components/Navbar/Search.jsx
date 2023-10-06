@@ -2,6 +2,7 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { gold } from "../../themes/MyTheme";
+import searchStore from "./../../stores/searchStore";
 
 const SearchContainer = styled("div")(({ theme }) => ({
     position: "relative",
@@ -46,7 +47,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function Search({ search, setSearch }) {
+export default function Search() {
+    const { search, setSearch } = searchStore();
     return (
         <>
             <SearchContainer>
