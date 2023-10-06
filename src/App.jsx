@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Dashboard from "./pages/Public/Dashboard";
-import About from "./pages/Public/About";
-import Support from "./pages/Public/Support";
+import Dashboard from "./pages/PublicWebsite/Dashboard";
+import About from "./pages/PublicWebsite/About";
+import Support from "./pages/PublicWebsite/Support";
 import ErrorPage from "./pages/ErrorPage";
 import Login from "./pages/Admin/Login";
 import Footer from "./components/Footer";
@@ -10,14 +10,14 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import Logs from "./pages/Admin/Logs";
 import Settings from "./pages/Admin/Settings";
 import AdminSupport from "./pages/Admin/AdminSupport";
-import Agency from "./pages/Public/Agency";
+import Agency from "./pages/PublicWebsite/Agency";
 import queuesStore from "./stores/queuesStore";
 import agencyStore from "./stores/agencyStore";
 import userStore from "./stores/userStore";
 import { useEffect } from "react";
 import { socket } from "./helpers/socket";
 import LoadingScreen from "./components/LoadingScreen";
-import Public from "./pages/Public";
+import Public from "./pages/PublicWebsite";
 import Admin from "./pages/Admin";
 
 const session = sessionStorage.getItem("user");
