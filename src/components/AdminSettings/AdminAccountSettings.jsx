@@ -7,11 +7,13 @@ import LoadingScreen from "./../LoadingScreen";
 import FetchData from "./../../hooks/FetchData";
 import { useEffect } from "react";
 import ChangePassword from "./ChangePassword";
+import userStore from "../../stores/userStore";
 
 export default function AdminAccountSettings() {
+    const { setUser, setAgency, user, agency } = userStore();
     const { fetchData, data, isFetching } = FetchData();
-    const user = getSessionStorage("user");
-    const agency = user.agencyDetails;
+    // const user = getSessionStorage("user");
+    // const agency = user.agencyDetails;
 
     const handleSaveProfile = async (property, value) => {
         const options = {
@@ -36,9 +38,11 @@ export default function AdminAccountSettings() {
     useEffect(() => {
         if (data) {
             if (data.user_id) {
+                setUser(data);
                 setSessionStorage("user", { ...user, ...data });
             } else {
                 const newUser = { ...user, agencyDetails: data };
+                setAgency(data);
                 setSessionStorage("user", newUser);
             }
         }

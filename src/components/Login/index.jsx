@@ -5,9 +5,11 @@ import { Primary } from "./../Buttons";
 import FetchData from "./../../hooks/FetchData";
 import LoadingScreen from "./../LoadingScreen";
 import userStore from "../../stores/userStore";
+import queuesStore from "../../stores/queuesStore";
 
 export default function AdminLogin() {
-    const { setLoggedIn } = userStore();
+    const { setLoggedIn, setUser, setAgency } = userStore();
+    const { setQueues } = queuesStore();
     const { data, isFetching, fetchData } = FetchData();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -38,8 +40,11 @@ export default function AdminLogin() {
     useEffect(() => {
         const { user, agency, queues } = data || {};
         if (user && agency && queues) {
+            setUser(user);
+            setAgency(agency);
+            setQueues(queues);
             user.agencyDetails = agency;
-            sessionStorage.setItem("user", JSON.stringify(user));
+            // sessionStorage.setItem("user", JSON.stringify(user));
             setLoggedIn(true);
         }
     }, [data]);
