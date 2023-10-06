@@ -2,14 +2,11 @@ import AdminLogin from "../../components/Login/index";
 import Grid from "@mui/material/Unstable_Grid2";
 import BannerLogo from "../../assets/govQ-logo.png";
 import { CheckScreenSize } from "./../../hooks/CheckScreenSize";
-import AdminNavBar from "../../components/AdminNavbar";
 
 export default function Login() {
     const { width, height } = CheckScreenSize();
     return (
         <>
-            <AdminNavBar />
-
             <Grid
                 alignItems="center"
                 container

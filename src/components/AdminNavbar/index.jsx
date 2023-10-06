@@ -4,10 +4,11 @@ import AdminNavLink from "./AdminNavLink";
 import AdminNavBarAppName from "./AdminNavBarAppName";
 import AdminHamburgerMenu from "./AdminHamburgerMenu";
 import { dark } from "./../../themes/MyTheme";
-import { useNavigate } from "react-router-dom";
+import userStore from "../../stores/userStore";
 
 export default function AdminNavbar() {
-    const navigate = useNavigate();
+    const { setLoggedIn } = userStore();
+
     const pages = [
         { nav: "Home", link: `/admin` },
         { nav: "Logs", link: `/admin/logs` },
@@ -15,7 +16,7 @@ export default function AdminNavbar() {
         { nav: "Settings", link: `/admin/settings` },
         {
             nav: "Logout",
-            link: "/admin/login",
+            link: "/admin",
             onClick: async () => {
                 const options = {
                     method: "POST",
@@ -23,7 +24,7 @@ export default function AdminNavbar() {
                 };
                 await fetch(`${import.meta.env.VITE_SERVER_URL}/users/logout`, options);
                 sessionStorage.clear();
-                navigate(0);
+                setLoggedIn(false);
             },
         },
     ];
