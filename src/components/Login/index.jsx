@@ -4,8 +4,10 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Primary } from "./../Buttons";
 import FetchData from "./../../hooks/FetchData";
 import LoadingScreen from "./../LoadingScreen";
+import userStore from "../../stores/userStore";
 
 export default function AdminLogin() {
+    const { setLoggedIn } = userStore();
     const { data, isFetching, fetchData } = FetchData();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -34,9 +36,11 @@ export default function AdminLogin() {
     };
 
     useEffect(() => {
-        if (data) {
-            sessionStorage.setItem("user", JSON.stringify(data));
-            location.reload();
+        const { user, agency, queues } = data || {};
+        if (user && agency && queues) {
+            user.agencyDetails = agency;
+            sessionStorage.setItem("user", JSON.stringify(user));
+            setLoggedIn(true);
         }
     }, [data]);
 

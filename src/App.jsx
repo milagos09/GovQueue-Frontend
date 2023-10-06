@@ -13,6 +13,7 @@ import AdminSupport from "./pages/Admin/AdminSupport";
 import Agency from "./pages/Public/Agency";
 import queuesStore from "./stores/queuesStore";
 import agencyStore from "./stores/agencyStore";
+import userStore from "./stores/userStore";
 import { useEffect } from "react";
 import { socket } from "./helpers/socket";
 import LoadingScreen from "./components/LoadingScreen";
@@ -20,9 +21,10 @@ import Public from "./pages/Public";
 import Admin from "./pages/Admin";
 
 const session = sessionStorage.getItem("user");
-const isLoggedIn = !!session;
+// const isLoggedIn = !!session;
 
 export default function App() {
+    const { loggedIn } = userStore();
     const { agencies, setAgencies, updateAgency } = agencyStore();
     const { setQueues, updateQueue, removeQueue } = queuesStore();
     useEffect(() => {
@@ -70,14 +72,11 @@ export default function App() {
                         />
                     </Route>
                     <Route path="admin" element={<Admin />}>
-                        <Route index element={isLoggedIn ? <AdminDashboard /> : <Navigate to="/admin/login" />} />
-                        <Route path="login" element={isLoggedIn ? <Navigate to="/admin" /> : <Login />} />
-                        <Route path="logs" element={isLoggedIn ? <Logs /> : <Navigate to="/admin/login" />} />
-                        <Route path="settings" element={isLoggedIn ? <Settings /> : <Navigate to="/admin/login" />} />
-                        <Route
-                            path="support"
-                            element={isLoggedIn ? <AdminSupport /> : <Navigate to="/admin/login" />}
-                        />
+                        <Route index element={loggedIn ? <AdminDashboard /> : <Login />} />
+                        <Route path="login" element={loggedIn ? <Navigate to="/admin" /> : <Login />} />
+                        <Route path="logs" element={loggedIn ? <Logs /> : <Login />} />
+                        <Route path="settings" element={loggedIn ? <Settings /> : <Login />} />
+                        <Route path="support" element={loggedIn ? <AdminSupport /> : <Login />} />
                         <Route
                             path="*"
                             element={
