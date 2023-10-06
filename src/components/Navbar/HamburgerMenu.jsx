@@ -28,15 +28,14 @@ export default function HamburgerMenu() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+    <Box sx={{ flexGrow: 1, display: { sm: "none" } }}>
       <IconButton
         size="large"
         aria-label="account of current user"
         aria-controls="menu-nav"
         aria-haspopup="true"
         onClick={handleOpenNavMenu}
-        color="inherit"
-      >
+        color="inherit">
         <MenuIcon />
       </IconButton>
       <Box
@@ -44,8 +43,7 @@ export default function HamburgerMenu() {
           justifyContent: "space-evenly",
           flexGrow: 1,
           display: { xs: "none", md: "flex" },
-        }}
-      ></Box>
+        }}></Box>
       <Menu
         id="menu-nav"
         anchorEl={anchorElNav}
@@ -62,15 +60,13 @@ export default function HamburgerMenu() {
         onClose={handleCloseNavMenu}
         sx={{
           display: { xs: "block", md: "none" },
-        }}
-      >
+        }}>
         {pages.map((page) => (
           <MenuItem key={page.nav} onClick={handleCloseNavMenu}>
             <Typography textAlign="center">
               <Link
                 to={page.link}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+                style={{ textDecoration: "none", color: "inherit" }}>
                 {page.nav}
               </Link>
             </Typography>
@@ -83,8 +79,7 @@ export default function HamburgerMenu() {
           justifyContent: "space-evenly",
           flexGrow: 1,
           display: { xs: "none", md: "flex" },
-        }}
-      >
+        }}>
         <Box sx={{ flexGrow: 0 }}>
           <Menu
             sx={{ mt: "45px" }}
@@ -100,8 +95,7 @@ export default function HamburgerMenu() {
               horizontal: "right",
             }}
             open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-          ></Menu>
+            onClose={handleCloseUserMenu}></Menu>
         </Box>
       </Box>
     </Box>

@@ -10,11 +10,7 @@ import DateTime from "./DateTime";
 export default function NavBar({ search, setSearch }) {
   return (
     <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
-      <Toolbar
-        disableGutters
-        sx={{
-          flexDirection: { xs: "row-reverse", md: "row" },
-        }}>
+      <Toolbar disableGutters>
         <HamburgerMenu />
         <AppName />
         <NavLink />
