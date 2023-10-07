@@ -1,14 +1,9 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 export default function AdminNavLink({ pages }) {
-    const [setAnchorElNav] = useState(null);
-    const navigate = useNavigate();
-    const handleCloseNavMenu = () => {
-        // setAnchorElNav(null);
-    };
+    const location = useLocation();
     return (
         <Box
             sx={{
@@ -29,9 +24,9 @@ export default function AdminNavLink({ pages }) {
                     style={{ textDecoration: "none", color: "inherit" }}
                 >
                     <Button
-                        onClick={handleCloseNavMenu}
                         sx={{
                             my: 2,
+                            mx: 1,
                             display: "block",
                             width: "100%",
                             color: location.pathname === page.link ? "#FB9300" : "white",
