@@ -16,63 +16,68 @@ import Public from "./pages/PublicWebsite";
 import Admin from "./pages/AdminPage";
 import { useEffect } from "react";
 import { socket } from "./helpers/socket";
+import Visitors from "./pages/PublicWebsite/Visitors";
 
 export default function App() {
-    const { updateAgency } = agencyStore();
-    const { updateQueue, removeQueue } = queuesStore();
-    useEffect(() => {
-        (async () => {
-            socket.on("updateAgency", (agency) => {
-                updateAgency(agency);
-            });
+  const { updateAgency } = agencyStore();
+  const { updateQueue, removeQueue } = queuesStore();
+  useEffect(() => {
+    (async () => {
+      socket.on("updateAgency", (agency) => {
+        updateAgency(agency);
+      });
 
-            socket.on("updateQueue", (queue) => {
-                updateQueue(queue);
-            });
+      socket.on("updateQueue", (queue) => {
+        updateQueue(queue);
+      });
 
-            socket.on("removeQueue", (queue) => {
-                removeQueue(queue);
-            });
-        })();
-    }, []);
+      socket.on("removeQueue", (queue) => {
+        removeQueue(queue);
+      });
+    })();
+  }, []);
 
-    return (
-        <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Public />}>
-                        <Route index element={<Dashboard />} />
-                        <Route path="about" element={<About />} />
-                        <Route path="support" element={<Support />} />
-                        <Route path="agency/:id" element={<Agency />} />
-                        <Route
-                            path="*"
-                            element={
-                                <ErrorPage redirect={{ to: "/", buttonValue: "Return to Home Page" }} status={404} />
-                            }
-                        />
-                    </Route>
-                    <Route path="admin" element={<Admin />}>
-                        <Route index element={<AdminDashboard />} />
-                        <Route path="login" element={<Navigate to="/admin" />} />
-                        <Route path="logs" element={<Logs />} />
-                        <Route path="settings" element={<Settings />} />
-                        <Route path="support" element={<AdminSupport />} />
-                        <Route
-                            path="*"
-                            element={
-                                <ErrorPage
-                                    redirect={{
-                                        to: "/admin",
-                                        buttonValue: "Return to Admin Page",
-                                    }}
-                                />
-                            }
-                        />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Public />}>
+            <Route index element={<Dashboard />} />
+            <Route path="about" element={<About />} />
+            <Route path="support" element={<Support />} />
+            <Route path="register" element={<Visitors />} />
+            <Route path="agency/:id" element={<Agency />} />
+            <Route
+              path="*"
+              element={
+                <ErrorPage
+                  redirect={{ to: "/", buttonValue: "Return to Home Page" }}
+                  status={404}
+                />
+              }
+            />
+          </Route>
+          <Route path="admin" element={<Admin />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="login" element={<Navigate to="/admin" />} />
+            <Route path="logs" element={<Logs />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="support" element={<AdminSupport />} />
+            <Route
+              path="*"
+              element={
+                <ErrorPage
+                  redirect={{
+                    to: "/admin",
+                    buttonValue: "Return to Admin Page",
+                  }}
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <Footer />
+    </>
+  );
 }
