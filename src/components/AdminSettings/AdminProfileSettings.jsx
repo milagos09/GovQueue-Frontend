@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Stack } from "@mui/material";
 import Fieldset from "../Fieldset/index";
 import SelectTextField from "./SelectTextField";
@@ -9,13 +9,15 @@ import LoadingScreen from "../LoadingScreen";
 import FetchData from "../../hooks/FetchData";
 import { getSessionStorage, setSessionStorage } from "../../helpers/sessionStorage";
 import UploadLogo from "./UploadLogo";
+import userStore from "../../stores/userStore";
 
 export default function AdminProfileSettings() {
+    const { setAgency } = userStore();
     const { fetchData, data, isFetching } = FetchData();
     const user = getSessionStorage("user");
-    const agency = user.agencyDetails;
-    const regionIndex = regionsArray.findIndex((r) => r === agency.region);
-    const typeIndex = typesArray.findIndex((t) => t === agency.type);
+    const agency = getSessionStorage("agency");
+    const regionIndex = regionsArray.findIndex((r) => r === agency?.region);
+    const typeIndex = typesArray.findIndex((t) => t === agency?.type);
 
     const handleSaveProfile = async (property, value) => {
         const options = {
@@ -29,6 +31,7 @@ export default function AdminProfileSettings() {
 
     useEffect(() => {
         if (data) {
+            setAgency(data);
             const newUser = { ...user, agencyDetails: data };
             setSessionStorage("user", newUser);
         }
@@ -42,24 +45,24 @@ export default function AdminProfileSettings() {
                 titleStyles={{ fontSize: "1.5rem" }}
                 sx={{ padding: "20px", minWidth: "350px" }}
             >
-                <UploadLogo logo={agency.logo} agencyId={user.agency_id} handleSaveProfile={handleSaveProfile} />
+                <UploadLogo logo={agency?.logo} agencyId={user?.agency_id} handleSaveProfile={handleSaveProfile} />
                 <Stack rowGap={3} sx={{ my: "20px" }}>
                     <EditableTextField
                         label={"Agency"}
                         property={"name"}
-                        value={agency.name}
+                        value={agency?.name}
                         handleSave={handleSaveProfile}
                     />
                     <EditableTextField
                         label={"Description"}
                         property={"description"}
-                        value={agency.description}
+                        value={agency?.description}
                         handleSave={handleSaveProfile}
                     />
                     <EditableTextField
                         label={"Address"}
                         property={"address"}
-                        value={agency.address}
+                        value={agency?.address}
                         handleSave={handleSaveProfile}
                     />
                     <SelectTextField
@@ -79,13 +82,13 @@ export default function AdminProfileSettings() {
                     <EditableTextField
                         label={"Contact"}
                         property={"contact"}
-                        value={agency.contact}
+                        value={agency?.contact}
                         handleSave={handleSaveProfile}
                     />
                     <EditableTextField
                         label={"Support Email"}
                         property={"support_email"}
-                        value={agency.support_email}
+                        value={agency?.support_email}
                         handleSave={handleSaveProfile}
                     />
                 </Stack>
