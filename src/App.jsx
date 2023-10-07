@@ -4,7 +4,6 @@ import Dashboard from "./pages/PublicWebsite/Dashboard";
 import About from "./pages/PublicWebsite/About";
 import Support from "./pages/PublicWebsite/Support";
 import ErrorPage from "./pages/ErrorPage";
-import Login from "./pages/AdminPage/Login";
 import Footer from "./components/Footer";
 import AdminDashboard from "./pages/AdminPage/AdminDashboard";
 import Logs from "./pages/AdminPage/Logs";
@@ -13,50 +12,32 @@ import AdminSupport from "./pages/AdminPage/AdminSupport";
 import Agency from "./pages/PublicWebsite/Agency";
 import queuesStore from "./stores/queuesStore";
 import agencyStore from "./stores/agencyStore";
-import userStore from "./stores/userStore";
-import { useEffect } from "react";
-import { socket } from "./helpers/socket";
-import LoadingScreen from "./components/LoadingScreen";
 import Public from "./pages/PublicWebsite";
 import Admin from "./pages/AdminPage";
-
-const session = sessionStorage.getItem("user");
-// const isLoggedIn = !!session;
+import { useEffect } from "react";
+import { socket } from "./helpers/socket";
 
 export default function App() {
-    const { loggedIn } = userStore();
-    const { agencies, setAgencies, updateAgency } = agencyStore();
-    const { setQueues, updateQueue, removeQueue } = queuesStore();
+    const { updateAgency } = agencyStore();
+    const { updateQueue, removeQueue } = queuesStore();
     useEffect(() => {
         (async () => {
-            try {
-                socket.emit("getInitialData");
-                socket.on("updateData", (data) => {
-                    const { agencies, queues } = data;
-                    setAgencies(agencies);
-                    setQueues(queues);
-                });
+            socket.on("updateAgency", (agency) => {
+                updateAgency(agency);
+            });
 
-                socket.on("updateAgency", (agency) => {
-                    updateAgency(agency);
-                });
+            socket.on("updateQueue", (queue) => {
+                updateQueue(queue);
+            });
 
-                socket.on("updateQueue", (queue) => {
-                    updateQueue(queue);
-                });
-
-                socket.on("removeQueue", (queue) => {
-                    removeQueue(queue);
-                });
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
+            socket.on("removeQueue", (queue) => {
+                removeQueue(queue);
+            });
         })();
     }, []);
 
     return (
         <>
-            <LoadingScreen isFetching={agencies.length === 0} />
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Public />}>
@@ -72,11 +53,11 @@ export default function App() {
                         />
                     </Route>
                     <Route path="admin" element={<Admin />}>
-                        <Route index element={loggedIn ? <AdminDashboard /> : <Login />} />
-                        <Route path="login" element={loggedIn ? <Navigate to="/admin" /> : <Login />} />
-                        <Route path="logs" element={loggedIn ? <Logs /> : <Login />} />
-                        <Route path="settings" element={loggedIn ? <Settings /> : <Login />} />
-                        <Route path="support" element={loggedIn ? <AdminSupport /> : <Login />} />
+                        <Route index element={<AdminDashboard />} />
+                        <Route path="login" element={<Navigate to="/admin" />} />
+                        <Route path="logs" element={<Logs />} />
+                        <Route path="settings" element={<Settings />} />
+                        <Route path="support" element={<AdminSupport />} />
                         <Route
                             path="*"
                             element={

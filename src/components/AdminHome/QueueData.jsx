@@ -120,7 +120,7 @@ export default function QueueData({ queue, hidden }) {
                         >
                             {actions.map((action) => (
                                 <SpeedDialAction
-                                    onClick={!disableUpdate && action.onClick}
+                                    onClick={!disableUpdate ? action.onClick : null}
                                     key={action.name}
                                     icon={disableUpdate ? <DoDisturbIcon /> : action.icon}
                                     tooltipTitle={disableUpdate ? "please wait" : action.name}

@@ -7,7 +7,7 @@ import { dark } from "./../../themes/MyTheme";
 import userStore from "../../stores/userStore";
 
 export default function AdminNavbar() {
-    const { setLoggedIn } = userStore();
+    const { setLoggedIn, loggedIn } = userStore();
 
     const pages = [
         { nav: "Home", link: `/admin` },
@@ -29,14 +29,12 @@ export default function AdminNavbar() {
         },
     ];
 
-    const isLoggedIn = !!sessionStorage.getItem("user");
-
     return (
         <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
             <Toolbar disableGutters>
-                {isLoggedIn && <AdminHamburgerMenu pages={pages} />}
+                {loggedIn && <AdminHamburgerMenu pages={pages} />}
                 <AdminNavBarAppName />
-                {isLoggedIn && <AdminNavLink pages={pages} />}
+                {loggedIn && <AdminNavLink pages={pages} />}
             </Toolbar>
         </AppBar>
     );
