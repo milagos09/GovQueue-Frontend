@@ -2,15 +2,13 @@ import AdminHeader from "./AdminHeader";
 import AdminQueueTable from "./AdminQueueTable";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { getSessionStorage } from "./../../helpers/sessionStorage";
 import { CheckScreenSize } from "./../../hooks/CheckScreenSize";
-import userStore from "../../stores/userStore";
+import { getSessionStorage } from "../../helpers/sessionStorage";
 
 export default function AdminHome() {
     const { height } = CheckScreenSize();
-    // const user = getSessionStorage("user");
-    const { user, agency } = userStore();
-    // const agencyDetails = user?.agencyDetails;
+    const user = getSessionStorage("user");
+    const agency = getSessionStorage("agency");
     return (
         <>
             {user && (

@@ -29,8 +29,6 @@ export default function AdminNavbar() {
         },
     ];
 
-    // const isLoggedIn = !!sessionStorage.getItem("user");
-
     return (
         <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
             <Toolbar disableGutters>

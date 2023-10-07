@@ -4,39 +4,45 @@ import userStore from "../../stores/userStore";
 import Login from "./Login";
 import { useEffect } from "react";
 import queuesStore from "../../stores/queuesStore";
+import FetchData from "../../hooks/FetchData";
+import LoadingScreen from "../../components/LoadingScreen";
+import { getSessionStorage, setSessionStorage } from "../../helpers/sessionStorage";
 
 export default function Admin() {
-    const { loggedIn, setLoggedIn, setUser, setAgency, user, agency } = userStore();
+    const { data, isFetching, fetchData } = FetchData();
+    const { loggedIn, setLoggedIn } = userStore();
     const { setQueues } = queuesStore();
+    const user = getSessionStorage("user");
+    const agency = getSessionStorage("agency");
 
     useEffect(() => {
         (async () => {
+            if (user && agency) {
+                setLoggedIn(true);
+            }
             const options = {
                 credentials: "include",
             };
-            const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/users/login/status`, options);
-            const { loggedIn, user, agency, queues } = await res.json();
 
-            if (loggedIn) {
-                user.agencyDetails = agency;
-                setUser(user);
-                setAgency(agency);
-                setQueues(queues);
-                // sessionStorage.setItem("user", JSON.stringify(user));
-                setLoggedIn(true);
-            }
+            await fetchData(`${import.meta.env.VITE_SERVER_URL}/users/login/status`, options);
         })();
     }, []);
 
     useEffect(() => {
-        console.log(agency);
-        console.log(user);
-    }, [agency, user]);
+        if (data?.loggedIn) {
+            const { user, agency, queues } = data;
+            setSessionStorage("user", user);
+            setSessionStorage("agency", agency);
+            setQueues(queues);
+            setLoggedIn(true);
+        }
+    }, [data]);
 
     return (
         <>
             <AdminNavbar />
-            {loggedIn ? <Outlet /> : <Login />}
+            {loggedIn || (user && agency) ? <Outlet /> : <Login />}
+            <LoadingScreen isFetching={isFetching} />
         </>
     );
 }

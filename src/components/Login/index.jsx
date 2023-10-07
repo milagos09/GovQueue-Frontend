@@ -1,27 +1,23 @@
 import { useState, useEffect } from "react";
-import { TextField, Container, InputAdornment, Checkbox } from "@mui/material";
+import { TextField, Container, InputAdornment, Grid } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Primary } from "./../Buttons";
 import FetchData from "./../../hooks/FetchData";
 import LoadingScreen from "./../LoadingScreen";
 import userStore from "../../stores/userStore";
 import queuesStore from "../../stores/queuesStore";
+import { setSessionStorage } from "../../helpers/sessionStorage";
 
 export default function AdminLogin() {
-    const { setLoggedIn, setUser, setAgency } = userStore();
+    const { setLoggedIn } = userStore();
     const { setQueues } = queuesStore();
     const { data, isFetching, fetchData } = FetchData();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const [rememberMe, setRememberMe] = useState(false);
 
     const handleShowPasswordClick = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
-    };
-
-    const handleRememberMeChange = (event) => {
-        setRememberMe(event.target.checked);
     };
 
     const handleLogin = async (e) => {
@@ -40,12 +36,11 @@ export default function AdminLogin() {
     useEffect(() => {
         const { user, agency, queues } = data || {};
         if (user && agency && queues) {
-            setUser(user);
-            setAgency(agency);
+            setSessionStorage("user", user);
+            setSessionStorage("agency", agency);
             setQueues(queues);
-            user.agencyDetails = agency;
-            // sessionStorage.setItem("user", JSON.stringify(user));
             setLoggedIn(true);
+            setSessionStorage("login", true);
         }
     }, [data]);
 
@@ -88,28 +83,14 @@ export default function AdminLogin() {
                             }}
                         />
                     </div>
-
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            margin: "16px 0",
-                            flexWrap: "wrap",
-                        }}
-                    >
-                        <div>
-                            <Checkbox checked={rememberMe} onChange={handleRememberMeChange} />
-                            <span>Remember me</span>
-                        </div>
-                        <div>
-                            <a href="/forgot-password">Forgot Password?</a>
-                        </div>
-                    </div>
-
-                    <div style={{ margin: "16px 0" }}>
-                        <Primary value={"Log in"} type={"submit"} />
-                    </div>
+                    <Grid container spacing={2} justifyContent="space-between" textAlign="center" rowGap={2}>
+                        <Grid item xs={12} sm={6}>
+                            <Primary value={"Log in"} type={"submit"} sx={{ width: "120px" }} />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <a href="#">Forgot Password?</a>
+                        </Grid>
+                    </Grid>
                 </form>
             </Container>
         </>

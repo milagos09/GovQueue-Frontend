@@ -7,15 +7,13 @@ import dayjs from "dayjs";
 import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import LoadingScreen from "../LoadingScreen";
 import { getSessionStorage } from "../../helpers/sessionStorage";
-import userStore from "../../stores/userStore";
 
 const initialStartDate = dayjs();
 const initialEndDate = dayjs().add(1, "day");
 
 export default function AdminLogs() {
     const URL = import.meta.env.VITE_SERVER_URL;
-    // const user = getSessionStorage("user");
-    const { user } = userStore();
+    const user = getSessionStorage("user");
     const { height } = CheckScreenSize();
 
     const [state, setState] = useState({
