@@ -21,7 +21,7 @@ export default function VisitorsProfileRegistration() {
   const regionIndex = regionsArray.findIndex((r) => r === agency.region);
   const typeIndex = typesArray.findIndex((t) => t === agency.type);
 
-  const handleSaveProfile = async (body) => {
+  const handleRegisterProfile = async (body) => {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
