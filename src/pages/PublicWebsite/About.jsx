@@ -2,8 +2,23 @@ import Typography from "@mui/material/Typography";
 import GcashQrCode from "../../assets/gcash-qr-code.jpg";
 import Feildset from "../../components/Fieldset";
 import { Container, Grid, Stack } from "@mui/material";
+import userStore from "../../stores/userStore";
+import agencyStore from "../../stores/agencyStore";
+import queuesStore from "../../stores/queuesStore";
+import dayjs from "dayjs";
 
 export default function About() {
+    const { visitorCount } = userStore();
+    const { agencies } = agencyStore();
+    const { queues } = queuesStore();
+
+    const today = dayjs().format("YYYY-MM-DD");
+    /*
+    filter method to iterate over each element in the queues array and checks if the updated_at
+    property of each queue matches the current date (today).
+    */
+    const activeToday = queues.filter((q) => dayjs(new Date(q.updated_at)).format("YYYY-MM-DD") == today);
+
     return (
         <>
             <Container>
@@ -71,17 +86,23 @@ export default function About() {
                     >
                         <Grid item xs={2}>
                             <Feildset title={"Site Visits"} sx={{ alignItems: "justify", fontSize: "14px" }}>
-                                <h1>[100K+]</h1>
+                                <Typography variant="h4" component="span">
+                                    {visitorCount}
+                                </Typography>
                             </Feildset>
                         </Grid>
                         <Grid item xs={2}>
                             <Feildset title={"Agencies Participating"} sx={{ alignItems: "justify", fontSize: "14px" }}>
-                                <h1>[100]</h1>
+                                <Typography variant="h4" component="span">
+                                    {agencies.length}
+                                </Typography>
                             </Feildset>
                         </Grid>
                         <Grid item xs={2}>
-                            <Feildset title={"Another Site Statistic"} sx={{ alignItems: "justify", fontSize: "14px" }}>
-                                <h1>[1M+]</h1>
+                            <Feildset title={"Active Queues Today"} sx={{ alignItems: "justify", fontSize: "14px" }}>
+                                <Typography variant="h4" component="span">
+                                    {activeToday.length}
+                                </Typography>
                             </Feildset>
                         </Grid>
                     </Stack>
