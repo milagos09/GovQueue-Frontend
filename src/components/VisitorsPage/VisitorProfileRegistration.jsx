@@ -1,40 +1,64 @@
-import { useEffect } from "react";
-import { Stack, TextField, Tooltip, IconButton } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Stack, TextField, Grid } from "@mui/material";
 import Fieldset from "../Fieldset/index";
-// import SelectTextField from "../AdminSettings/SelectTextField";
-// import EditableTextField from "../AdminSettings/EditableTextField";
 import { Primary } from "../Buttons";
 import regionsArray from "../../../fake/location.json";
 import typesArray from "../../../fake/agencyType.json";
 import LoadingScreen from "../LoadingScreen";
 import FetchData from "../../hooks/FetchData";
+import RegisterUploadLogo from "./RegisterUploadLogo";
 import {
   getSessionStorage,
   setSessionStorage,
 } from "../../helpers/sessionStorage";
-import RegisterUploadLogo from "./RegisterUploadLogo";
+import userStore from "../../stores/userStore";
 
 export default function VisitorsProfileRegistration() {
+  const [formData, setFormData] = useState({
+    name: "",
+    address: "",
+    region: "",
+    website: "",
+    contact: "",
+    supportEmail: "",
+    logo: "",
+    description: "",
+    type: "",
+    announcement: "",
+    messengerId: "",
+  });
+  const { setAgency } = userStore();
   const { fetchData, data, isFetching } = FetchData();
-  const user = getSessionStorage("user");
-  const agency = user.agencyDetails;
-  const regionIndex = regionsArray.findIndex((r) => r === agency.region);
-  const typeIndex = typesArray.findIndex((t) => t === agency.type);
+  // const user = getSessionStorage("user");
+  const agency = getSessionStorage("agency");
+  // const regionIndex = regionsArray.findIndex((r) => r === agency?.region);
+  // const typeIndex = typesArray.findIndex((t) => t === agency?.type);
 
-  const handleRegisterProfile = async (body) => {
+  const handleSaveProfile = async (property, value) => {
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify(formData, { [property]: value }),
       credentials: "include",
     };
-    await fetchData(`${import.meta.env.VITE_SERVER_URL}/register/`, options);
+    console.log(formData);
+    await fetchData(
+      fetchData`${import.meta.env.VITE_SERVER_URL}/register/add/${
+        agency.result[0]
+      }`,
+      options
+    );
+  };
+
+  const handleChange = (property, value) => {
+    setFormData({ ...formData, [property]: value });
   };
 
   useEffect(() => {
     if (data) {
-      const newUser = { ...user, agencyDetails: data };
-      setSessionStorage("user", newUser);
+      setAgency(data, { loggedIn: false });
+      const newUser = { ...agency, agencyDetails: data };
+      setSessionStorage("agency", newUser);
     }
   }, [data]);
 
@@ -50,120 +74,84 @@ export default function VisitorsProfileRegistration() {
           agencyId={user.agency_id}
           handleSaveProfile={handleSaveProfile}
         /> */}
-        <Stack alignItems="center">
-          <Tooltip
-            title="Recommended image size is 120x120 pixels and a file size of not more than 50MB."
-            placement="top">
-            <IconButton aria-label="image tip">
-              <img
-                // src={currentLogo}
-                style={{ borderRadius: "50%", width: "120px" }}
-                alt="Agency Logo"
-              />
-            </IconButton>
-          </Tooltip>
-          <input
-            type="file"
-            // ref={fileInputRef}
-            style={{ display: "none" }}
-            // onChange={handleFileChange}
-          />
-          <Primary
-            // onClick={handleFileSelect}
-            value={"Upload Logo"}
-            sx={{ m: "20px", width: "160px" }}
-          />
-        </Stack>
+        <RegisterUploadLogo
+          logo={agency?.logo}
+          // agencyId={user?.agency_id}
+          handlesave={handleSaveProfile}
+        />
+
         <Stack rowGap={3} sx={{ my: "20px" }}>
           <TextField
             label={"Agency"}
             property={"name"}
-            // value={agency.name}
-            // handleSave={handleSaveProfile}
+            value={formData.name}
+            onChange={(e) => handleChange("name", e.target.value)}
           />
           <TextField
             label={"Description"}
             property={"name"}
             // value={agency.name}
-            // handleSave={handleSaveProfile}
+            onChange={(e) => handleChange("name", e.target.value)}
           />
           <TextField
             label={"Address"}
-            property={"name"}
+            property={"address"}
             // value={agency.name}
-            // handleSave={handleSaveProfile}
+            onChange={(e) => handleChange("name", e.target.value)}
           />
           <TextField
             label={"Region"}
-            property={"name"}
-            value={regionIndex}
+            property={"region"}
+            // value={regionIndex}
             menu={regionsArray}
             // handleSave={handleSaveProfile}
           />
           <TextField
             label={"Type"}
             property={"type"}
-            value={typeIndex}
+            // value={typeIndex}
             menu={typesArray}
-            // handleSave={handleSaveProfile}
+            handleSave={handleSaveProfile}
           />
           <TextField
             label={"Contact"}
-            property={"name"}
+            property={"contact"}
             // value={agency.name}
             // handleSave={handleSaveProfile}
           />
           <TextField
             label={"Support Email"}
-            property={"name"}
+            property={"supportEmail"}
             // value={agency.name}
             // handleSave={handleSaveProfile}
           />
           <TextField
             label={"Agency Website"}
-            property={"name"}
+            property={"website"}
+            // value={agency.name}
+            handleSave={handleSaveProfile}
+          />
+          <TextField
+            label={"Announcement"}
+            property={"announcement"}
             // value={agency.name}
             // handleSave={handleSaveProfile}
           />
-          {/* <EditableTextField
-            label={"Description"}
-            property={"description"}
-            // value={agency.description}
+          <TextField
+            label={"Messenger ID"}
+            property={"messengerId"}
+            // value={agency.name}
             // handleSave={handleSaveProfile}
           />
-          <EditableTextField
-            label={"Address"}
-            property={"address"}
-            // value={agency.address}
-            // handleSave={handleSaveProfile}
-          />
-          <SelectTextField
-            label={"Region"}
-            property={"region"}
-            // value={regionIndex}
-            // menu={regionsArray}
-            // handleSave={handleSaveProfile}
-          />
-          <SelectTextField
-            label={"Type"}
-            property={"type"}
-            // value={typeIndex}
-            // menu={typesArray}
-            // handleSave={handleSaveProfile}
-          />
-          <EditableTextField
-            label={"Contact"}
-            property={"contact"}
-            // value={agency.contact}
-            // handleSave={handleSaveProfile}
-          />
-          <EditableTextField
-            label={"Support Email"}
-            property={"support_email"}
-            // value={agency.support_email}
-            // handleSave={handleSaveProfile}
-          /> */}
         </Stack>
+        <Grid
+          container
+          justifyContent="space-evenly"
+          direction={{ xs: "column", md: "row" }}
+          sx={{ py: { xs: 2 } }}
+          columnSpacing={2}>
+          <Primary value={"Register"} onClick={setFormData} />
+        </Grid>
       </Fieldset>
     </>
   );

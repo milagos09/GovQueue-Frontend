@@ -3,7 +3,7 @@ import { IconButton, Stack, Tooltip } from "@mui/material";
 import { Primary } from "./../Buttons";
 import { createClient } from "@supabase/supabase-js";
 
-async function uploadFileToSupabase(file, adminId) {
+async function uploadFileToSupabase(file) {
   const { VITE_SUPABASE_BUCKET, VITE_SUPABASE_URL, VITE_SUPABASE_KEY } =
     import.meta.env;
 
@@ -14,7 +14,7 @@ async function uploadFileToSupabase(file, adminId) {
 
     const { data, error } = await supabase.storage
       .from(VITE_SUPABASE_BUCKET)
-      .upload(`/${adminId}/${imageName}`, file);
+      .upload(`/${imageName}`, file);
 
     if (error) {
       throw Error(error);
@@ -28,11 +28,7 @@ async function uploadFileToSupabase(file, adminId) {
   }
 }
 
-export default function RegisterUploadLogo({
-  logo,
-  adminId,
-  handleSaveProfile,
-}) {
+export default function RegisterUploadLogo({ logo, handleSaveProfile }) {
   const [currentLogo, setLogo] = useState(logo);
   const fileInputRef = useRef(null);
 
@@ -50,7 +46,7 @@ export default function RegisterUploadLogo({
       selectedFile.type.includes("image") &&
       selectedFile.size <= 50 * 1024 * 1024
     ) {
-      const url = await uploadFileToSupabase(selectedFile, adminId);
+      const url = await uploadFileToSupabase(selectedFile);
 
       if (url) {
         await handleSaveProfile("logo", url);

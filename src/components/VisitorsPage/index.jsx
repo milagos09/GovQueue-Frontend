@@ -23,14 +23,6 @@ export default function VisitorsPage() {
           </Grid>
         </Grid>
       </Box>
-      <Grid
-        container
-        justifyContent="space-evenly"
-        direction={{ xs: "column", md: "row" }}
-        sx={{ py: { xs: 2 } }}
-        columnSpacing={2}>
-        <Primary value={"Register"} />
-      </Grid>
     </>
   );
 }
