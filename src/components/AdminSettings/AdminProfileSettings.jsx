@@ -9,10 +9,8 @@ import LoadingScreen from "../LoadingScreen";
 import FetchData from "../../hooks/FetchData";
 import { getSessionStorage, setSessionStorage } from "../../helpers/sessionStorage";
 import UploadLogo from "./UploadLogo";
-import userStore from "../../stores/userStore";
 
 export default function AdminProfileSettings() {
-    const { setAgency } = userStore();
     const { fetchData, data, isFetching } = FetchData();
     const user = getSessionStorage("user");
     const agency = getSessionStorage("agency");
@@ -31,7 +29,6 @@ export default function AdminProfileSettings() {
 
     useEffect(() => {
         if (data) {
-            setAgency(data);
             const newUser = { ...user, agencyDetails: data };
             setSessionStorage("user", newUser);
         }
