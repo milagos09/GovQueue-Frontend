@@ -23,7 +23,12 @@ export default function Row({ agency, customBreakPoint, isFavorite, toggleFavori
             <TableRow aria-label="expand row" size="small">
                 <TableCell component="th" scope="row" sx={{ textAlign: "center" }}>
                     <Link target="_blank" to={`agency/${agency.agency_id}`}>
-                        <img src={agency.logo} loading="lazy" style={{ maxWidth: logoWidth, borderRadius: "50%" }} />
+                        <img
+                            src={agency.logo}
+                            alt={agency.name + " logo"}
+                            loading="lazy"
+                            style={{ maxWidth: logoWidth, borderRadius: "50%" }}
+                        />
                     </Link>
                 </TableCell>
                 <TableCell align="center" sx={{ fontSize: fontSize }}>

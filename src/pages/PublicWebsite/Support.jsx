@@ -14,8 +14,8 @@ export default function Support() {
                         titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
                     >
                         <List>
-                            {faqData.map((faq) => (
-                                <ListItem key={faq.id} disablePadding sx={{ px: 1 }}>
+                            {faqData.map((faq, i) => (
+                                <ListItem key={"faq-guide" + faq.id} disablePadding sx={{ px: 1, my: 2 }}>
                                     <a href={`#question${faq.id}`}>{faq.faqQuestion}</a>
                                 </ListItem>
                             ))}
@@ -29,16 +29,16 @@ export default function Support() {
                         sx={{ textAlign: "left" }}
                         titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
                     >
-                        {faqData.map((faq) => (
-                            <>
+                        {faqData.map((faq, i) => (
+                            <div key={"faq" + i}>
+                                {i && <Divider sx={{ my: 3 }} />}
                                 <Typography variant="h5" id={`question${faq.id}`} sx={{ py: 0, px: 0 }} gutterBottom>
                                     {faq.faqQuestion}
                                 </Typography>
                                 <Typography variant="subtitle1" sx={{ py: 0, px: 0 }} gutterBottom>
                                     {faq.faqAnswer}
                                 </Typography>
-                                <Divider />
-                            </>
+                            </div>
                         ))}
                     </Feildset>
                 </Grid>

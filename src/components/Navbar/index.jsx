@@ -8,26 +8,28 @@ import Search from "./Search";
 import DateTime from "./DateTime";
 import searchStore from "../../stores/searchStore";
 import { Box, Grid } from "@mui/material";
+import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 
 export default function NavBar() {
+    const { width } = CheckScreenSize();
     const { showSearch } = searchStore();
 
     return (
-        <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
+        <AppBar position="sticky" sx={{ padding: "10px", ...dark }}>
             <Toolbar>
                 <Grid container justifyContent={"space-between"} alignItems={"center"}>
-                    <Grid item grow>
+                    <Grid item>
                         <Box sx={{ display: "flex", alignItems: "center", columnGap: 2 }}>
-                            <HamburgerMenu />
+                            {width < 712 && <HamburgerMenu />}
                             <AppName />
                         </Box>
                     </Grid>
-                    <Grid item grow justifySelf={"flex-end"}>
-                        <NavLink />
-                    </Grid>
-                    <Grid item grow>
-                        {showSearch ? <Search /> : <DateTime />}
-                    </Grid>
+                    {width > 712 && (
+                        <Grid item>
+                            <NavLink />
+                        </Grid>
+                    )}
+                    <Grid item>{showSearch ? <Search /> : <DateTime />}</Grid>
                 </Grid>
             </Toolbar>
         </AppBar>

@@ -6,6 +6,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import { Divider } from "@mui/material";
 
 export default function HamburgerMenu() {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -28,7 +29,7 @@ export default function HamburgerMenu() {
     };
 
     return (
-        <Box sx={{ display: { xs: "flex", sm: "none" } }}>
+        <Box sx={{ display: { xs: "flex" } }}>
             <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -39,13 +40,7 @@ export default function HamburgerMenu() {
             >
                 <MenuIcon />
             </IconButton>
-            <Box
-                sx={{
-                    justifyContent: "space-evenly",
-                    flexGrow: 1,
-                    display: { xs: "none", md: "flex" },
-                }}
-            ></Box>
+
             <Menu
                 id="menu-nav"
                 anchorEl={anchorElNav}
@@ -61,17 +56,20 @@ export default function HamburgerMenu() {
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
                 sx={{
-                    display: { xs: "block", md: "none" },
+                    display: { xs: "block" },
                 }}
             >
-                {pages.map((page) => (
-                    <MenuItem key={page.nav} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">
-                            <Link to={page.link} style={{ textDecoration: "none", color: "inherit" }}>
-                                {page.nav}
-                            </Link>
-                        </Typography>
-                    </MenuItem>
+                {pages.map((page, i) => (
+                    <div style={{ padding: "0 8px" }} key={page.nav}>
+                        {!!i && <Divider />}
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Typography textAlign="center">
+                                <Link to={page.link} style={{ textDecoration: "none", color: "inherit" }}>
+                                    {page.nav}
+                                </Link>
+                            </Typography>
+                        </MenuItem>
+                    </div>
                 ))}
             </Menu>
 

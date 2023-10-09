@@ -29,6 +29,7 @@ export default function NavLink() {
                     <Button
                         sx={{
                             my: 2,
+                            px: 2,
                             display: "block",
                             width: "100%",
                             color: location.pathname === page.link ? "#FB9300" : "white",
