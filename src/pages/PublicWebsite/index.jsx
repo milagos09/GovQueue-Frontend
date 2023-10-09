@@ -4,15 +4,16 @@ import { useEffect } from "react";
 import { socket } from "../../helpers/socket";
 import agencyStore from "../../stores/agencyStore";
 import queuesStore from "../../stores/queuesStore";
-import LoadingScreen from "../../components/LoadingScreen";
 import getUserData from "./../../helpers/getCleintData";
 import userStore from "../../stores/userStore";
 import { setSessionStorage, getSessionStorage } from "./../../helpers/sessionStorage.js";
+import utilityStore from "../../stores/utilityStore";
 
 export default function Public() {
-    const { agencies, setAgencies, updateAgency } = agencyStore();
+    const { setAgencies, updateAgency } = agencyStore();
     const { setQueues, updateQueue, removeQueue } = queuesStore();
     const { setVisitorCount } = userStore();
+    const { setIsLoading } = utilityStore();
 
     useEffect(() => {
         (async () => {
@@ -20,13 +21,14 @@ export default function Public() {
                 const activeSession = !!getSessionStorage("active");
                 const userData = getUserData();
                 userData.active = activeSession;
-                socket.emit("getInitialData", userData);
-                socket.on("updateData", (data) => {
+                setIsLoading(true);
+                socket.emit("getInitialData", userData, (data) => {
                     setSessionStorage("active", true);
                     const { agencies, queues, visitors } = data;
                     setAgencies(agencies);
                     setQueues(queues);
                     setVisitorCount(visitors.count);
+                    setIsLoading(false);
                 });
 
                 socket.on("updateAgency", (agency) => {
@@ -50,7 +52,6 @@ export default function Public() {
         <>
             <NavBar />
             <Outlet />
-            <LoadingScreen isFetching={agencies.length === 0} />
         </>
     );
 }
