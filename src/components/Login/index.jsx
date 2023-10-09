@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   TextField,
   Container,
@@ -93,20 +93,6 @@ export default function AdminLogin() {
               value={email}
             />
           </div>
-          <Snackbar
-            open={snackbarOpen}
-            autoHideDuration={6000}
-            onClose={handleSnackbarClose}
-          >
-            <Alert
-              elevation={6}
-              variant="filled"
-              onClose={handleSnackbarClose}
-              severity={snackbarSeverity}
-            >
-              {snackbarMessage}
-            </Alert>
-          </Snackbar>
           <div style={{ margin: "16px 0" }}>
             <TextField
               label="Password"
@@ -151,6 +137,24 @@ export default function AdminLogin() {
             </Grid>
           </Grid>
         </form>
+        <Snackbar
+          open={snackbarOpen}
+          autoHideDuration={3000}
+          onClose={handleSnackbarClose}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <Alert
+            elevation={6}
+            variant="filled"
+            onClose={handleSnackbarClose}
+            severity={snackbarSeverity}
+          >
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
       </Container>
     </>
   );
