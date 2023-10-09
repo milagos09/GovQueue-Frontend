@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { IconButton, Stack, Tooltip } from "@mui/material";
-import { Primary } from "./../Buttons";
+import { Primary } from "../Buttons";
 import { createClient } from "@supabase/supabase-js";
 
 async function uploadFileToSupabase(file) {
@@ -14,7 +14,7 @@ async function uploadFileToSupabase(file) {
 
     const { data, error } = await supabase.storage
       .from(VITE_SUPABASE_BUCKET)
-      .upload(`/${imageName}`, file);
+      .upload(`/register/${imageName}`, file);
 
     if (error) {
       throw Error(error);
@@ -28,8 +28,8 @@ async function uploadFileToSupabase(file) {
   }
 }
 
-export default function RegisterUploadLogo({ logo, handleSaveProfile }) {
-  const [currentLogo, setLogo] = useState(logo);
+export default function RegisterUploadLogo({ logo, onChange }) {
+  const [currentLogo, setLogo] = useState("");
   const fileInputRef = useRef(null);
 
   // Open the select file input
@@ -39,24 +39,29 @@ export default function RegisterUploadLogo({ logo, handleSaveProfile }) {
 
   // Handle the selected file here, e.g., upload it or process it
   const handleFileChange = async (event) => {
-    const selectedFile = event.target.files[0];
+    try {
+      const selectedFile = event.target.files[0];
 
-    if (
-      selectedFile &&
-      selectedFile.type.includes("image") &&
-      selectedFile.size <= 50 * 1024 * 1024
-    ) {
-      const url = await uploadFileToSupabase(selectedFile);
+      if (
+        selectedFile &&
+        selectedFile.type.includes("image") &&
+        selectedFile.size <= 50 * 1024 * 1024
+      ) {
+        const url = await uploadFileToSupabase(selectedFile);
 
-      if (url) {
-        await handleSaveProfile("logo", url);
-        setLogo(url);
+        if (url) {
+          // await handleSaveProfile("logo", url);
+          setLogo(url);
+          onChange(url);
+        } else {
+          alert("Something went wrong in upload the image.");
+        }
       } else {
-        alert("Something went wrong in upload the image.");
+        // Handle the case where the selected file is not an image
+        alert("Please select a valid image file.");
       }
-    } else {
-      // Handle the case where the selected file is not an image
-      alert("Please select a valid image file.");
+    } catch (error) {
+      console.error(error);
     }
   };
 

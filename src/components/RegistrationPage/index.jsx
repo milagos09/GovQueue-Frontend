@@ -1,8 +1,7 @@
 import { Box, Grid } from "@mui/material";
-import VisitorsProfileRegistration from "./VisitorProfileRegistration";
-import { Primary } from "../Buttons";
+import ProfileRegistration from "./ProfileRegistration";
 
-export default function VisitorsPage() {
+export default function RegistrationPage() {
   return (
     <>
       <Box
@@ -18,7 +17,7 @@ export default function VisitorsPage() {
           sx={{ px: { xs: 2 } }}
           columnSpacing={2}>
           <Grid item xs={12} sm={6} lg={5} xl={4}>
-            <VisitorsProfileRegistration />
+            <ProfileRegistration />
             {/* <AdminProfileSettings /> */}
           </Grid>
         </Grid>

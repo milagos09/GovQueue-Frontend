@@ -16,7 +16,7 @@ import Public from "./pages/PublicWebsite";
 import Admin from "./pages/AdminPage";
 import { useEffect } from "react";
 import { socket } from "./helpers/socket";
-import Visitors from "./pages/PublicWebsite/Visitors";
+import Register from "./pages/PublicWebsite/Register";
 
 export default function App() {
   const { updateAgency } = agencyStore();
@@ -45,7 +45,7 @@ export default function App() {
             <Route index element={<Dashboard />} />
             <Route path="about" element={<About />} />
             <Route path="support" element={<Support />} />
-            <Route path="register" element={<Visitors />} />
+            <Route path="register" element={<Register />} />
             <Route path="agency/:id" element={<Agency />} />
             <Route
               path="*"
