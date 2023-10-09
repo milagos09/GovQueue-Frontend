@@ -59,9 +59,7 @@ export default function AdminLogin() {
         `${import.meta.env.VITE_SERVER_URL}/users/login`,
         options
       );
-      // Handle successful login response here
     } catch (error) {
-      // Handle login error and show Snackbar
       showAlertSnackbar(
         "Login failed. Please check your credentials and try again.",
         "error"
