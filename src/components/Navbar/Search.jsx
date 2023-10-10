@@ -13,10 +13,11 @@ const SearchContainer = styled("div")(({ theme }) => ({
     },
     marginLeft: 0,
     width: "100%",
-    [theme.breakpoints.up("xs")]: {
-        marginLeft: theme.spacing(1),
-        width: "auto",
-    },
+    minWidth: "200px",
+    // [theme.breakpoints.up("xs")]: {
+    //     marginLeft: theme.spacing(1),
+    //     width: "auto",
+    // },
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -38,12 +39,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create("width"),
         width: "100%",
-        [theme.breakpoints.up("xs")]: {
-            width: "12ch",
-            "&:focus": {
-                width: "20ch",
-            },
-        },
     },
 }));
 

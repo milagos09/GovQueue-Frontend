@@ -67,7 +67,7 @@ export default function CollapsibleTable({ agencies, favorites, setFavorites, wi
     return (
         <>
             <Paper sx={{ width: "100%", overflow: "hidden", mb: 4, ...glassEffect }}>
-                <TableContainer sx={{ maxHeight: "550px", paddingX: width > 1048 ? "90px" : "2" }}>
+                <TableContainer sx={{ maxHeight: "550px", paddingX: width > 1048 ? "90px" : "2px" }}>
                     <Table stickyHeader sx={{ mb: "15px" }}>
                         <TableHead>
                             <TableRow>
@@ -83,7 +83,7 @@ export default function CollapsibleTable({ agencies, favorites, setFavorites, wi
                     </Table>
                 </TableContainer>
                 <TablePagination
-                    rowsPerPageOptions={[4, 10, 20]}
+                    rowsPerPageOptions={[5, 10, 20]}
                     component="div"
                     count={agencies.length}
                     rowsPerPage={rowsPerPage}

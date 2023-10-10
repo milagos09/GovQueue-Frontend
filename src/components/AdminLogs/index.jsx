@@ -4,9 +4,9 @@ import LogPicker from "./LogPicker";
 import LogTable from "./LogTable";
 import LogOptions from "./LogOptions";
 import dayjs from "dayjs";
-import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 import LoadingScreen from "../LoadingScreen";
 import { getSessionStorage } from "../../helpers/sessionStorage";
+import FitToScreen from "../FitToScreen";
 
 const initialStartDate = dayjs();
 const initialEndDate = dayjs().add(1, "day");
@@ -14,7 +14,6 @@ const initialEndDate = dayjs().add(1, "day");
 export default function AdminLogs() {
     const URL = import.meta.env.VITE_SERVER_URL;
     const user = getSessionStorage("user");
-    const { height } = CheckScreenSize();
 
     const [state, setState] = useState({
         logs: [],
@@ -84,18 +83,20 @@ export default function AdminLogs() {
 
     return (
         <>
-            <Container maxWidth="lg" sx={{ minHeight: `${height - 190}px` }}>
-                <LogPicker
-                    queues={[...new Set(state.logs.map((log) => log.name))]}
-                    startDate={state.startDate}
-                    endDate={state.endDate}
-                    handleChangeDate={handleChangeDate}
-                    selectedQueue={state.selectedQueue}
-                    handleChangeSelect={handleChangeSelect}
-                />
-                <LogTable logs={state.filteredLogs} />
-                <LogOptions logs={state.filteredLogs} agency={user.agencyDetails} />
-            </Container>
+            <FitToScreen reduce={162}>
+                <Container maxWidth="lg">
+                    <LogPicker
+                        queues={[...new Set(state.logs.map((log) => log.name))]}
+                        startDate={state.startDate}
+                        endDate={state.endDate}
+                        handleChangeDate={handleChangeDate}
+                        selectedQueue={state.selectedQueue}
+                        handleChangeSelect={handleChangeSelect}
+                    />
+                    <LogTable logs={state.filteredLogs} />
+                    <LogOptions logs={state.filteredLogs} agency={user.agencyDetails} />
+                </Container>
+            </FitToScreen>
             <LoadingScreen isFetching={state.isFetching} />
         </>
     );

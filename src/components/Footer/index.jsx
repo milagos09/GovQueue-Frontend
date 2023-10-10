@@ -11,14 +11,14 @@ export default function Footer() {
     const { width } = CheckScreenSize();
 
     return (
-        <Box sx={{ ...dark, paddingY: "10px", boxShadow: 3 }}>
+        <Box sx={{ ...dark, paddingY: "10px", boxShadow: 3, position: "relative", zIndex: "1" }}>
             <Grid container alignItems="center">
                 <Grid item xs={4} sm={2} md={3} align="center" order={0}>
                     <img
                         src={GovQueueLogo}
                         alt="App logo"
-                        width="80"
-                        height="80"
+                        width="70"
+                        height="70"
                         style={{
                             marginRight: "10px",
                         }}

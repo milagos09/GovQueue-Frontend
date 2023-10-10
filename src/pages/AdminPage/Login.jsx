@@ -2,11 +2,12 @@ import AdminLogin from "../../components/Login/index";
 import Grid from "@mui/material/Unstable_Grid2";
 import BannerLogo from "../../assets/govQ-logo.png";
 import { CheckScreenSize } from "./../../hooks/CheckScreenSize";
+import FitToScreen from "../../components/FitToScreen";
 
 export default function Login() {
-    const { width, height } = CheckScreenSize();
+    const { width } = CheckScreenSize();
     return (
-        <>
+        <FitToScreen reduce={158}>
             <Grid
                 alignItems="center"
                 container
@@ -14,7 +15,6 @@ export default function Login() {
                 flexDirection={{ xs: "column", sm: "row" }}
                 justifyContent={{ xs: "center", sm: "center" }}
                 padding="20px"
-                sx={{ minHeight: `${height - 167}px` }}
             >
                 <Grid sm={7} xs={12} order={{ xs: 2, sm: 1 }} justifyContent={{ xs: "center", sm: "center" }}>
                     <AdminLogin />
@@ -32,6 +32,6 @@ export default function Login() {
                     />
                 </Grid>
             </Grid>
-        </>
+        </FitToScreen>
     );
 }
