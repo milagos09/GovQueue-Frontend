@@ -6,6 +6,7 @@ import { glassEffect } from "../../themes/MyTheme";
 import Row from "./Row";
 import Skeleton from "../Skeleton";
 import utilityStore from "../../stores/utilityStore";
+import { StyledTableCell } from "../AdminHome/StyledTableElements";
 
 export default function CollapsibleTable({ agencies, favorites, setFavorites, width }) {
     //responsiveness
@@ -36,8 +37,8 @@ export default function CollapsibleTable({ agencies, favorites, setFavorites, wi
         if (isLoading) {
             return (
                 <tr>
-                    <td colSpan={5}>
-                        <Skeleton number={5} variant="rounded" />
+                    <td colSpan={5} style={{ padding: "5px 12px" }}>
+                        <Skeleton number={5} variant="rounded" height={60} />
                     </td>
                 </tr>
             );
@@ -56,8 +57,8 @@ export default function CollapsibleTable({ agencies, favorites, setFavorites, wi
         } else {
             return (
                 <TableRow>
-                    <TableCell align="center" colSpan={5}>
-                        No results.
+                    <TableCell align="center" colSpan={5} sx={{ py: 3 }}>
+                        No results found
                     </TableCell>
                 </TableRow>
             );
@@ -66,22 +67,30 @@ export default function CollapsibleTable({ agencies, favorites, setFavorites, wi
 
     return (
         <>
-            <Paper sx={{ width: "100%", overflow: "hidden", mb: 4, ...glassEffect }}>
-                <TableContainer sx={{ maxHeight: "550px", paddingX: width > 1048 ? "90px" : "2px" }}>
-                    <Table stickyHeader sx={{ mb: "15px" }}>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="center">Agency</TableCell>
-                                <TableCell align="center">Name</TableCell>
-                                {customBreakPoint && <TableCell align="center">Region</TableCell>}
-                                <TableCell align="center">Action</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            <TableContent />
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+            <Paper
+                sx={{
+                    mb: 4,
+                    paddingX: width > 1048 ? "90px" : "2px",
+                    ...glassEffect,
+                    background: "transparent",
+                    border: "none",
+                    boxShadow: 0,
+                    minWidth: "320px",
+                }}
+            >
+                <Table stickyHeader sx={{ mb: "15px", ...glassEffect }} size="small">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell align="center">Agency</StyledTableCell>
+                            <StyledTableCell align="center">Name</StyledTableCell>
+                            {customBreakPoint && <StyledTableCell align="center">Region</StyledTableCell>}
+                            <StyledTableCell align="center">Action</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableContent />
+                    </TableBody>
+                </Table>
                 <TablePagination
                     rowsPerPageOptions={[5, 10, 20]}
                     component="div"

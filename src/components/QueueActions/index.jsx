@@ -18,7 +18,6 @@ export default function QueueActions({ agency, isFavorite, toggleFavorite, toggl
 
     const toggleLogs = () => {
         setOpenLogs(!openLogs);
-        setIsQueuesToggled(false); // Reset the Queues toggle when Logs are toggled
     };
 
     const toggleQueuesHandler = () => {
