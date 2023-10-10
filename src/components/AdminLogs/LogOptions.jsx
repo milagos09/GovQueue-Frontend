@@ -16,7 +16,7 @@ export default function LogOptions({ logs, agency }) {
                 rowGap={3}
             >
                 <FormGroup>
-                    <FormControlLabel control={<Switch defaultChecked />} label="Always Show Logs" />
+                    {/* <FormControlLabel control={<Switch defaultChecked />} label="Always Show Logs" /> */}
                 </FormGroup>
                 <Box>
                     <DownloadCSVButton logs={logs} agency={agency} />

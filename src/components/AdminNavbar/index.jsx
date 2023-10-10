@@ -5,6 +5,8 @@ import AdminNavBarAppName from "./AdminNavBarAppName";
 import AdminHamburgerMenu from "./AdminHamburgerMenu";
 import { dark } from "./../../themes/MyTheme";
 import userStore from "../../stores/userStore";
+import { Box, Grid } from "@mui/material";
+import Logout from "./Logout";
 
 export default function AdminNavbar() {
     const { setLoggedIn, loggedIn } = userStore();
@@ -14,27 +16,29 @@ export default function AdminNavbar() {
         { nav: "Logs", link: `/admin/logs` },
         { nav: "Support", link: `/admin/support` },
         { nav: "Settings", link: `/admin/settings` },
-        {
-            nav: "Logout",
-            link: "/admin",
-            onClick: async () => {
-                const options = {
-                    method: "POST",
-                    credentials: "include",
-                };
-                await fetch(`${import.meta.env.VITE_SERVER_URL}/users/logout`, options);
-                sessionStorage.clear();
-                setLoggedIn(false);
-            },
-        },
     ];
 
     return (
         <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
             <Toolbar disableGutters>
-                {loggedIn && <AdminHamburgerMenu pages={pages} />}
-                <AdminNavBarAppName />
-                {loggedIn && <AdminNavLink pages={pages} />}
+                <Grid container justifyContent={"space-between"} alignItems={"center"}>
+                    <Grid item grow>
+                        <Box sx={{ display: "flex", alignItems: "center", columnGap: 2 }}>
+                            {loggedIn && <AdminHamburgerMenu pages={[...pages]} />}
+                            <AdminNavBarAppName />
+                        </Box>
+                    </Grid>
+                    {loggedIn && (
+                        <>
+                            <Grid item grow>
+                                <AdminNavLink pages={pages} />
+                            </Grid>
+                            <Grid item grow>
+                                <Logout />
+                            </Grid>
+                        </>
+                    )}
+                </Grid>
             </Toolbar>
         </AppBar>
     );

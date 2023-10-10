@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import QueueTable from "../../components/QueueTable";
 import searchStore from "../../stores/searchStore";
 import { useEffect } from "react";
+import FitToScreen from "../../components/FitToScreen";
 
 export default function Dashboard() {
     const { search, setShowSearch } = searchStore();
@@ -12,10 +13,12 @@ export default function Dashboard() {
     }, []);
     return (
         <>
-            <Carousel />
-            <Box sx={{ px: "4%" }}>
-                <QueueTable search={search} />
-            </Box>
+            {/* <Carousel /> */}
+            <FitToScreen>
+                <Box sx={{ px: "4%", py: 3 }}>
+                    <QueueTable search={search} />
+                </Box>
+            </FitToScreen>
         </>
     );
 }

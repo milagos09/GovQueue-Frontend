@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
-import { Divider, List, Grid, ListItem } from "@mui/material";
-import Feildset from "../../components/Fieldset";
-import AgecyDocumentation from "../../components/AdminSupport/AgencyDocumentation";
+import { Divider, List, ListItem, Box } from "@mui/material";
+import Fieldset from "../../components/Fieldset";
+import AgencyDocumentation from "../../components/AdminSupport/AgencyDocumentation";
 import agencyData from "../../components/AdminSupport/Admin.json";
+import FitToScreen from "../../components/FitToScreen";
+import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 
 export default function AdminSupport() {
     const [showScrollButton, setShowScrollButton] = useState(false);
+    const { height } = CheckScreenSize();
+    const maxHeight = height - 220;
+    const minHeight = 550;
 
     function scrollToTop() {
         window.scrollTo({
@@ -39,9 +44,9 @@ export default function AdminSupport() {
     }, []);
 
     const tableOfContents = agencyData.map((agency, agencyIndex) => (
-        <div key={agencyIndex} style={{ marginTop: "15px" }}>
+        <div key={agencyIndex + agency.title}>
             <a href={`#agency-${agencyIndex}`} onClick={() => scrollToSection(`agency-${agencyIndex}`)}>
-                <h2>{agency.title}</h2>
+                <h3>{agency.title}</h3>
             </a>
 
             {agency.titleDetails.map((detail, detailIndex) => (
@@ -60,22 +65,21 @@ export default function AdminSupport() {
     ));
 
     return (
-        <>
-             <Grid container>
-                <Grid item xs={12} md={8} lg={4}>
-                    <Feildset
+        <FitToScreen>
+            <Box sx={{ display: "flex", overflow: "auto" }}>
+                <Box>
+                    <Fieldset
                         title={"Guides"}
-                        sx={{ textAlign: "left" }}
+                        sx={{ textAlign: "left", maxHeight, minHeight }}
                         titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
                     >
                         <List>{tableOfContents}</List>
-                    </Feildset>
-                </Grid>
-
-                <Grid item xs={12} md={12} lg={8} style={{ maxHeight: "80vh", overflow: "auto" }}>
-                    <Feildset
+                    </Fieldset>
+                </Box>
+                <Box>
+                    <Fieldset
                         title={"GovQueue API Documentation"}
-                        sx={{ textAlign: "left" }}
+                        sx={{ textAlign: "left", overflow: "auto", maxHeight, minHeight }}
                         titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
                     >
                         {showScrollButton && (
@@ -83,7 +87,7 @@ export default function AdminSupport() {
                                 onClick={scrollToTop}
                                 style={{
                                     position: "fixed",
-                                    bottom: "20px",
+                                    bottom: "120px",
                                     right: "20px",
                                     backgroundColor: "#1b2023",
                                     color: "#fff",
@@ -97,10 +101,10 @@ export default function AdminSupport() {
                             </button>
                         )}
                         <Divider />
-                        <AgecyDocumentation />
-                    </Feildset>
-                </Grid>
-            </Grid>
-        </>
+                        <AgencyDocumentation />
+                    </Fieldset>
+                </Box>
+            </Box>
+        </FitToScreen>
     );
 }

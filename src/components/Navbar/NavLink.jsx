@@ -5,8 +5,8 @@ import Button from "@mui/material/Button";
 export default function NavLink() {
     const pages = [
         { nav: "Home", link: "/" },
-        { nav: "About us", link: "/about" },
         { nav: "Support", link: "/support" },
+        { nav: "About us", link: "/about" },
     ];
 
     const location = useLocation();
@@ -14,9 +14,7 @@ export default function NavLink() {
     return (
         <Box
             sx={{
-                justifyContent: "space-evenly",
-                flexGrow: 1,
-                display: { xs: "none", md: "flex" },
+                display: { xs: "none", sm: "flex" },
             }}
         >
             {pages.map((page) => (
@@ -31,7 +29,7 @@ export default function NavLink() {
                     <Button
                         sx={{
                             my: 2,
-                            // color: "white",
+                            px: 2,
                             display: "block",
                             width: "100%",
                             color: location.pathname === page.link ? "#FB9300" : "white",
