@@ -14,6 +14,7 @@ export default function Logout() {
         };
         await fetch(`${import.meta.env.VITE_SERVER_URL}/users/logout`, options);
         sessionStorage.clear();
+        document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
         setLoggedIn(false);
     };
 
