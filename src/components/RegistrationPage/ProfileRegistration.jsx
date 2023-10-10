@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Stack, TextField, Grid, MenuItem } from "@mui/material";
+import {
+  Stack,
+  TextField,
+  Grid,
+  MenuItem,
+  InputAdornment,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Fieldset from "../Fieldset/index";
 import { Primary } from "../Buttons";
 import LoadingScreen from "../LoadingScreen";
@@ -58,12 +65,17 @@ export default function ProfileRegistration(redirect) {
   });
   const { fetchData, data, isFetching, status } = FetchData();
   const user = getSessionStorage("user");
-  // const [address, setAddress] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleChange = (property, value) => {
     setFormData({
       ...formData,
       [property]: value,
     });
+  };
+
+  const toggleShow = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleRegister = async (property, value) => {
@@ -85,6 +97,7 @@ export default function ProfileRegistration(redirect) {
       }
     }
   }, [data]);
+
   return (
     <>
       <LoadingScreen isFetching={isFetching} />
@@ -185,12 +198,30 @@ export default function ProfileRegistration(redirect) {
             onChange={(e) => handleChange("lastName", e.target.value)}
           />
           <TextField
-            type="password"
+            type={showPassword ? "text" : "password"}
             label={"Password"}
             name="password"
             value={formData.password}
             onChange={(e) => handleChange("password", e.target.value)}
+            InputProps={{
+              style: {
+                color: "grey",
+                fontSize: ".85rem",
+              },
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  sx={{ "&:hover": { cursor: "pointer" } }}>
+                  {showPassword ? (
+                    <VisibilityOff onClick={toggleShow} />
+                  ) : (
+                    <Visibility onClick={toggleShow} />
+                  )}
+                </InputAdornment>
+              ),
+            }}
           />
+
           <Grid
             container
             justifyContent="space-evenly"
@@ -199,7 +230,7 @@ export default function ProfileRegistration(redirect) {
             columnSpacing={2}>
             <Primary
               value={"Register"}
-              onClick={() => handleRegister("name", name)}
+              onClick={() => handleRegister("name")}
             />
           </Grid>
         </Stack>
