@@ -14,6 +14,7 @@ const initialEndDate = dayjs().add(1, "day");
 export default function AdminLogs() {
     const URL = import.meta.env.VITE_SERVER_URL;
     const user = getSessionStorage("user");
+    const agency = getSessionStorage("agency");
 
     const [state, setState] = useState({
         logs: [],
@@ -94,7 +95,7 @@ export default function AdminLogs() {
                         handleChangeSelect={handleChangeSelect}
                     />
                     <LogTable logs={state.filteredLogs} />
-                    <LogOptions logs={state.filteredLogs} agency={user.agencyDetails} />
+                    <LogOptions logs={state.filteredLogs} agency={agency} />
                 </Container>
             </FitToScreen>
             <LoadingScreen isFetching={state.isFetching} />
