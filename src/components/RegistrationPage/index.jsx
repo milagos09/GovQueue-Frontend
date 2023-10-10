@@ -10,17 +10,10 @@ export default function RegistrationPage() {
           justifyContent: "center",
           alignItems: "center",
         }}>
-        <Grid
-          container
-          justifyContent="space-evenly"
-          direction={{ xs: "column", md: "row" }}
-          sx={{ px: { xs: 2 } }}
-          columnSpacing={2}>
-          <Grid item xs={12} sm={6} lg={5} xl={4}>
-            <ProfileRegistration />
-            {/* <AdminProfileSettings /> */}
-          </Grid>
-        </Grid>
+        {/* <Grid item xs={12} sm={6} lg={5} xl={8}> */}
+        <ProfileRegistration />
+        {/* <AdminProfileSettings /> */}
+        {/* </Grid> */}
       </Box>
     </>
   );

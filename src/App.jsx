@@ -16,7 +16,7 @@ import Public from "./pages/PublicWebsite";
 import Admin from "./pages/AdminPage";
 import { useEffect } from "react";
 import { socket } from "./helpers/socket";
-import Register from "./pages/PublicWebsite/Register";
+import Register from "./pages/AdminPage/Register";
 
 export default function App() {
   const { updateAgency } = agencyStore();
