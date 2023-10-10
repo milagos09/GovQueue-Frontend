@@ -63,8 +63,8 @@ export default function ProfileRegistration(redirect) {
     password: "",
     logo: "",
   });
-  const { fetchData, data, isFetching, status } = FetchData();
-  const user = getSessionStorage("user");
+  const { fetchData, data, isFetching, status, error } = FetchData();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (property, value) => {
@@ -89,14 +89,15 @@ export default function ProfileRegistration(redirect) {
   };
   useEffect(() => {
     if (status === 201) {
-      console.log(data);
       alert("Registration Successful");
       if (redirect) {
         // Redirect when the condition is met
         window.location.replace("/");
       }
+    } else if (status === 400) {
+      alert(error);
     }
-  }, [data]);
+  }, [data, error]);
 
   return (
     <>
@@ -122,6 +123,7 @@ export default function ProfileRegistration(redirect) {
             name="name"
             value={formData.name}
             onChange={(e) => handleChange("name", e.target.value)}
+            helperText="Required"
           />
           <TextField
             label={"Description"}
@@ -134,6 +136,7 @@ export default function ProfileRegistration(redirect) {
             name="address"
             value={formData.address}
             onChange={(e) => handleChange("address", e.target.value)}
+            helperText="Required"
           />
           <TextField
             id="outlined-select-currency"
@@ -141,6 +144,7 @@ export default function ProfileRegistration(redirect) {
             label={"Region"}
             name="region"
             value={formData.region}
+            helperText="Required"
             onChange={(e) => handleChange("region", e.target.value)}>
             {region.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -154,6 +158,7 @@ export default function ProfileRegistration(redirect) {
             label={"Type"}
             name="type"
             value={formData.type}
+            helperText="Required"
             onChange={(e) => handleChange("type", e.target.value)}>
             {type.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -165,6 +170,7 @@ export default function ProfileRegistration(redirect) {
             label={"Contact"}
             name="contact"
             value={formData.contact}
+            helperText="Required"
             onChange={(e) => handleChange("contact", e.target.value)}
           />
           <TextField
@@ -183,23 +189,27 @@ export default function ProfileRegistration(redirect) {
             label={"Email"}
             name="email"
             value={formData.email}
+            helperText="Required"
             onChange={(e) => handleChange("email", e.target.value)}
           />
           <TextField
             label={"First Name"}
             name="firstName"
             value={formData.firstName}
+            helperText="Required"
             onChange={(e) => handleChange("firstName", e.target.value)}
           />
           <TextField
             label={"Last Name"}
             name="lastName"
             value={formData.lastName}
+            helperText="Required"
             onChange={(e) => handleChange("lastName", e.target.value)}
           />
           <TextField
             type={showPassword ? "text" : "password"}
             label={"Password"}
+            helperText="Minimum of 6 characters"
             name="password"
             value={formData.password}
             onChange={(e) => handleChange("password", e.target.value)}

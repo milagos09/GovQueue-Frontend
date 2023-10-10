@@ -16,10 +16,9 @@ export default function FetchData() {
     try {
       const response = await fetch(endpoint, options);
       setStatus(response.status);
-      if (!response.ok) {
-        throw new Error(
-          `HTTP Error: ${response.status} - ${response.statusText} )}`
-        );
+      if (response.status >= 300) {
+        const jsonData = await response.json();
+        throw new Error(`HTTP Error: ${response.status} - ${jsonData.error} `);
       }
       const jsonData = await response.json();
 
@@ -29,7 +28,7 @@ export default function FetchData() {
 
       return jsonData; // Return the data when the fetch is successful.
     } catch (err) {
-      setError(err);
+      setError(err.message);
       setIsFetching(false); // Make sure setIsFetching(false) is called in the catch block as well.
       setIsLoading(false);
 
