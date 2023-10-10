@@ -83,7 +83,7 @@ export default function AdminLogs() {
 
     return (
         <>
-            <FitToScreen reduce={178}>
+            <FitToScreen reduce={162}>
                 <Container maxWidth="lg">
                     <LogPicker
                         queues={[...new Set(state.logs.map((log) => log.name))]}

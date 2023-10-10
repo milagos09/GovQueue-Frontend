@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
-import { Divider, List, Grid, ListItem, Box } from "@mui/material";
-import Feildset from "../../components/Fieldset";
-import AgecyDocumentation from "../../components/AdminSupport/AgencyDocumentation";
+import { Divider, List, ListItem, Box } from "@mui/material";
+import Fieldset from "../../components/Fieldset";
+import AgencyDocumentation from "../../components/AdminSupport/AgencyDocumentation";
 import agencyData from "../../components/AdminSupport/Admin.json";
 import FitToScreen from "../../components/FitToScreen";
+import { CheckScreenSize } from "../../hooks/CheckScreenSize";
 
 export default function AdminSupport() {
     const [showScrollButton, setShowScrollButton] = useState(false);
+    const { height } = CheckScreenSize();
+    const maxHeight = height - 220;
+    const minHeight = 550;
 
     function scrollToTop() {
         window.scrollTo({
@@ -42,7 +46,7 @@ export default function AdminSupport() {
     const tableOfContents = agencyData.map((agency, agencyIndex) => (
         <div key={agencyIndex + agency.title}>
             <a href={`#agency-${agencyIndex}`} onClick={() => scrollToSection(`agency-${agencyIndex}`)}>
-                <h2>{agency.title}</h2>
+                <h3>{agency.title}</h3>
             </a>
 
             {agency.titleDetails.map((detail, detailIndex) => (
@@ -61,42 +65,45 @@ export default function AdminSupport() {
     ));
 
     return (
-        <FitToScreen reduce={162}>
-            <Box sx={{ display: "flex" }}>
-                <Feildset
-                    title={"Guides"}
-                    sx={{ textAlign: "left", position: "fixed", width: "230px", zIndex: "0" }}
-                    titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
-                >
-                    <List>{tableOfContents}</List>
-                </Feildset>
-
-                <Feildset
-                    title={"GovQueue API Documentation"}
-                    sx={{ textAlign: "left", marginLeft: "300px" }}
-                    titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
-                >
-                    {showScrollButton && (
-                        <button
-                            onClick={scrollToTop}
-                            style={{
-                                position: "fixed",
-                                bottom: "20px",
-                                right: "20px",
-                                backgroundColor: "#1b2023",
-                                color: "#fff",
-                                border: "none",
-                                borderRadius: "5px",
-                                padding: "10px 20px",
-                                cursor: "pointer",
-                            }}
-                        >
-                            Scroll Back to Top
-                        </button>
-                    )}
-                    <Divider />
-                    <AgecyDocumentation />
-                </Feildset>
+        <FitToScreen>
+            <Box sx={{ display: "flex", overflow: "auto" }}>
+                <Box>
+                    <Fieldset
+                        title={"Guides"}
+                        sx={{ textAlign: "left", maxHeight, minHeight }}
+                        titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
+                    >
+                        <List>{tableOfContents}</List>
+                    </Fieldset>
+                </Box>
+                <Box>
+                    <Fieldset
+                        title={"GovQueue API Documentation"}
+                        sx={{ textAlign: "left", overflow: "auto", maxHeight, minHeight }}
+                        titleStyles={{ fontSize: "24px", fontWeight: "bold" }}
+                    >
+                        {showScrollButton && (
+                            <button
+                                onClick={scrollToTop}
+                                style={{
+                                    position: "fixed",
+                                    bottom: "120px",
+                                    right: "20px",
+                                    backgroundColor: "#1b2023",
+                                    color: "#fff",
+                                    border: "none",
+                                    borderRadius: "5px",
+                                    padding: "10px 20px",
+                                    cursor: "pointer",
+                                }}
+                            >
+                                Scroll Back to Top
+                            </button>
+                        )}
+                        <Divider />
+                        <AgencyDocumentation />
+                    </Fieldset>
+                </Box>
             </Box>
         </FitToScreen>
     );
