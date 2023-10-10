@@ -40,7 +40,7 @@ const types = [
 
 const region = regions.map((region) => ({ value: region, label: region }));
 const type = types.map((type) => ({ value: type, label: type }));
-export default function ProfileRegistration() {
+export default function ProfileRegistration(redirect) {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -76,10 +76,13 @@ export default function ProfileRegistration() {
     await fetchData(`${import.meta.env.VITE_SERVER_URL}/register/add`, options);
   };
   useEffect(() => {
-    console.log(status);
     if (status === 201) {
       console.log(data);
-      alert("s");
+      alert("Registration Successful");
+      if (redirect) {
+        // Redirect when the condition is met
+        window.location.replace("/");
+      }
     }
   }, [data]);
   return (
@@ -188,18 +191,18 @@ export default function ProfileRegistration() {
             value={formData.password}
             onChange={(e) => handleChange("password", e.target.value)}
           />
+          <Grid
+            container
+            justifyContent="space-evenly"
+            direction={{ xs: "column", md: "row" }}
+            sx={{ py: { xs: 2 } }}
+            columnSpacing={2}>
+            <Primary
+              value={"Register"}
+              onClick={() => handleRegister("name", name)}
+            />
+          </Grid>
         </Stack>
-        <Grid
-          container
-          justifyContent="space-evenly"
-          direction={{ xs: "column", md: "row" }}
-          sx={{ py: { xs: 2 } }}
-          columnSpacing={2}>
-          <Primary
-            value={"Register"}
-            onClick={() => handleRegister("name", name)}
-          />
-        </Grid>
       </Fieldset>
     </>
   );
