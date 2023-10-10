@@ -71,7 +71,7 @@ export default function ProfileRegistration(redirect) {
         setShowPassword(!showPassword);
     };
 
-    const handleRegister = async (property, value) => {
+    const handleRegister = async () => {
         const options = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
