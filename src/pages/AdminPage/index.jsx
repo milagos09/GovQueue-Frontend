@@ -41,7 +41,7 @@ export default function Admin() {
     return (
         <>
             <AdminNavbar />
-            {loggedIn || (user && agency) ? <Outlet /> : <Login />}
+            {loggedIn ? <Outlet /> : <Login />}
             <LoadingScreen isFetching={isFetching} />
         </>
     );

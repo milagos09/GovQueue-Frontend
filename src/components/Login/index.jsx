@@ -6,6 +6,7 @@ import {
   Grid,
   Snackbar,
   Alert,
+  Stack,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Primary } from "./../Buttons";
@@ -14,6 +15,7 @@ import LoadingScreen from "./../LoadingScreen";
 import userStore from "../../stores/userStore";
 import queuesStore from "../../stores/queuesStore";
 import { setSessionStorage } from "../../helpers/sessionStorage";
+import RegisterNavLink from "../RegistrationPage/RegisterLink";
 
 export default function AdminLogin() {
   const { setLoggedIn } = userStore();
@@ -25,6 +27,8 @@ export default function AdminLogin() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+
+  const pages = [{ nav: "Register", link: `/register` }];
 
   const handleShowPasswordClick = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -106,8 +110,7 @@ export default function AdminLogin() {
                 endAdornment: (
                   <InputAdornment
                     position="end"
-                    sx={{ "&:hover": { cursor: "pointer" } }}
-                  >
+                    sx={{ "&:hover": { cursor: "pointer" } }}>
                     {showPassword ? (
                       <VisibilityOff onClick={handleShowPasswordClick} />
                     ) : (
@@ -118,25 +121,24 @@ export default function AdminLogin() {
               }}
             />
           </div>
-          <Grid
-            container
-            spacing={2}
+          <Stack
+            direction="row"
             justifyContent="space-between"
-            textAlign="center"
-            rowGap={2}
-          >
-            <Grid item xs={12} sm={6}>
-              <Primary
-                value={"Log in"}
-                type={"submit"}
-                sx={{ width: "120px" }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <a href="#">Forgot Password?</a>
-            </Grid>
-          </Grid>
+            alignItems="center"
+            spacing={2}>
+            <RegisterNavLink pages={pages} />
+
+            <Primary value={"Log in"} type={"submit"} sx={{ width: "120px" }} />
+          </Stack>
         </form>
+        <Stack
+          direction="column"
+          justifyContent="flex-end"
+          alignItems="flex-end"
+          spacing={2}
+          mt={2}>
+          <a href="#">Forgot Password?</a>
+        </Stack>
         <Snackbar
           open={snackbarOpen}
           autoHideDuration={3000}
@@ -144,14 +146,12 @@ export default function AdminLogin() {
           anchorOrigin={{
             vertical: "top",
             horizontal: "center",
-          }}
-        >
+          }}>
           <Alert
             elevation={6}
             variant="filled"
             onClose={handleSnackbarClose}
-            severity={snackbarSeverity}
-          >
+            severity={snackbarSeverity}>
             {snackbarMessage}
           </Alert>
         </Snackbar>
