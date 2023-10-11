@@ -8,7 +8,6 @@ import getUserData from "./../../helpers/getCleintData";
 import userStore from "../../stores/userStore";
 import { setSessionStorage, getSessionStorage } from "./../../helpers/sessionStorage.js";
 import utilityStore from "../../stores/utilityStore";
-import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
 
 export default function Public() {
     const { setAgencies, updateAgency } = agencyStore();
@@ -53,7 +52,6 @@ export default function Public() {
         <>
             <NavBar />
             <Outlet />
-            <FacebookMessengerChat pageId="108965818922829" />
         </>
     );
 }
