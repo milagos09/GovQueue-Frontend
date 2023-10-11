@@ -34,7 +34,7 @@ export default function QueueTabs({ contents, width }) {
     };
 
     return (
-        <Box sx={{ width: "100%", mt: "20px" }}>
+        <Box sx={{ width: "100%" }}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <Tabs
                     value={value}

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import QueueActions from "../QueueActions";
 import Windows from "../Windows";
+import { StyledTableCell, StyledTableRow } from "../AdminHome/StyledTableElements";
 
 export default function Row({ agency, customBreakPoint, isFavorite, toggleFavorite }) {
     const [showQueues, setShowQueues] = useState(false);
@@ -16,7 +17,7 @@ export default function Row({ agency, customBreakPoint, isFavorite, toggleFavori
 
     const fontSize = ".9rem";
 
-    const logoWidth = "80px";
+    const logoWidth = "62px";
 
     return (
         <>
@@ -32,7 +33,11 @@ export default function Row({ agency, customBreakPoint, isFavorite, toggleFavori
                     </Link>
                 </TableCell>
                 <TableCell align="center" sx={{ fontSize: fontSize }}>
-                    <Link target="_blank" to={`agency/${agency.agency_id}`}>
+                    <Link
+                        target="_blank"
+                        to={`agency/${agency.agency_id}`}
+                        style={{ textDecoration: "none", color: "darkblue" }}
+                    >
                         {agency.name}
                     </Link>
                 </TableCell>
