@@ -103,8 +103,9 @@ export default function ProfileRegistration(redirect) {
             >
                 <RegisterUploadLogo logo={formData.logo} onChange={(logoUrl) => handleChange("logo", logoUrl)} />
 
-                <Stack rowGap={3} sx={{ my: "20px" }}>
+                <Stack rowGap={2} sx={{ my: "20px" }}>
                     <TextField
+                        size="small"
                         label={"Agency"}
                         name="name"
                         value={formData.name}
@@ -112,12 +113,14 @@ export default function ProfileRegistration(redirect) {
                         helperText="Required"
                     />
                     <TextField
+                        size="small"
                         label={"Description"}
                         name="description"
                         value={formData.description}
                         onChange={(e) => handleChange("description", e.target.value)}
                     />
                     <TextField
+                        size="small"
                         label={"Address"}
                         name="address"
                         value={formData.address}
@@ -125,6 +128,7 @@ export default function ProfileRegistration(redirect) {
                         helperText="Required"
                     />
                     <TextField
+                        size="small"
                         id="outlined-select-currency"
                         select
                         label={"Region"}
@@ -140,6 +144,7 @@ export default function ProfileRegistration(redirect) {
                         ))}
                     </TextField>
                     <TextField
+                        size="small"
                         id="outlined-select-currency"
                         select
                         label={"Type"}
@@ -155,6 +160,7 @@ export default function ProfileRegistration(redirect) {
                         ))}
                     </TextField>
                     <TextField
+                        size="small"
                         label={"Contact"}
                         name="contact"
                         value={formData.contact}
@@ -162,18 +168,22 @@ export default function ProfileRegistration(redirect) {
                         onChange={(e) => handleChange("contact", e.target.value)}
                     />
                     <TextField
+                        size="small"
                         label={"Support Email"}
                         name="supportEmail"
                         value={formData.supportEmail}
                         onChange={(e) => handleChange("supportEmail", e.target.value)}
                     />
                     <TextField
+                        size="small"
                         label={"Agency Website"}
                         name="website"
                         value={formData.website}
                         onChange={(e) => handleChange("website", e.target.value)}
                     />
                     <TextField
+                        type="email"
+                        size="small"
                         label={"Email"}
                         name="email"
                         value={formData.email}
@@ -181,6 +191,7 @@ export default function ProfileRegistration(redirect) {
                         onChange={(e) => handleChange("email", e.target.value)}
                     />
                     <TextField
+                        size="small"
                         label={"First Name"}
                         name="firstName"
                         value={formData.firstName}
@@ -188,6 +199,7 @@ export default function ProfileRegistration(redirect) {
                         onChange={(e) => handleChange("firstName", e.target.value)}
                     />
                     <TextField
+                        size="small"
                         label={"Last Name"}
                         name="lastName"
                         value={formData.lastName}
@@ -195,6 +207,7 @@ export default function ProfileRegistration(redirect) {
                         onChange={(e) => handleChange("lastName", e.target.value)}
                     />
                     <TextField
+                        size="small"
                         type={showPassword ? "text" : "password"}
                         label={"Password"}
                         helperText="Minimum of 6 characters"
