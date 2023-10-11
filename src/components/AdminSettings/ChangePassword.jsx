@@ -3,8 +3,10 @@ import { Box, Switch, InputAdornment, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Primary } from "./../Buttons";
 import { socket } from "../../helpers/socket";
+import userStore from "../../stores/userStore";
 
 export default function ChangePassword({ user }) {
+    const { setLoggedIn } = userStore();
     const [isEnabled, setEnabled] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
@@ -37,10 +39,16 @@ export default function ChangePassword({ user }) {
     };
 
     useEffect(() => {
-        socket.on("changePassword", (data) => {
+        socket.on("changePassword", async (data) => {
             if (data.statusCode === 200) {
+                const options = {
+                    method: "POST",
+                    credentials: "include",
+                };
+                await fetch(`${import.meta.env.VITE_SERVER_URL}/users/logout`, options);
                 sessionStorage.clear();
-                location.reload();
+                document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                setLoggedIn(false);
             } else {
                 alert("invalid credentials");
             }
