@@ -22,7 +22,7 @@ export default function AdminNavbar() {
         <AppBar position="sticky" sx={{ paddingX: "20px", ...dark }}>
             <Toolbar disableGutters>
                 <Grid container justifyContent={"space-between"} alignItems={"center"}>
-                    <Grid item grow>
+                    <Grid item>
                         <Box sx={{ display: "flex", alignItems: "center", columnGap: 2 }}>
                             {loggedIn && <AdminHamburgerMenu pages={[...pages]} />}
                             <AdminNavBarAppName />
@@ -30,10 +30,10 @@ export default function AdminNavbar() {
                     </Grid>
                     {loggedIn && (
                         <>
-                            <Grid item grow>
+                            <Grid item>
                                 <AdminNavLink pages={pages} />
                             </Grid>
-                            <Grid item grow>
+                            <Grid item>
                                 <Logout />
                             </Grid>
                         </>
