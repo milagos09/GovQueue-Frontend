@@ -15,21 +15,23 @@ export default function NavBar() {
     const { showSearch } = searchStore();
 
     return (
-        <AppBar position="sticky" sx={{ padding: "10px", ...dark }}>
+        <AppBar position="sticky" sx={{ paddingY: "7px", ...dark }}>
             <Toolbar>
                 <Grid container justifyContent={"space-between"} alignItems={"center"}>
                     <Grid item>
                         <Box sx={{ display: "flex", alignItems: "center", columnGap: 2 }}>
-                            {width < 712 && <HamburgerMenu />}
+                            {width <= 713 && <HamburgerMenu />}
                             <AppName />
                         </Box>
                     </Grid>
-                    {width > 712 && (
+                    {width > 713 && (
                         <Grid item>
                             <NavLink />
                         </Grid>
                     )}
-                    <Grid item>{showSearch ? <Search /> : <DateTime />}</Grid>
+                    <Grid item flexGrow={width < 486 ? 1 : 0} sx={{ px: 1 }}>
+                        {showSearch ? <Search /> : <DateTime />}
+                    </Grid>
                 </Grid>
             </Toolbar>
         </AppBar>
