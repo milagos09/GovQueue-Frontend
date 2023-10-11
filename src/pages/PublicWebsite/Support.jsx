@@ -1,4 +1,4 @@
-import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
+// import FacebookMessengerChat from "../../components/FacebookMessengerChat/index";
 import Fieldset from "../../components/Fieldset";
 import { Divider, ListItem, List, Typography, Grid } from "@mui/material";
 import faqData from "./data/faq.json";
@@ -43,7 +43,7 @@ export default function Support() {
                     </Fieldset>
                 </Grid>
             </Grid>
-            <FacebookMessengerChat pageId="108965818922829" />
+            {/* <FacebookMessengerChat pageId="108965818922829" /> */}
         </>
     );
 }
